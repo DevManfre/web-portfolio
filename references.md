@@ -1,2 +1,3 @@
 # References
-1. https://dunks1980.com/
+1. https://brittanychiang.com/
+2. https://dunks1980.com/
