@@ -1,0 +1,60 @@
+$logo-size: 130px;
+$logo-color: white;
+
+body {
+    margin: 0;
+    background-color: #1b1b1b;
+    // TODO: rimuovere body, non deve stare qui
+
+    .container-logo {
+        height: $logo-size;
+        color: $logo-color;
+        width: calc($logo-size * 2);
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        user-select: none;
+
+        .line {
+            background-color: $logo-color;
+            height: calc($logo-size / 13);
+            width: 0;
+            position: relative;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%) rotate(-70deg);
+            transition: width 1s ease-in-out;
+        }
+
+        .line.active {
+            width: $logo-size;
+        }
+
+        .minor,
+        .major {
+            font-size: $logo-size;
+            height: 0;
+            position: relative;
+            top: 50%;
+            font-weight: 700;
+            opacity: 0;
+        }
+
+        // TODO: Aggiustare lo spostamento di X dei segni e rendere tutte le misure dinamiche.
+
+        .minor {
+            transform: translate(-40px, -75px);
+        }
+
+        .major {
+            transform: translate(100px, -75px);
+        }
+
+        .minor.active,
+        .major.active {
+            opacity: 1;
+            transition: 1s;
+        }
+    }
+}
