@@ -1,0 +1,4 @@
+# Gatsby and React
+node_modules
+.cache/
+public

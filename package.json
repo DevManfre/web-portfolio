@@ -1,0 +1,24 @@
+{
+  "name": "portfolio-v2",
+  "version": "1.0.0",
+  "private": true,
+  "description": "portfolio-v2",
+  "author": "Alessio Manfredini",
+  "keywords": [
+    "gatsby"
+  ],
+  "scripts": {
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean"
+  },
+  "dependencies": {
+    "gatsby": "^5.13.3",
+    "gatsby-plugin-sass": "^6.13.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sass": "^1.77.0"
+  }
+}
