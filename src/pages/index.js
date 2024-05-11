@@ -1,8 +1,9 @@
 import * as React from "react"
+import Logo from "../components/logo"
 
 const IndexPage = () => {
     return (
-        <h1>Web portfolio</h1>
+        <Logo />
     )
 }
 
