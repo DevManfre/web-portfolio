@@ -3,6 +3,10 @@
 $logo-size: 130px;
 $line-height: calc($logo-size / 10);
 
+body {
+    background-color: #1b1b1b;
+}
+
 .container-logo {
     height: $logo-size;
     color: Colors.$logo-color;
@@ -52,4 +56,11 @@ $line-height: calc($logo-size / 10);
         opacity: 1;
         transition: 1s;
     }
+}
+
+.container-logo.disappeared {
+    transform: scale(0.5) translate(-100%, -100%);
+    transform-origin: center center;
+    opacity: 0;
+    transition: 0.2s;
 }
