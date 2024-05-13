@@ -1,6 +1,6 @@
 $logo-size: 130px;
 $logo-color: white;
-$line-height: calc($logo-size / 13);
+$line-height: calc($logo-size / 10);
 
 .container-logo {
     height: $logo-size;
@@ -35,6 +35,7 @@ $line-height: calc($logo-size / 13);
         top: 50%;
         font-weight: 700;
         opacity: 0;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     }
 
     .minor {
