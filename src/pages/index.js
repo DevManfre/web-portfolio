@@ -1,9 +1,12 @@
 import * as React from "react"
-import LogoAnimated from "../components/LogoAnimated"
+import LoadingScreen from "../components/LoadingScreen"
 
 const IndexPage = () => {
     return (
-        <LogoAnimated />
+        <>
+            <LoadingScreen />
+            <h1>Testo di esempio</h1>
+        </>
     )
 }
 

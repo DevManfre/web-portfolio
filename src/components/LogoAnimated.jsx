@@ -3,11 +3,11 @@ import '../scss/Logo.scss'
 import '../scss/LogoAnimated.scss'
 import Logo from "./Logo";
 
-function LogoAnimated() {
-    let delay = 250;
-    let animation = 1000;
-    let freeze = 1500;
+let delay = 250;
+let animation = 1000;
+let freeze = 1500;
 
+function LogoAnimated() {
     setTimeout(() => document.querySelector('.line').classList.add('active'), delay);
     setTimeout(() => {
         document.querySelector('.major').classList.add('active');
@@ -17,5 +17,7 @@ function LogoAnimated() {
 
     return (<Logo />);
 }
+
+export const animationTime = delay + animation + freeze;
 
 export default LogoAnimated;
