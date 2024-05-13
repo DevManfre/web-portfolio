@@ -1,9 +1,12 @@
 import * as React from "react"
-import Logo from "../components/logo"
+import LoadingScreen from "../components/LoadingScreen"
 
 const IndexPage = () => {
     return (
-        <Logo />
+        <>
+            <LoadingScreen />
+            <h1>Testo di esempio</h1>
+        </>
     )
 }
 

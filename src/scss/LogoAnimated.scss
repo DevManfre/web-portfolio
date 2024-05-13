@@ -1,0 +1,30 @@
+$logo-size: 130px;
+$line-height: calc($logo-size / 10);
+
+.container-logo {
+    .line {
+        width: 0;
+    }
+
+    .line.active {
+        width: $logo-size;
+    }
+
+    .minor,
+    .major {
+        opacity: 0;
+    }
+
+    .minor.active,
+    .major.active {
+        opacity: 1;
+        transition: 1s;
+    }
+}
+
+.container-logo.disappeared {
+    transform: scale(0.5) translate(-100%, -100%);
+    transform-origin: center center;
+    opacity: 0;
+    transition: 0.2s;
+}
