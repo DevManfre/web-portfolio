@@ -1,9 +1,9 @@
 import * as React from "react"
-import Logo from "../components/logo"
+import LogoAnimated from "../components/LogoAnimated"
 
 const IndexPage = () => {
     return (
-        <Logo />
+        <LogoAnimated />
     )
 }
 

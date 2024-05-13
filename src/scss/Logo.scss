@@ -20,16 +20,12 @@ body {
     .line {
         background-color: Colors.$logo-color;
         height: $line-height;
-        width: 0;
+        width: $logo-size;
         position: relative;
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%) rotate(-70deg);
         transition: width 1s ease-in-out;
-    }
-
-    .line.active {
-        width: $logo-size;
     }
 
     .minor,
@@ -39,7 +35,6 @@ body {
         position: relative;
         top: 50%;
         font-weight: 700;
-        opacity: 0;
         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     }
 
@@ -50,17 +45,4 @@ body {
     .major {
         transform: translate(170px, calc($logo-size / (-2) - $line-height));
     }
-
-    .minor.active,
-    .major.active {
-        opacity: 1;
-        transition: 1s;
-    }
-}
-
-.container-logo.disappeared {
-    transform: scale(0.5) translate(-100%, -100%);
-    transform-origin: center center;
-    opacity: 0;
-    transition: 0.2s;
 }
