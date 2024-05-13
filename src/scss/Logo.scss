@@ -1,10 +1,11 @@
+@use "Colors";
+
 $logo-size: 130px;
-$logo-color: white;
 $line-height: calc($logo-size / 10);
 
 .container-logo {
     height: $logo-size;
-    color: $logo-color;
+    color: Colors.$logo-color;
     width: calc($logo-size * 2);
     position: absolute;
     left: 50%;
@@ -13,7 +14,7 @@ $line-height: calc($logo-size / 10);
     user-select: none;
 
     .line {
-        background-color: $logo-color;
+        background-color: Colors.$logo-color;
         height: $line-height;
         width: 0;
         position: relative;
