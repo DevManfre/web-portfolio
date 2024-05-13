@@ -6,6 +6,7 @@
     height: 100vh;
     position: absolute;
     z-index: 99;
+    overflow: hidden;
 }
 
 #loading-screen.active {
