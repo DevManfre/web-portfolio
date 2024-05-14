@@ -1,3 +1,6 @@
+@use 'Colors';
+
 body {
+    background-color: Colors.$portfolio-bg-color;
     margin: 0;
 }
