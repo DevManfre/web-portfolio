@@ -1,5 +1,4 @@
-$logo-size: 130px;
-$line-height: calc($logo-size / 10);
+@use 'Logo';
 
 .container-logo {
     .line {
@@ -7,7 +6,7 @@ $line-height: calc($logo-size / 10);
     }
 
     .line.active {
-        width: $logo-size;
+        width: Logo.$logo-size;
     }
 
     .minor,
