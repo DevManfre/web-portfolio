@@ -2,6 +2,7 @@
 
 .container-logo {
     .line {
+        transition: width 1s ease-in-out;
         width: 0;
     }
 
