@@ -1,12 +1,9 @@
-@use "Colors";
-
-$logo-size: 130px;
-$line-height: calc($logo-size / 10);
+@use 'LogoVars';
 
 .container-logo {
-    height: $logo-size;
-    color: Colors.$logo-color;
-    width: calc($logo-size * 2);
+    height: LogoVars.$size;
+    color: $logo-color;
+    width: calc(LogoVars.$size * 2);
     position: absolute;
     left: 50%;
     top: 50%;
@@ -14,19 +11,18 @@ $line-height: calc($logo-size / 10);
     user-select: none;
 
     .line {
-        background-color: Colors.$logo-color;
-        height: $line-height;
-        width: $logo-size;
+        background-color: $logo-color;
+        height: LogoVars.$line-height;
+        width: LogoVars.$size;
         position: relative;
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%) rotate(-70deg);
-        transition: width 1s ease-in-out;
     }
 
     .minor,
     .major {
-        font-size: $logo-size;
+        font-size: LogoVars.$size;
         height: 0;
         position: relative;
         top: 50%;
@@ -35,10 +31,10 @@ $line-height: calc($logo-size / 10);
     }
 
     .minor {
-        transform: translate(20px, calc($logo-size / (-2) - $line-height));
+        transform: translate(20px, calc(LogoVars.$size / (-2) - LogoVars.$line-height));
     }
 
     .major {
-        transform: translate(170px, calc($logo-size / (-2) - $line-height));
+        transform: translate(170px, calc(LogoVars.$size / (-2) - LogoVars.$line-height));
     }
 }

@@ -1,11 +1,13 @@
 import * as React from "react"
 import LoadingScreen from "../components/LoadingScreen"
+import Layout from "../components/Layout"
 
 const IndexPage = () => {
     return (
         <>
-            <LoadingScreen />
-            <h1>Testo di esempio</h1>
+            <Layout>
+                <LoadingScreen />
+            </Layout>
         </>
     )
 }

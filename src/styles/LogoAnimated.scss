@@ -1,13 +1,13 @@
-$logo-size: 130px;
-$line-height: calc($logo-size / 10);
+@use 'LogoVars';
 
 .container-logo {
     .line {
+        transition: width 1s ease-in-out;
         width: 0;
     }
 
     .line.active {
-        width: $logo-size;
+        width: LogoVars.$size;
     }
 
     .minor,
