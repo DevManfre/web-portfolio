@@ -1,4 +1,4 @@
-@use 'Logo';
+@use 'LogoVars';
 
 .container-logo {
     .line {
@@ -7,7 +7,7 @@
     }
 
     .line.active {
-        width: Logo.$logo-size;
+        width: LogoVars.$size;
     }
 
     .minor,
