@@ -4,10 +4,11 @@ import { animationTime } from './LogoAnimated';
 import '../scss/LoadingScreen.scss'
 
 function LoadingScreen() {
-    setTimeout(() => document.getElementById('loading-screen').classList.add('active'), animationTime + 500);
+    setTimeout(() => document.getElementById('container-loading-screen').classList.add('active'), animationTime + 500);
 
     return (
-        <div id="loading-screen">
+        <div id="container-loading-screen">
+            <div className="loading-screen-bg" />
             <LogoAnimated />
         </div>
     );

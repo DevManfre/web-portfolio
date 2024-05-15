@@ -1,13 +1,22 @@
-#loading-screen {
-    background-color: $loading-screen-bg-color;
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    z-index: 99;
-    overflow: hidden;
+$container-z-index: 10;
+
+#container-loading-screen {
+    .loading-screen-bg {
+        background-color: $portfolio-bg-color;
+        z-index: $container-z-index;
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        overflow: hidden;
+        filter: brightness(0.7);
+    }
+
+    .container-logo {
+        z-index: calc($container-z-index + 1);
+    }
 }
 
-#loading-screen.active {
+#container-loading-screen.active {
     transition: 0.1s;
     opacity: 0;
 }
