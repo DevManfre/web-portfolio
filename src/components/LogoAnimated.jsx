@@ -1,6 +1,6 @@
 import * as React from "react"
-import '../scss/Logo.scss'
-import '../scss/LogoAnimated.scss'
+import '../styles/Logo.scss'
+import '../styles/LogoAnimated.scss'
 import Logo from "./Logo";
 
 let delay = 250;

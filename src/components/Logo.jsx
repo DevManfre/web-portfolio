@@ -1,5 +1,5 @@
 import * as React from "react"
-import '../scss/Logo.scss'
+import '../styles/Logo.scss'
 
 function Logo() {
     return (
