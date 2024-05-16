@@ -31,10 +31,10 @@
     }
 
     .minor {
-        transform: translate(20px, calc(LogoVars.$size / (-2) - LogoVars.$line-height));
+        transform: translate(LogoVars.$minor-x-translation, LogoVars.$symbols-y-translation);
     }
 
     .major {
-        transform: translate(170px, calc(LogoVars.$size / (-2) - LogoVars.$line-height));
+        transform: translate(LogoVars.$major-x-translation, LogoVars.$symbols-y-translation);
     }
 }

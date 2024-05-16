@@ -1,2 +1,6 @@
-$size: 130px;
+$size: 3.5cm; /* Change only the $size variable to change the dimensions of the logo */
+
 $line-height: calc($size / 10);
+$symbols-y-translation: calc($size / (-2) - $line-height);
+$minor-x-translation: calc($size / 7);
+$major-x-translation: calc($size * 9 / 7 );
