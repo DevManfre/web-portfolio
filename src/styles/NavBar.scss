@@ -1,0 +1,49 @@
+$navbar-height: 100px;
+$navebar-lateral-padding: calc($navbar-height / 2);
+
+.navbar {
+    height: $navbar-height;
+    padding: 0 $navebar-lateral-padding 0 $navebar-lateral-padding;
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+
+    .logo {
+        transform: translate(-53px, -6px) scale(0.5);
+    }
+
+    ol {
+        counter-reset: link-counter 0;
+        padding-inline-start: 0;
+        margin: 0;
+        height: min-content;
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+
+        a {
+            color: $secondary-color;
+            font-family: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
+            text-decoration: none;
+            padding: 10px;
+            display: inline-block;
+            transition: 0.2s;
+            
+            li {
+                display: inline;
+            }
+        }
+
+        a::before{
+            color: $logo-color;
+            content: '0'counter(link-counter)'.';
+            counter-increment: link-counter;
+            margin-right: 5px;
+        }
+
+        a:hover {
+            color: $logo-color;
+            transition: 0.2s;
+        }
+    }
+}
