@@ -4,7 +4,16 @@ import { animationTime } from './LogoAnimated';
 import '../styles/LoadingScreen.scss'
 
 function LoadingScreen() {
-    setTimeout(() => document.getElementById('container-loading-screen').classList.add('active'), animationTime + 500);
+    let freezeTimeBeforeFadeOut = 500;
+
+    setTimeout(
+        () => document.getElementById('container-loading-screen').classList.add('active'),
+        animationTime + freezeTimeBeforeFadeOut
+    );
+    setTimeout(
+        () => document.getElementById('container-loading-screen').classList.add('removed'),
+        animationTime + freezeTimeBeforeFadeOut * 2
+    );
 
     return (
         <div id="container-loading-screen">

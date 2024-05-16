@@ -20,3 +20,7 @@ $container-z-index: 10;
     transition: 0.1s;
     opacity: 0;
 }
+
+#container-loading-screen.removed {
+    display: none;
+}
