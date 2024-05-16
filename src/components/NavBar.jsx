@@ -6,25 +6,27 @@ function NavBar() {
     return (
         <header>
             <nav className="navbar">
-                <Logo />
+                <a href='/' id='logo-link'>
+                    <Logo />
+                </a>
 
                 <ol>
-                    <a href=''>
+                    <a href='/'>
                         <li>
                             About
                         </li>
                     </a>
-                    <a href=''>
+                    <a href='/'>
                         <li>
                             Experience
                         </li>
                     </a>
-                    <a href=''>
+                    <a href='/'>
                         <li>
                             Work
                         </li>
                     </a>
-                    <a href=''>
+                    <a href='/'>
                         <li>
                             Contact
                         </li>

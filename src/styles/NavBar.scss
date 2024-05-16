@@ -9,7 +9,17 @@ $navebar-lateral-padding: calc($navbar-height / 2);
     justify-content: space-between;
 
     .logo {
-        transform: translate(-53px, -6px) scale(0.5);
+        transform: translate(-53px, -33px) scale(0.5);
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    #logo-link {
+        width: 110px;
+        height: 68px;
+        margin-top: 18px;
     }
 
     ol {
@@ -24,7 +34,6 @@ $navebar-lateral-padding: calc($navbar-height / 2);
         a {
             color: $secondary-color;
             font-family: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
-            text-decoration: none;
             padding: 10px;
             display: inline-block;
             transition: 0.2s;
