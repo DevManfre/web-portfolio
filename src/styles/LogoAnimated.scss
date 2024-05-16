@@ -2,6 +2,11 @@
 
 .animated-logo {
     .container-logo {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        
         .line {
             transition: width 1s ease-in-out;
             width: 0;

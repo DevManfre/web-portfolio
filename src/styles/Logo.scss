@@ -1,13 +1,11 @@
 @use 'LogoVars';
 
+// TODO: modificare la larghezzezza del container-logo in quanto sfora di molto dai simboli. Deve essere pari pari alla larghezza effettiva.
+
 .container-logo {
     height: LogoVars.$size;
     color: $logo-color;
     width: calc(LogoVars.$size * 2);
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
     user-select: none;
 
     .line {
