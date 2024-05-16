@@ -3,10 +3,12 @@ import '../styles/Logo.scss'
 
 function Logo() {
     return (
-        <div className="container-logo">
-            <div className="minor">&lt;</div>
-            <div className="major">&gt;</div>
-            <div className="line" />
+        <div className="logo">
+            <div className="container-logo">
+                <div className="minor">&lt;</div>
+                <div className="major">&gt;</div>
+                <div className="line" />
+            </div>
         </div>
     );
 }
