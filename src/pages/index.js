@@ -5,8 +5,8 @@ import Layout from "../components/Layout"
 const IndexPage = () => {
     return (
         <>
+            <LoadingScreen />
             <Layout>
-                <LoadingScreen />
             </Layout>
         </>
     )
