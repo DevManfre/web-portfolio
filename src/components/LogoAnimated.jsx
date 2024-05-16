@@ -17,7 +17,11 @@ function LogoAnimated() {
     }, delay + lineAnimation);
     setTimeout(() => document.querySelector('.container-logo').classList.add('disappeared'), total);
 
-    return (<Logo />);
+    return (
+        <div className="animated-logo">
+            <Logo />
+        </div>
+    );
 }
 
 export const animationTime = total;
