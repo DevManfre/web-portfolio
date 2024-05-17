@@ -1,5 +1,6 @@
 import * as React from 'react'
 import Logo from './Logo'
+import NavBarLink from './NavBarLink';
 import '../styles/NavBar.scss'
 
 function NavBar() {
@@ -11,26 +12,10 @@ function NavBar() {
                 </a>
 
                 <ol>
-                    <a href='/'>
-                        <li>
-                            About
-                        </li>
-                    </a>
-                    <a href='/'>
-                        <li>
-                            Experience
-                        </li>
-                    </a>
-                    <a href='/'>
-                        <li>
-                            Work
-                        </li>
-                    </a>
-                    <a href='/'>
-                        <li>
-                            Contact
-                        </li>
-                    </a>
+                    <NavBarLink to='/'>About</NavBarLink>
+                    <NavBarLink to='/'>Experience</NavBarLink>
+                    <NavBarLink to='/'>Work</NavBarLink>
+                    <NavBarLink to='/'>Contact</NavBarLink>
                 </ol>
             </nav>
         </header>
