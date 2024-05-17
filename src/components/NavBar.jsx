@@ -4,6 +4,8 @@ import NavBarLink from './NavBarLink';
 import '../styles/NavBar.scss'
 
 function NavBar() {
+    const links = ['About', 'Experience', 'Work', 'Contact'];
+
     return (
         <header>
             <nav className="navbar">
@@ -12,10 +14,7 @@ function NavBar() {
                 </a>
 
                 <ol>
-                    <NavBarLink to='/'>About</NavBarLink>
-                    <NavBarLink to='/'>Experience</NavBarLink>
-                    <NavBarLink to='/'>Work</NavBarLink>
-                    <NavBarLink to='/'>Contact</NavBarLink>
+                    {links.map(link => <NavBarLink key={link}>{link}</NavBarLink>)}
                 </ol>
             </nav>
         </header>
