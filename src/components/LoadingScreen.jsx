@@ -5,14 +5,19 @@ import '../styles/LoadingScreen.scss'
 
 function LoadingScreen() {
     let freezeTimeBeforeFadeOut = 500;
+    let page = document.getElementsByTagName('body')[0];
+
+    page.style.overflowY = 'hidden';
 
     setTimeout(
         () => document.getElementById('container-loading-screen').classList.add('active'),
         animationTime + freezeTimeBeforeFadeOut
     );
-    setTimeout(
-        () => document.getElementById('container-loading-screen').classList.add('removed'),
-        animationTime + freezeTimeBeforeFadeOut * 2
+    setTimeout(() => {
+        document.getElementById('container-loading-screen').classList.add('removed');
+        page.style.overflowY = '';
+    },
+        animationTime + freezeTimeBeforeFadeOut + 0.2
     );
 
     return (
