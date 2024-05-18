@@ -5,9 +5,8 @@ import '../styles/LoadingScreen.scss'
 
 function LoadingScreen() {
     let freezeTimeBeforeFadeOut = 500;
-    let page = document.getElementsByTagName('body')[0];
 
-    page.style.overflowY = 'hidden';
+    document.body.style.overflowY = 'hidden';
 
     setTimeout(
         () => document.getElementById('container-loading-screen').classList.add('active'),
@@ -15,7 +14,7 @@ function LoadingScreen() {
     );
     setTimeout(() => {
         document.getElementById('container-loading-screen').classList.add('removed');
-        page.style.overflowY = '';
+        document.body.style.overflowY = '';
     },
         animationTime + freezeTimeBeforeFadeOut + 0.2
     );

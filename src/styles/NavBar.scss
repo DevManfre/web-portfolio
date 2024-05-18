@@ -4,13 +4,14 @@ $navebar-lateral-padding: calc($navbar-height / 2);
 header {
     position: fixed;
     width: 100%;
-
+    transition: 0.5s;
+    
     .navbar {
         height: $navbar-height;
         padding: 0 $navebar-lateral-padding 0 $navebar-lateral-padding;
         display: flex;
         justify-content: space-between;
-        backdrop-filter: blur(5px);
+        backdrop-filter: blur(10px);
 
         a {
             text-decoration: none;
