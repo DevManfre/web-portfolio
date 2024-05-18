@@ -1,24 +1,28 @@
 $container-z-index: 10;
 
-#container-loading-screen {
-    .loading-screen-bg {
-        background-color: $portfolio-bg-color;
-        z-index: $container-z-index;
-        width: 100vw;
-        height: 100vh;
-        position: absolute;
-        overflow: hidden;
-        filter: brightness(0.7);
+body.loading-screen {
+    overflow-y: hidden;
+
+    #container-loading-screen {
+        .loading-screen-bg {
+            background-color: $portfolio-bg-color;
+            z-index: $container-z-index;
+            width: 100vw;
+            height: 100vh;
+            position: absolute;
+            overflow: hidden;
+            filter: brightness(0.7);
+        }
+
+        .container-logo {
+            z-index: calc($container-z-index + 1);
+        }
     }
 
-    .container-logo {
-        z-index: calc($container-z-index + 1);
+    #container-loading-screen.active {
+        transition: 0.1s;
+        opacity: 0;
     }
-}
-
-#container-loading-screen.active {
-    transition: 0.1s;
-    opacity: 0;
 }
 
 #container-loading-screen.removed {
