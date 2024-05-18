@@ -10,6 +10,13 @@ $navebar-lateral-padding: calc($navbar-height / 2);
 
     a {
         text-decoration: none;
+        height: min-content;
+    }
+
+    #logo-link {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
     }
 
     ol {
