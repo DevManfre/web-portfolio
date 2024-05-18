@@ -1,31 +1,36 @@
 $navbar-height: 100px;
 $navebar-lateral-padding: calc($navbar-height / 2);
 
-.navbar {
-    height: $navbar-height;
-    padding: 0 $navebar-lateral-padding 0 $navebar-lateral-padding;
-    display: flex;
-    position: relative;
-    justify-content: space-between;
+header {
+    position: fixed;
+    width: 100%;
 
-    a {
-        text-decoration: none;
-        height: min-content;
-    }
+    .navbar {
+        height: $navbar-height;
+        padding: 0 $navebar-lateral-padding 0 $navebar-lateral-padding;
+        display: flex;
+        justify-content: space-between;
+        backdrop-filter: blur(5px);
 
-    #logo-link {
-        position: relative;
-        top: 50%;
-        transform: translateY(-50%);
-    }
+        a {
+            text-decoration: none;
+            height: min-content;
+        }
 
-    ol {
-        counter-reset: link-counter 0;
-        padding-inline-start: 0;
-        margin: 0;
-        height: min-content;
-        position: relative;
-        top: 50%;
-        transform: translateY(-50%);
+        #logo-link {
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        ol {
+            counter-reset: link-counter 0;
+            padding-inline-start: 0;
+            margin: 0;
+            height: min-content;
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+        }
     }
 }
