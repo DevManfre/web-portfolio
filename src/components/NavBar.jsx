@@ -18,6 +18,9 @@ function NavBar() {
             case Direction.Down:
                 header.classList.add('hidden');
                 break;
+            default:
+                // Add for removing warning
+                break;
         }
     });
 
