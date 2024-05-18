@@ -5,13 +5,15 @@ header {
     position: fixed;
     width: 100%;
     transition: 0.5s;
-    
+    backdrop-filter: blur(10px);
+    transform: translateY(0px);
+    box-shadow: 0 10px 30px -10px rgba(2, 10, 22, 0.7);
+
     .navbar {
         height: $navbar-height;
         padding: 0 $navebar-lateral-padding 0 $navebar-lateral-padding;
         display: flex;
         justify-content: space-between;
-        backdrop-filter: blur(10px);
 
         a {
             text-decoration: none;
@@ -25,13 +27,27 @@ header {
         }
 
         ol {
+            height: min-content;
+            position: relative;
             counter-reset: link-counter 0;
             padding-inline-start: 0;
             margin: 0;
-            height: min-content;
-            position: relative;
             top: 50%;
             transform: translateY(-50%);
         }
+    }
+}
+
+header.hidden {
+    transform: translateY(-$navbar-height);
+    box-shadow: none;
+}
+
+header[scroll-from-top="0"] {
+    box-shadow: none;
+
+    .navbar{
+        transition: 0.3s;
+        height: calc($navbar-height + 20px);
     }
 }

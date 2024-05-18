@@ -9,20 +9,20 @@ function NavBar() {
     const { scrollDir, scrollPosition } = useDetectScroll();
 
     window.addEventListener('scroll', () => {
-        let navbar = document.getElementById('header');
+        let header = document.getElementById('header');
 
         switch (scrollDir) {
             case Direction.Up:
-                navbar.style.transform = 'translateY(0px)';
+                header.classList.remove('hidden');
                 break;
             case Direction.Down:
-                navbar.style.transform = 'translateY(-100px)';
+                header.classList.add('hidden');
                 break;
         }
     });
 
     return (
-        <header id='header'>
+        <header id='header' scroll-from-top={scrollPosition.top}>
             <nav className="navbar">
                 <a href='/' id='logo-link'>
                     <Logo />
