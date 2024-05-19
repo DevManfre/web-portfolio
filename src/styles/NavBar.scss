@@ -1,4 +1,4 @@
-$navbar-height: 100px;
+$navbar-height: 80px;
 $navebar-lateral-padding: calc($navbar-height / 2);
 
 header {
@@ -23,7 +23,7 @@ header {
         #logo-link {
             position: relative;
             top: 50%;
-            transform: translateY(-50%);
+            transform: translateY(-50%) scale(0.7);
         }
 
         ol {
