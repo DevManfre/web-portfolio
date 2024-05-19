@@ -3,6 +3,10 @@ $container-z-index: 10;
 body.loading-screen {
     overflow-y: hidden;
 
+    .layout {
+        display: none;
+    }
+
     #container-loading-screen {
         .loading-screen-bg {
             background-color: $portfolio-bg-color;
