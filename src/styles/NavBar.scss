@@ -22,7 +22,7 @@ header {
 
         #logo-link {
             position: relative;
-            top: 50%;
+            top: 55%;
             transform: translateY(-50%) scale(0.7);
 
             .container-logo {
@@ -35,7 +35,8 @@ header {
                     transition: 0.2s;
                 }
 
-                .line, .major {
+                .line,
+                .major {
                     transition: 0.5s;
                 }
             }
@@ -57,9 +58,9 @@ header {
                 .major {
                     transform: translate(2.4cm, -0.1cm);
                 }
-                
+
                 .line {
-                    
+
                     transform: translate(2.3cm, -0.75cm);
                 }
             }
@@ -74,6 +75,23 @@ header {
             top: 50%;
             transform: translateY(-50%);
         }
+
+        .hamburger-icon {
+            display: none;
+            position: relative;
+            height: min-content;
+            top: 30%;
+            transition: all 0.7s ease;
+
+            div {
+                width: 40px;
+                height: 4px;
+                background: $logo-color;
+                margin: 6px;
+                transition: all 0.3s ease;
+                border-radius: 3px;
+            }
+        }
     }
 }
 
@@ -85,8 +103,34 @@ header.hidden {
 header[scroll-from-top="0"] {
     box-shadow: none;
 
-    .navbar{
+    .navbar {
         transition: 0.3s;
         height: calc($navbar-height + 20px);
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    header {
+        .navbar {
+            .hamburger-icon {
+                display: block;
+                cursor: pointer;
+
+                &.toggle {
+                    .line1 {
+                        transform: rotate(-45deg) translate(-2mm, 1.8mm);
+                    }
+
+                    .line2 {
+                        transition: all 0.3s ease;
+                        opacity: 0;
+                    }
+
+                    .line3 {
+                        transform: rotate(45deg) translate(-2mm, -1.8mm);
+                    }
+                }
+            }
+        }
     }
 }

@@ -32,6 +32,11 @@ function NavBar({ reference }) {
         }
     });
 
+    function handleHamburgerClick() {
+        // Hamburger Animation
+        document.querySelector('.hamburger-icon').classList.toggle('toggle');
+    }
+
     return (
         <header id='header' scroll-from-top={scrollPosition.top} ref={reference}>
             <nav className="navbar">
@@ -44,7 +49,7 @@ function NavBar({ reference }) {
                     </div>
                 </a>
 
-                <ol>
+                <ol id='navbar-link-list'>
                     {links.map(link => {
                         transition += transitionIncrement;
 
@@ -56,8 +61,18 @@ function NavBar({ reference }) {
                         );
                     })}
                 </ol>
+
+                {/* Responsive Navbar side */}
+                <div className="hamburger-icon" onClick={handleHamburgerClick} style={{
+                    ...inViewStyle,
+                    transition: `${transition}s`
+                }}>
+                    <div className="line1" />
+                    <div className="line2" />
+                    <div className="line3" />
+                </div>
             </nav>
-        </header>
+        </header >
     );
 }
 
