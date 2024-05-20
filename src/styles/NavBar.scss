@@ -63,7 +63,7 @@ header {
 
                         .line {
 
-                            transform: translate(2.3cm, -0.75cm);
+                            transform: translate(2.3cm, -0.95cm);
                         }
                     }
 
@@ -71,7 +71,7 @@ header {
                         transition: $transition-time;
                         content: 'dev';
                         position: relative;
-                        top: -0.2cm;
+                        top: -0.25cm;
                         font-size: 1.7cm;
                         opacity: 0;
                     }
@@ -79,6 +79,10 @@ header {
                     .line,
                     .major {
                         transition: $transition-time;
+                    }
+
+                    .line {
+                        transform: translateY(-1mm);
                     }
                 }
             }
