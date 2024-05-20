@@ -28,6 +28,8 @@ header {
             .container-logo {
                 .minor:after {
                     content: 'dev';
+                    position: relative;
+                    top: -0.2cm;
                     font-size: 1.7cm;
                     opacity: 0;
                     transition: 0.2s;
