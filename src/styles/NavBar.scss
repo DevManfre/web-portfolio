@@ -9,6 +9,20 @@ header {
     transform: translateY(0px);
     box-shadow: 0 10px 30px -10px rgba(2, 10, 22, 0.7);
 
+    &.hidden {
+        transform: translateY(-$navbar-height);
+        box-shadow: none;
+    }
+
+    &[scroll-from-top="0"] {
+        box-shadow: none;
+
+        .navbar {
+            transition: 0.3s;
+            height: calc($navbar-height + 20px);
+        }
+    }
+
     .navbar {
         height: $navbar-height;
         padding: 0 $navebar-lateral-padding 0 $navebar-lateral-padding;
@@ -18,55 +32,55 @@ header {
         a {
             text-decoration: none;
             height: min-content;
-        }
 
-        #logo-link {
-            position: relative;
-            top: 55%;
-            transform: translateY(-50%) scale(0.7);
+            &#logo-link {
+                position: relative;
+                top: 55%;
+                transform: translateY(-50%) scale(0.7);
 
-            .container-logo {
-                .minor:after {
-                    content: 'dev';
-                    position: relative;
-                    top: -0.2cm;
-                    font-size: 1.7cm;
-                    opacity: 0;
-                    transition: 0.2s;
+                .container-logo {
+                    .minor:after {
+                        content: 'dev';
+                        position: relative;
+                        top: -0.2cm;
+                        font-size: 1.7cm;
+                        opacity: 0;
+                        transition: 0.2s;
+                    }
+
+                    .line,
+                    .major {
+                        transition: 0.5s;
+                    }
                 }
 
-                .line,
-                .major {
-                    transition: 0.5s;
+                .container-logo:hover {
+                    width: 5.6cm;
+                    transform: translateX(-0.55cm);
+
+                    .minor:after {
+                        opacity: 1;
+                        transition: 0.8s;
+                    }
+
+                    .line,
+                    .major {
+                        transition: 0.5s;
+                    }
+
+                    .major {
+                        transform: translate(2.4cm, -0.1cm);
+                    }
+
+                    .line {
+
+                        transform: translate(2.3cm, -0.75cm);
+                    }
                 }
             }
-
-            .container-logo:hover {
-                width: 5.6cm;
-                transform: translateX(-0.55cm);
-
-                .minor:after {
-                    opacity: 1;
-                    transition: 0.8s;
-                }
-
-                .line,
-                .major {
-                    transition: 0.5s;
-                }
-
-                .major {
-                    transform: translate(2.4cm, -0.1cm);
-                }
-
-                .line {
-
-                    transform: translate(2.3cm, -0.75cm);
-                }
-            }
         }
 
-        ol {
+        #navbar-link-list {
             height: min-content;
             position: relative;
             counter-reset: link-counter 0;
@@ -92,20 +106,6 @@ header {
                 border-radius: 3px;
             }
         }
-    }
-}
-
-header.hidden {
-    transform: translateY(-$navbar-height);
-    box-shadow: none;
-}
-
-header[scroll-from-top="0"] {
-    box-shadow: none;
-
-    .navbar {
-        transition: 0.3s;
-        height: calc($navbar-height + 20px);
     }
 }
 

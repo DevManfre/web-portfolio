@@ -17,7 +17,7 @@ function NavBar({ reference }) {
     let transitionIncrement = 0.2;
 
     window.addEventListener('scroll', () => {
-        let header = document.getElementById('header');
+        let header = document.querySelector('header');
 
         switch (scrollDir) {
             case Direction.Up:
@@ -38,7 +38,7 @@ function NavBar({ reference }) {
     }
 
     return (
-        <header id='header' scroll-from-top={scrollPosition.top} ref={reference}>
+        <header scroll-from-top={scrollPosition.top} ref={reference}>
             <nav className="navbar">
                 <a href='/' id='logo-link' >
                     <div style={{
