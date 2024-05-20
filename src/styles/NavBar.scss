@@ -1,11 +1,14 @@
 $navbar-height: 80px;
 $navebar-lateral-padding: calc($navbar-height / 2);
+$transition-time: 0.2s;
+$sidebar-width: 60%;
+$blur-value: blur(15px);
 
 header {
+    transition: $transition-time;
     position: fixed;
     width: 100%;
-    transition: 0.5s;
-    backdrop-filter: blur(10px);
+    backdrop-filter: $blur-value;
     transform: translateY(0px);
     box-shadow: 0 10px 30px -10px rgba(2, 10, 22, 0.7);
 
@@ -18,7 +21,7 @@ header {
         box-shadow: none;
 
         .navbar {
-            transition: 0.3s;
+            transition: $transition-time;
             height: calc($navbar-height + 20px);
         }
     }
@@ -34,47 +37,48 @@ header {
             height: min-content;
 
             &#logo-link {
+                transition: $transition-time;
                 position: relative;
                 top: 55%;
                 transform: translateY(-50%) scale(0.7);
 
                 .container-logo {
+                    &:hover {
+                        width: 5.6cm;
+                        transform: translateX(-0.55cm);
+
+                        .minor:after {
+                            transition: $transition-time;
+                            opacity: 1;
+                        }
+
+                        .line,
+                        .major {
+                            transition: $transition-time;
+                        }
+
+                        .major {
+                            transform: translate(2.4cm, -0.1cm);
+                        }
+
+                        .line {
+
+                            transform: translate(2.3cm, -0.75cm);
+                        }
+                    }
+
                     .minor:after {
+                        transition: $transition-time;
                         content: 'dev';
                         position: relative;
                         top: -0.2cm;
                         font-size: 1.7cm;
                         opacity: 0;
-                        transition: 0.2s;
                     }
 
                     .line,
                     .major {
-                        transition: 0.5s;
-                    }
-                }
-
-                .container-logo:hover {
-                    width: 5.6cm;
-                    transform: translateX(-0.55cm);
-
-                    .minor:after {
-                        opacity: 1;
-                        transition: 0.8s;
-                    }
-
-                    .line,
-                    .major {
-                        transition: 0.5s;
-                    }
-
-                    .major {
-                        transform: translate(2.4cm, -0.1cm);
-                    }
-
-                    .line {
-
-                        transform: translate(2.3cm, -0.75cm);
+                        transition: $transition-time;
                     }
                 }
             }
@@ -109,28 +113,95 @@ header {
     }
 }
 
-@media screen and (max-width: 1024px) {
-    header {
-        .navbar {
-            .hamburger-icon {
-                display: block;
-                cursor: pointer;
+@media screen and (max-width: 768px) {
+    body {
 
-                &.toggle {
-                    .line1 {
-                        transform: rotate(-45deg) translate(-2mm, 1.8mm);
-                    }
+        /* When sidebar is open */
+        &.open-sidebar {
+            overflow: hidden;
 
-                    .line2 {
-                        transition: all 0.3s ease;
+            header {
+                height: 100vh;
+
+                .navbar {
+                    #logo-link {
+                        transition: $transition-time;
                         opacity: 0;
                     }
 
-                    .line3 {
-                        transform: rotate(45deg) translate(-2mm, -1.8mm);
+                    #navbar-link-list {
+                        right: 0;
+                    }
+
+                    .hamburger-icon {
+                        .line1 {
+                            transform: rotate(-45deg) translate(-2mm, 1.8mm);
+                        }
+
+                        .line2 {
+                            transition: all 0.3s ease;
+                            opacity: 0;
+                        }
+
+                        .line3 {
+                            transform: rotate(45deg) translate(-2mm, -1.8mm);
+                        }
                     }
                 }
             }
         }
+
+        /* When sidebar is closed */
+        header .navbar {
+            #logo-link .container-logo {
+                position: relative;
+                left: -5mm;
+            }
+
+            #navbar-link-list {
+                background-color: $side-bar-color;
+                transition: $transition-time;
+                position: absolute;
+                transform: none;
+                text-align: center;
+                top: 0;
+                right: -$sidebar-width;
+                height: 100vh;
+                width: $sidebar-width;
+
+                a {
+                    position: relative;
+                    top: 30%;
+                    width: 100%;
+                }
+            }
+
+            .hamburger-icon {
+                display: block;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 426px) {
+    body {
+
+        /* When sidebar is open */
+        &.open-sidebar {
+            header .navbar #navbar-link-list {
+                width: 100%;
+            }
+        }
+
+        header .navbar {
+            padding: 0 calc($navebar-lateral-padding / 2) 0 calc($navebar-lateral-padding / 2);
+        }
+    }
+}
+
+@media screen and (max-width: 320px) {
+    header .navbar {
+        padding: 0 calc($navebar-lateral-padding / 4) 0 calc($navebar-lateral-padding / 4);
     }
 }

@@ -33,8 +33,7 @@ function NavBar({ reference }) {
     });
 
     function handleHamburgerClick() {
-        // Hamburger Animation
-        document.querySelector('.hamburger-icon').classList.toggle('toggle');
+        document.body.classList.toggle('open-sidebar');
     }
 
     return (

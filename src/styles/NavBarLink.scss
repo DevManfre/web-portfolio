@@ -1,9 +1,11 @@
+$spacing: 7px;
+
 ol {
     a {
         color: $secondary-color;
         font-family: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
-        padding: 10px;
-        margin: 10px;
+        padding: $spacing;
+        margin: $spacing;
         display: inline-block;
         transition: 0.2s;
 
