@@ -17,7 +17,7 @@ function NavBar({ reference }) {
     let transitionIncrement = 0.2;
 
     window.addEventListener('scroll', () => {
-        let header = document.getElementById('header');
+        let header = document.querySelector('header');
 
         switch (scrollDir) {
             case Direction.Up:
@@ -32,8 +32,12 @@ function NavBar({ reference }) {
         }
     });
 
+    function handleHamburgerClick() {
+        document.body.classList.toggle('open-sidebar');
+    }
+
     return (
-        <header id='header' scroll-from-top={scrollPosition.top} ref={reference}>
+        <header scroll-from-top={scrollPosition.top} ref={reference}>
             <nav className="navbar">
                 <a href='/' id='logo-link' >
                     <div style={{
@@ -44,7 +48,7 @@ function NavBar({ reference }) {
                     </div>
                 </a>
 
-                <ol>
+                <ol id='navbar-link-list'>
                     {links.map(link => {
                         transition += transitionIncrement;
 
@@ -56,8 +60,18 @@ function NavBar({ reference }) {
                         );
                     })}
                 </ol>
+
+                {/* Responsive Navbar side */}
+                <div className="hamburger-icon" onClick={handleHamburgerClick} style={{
+                    ...inViewStyle,
+                    transition: `${transition}s`
+                }}>
+                    <div className="line1" />
+                    <div className="line2" />
+                    <div className="line3" />
+                </div>
             </nav>
-        </header>
+        </header >
     );
 }
 

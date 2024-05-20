@@ -8,7 +8,9 @@ function Layout({ children }) {
     return (
         <div className="layout" ref={ref}>
             <NavBar reference={ref} />
-            {children}
+            <div className="page">
+                {children}
+            </div>
         </div>
     );
 }
