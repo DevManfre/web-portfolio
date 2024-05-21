@@ -32,10 +32,6 @@ function NavBar({ reference }) {
         }
     });
 
-    function handleHamburgerClick() {
-        document.body.classList.toggle('open-sidebar');
-    }
-
     return (
         <header scroll-from-top={scrollPosition.top} ref={reference}>
             <nav className="navbar">
@@ -62,14 +58,14 @@ function NavBar({ reference }) {
                 </ol>
 
                 {/* Responsive Navbar side */}
-                <div className="hamburger-icon" onClick={handleHamburgerClick} style={{
+                <button className="hamburger-icon" onKeyDown={() => {}} style={{
                     ...inViewStyle,
                     transition: `${transition}s`
-                }}>
+                }} onClick={() => document.body.classList.toggle('open-sidebar')}>
                     <div className="line1" />
                     <div className="line2" />
                     <div className="line3" />
-                </div>
+                </button>
             </nav>
         </header >
     );

@@ -71,7 +71,7 @@ header {
                         transition: $transition-time;
                         content: 'dev';
                         position: relative;
-                        top: -0.25cm;
+                        top: -0.15cm;
                         font-size: 1.7cm;
                         opacity: 0;
                     }
@@ -99,10 +99,12 @@ header {
         }
 
         .hamburger-icon {
+            background-color: transparent;
+            border: none;
             display: none;
             position: relative;
             height: min-content;
-            top: 30%;
+            top: 35%;
             transition: all 0.7s ease;
 
             div {
