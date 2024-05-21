@@ -165,15 +165,16 @@ header {
             }
 
             #navbar-link-list {
-                background-color: $side-bar-color;
+                background-color: $portfolio-bg-color;
                 transition: $transition-time;
+                right: -$sidebar-width;
+                width: $sidebar-width;
                 position: absolute;
                 transform: none;
                 text-align: center;
+                filter: brightness(0.85);
                 top: 0;
-                right: -$sidebar-width;
                 height: 100vh;
-                width: $sidebar-width;
 
                 a {
                     position: relative;

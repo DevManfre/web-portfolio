@@ -1,6 +1,6 @@
 import * as React from 'react'
+import NavBar from './NavBar'
 import '../styles/Layout.scss'
-import NavBar from './Navbar';
 
 function Layout({ children }) {
     const ref = React.useRef(null);

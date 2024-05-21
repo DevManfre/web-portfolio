@@ -7,19 +7,14 @@ function LoadingScreen() {
     let freezeTimeBeforeFadeOut = 500;
 
     document.body.classList.add('loading-screen');
-
-    setTimeout(
-        () => document.getElementById('container-loading-screen').classList.add('active'),
-        animationTime + freezeTimeBeforeFadeOut
-    );
+    
     setTimeout(() => {
         document.getElementById('container-loading-screen').classList.add('removed');
         document.body.classList.remove('loading-screen');
-    }, animationTime + freezeTimeBeforeFadeOut + 0.2);
+    }, animationTime + freezeTimeBeforeFadeOut);
 
     return (
         <div id="container-loading-screen">
-            <div className="loading-screen-bg" />
             <LogoAnimated />
         </div>
     );
