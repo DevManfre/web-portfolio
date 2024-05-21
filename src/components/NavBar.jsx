@@ -13,7 +13,7 @@ function NavBar({ reference }) {
         transform: isInView ? "none" : "translateY(-100px)",
         opacity: isInView ? 1 : 0
     };
-    let transition = 0.8;
+    let transition = 0.4;
     let transitionIncrement = 0.2;
 
     window.addEventListener('scroll', () => {
