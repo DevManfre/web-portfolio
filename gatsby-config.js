@@ -3,7 +3,8 @@
  */
 module.exports = {
     siteMetadata: {
-        title: `portfolio-v2`
+        title: `Alessio Manfredini`,
+        description: 'Alessio Manfredini web portfolio'
     },
     plugins: [
         {

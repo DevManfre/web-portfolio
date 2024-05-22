@@ -1,6 +1,8 @@
 $spacing: 7px;
 
-ol {
+ol > li {
+    display: inline;
+
     a {
         color: $secondary-color;
         font-family: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
@@ -9,20 +11,16 @@ ol {
         display: inline-block;
         transition: 0.2s;
 
-        li {
-            display: inline;
+        &::before {
+            color: $logo-color;
+            content: '0' counter(link-counter)'.';
+            counter-increment: link-counter;
+            margin-right: 5px;
         }
-    }
 
-    a::before {
-        color: $logo-color;
-        content: '0' counter(link-counter)'.';
-        counter-increment: link-counter;
-        margin-right: 5px;
-    }
-
-    a:hover {
-        color: $logo-color;
-        transition: 0.2s;
+        &:hover {
+            color: $logo-color;
+            transition: 0.2s;
+        }
     }
 }

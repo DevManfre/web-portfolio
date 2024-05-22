@@ -7,11 +7,11 @@ function NavBarLink({ children, style }) {
     children = children.substring(1, children.length - 1);
 
     return (
-        <a href={`/${children.toLowerCase()}`} style={style}>
-            <li>
+        <li>
+            <a href={`/${children.toLowerCase()}`} style={style}>
                 {children}
-            </li>
-        </a>
+            </a>
+        </li>
     );
 }
 
