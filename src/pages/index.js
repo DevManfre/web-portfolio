@@ -1,7 +1,7 @@
 import * as React from "react"
 import LoadingScreen from "../components/LoadingScreen"
 import Layout from "../components/Layout"
-import SEO from "../components/SEO"
+import Seo from "../components/Seo"
 
 const IndexPage = () => {
     return (
@@ -15,4 +15,4 @@ const IndexPage = () => {
 
 export default IndexPage
 
-export const Head = () => <SEO title="Home Page" />
+export const Head = () => <Seo title="Home Page" />

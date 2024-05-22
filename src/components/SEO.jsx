@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { graphql, useStaticQuery } from "gatsby"
 
-function SEO({ title }) {
+function Seo({ title }) {
     const metaDescriptionContent = useStaticQuery(graphql`
     query {
       site {
@@ -20,4 +20,4 @@ function SEO({ title }) {
     );
 }
 
-export default SEO;
+export default Seo;
