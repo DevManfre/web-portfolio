@@ -11,6 +11,12 @@ module.exports = {
             options: {
                 additionalData: "@use 'Colors' as *;"
             }
+        },
+        {
+            resolve: "gatsby-plugin-html-attributes",
+            options: {
+                lang: 'en'
+            }
         }
     ]
 };
