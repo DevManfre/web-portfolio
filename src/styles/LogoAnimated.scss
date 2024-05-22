@@ -1,35 +1,31 @@
-.animated-logo {
-    .container-logo {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%) scale(2);
-        
-        .line {
-            transition: height 1s ease-in-out;
-            height: 0;
-        }
-    
-        .line.active {
+.animated-logo .container-logo {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    &.disappeared {
+        transform-origin: center center;
+        transform: scale(0.5) translate(-100%, -100%);
+        opacity: 0;
+        transition: 0.2s;
+    }
+
+    .line {
+        transition: height 1s ease-in-out;
+        height: 0;
+
+        &.active {
             height: 100%;
         }
-    
-        .minor,
-        .major {
-            opacity: 0;
-        }
-    
-        .minor.active,
-        .major.active {
+    }
+
+    .lateral {
+        opacity: 0;
+
+        &.active {
             opacity: 1;
             transition: 1s;
         }
-    }
-    
-    .container-logo.disappeared {
-        transform: scale(0.5) translate(-100%, -100%);
-        transform-origin: center center;
-        opacity: 0;
-        transition: 0.2s;
     }
 }

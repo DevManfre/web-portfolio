@@ -32,6 +32,8 @@ function NavBar({ reference }) {
         }
     });
 
+    /* TODO: Aggiungi hover per il logo nella navbar */
+
     return (
         <header scroll-from-top={scrollPosition.top} ref={reference}>
             <nav className="navbar">
