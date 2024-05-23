@@ -13,6 +13,8 @@ function LoadingScreen() {
         document.body.classList.remove('loading-screen');
     }, animationTime + freezeTimeBeforeFadeOut);
 
+    setTimeout(() => document.getElementById('container-loading-screen').remove(), animationTime + freezeTimeBeforeFadeOut + 200);
+
     return (
         <div id="container-loading-screen">
             <LogoAnimated />
