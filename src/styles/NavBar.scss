@@ -1,0 +1,166 @@
+$navbar-height: 80px;
+$navebar-lateral-padding: calc($navbar-height / 2);
+$transition-time: 0.2s;
+$sidebar-width: 60%;
+$blur-value: blur(15px);
+
+header {
+    transition: $transition-time;
+    position: fixed;
+    width: 100%;
+    backdrop-filter: $blur-value;
+    transform: translateY(0px);
+    box-shadow: 0 10px 30px -10px rgba(2, 10, 22, 0.7);
+
+    &.hidden {
+        transform: translateY(-$navbar-height);
+        box-shadow: none;
+    }
+
+    &[scroll-from-top="0"] {
+        box-shadow: none;
+
+        .navbar {
+            transition: $transition-time;
+            height: calc($navbar-height + 20px);
+        }
+    }
+
+    .navbar {
+        height: $navbar-height;
+        padding: 0 $navebar-lateral-padding 0 $navebar-lateral-padding;
+        display: flex;
+        justify-content: space-between;
+
+        a {
+            text-decoration: none;
+            height: min-content;
+
+            &#logo-link {
+                position: relative;
+                transform-origin: left;
+                width: min-content;
+                top: 50%;
+                transform: translateY(-50%) scale(0.4);
+            }
+        }
+
+        #navbar-link-list {
+            height: min-content;
+            position: relative;
+            counter-reset: link-counter 0;
+            padding-inline-start: 0;
+            margin: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .hamburger-icon {
+            background-color: transparent;
+            border: none;
+            display: none;
+            position: relative;
+            height: min-content;
+            top: 35%;
+            transition: all 0.7s ease;
+
+            div {
+                width: 40px;
+                height: 4px;
+                background: $logo-color;
+                margin: 6px;
+                transition: all 0.3s ease;
+                border-radius: 3px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 782px) {
+    body {
+
+        /* When sidebar is open */
+        &.open-sidebar {
+            overflow: hidden;
+
+            header {
+                height: 100vh;
+
+                .navbar {
+                    #logo-link {
+                        transition: $transition-time;
+                        opacity: 0;
+                    }
+
+                    #navbar-link-list {
+                        right: 0;
+                    }
+
+                    .hamburger-icon {
+                        .line1 {
+                            transform: rotate(-45deg) translate(-2mm, 1.8mm);
+                        }
+
+                        .line2 {
+                            transition: all 0.3s ease;
+                            opacity: 0;
+                        }
+
+                        .line3 {
+                            transform: rotate(45deg) translate(-2mm, -1.8mm);
+                        }
+                    }
+                }
+            }
+        }
+
+        /* When sidebar is closed */
+        header .navbar {
+            #navbar-link-list {
+                background-color: $portfolio-bg-color;
+                transition: $transition-time;
+                right: -$sidebar-width;
+                width: $sidebar-width;
+                position: absolute;
+                transform: none;
+                text-align: center;
+                filter: brightness(0.85);
+                top: 0;
+                height: 100vh;
+
+                a {
+                    position: relative;
+                    top: 30%;
+                    width: 100%;
+                }
+            }
+
+            .hamburger-icon {
+                display: block;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 426px) {
+    body {
+
+        /* When sidebar is open */
+        &.open-sidebar {
+            header .navbar #navbar-link-list {
+                width: 100%;
+            }
+        }
+
+        header .navbar {
+            padding: 0 calc($navebar-lateral-padding / 2) 0 calc($navebar-lateral-padding / 2);
+        }
+    }
+}
+
+@media screen and (max-width: 320px) {
+    header .navbar {
+        padding: 0 calc($navebar-lateral-padding / 4) 0 calc($navebar-lateral-padding / 4);
+    }
+}

@@ -1,40 +1,31 @@
-@use 'LogoVars';
+$font-size: 150px;
 
 .container-logo {
-    height: LogoVars.$size;
     color: $logo-color;
-    width: calc(LogoVars.$size * 2);
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    font-size: $font-size;
     user-select: none;
+    display: grid;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    width: min-content;
+    grid-template-columns: repeat(3, auto);
+    font-weight: 700;
 
-    .line {
-        background-color: $logo-color;
-        height: LogoVars.$line-height;
-        width: LogoVars.$size;
-        position: relative;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%) rotate(-70deg);
+    &.major {
+        text-align: right;
     }
 
-    .minor,
-    .major {
-        font-size: LogoVars.$size;
-        height: 0;
-        position: relative;
-        top: 50%;
-        font-weight: 700;
-        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    }
+    .central {
+        width: calc($font-size / 5 * 2);
 
-    .minor {
-        transform: translate(20px, calc(LogoVars.$size / (-2) - LogoVars.$line-height));
-    }
-
-    .major {
-        transform: translate(170px, calc(LogoVars.$size / (-2) - LogoVars.$line-height));
+        .line {
+            background-color: $logo-color;
+            width: calc($font-size / 9);
+            border-radius: calc($font-size / 30);
+            position: relative;
+            height: 80%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(20deg);
+        }
     }
 }

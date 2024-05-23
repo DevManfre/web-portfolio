@@ -11,13 +11,13 @@ let total = delay + lineAnimation + symbolsFadeIn + logoFreeze;
 
 function LogoAnimated() {
     setTimeout(() => document.querySelector('.line').classList.add('active'), delay);
-    setTimeout(() => {
-        document.querySelector('.major').classList.add('active');
-        document.querySelector('.minor').classList.add('active');
-    }, delay + lineAnimation);
+    setTimeout(() => document.querySelectorAll('.lateral').forEach(el => el.classList.add('active')), delay + lineAnimation);
     setTimeout(() => document.querySelector('.container-logo').classList.add('disappeared'), total);
-
-    return (<Logo />);
+    return (
+        <div className="animated-logo">
+            <Logo />
+        </div>
+    );
 }
 
 export const animationTime = total;
