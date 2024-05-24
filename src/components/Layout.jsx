@@ -52,7 +52,6 @@ function Layout({ children }) {
                 <a>
                     {query.email}
                 </a>
-                {query.email}
             </Sider>
         </div>
     );
