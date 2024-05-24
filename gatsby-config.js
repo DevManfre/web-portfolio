@@ -10,7 +10,8 @@ module.exports = {
             instagram: 'https://www.instagram.com/lost.manfre',
             linkedin: 'https://www.linkedin.com/in/alessio-manfredini-developer/',
             codepen: 'https://codepen.io/devmanfre'
-        }
+        },
+        email: 'alessio.manfredini.work@gmail.com'
     },
     plugins: [
         {
