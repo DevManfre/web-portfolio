@@ -1,0 +1,23 @@
+@import 'Layout';
+
+$x-position: calc($content-lateral-padding / 5 * 2);
+
+.sider {
+    position: fixed;
+    bottom: 0;
+    filter: brightness(0.8);
+
+    &.left {
+        left: $x-position;
+    }
+
+    &.right {
+        right: $x-position;
+    }
+
+    .line {
+        background-color: $secondary-color;
+        height: 90px;
+        width: 0.7mm;
+    }
+}

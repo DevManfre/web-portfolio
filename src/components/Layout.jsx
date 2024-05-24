@@ -1,5 +1,6 @@
 import * as React from 'react'
 import NavBar from './NavBar'
+import Sider from './Sider';
 import '../styles/Layout.scss'
 
 function Layout({ children }) {
@@ -8,9 +9,11 @@ function Layout({ children }) {
     return (
         <div className="layout" ref={ref}>
             <NavBar reference={ref} />
-            <div className="page">
+            <Sider orientation="left" content="icons" />
+            <div className="content">
                 {children}
             </div>
+            <Sider orientation="right" content="text" />
         </div>
     );
 }

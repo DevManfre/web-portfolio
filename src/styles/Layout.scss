@@ -1,3 +1,5 @@
+$content-lateral-padding: 150px;
+
 ::-webkit-scrollbar {
     display: none;
 }
@@ -5,4 +7,9 @@
 body {
     background-color: $portfolio-bg-color;
     margin: 0;
+
+    .content {
+        padding: 0 $content-lateral-padding 0 $content-lateral-padding;
+        min-height: 200vh;  /* TODO: for testing, when done remove this line */
+    }
 }
