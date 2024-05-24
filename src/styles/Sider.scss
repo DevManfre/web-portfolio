@@ -1,7 +1,8 @@
 @import 'Layout';
 
 $x-position: calc($content-lateral-padding / 5 * 2);
-$content-spacing: 10px;
+$content-spacing-value: 10px;
+$content-spacing: $content-spacing-value 0 $content-spacing-value 0;
 
 .sider {
     position: fixed;
@@ -18,13 +19,13 @@ $content-spacing: 10px;
     }
 
     .sider-content-icons {
-        padding: $content-spacing 0 $content-spacing 0;
+        padding: $content-spacing;
         display: flex;
         flex-direction: column;
 
         a {
-            margin: $content-spacing 0 $content-spacing 0;
-            
+            margin: $content-spacing;
+
             svg {
                 color: $secondary-color;
             }
