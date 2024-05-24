@@ -4,8 +4,13 @@
 module.exports = {
     siteMetadata: {
         title: `devmanfre`,
-        description: 'Alessio Manfredini web portfolio'
-
+        description: 'Alessio Manfredini web portfolio',
+        socialsURLs: {
+            github: 'https://github.com/DevManfre',
+            instagram: 'https://www.instagram.com/lost.manfre',
+            linkedin: 'https://www.linkedin.com/in/alessio-manfredini-developer/',
+            codepen: 'https://codepen.io/devmanfre'
+        }
     },
     plugins: [
         {
