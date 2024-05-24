@@ -8,7 +8,6 @@ $content-spacing: $content-spacing-value 0 $content-spacing-value 0;
     position: fixed;
     bottom: 0;
     width: 25px;
-    filter: brightness(0.8);
 
     &.left {
         left: $x-position;
@@ -24,10 +23,18 @@ $content-spacing: $content-spacing-value 0 $content-spacing-value 0;
         flex-direction: column;
 
         a {
-            margin: $content-spacing;
+            padding: $content-spacing;
 
             svg {
                 color: $secondary-color;
+                filter: brightness(0.8);
+                transition: 0.3s;
+            }
+
+            &:hover svg {
+                color: $logo-color;
+                filter: brightness(1);
+                transform: translateY(-5px) scale(1.2);
             }
         }
     }
@@ -39,5 +46,6 @@ $content-spacing: $content-spacing-value 0 $content-spacing-value 0;
         transform: translateX(-50%);
         height: 90px;
         width: 0.7mm;
+        filter: brightness(0.8);
     }
 }
