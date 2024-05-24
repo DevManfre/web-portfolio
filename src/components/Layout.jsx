@@ -49,7 +49,7 @@ function Layout({ children }) {
                 {children}
             </div>
             <Sider orientation="right" content="text">
-                <a>
+                <a href={`mailto:${query.email}`}>
                     {query.email}
                 </a>
             </Sider>

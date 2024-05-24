@@ -9,6 +9,10 @@ body {
     font-family: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
     margin: 0;
 
+    a {
+        text-decoration: none;
+    }
+
     .content {
         padding: 0 $content-lateral-padding 0 $content-lateral-padding;
         min-height: 200vh;  /* TODO: for testing, when done remove this line */
