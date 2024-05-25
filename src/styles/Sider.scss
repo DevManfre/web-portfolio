@@ -72,3 +72,27 @@ $content-spacing: $content-spacing-value 0 $content-spacing-value 0;
         filter: brightness(0.8);
     }
 }
+
+@media screen and (max-width: 768px) {
+    .sider.left {
+        left: calc($content-lateral-padding / 5);
+    }
+
+    .sider.right {
+        right: calc($content-lateral-padding / 5);
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .sider {
+        display: none;
+    }
+
+    /* TODO: set contacts info in the footer */
+}
+
+@media screen and (max-height: 560px) {
+    .sider {
+        display: none;
+    }
+}
