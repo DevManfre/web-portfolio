@@ -1,0 +1,98 @@
+@import 'Layout';
+
+$x-position: calc($content-lateral-padding / 5 * 2);
+$content-spacing-value: 10px;
+$content-spacing: $content-spacing-value 0 $content-spacing-value 0;
+
+.sider {
+    position: fixed;
+    bottom: 0;
+    width: 25px;
+
+    &.left {
+        left: $x-position;
+    }
+
+    &.right {
+        right: $x-position;
+    }
+
+    .sider-content-icons {
+        padding: $content-spacing;
+        display: flex;
+        flex-direction: column;
+
+        a {
+            padding: $content-spacing;
+
+            svg {
+                color: $secondary-color;
+                filter: brightness(0.8);
+                transition: 0.3s;
+            }
+
+            &:hover svg {
+                color: $logo-color;
+                filter: brightness(1);
+                transform: translateY(-5px) scale(1.2);
+            }
+        }
+    }
+
+    .sider-content-text {
+        padding: $content-spacing;
+        width: min-content;
+        transform-origin: right;
+        position: relative;
+        left: 50%;
+        transform: translate(-100%) rotate(90deg);
+        letter-spacing: 1px;
+        font-size: 14px;
+
+        a {
+            padding: 5px;
+            color: $secondary-color;
+            filter: brightness(0.8);
+            transition: 0.3s;
+            letter-spacing: 2px;
+
+            &:hover {
+                color: $logo-color;
+            }
+        }
+    }
+
+    .line {
+        background-color: $secondary-color;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 90px;
+        width: 0.7mm;
+        filter: brightness(0.8);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .sider.left {
+        left: calc($content-lateral-padding / 5);
+    }
+
+    .sider.right {
+        right: calc($content-lateral-padding / 5);
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .sider {
+        display: none;
+    }
+
+    /* TODO: set contacts info in the footer */
+}
+
+@media screen and (max-height: 560px) {
+    .sider {
+        display: none;
+    }
+}

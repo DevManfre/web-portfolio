@@ -16,13 +16,17 @@ $font-size: 150px;
 
     .central {
         width: calc($font-size / 5 * 2);
+        height: 80%;
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
 
         .line {
             background-color: $logo-color;
             width: calc($font-size / 9);
             border-radius: calc($font-size / 30);
             position: relative;
-            height: 80%;
+            height: 90%;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%) rotate(20deg);

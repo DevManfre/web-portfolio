@@ -6,11 +6,12 @@ $blur-value: blur(15px);
 
 header {
     transition: $transition-time;
+    backdrop-filter: $blur-value;
     position: fixed;
     width: 100%;
-    backdrop-filter: $blur-value;
     transform: translateY(0px);
     box-shadow: 0 10px 30px -10px rgba(2, 10, 22, 0.7);
+    z-index: 5;
 
     &.hidden {
         transform: translateY(-$navbar-height);
@@ -33,7 +34,6 @@ header {
         justify-content: space-between;
 
         a {
-            text-decoration: none;
             height: min-content;
 
             &#logo-link {
@@ -65,11 +65,11 @@ header {
             transition: all 0.7s ease;
 
             div {
+                background: $logo-color;
+                transition: all 0.3s ease;
                 width: 40px;
                 height: 4px;
-                background: $logo-color;
                 margin: 6px;
-                transition: all 0.3s ease;
                 border-radius: 3px;
             }
         }

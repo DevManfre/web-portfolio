@@ -3,20 +3,21 @@
  */
 module.exports = {
     siteMetadata: {
-        title: `Alessio Manfredini`,
-        description: 'Alessio Manfredini web portfolio'
+        title: `devmanfre`,
+        description: 'Alessio Manfredini web portfolio',
+        socialsURLs: {
+            github: 'https://github.com/DevManfre',
+            instagram: 'https://www.instagram.com/lost.manfre',
+            linkedin: 'https://www.linkedin.com/in/alessio-manfredini-developer/',
+            codepen: 'https://codepen.io/devmanfre'
+        },
+        email: 'alessio.manfredini.work@gmail.com'
     },
     plugins: [
         {
             resolve: "gatsby-plugin-sass",
             options: {
                 additionalData: "@use 'Colors' as *;"
-            }
-        },
-        {
-            resolve: "gatsby-plugin-html-attributes",
-            options: {
-                lang: 'en'
             }
         }
     ]
