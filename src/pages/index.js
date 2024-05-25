@@ -1,5 +1,6 @@
 import * as React from "react"
 import LoadingScreen from "../components/LoadingScreen"
+import HomeSection from "../components/HomeSection"
 import Layout from "../components/Layout"
 
 const IndexPage = () => {
@@ -7,6 +8,7 @@ const IndexPage = () => {
         <>
             <LoadingScreen />
             <Layout>
+                <HomeSection />
             </Layout>
         </>
     )
