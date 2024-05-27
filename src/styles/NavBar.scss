@@ -32,6 +32,7 @@ header {
         padding: 0 $navebar-lateral-padding 0 $navebar-lateral-padding;
         display: flex;
         justify-content: space-between;
+        user-select: none;
 
         a {
             height: min-content;
