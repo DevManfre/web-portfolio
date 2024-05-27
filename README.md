@@ -11,7 +11,6 @@
 - web resume -> https://codepen.io/xichen/pen/wzpeMM
 
 <!--
-TODO: Animazione progressiva per Hi my name is
 TODO: Animazione sfalsate per il resto dei titoli
 TODO: Refactoring codice generale
 TODO: Responsive navbar
