@@ -35,41 +35,44 @@ function NavBar({ reference }) {
     /* TODO: Aggiungi hover per il logo nella navbar */
 
     return (
-        <header scroll-from-top={scrollPosition.top} ref={reference}>
-            <nav className="navbar">
-                <a href='/' id='logo-link' >
-                    <div style={{
+        <>
+            <header scroll-from-top={scrollPosition.top} ref={reference}>
+                <nav className="navbar">
+                    <a href='/' id='logo-link' >
+                        <div style={{
+                            ...inViewStyle,
+                            transition: `${transition + transitionIncrement * 2}s`
+                        }}>
+                            <Logo />
+                        </div>
+                    </a>
+
+                    <ol id='navbar-link-list'>
+                        {links.map(link => {
+                            transition += transitionIncrement;
+
+                            return (
+                                <NavBarLink key={link} style={{
+                                    ...inViewStyle,
+                                    transition: `${transition}s`
+                                }}>{link}</NavBarLink>
+                            );
+                        })}
+                    </ol>
+
+                    {/* Responsive Navbar side */}
+                    <button className="hamburger-icon" onKeyDown={() => { }} style={{
                         ...inViewStyle,
-                        transition: `${transition + transitionIncrement * 2}s`
-                    }}>
-                        <Logo />
-                    </div>
-                </a>
-
-                <ol id='navbar-link-list'>
-                    {links.map(link => {
-                        transition += transitionIncrement;
-
-                        return (
-                            <NavBarLink key={link} style={{
-                                ...inViewStyle,
-                                transition: `${transition}s`
-                            }}>{link}</NavBarLink>
-                        );
-                    })}
-                </ol>
-
-                {/* Responsive Navbar side */}
-                <button className="hamburger-icon" onKeyDown={() => {}} style={{
-                    ...inViewStyle,
-                    transition: `${transition}s`
-                }} onClick={() => document.body.classList.toggle('open-sidebar')}>
-                    <div className="line1" />
-                    <div className="line2" />
-                    <div className="line3" />
-                </button>
-            </nav>
-        </header >
+                        transition: `${transition}s`
+                    }} onClick={() => document.body.classList.toggle('open-sidebar')}>
+                        <div className="line1" />
+                        <div className="line2" />
+                        <div className="line3" />
+                    </button>
+                </nav>
+            </header >
+            <div className='navbar-spacer'></div>
+        </>
     );
 }
 

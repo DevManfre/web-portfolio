@@ -15,12 +15,17 @@ body {
 
     .content {
         padding: 0 $content-lateral-padding 0 $content-lateral-padding;
-        min-height: 100vh;
     }
 }
 
 @media screen and (max-width: 1024px) {
     body .content {
         padding: 0 calc($content-lateral-padding / 2) 0 calc($content-lateral-padding / 2);
+    }
+}
+
+@media screen and (max-width: 425px) {
+    body .content {
+        padding: 0 calc($content-lateral-padding / 4) 0 calc($content-lateral-padding / 4);
     }
 }
