@@ -6,38 +6,43 @@ $small-text-font-size: clamp(14px, 18px, 18px);
 $font-family: 'Calibre', 'Inter', 'San Francisco', 'SF Pro Text', -apple-system, system-ui, sans-serif;
 
 .home {
+    height: calc(100vh - $navbar-height-on-top);
     display: flex;
     justify-content: center;
     flex-direction: column;
-    height: calc(100vh - $navbar-height-on-top);
 
-    .top-subtitle {
-        color: $logo-color;
-        font-size: $small-text-font-size;
-        margin: 0 0 $bottom-margin 0;
-        font-weight: normal;
-    }
+    .main-text {
+        position: relative;
+        top: -15%;
 
-    .name {
-        color: $name-color;
-        font-family: $font-family;
-        margin: 0 0 $bottom-margin 0;
-    }
+        .top-subtitle {
+            color: $logo-color;
+            font-size: $small-text-font-size;
+            margin: 0 0 $bottom-margin 0;
+            font-weight: normal;
+        }
 
-    .title {
-        color: $normal-text-color;
-        font-family: $font-family;
-        margin: 0 0 calc($bottom-margin * 2) 0;
-    }
+        .name {
+            color: $name-color;
+            font-family: $font-family;
+            margin: 0 0 $bottom-margin 0;
+        }
 
-    .big-text {
-        font-size: $big-text-font-size;
-        line-height: $big-text-font-size;
-    }
+        .title {
+            color: $normal-text-color;
+            font-family: $font-family;
+            margin: 0 0 calc($bottom-margin * 2) 0;
+        }
 
-    .bottom-subtitle {
-        color: $normal-text-color;
-        font-family: $font-family;
-        font-size: $small-text-font-size;
+        .big-text {
+            font-size: $big-text-font-size;
+            line-height: $big-text-font-size;
+        }
+
+        .bottom-subtitle {
+            color: $normal-text-color;
+            font-family: $font-family;
+            font-size: $small-text-font-size;
+        }
     }
 }
