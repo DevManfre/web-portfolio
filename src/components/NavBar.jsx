@@ -1,9 +1,11 @@
-import * as React from 'react'
+import * as React from 'react';
 import useDetectScroll, { Direction } from '@smakss/react-scroll-direction';
 import { useInView } from 'framer-motion';
-import Logo from './Logo'
+import Logo from './Logo';
 import NavBarLink from './NavBarLink';
-import '../styles/NavBar.scss'
+import '../styles/NavBar.scss';
+
+const transition = 0.8;
 
 function NavBar({ reference }) {
     const links = ['About', 'Experience', 'Work', 'Contact'];
@@ -11,10 +13,9 @@ function NavBar({ reference }) {
     const isInView = useInView(reference, { once: true });
     let inViewStyle = {
         transform: isInView ? "none" : "translateY(-100px)",
-        opacity: isInView ? 1 : 0
+        opacity: isInView ? 1 : 0,
+        transition: `${transition}s`
     };
-    let transition = 0.4;
-    let transitionIncrement = 0.2;
 
     window.addEventListener('scroll', () => {
         let header = document.querySelector('header');
@@ -32,39 +33,27 @@ function NavBar({ reference }) {
         }
     });
 
-    /* TODO: Aggiungi hover per il logo nella navbar */
-
     return (
         <>
             <header scroll-from-top={scrollPosition.top} ref={reference}>
                 <nav className="navbar">
                     <a href='/' id='logo-link' >
-                        <div style={{
-                            ...inViewStyle,
-                            transition: `${transition + transitionIncrement * 2}s`
-                        }}>
-                            <Logo />
-                        </div>
+                        <div style={inViewStyle}><Logo /></div>
                     </a>
 
                     <ol id='navbar-link-list'>
                         {links.map(link => {
-                            transition += transitionIncrement;
-
                             return (
                                 <NavBarLink key={link} style={{
                                     ...inViewStyle,
-                                    transition: `${transition}s`
+                                    transitionDelay: '1s'
                                 }}>{link}</NavBarLink>
                             );
                         })}
                     </ol>
 
                     {/* Responsive Navbar side */}
-                    <button className="hamburger-icon" onKeyDown={() => { }} style={{
-                        ...inViewStyle,
-                        transition: `${transition}s`
-                    }} onClick={() => document.body.classList.toggle('open-sidebar')}>
+                    <button className="hamburger-icon" onKeyDown={() => { }} style={inViewStyle} onClick={() => document.body.classList.toggle('open-sidebar')}>
                         <div className="line1" />
                         <div className="line2" />
                         <div className="line3" />
