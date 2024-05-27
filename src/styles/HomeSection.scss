@@ -1,4 +1,6 @@
 $bottom-margin: 10px;
+$big-text-font-size: clamp(35px, 8vw, 70px);
+$small-text-font-size: clamp(14px, 18px, 18px);
 $font-family: 'Calibre', 'Inter', 'San Francisco', 'SF Pro Text', -apple-system, system-ui, sans-serif;
 
 .home {
@@ -7,11 +9,11 @@ $font-family: 'Calibre', 'Inter', 'San Francisco', 'SF Pro Text', -apple-system,
     flex-direction: column;
     height: 100vh;
 
-    .first-text {
+    .top-subtitle {
         color: $logo-color;
+        font-size: $small-text-font-size;
         margin: 0 0 $bottom-margin 0;
         font-weight: normal;
-        font-size: 18px;
     }
 
     .name {
@@ -20,21 +22,20 @@ $font-family: 'Calibre', 'Inter', 'San Francisco', 'SF Pro Text', -apple-system,
         margin: 0 0 $bottom-margin 0;
     }
 
-    .name-extend {
+    .title {
         color: $normal-text-color;
         font-family: $font-family;
         margin: 0 0 calc($bottom-margin * 2) 0;
     }
 
     .big-text {
-        font-size: 70px;
-        line-height: 70px;
+        font-size: $big-text-font-size;
+        line-height: $big-text-font-size;
     }
 
-    .subtitle {
+    .bottom-subtitle {
         color: $normal-text-color;
         font-family: $font-family;
-        font-size: 20px;
+        font-size: $small-text-font-size;
     }
-
 }
