@@ -3,6 +3,7 @@ $navebar-lateral-padding: calc($navbar-height / 2);
 $transition-time: 0.2s;
 $sidebar-width: 60%;
 $blur-value: blur(15px);
+$navbar-height-on-top: calc($navbar-height + 20px);
 
 header {
     transition: $transition-time;
@@ -23,7 +24,7 @@ header {
 
         .navbar {
             transition: $transition-time;
-            height: calc($navbar-height + 20px);
+            height: $navbar-height-on-top;
         }
     }
 
@@ -32,6 +33,7 @@ header {
         padding: 0 $navebar-lateral-padding 0 $navebar-lateral-padding;
         display: flex;
         justify-content: space-between;
+        user-select: none;
 
         a {
             height: min-content;
@@ -74,6 +76,10 @@ header {
             }
         }
     }
+}
+
+.navbar-spacer {
+    height: $navbar-height-on-top;
 }
 
 @media screen and (max-width: 782px) {
