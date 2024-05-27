@@ -15,3 +15,10 @@
 - britanny animated logo -> https://codepen.io/bchiang7/pen/JBzxEW?editors=1000
 - my personal logo inspiration -> https://codepen.io/Scarbrough9/pen/MKpovY
 - mobile navigation menu bar -> https://codepen.io/karlovidek/pen/aNYWKE
+
+<!--
+TODO: Animazione progressiva per Hi my name is
+TODO: Animazione sfalsate per il resto dei titoli
+TODO: Refactoring codice generale
+TODO: Responsive navbar
+-->
