@@ -5,15 +5,22 @@ import '../styles/Sider.scss';
 
 function Sider({ orientation, content, children, reference }) {
     const isInView = useInView(reference, { once: true });
+    const transition = 0.7;
+    const delay = 0.3;
     let inViewStyle = {
         transform: isInView ? "none" : "translateY(50px)",
         opacity: isInView ? 1 : 0,
-        transition: '0.7s',
-        transitionDelay: `${homeSectionTotalFadeInTime + 0.3}s`
+        transition: `${transition}s`,
+        transitionDelay: `${homeSectionTotalFadeInTime + delay}s`
     };
 
+    if (isInView) setTimeout(
+        () => document.getElementById(`sider-${orientation}`).style.transitionDelay = '0s',
+        (homeSectionTotalFadeInTime + transition + delay) * 1000
+    );
+
     return (
-        <div className={`sider ${orientation}`} style={inViewStyle}>
+        <div id={`sider-${orientation}`} className={`sider ${orientation}`} style={inViewStyle}>
             <div className={`sider-content-${content}`}>
                 {children}
             </div>
