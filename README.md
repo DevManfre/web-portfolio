@@ -11,7 +11,7 @@
 - web resume -> https://codepen.io/xichen/pen/wzpeMM
 
 <!--
-TODO: Centrare il main-text asse x
 TODO: Fare tutto responsive
+TODO: Aggiungere il multilingua
 TODO: Commentare tutto
 -->
