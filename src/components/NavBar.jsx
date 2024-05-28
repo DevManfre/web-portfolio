@@ -5,17 +5,19 @@ import Logo from './Logo';
 import NavBarLink from './NavBarLink';
 import '../styles/NavBar.scss';
 
-const transition = 0.8;
+const links = ['About', 'Experience', 'Work', 'Contact'];
+const transition = 0.3;
+const transitionDelay = 0.1;
 
 function NavBar({ reference }) {
-    const links = ['About', 'Experience', 'Work', 'Contact'];
     const { scrollDir, scrollPosition } = useDetectScroll();
     const isInView = useInView(reference, { once: true });
     let inViewStyle = {
-        transform: isInView ? "none" : "translateY(-100px)",
+        transform: isInView ? "none" : "translateY(-50px)",
         opacity: isInView ? 1 : 0,
         transition: `${transition}s`
     };
+    let navbarLinks = [];
 
     window.addEventListener('scroll', () => {
         let header = document.querySelector('header');
@@ -33,6 +35,9 @@ function NavBar({ reference }) {
         }
     });
 
+    for (let i = 0; i < links.length; i++)
+        navbarLinks.push(<NavBarLink key={links[i]} style={{ ...inViewStyle, transitionDelay: `${(i + 1) * transitionDelay}s` }}>{links[i]}</NavBarLink>);
+
     return (
         <>
             <header scroll-from-top={scrollPosition.top} ref={reference}>
@@ -42,14 +47,7 @@ function NavBar({ reference }) {
                     </a>
 
                     <ol id='navbar-link-list'>
-                        {links.map(link => {
-                            return (
-                                <NavBarLink key={link} style={{
-                                    ...inViewStyle,
-                                    transitionDelay: '1s'
-                                }}>{link}</NavBarLink>
-                            );
-                        })}
+                        {navbarLinks}
                     </ol>
 
                     {/* Responsive Navbar side */}
@@ -66,3 +64,5 @@ function NavBar({ reference }) {
 }
 
 export default NavBar;
+
+export const navbarTotalFadeInTime = transition + links.length * transitionDelay;
