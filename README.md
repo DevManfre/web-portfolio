@@ -11,7 +11,8 @@
 - web resume -> https://codepen.io/xichen/pen/wzpeMM
 
 <!--
-TODO: Animazione sfalsate per il resto dei titoli
-TODO: Refactoring codice generale
-TODO: Responsive navbar
+TODO: Refactoring style generale
+TODO: Centrare il main-text asse x
+TODO: Fare tutto responsive
+TODO: Commentare tutto
 -->

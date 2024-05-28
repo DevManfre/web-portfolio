@@ -1,6 +1,7 @@
 @import 'Layout';
 
-$x-position: calc($content-lateral-padding / 5 * 2);
+$x-position-responsive: calc($content-lateral-padding / 5);
+$x-position: calc($x-position-responsive * 2);
 $content-spacing-value: 10px;
 $content-spacing: $content-spacing-value 0 $content-spacing-value 0;
 
@@ -75,11 +76,11 @@ $content-spacing: $content-spacing-value 0 $content-spacing-value 0;
 
 @media screen and (max-width: 1024px) {
     .sider.left {
-        left: calc($content-lateral-padding / 5);
+        left: $x-position-responsive;
     }
 
     .sider.right {
-        right: calc($content-lateral-padding / 5);
+        right: $x-position-responsive;
     }
 }
 
