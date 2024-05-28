@@ -67,7 +67,7 @@ header {
             transition: all 0.7s ease;
 
             div {
-                background: $logo-color;
+                background: $main-color;
                 transition: all 0.3s ease;
                 width: 40px;
                 height: 4px;
@@ -84,7 +84,6 @@ header {
 
 @media screen and (max-width: 782px) {
     body {
-
         /* When sidebar is open */
         &.open-sidebar {
             overflow: hidden;
@@ -123,7 +122,7 @@ header {
         /* When sidebar is closed */
         header .navbar {
             #navbar-link-list {
-                background-color: $portfolio-bg-color;
+                background-color: $background-color;
                 transition: $transition-time;
                 right: -$sidebar-width;
                 width: $sidebar-width;

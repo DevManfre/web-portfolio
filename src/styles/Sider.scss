@@ -27,13 +27,13 @@ $content-spacing: $content-spacing-value 0 $content-spacing-value 0;
             padding: $content-spacing;
 
             svg {
-                color: $secondary-color;
+                color: $link-color;
                 filter: brightness(0.8);
                 transition: 0.3s;
             }
 
             &:hover svg {
-                color: $logo-color;
+                color: $main-color;
                 filter: brightness(1);
                 transform: translateY(-5px) scale(1.2);
             }
@@ -52,19 +52,19 @@ $content-spacing: $content-spacing-value 0 $content-spacing-value 0;
 
         a {
             padding: 5px;
-            color: $secondary-color;
+            color: $link-color;
             filter: brightness(0.8);
             transition: 0.3s;
             letter-spacing: 2px;
 
             &:hover {
-                color: $logo-color;
+                color: $main-color;
             }
         }
     }
 
     .line {
-        background-color: $secondary-color;
+        background-color: $link-color;
         position: relative;
         left: 50%;
         transform: translateX(-50%);

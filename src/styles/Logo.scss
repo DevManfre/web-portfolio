@@ -1,7 +1,7 @@
 $font-size: 150px;
 
 .container-logo {
-    color: $logo-color;
+    color: $main-color;
     font-size: $font-size;
     user-select: none;
     display: grid;
@@ -22,7 +22,7 @@ $font-size: 150px;
         transform: translateY(-50%);
 
         .line {
-            background-color: $logo-color;
+            background-color: $main-color;
             width: calc($font-size / 9);
             border-radius: calc($font-size / 30);
             position: relative;

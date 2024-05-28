@@ -4,21 +4,21 @@ ol > li {
     display: inline;
 
     a {
-        color: $secondary-color;
+        color: $link-color;
         padding: $spacing;
         margin: $spacing;
         display: inline-block;
         transition: 0.2s;
 
         &::before {
-            color: $logo-color;
+            color: $main-color;
             content: '0' counter(link-counter)'.';
             counter-increment: link-counter;
             margin-right: 5px;
         }
 
         &:hover {
-            color: $logo-color;
+            color: $main-color;
             transition: 0.2s;
         }
     }

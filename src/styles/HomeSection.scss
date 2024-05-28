@@ -16,20 +16,20 @@ $font-family: 'Calibre', 'Inter', 'San Francisco', 'SF Pro Text', -apple-system,
         top: -15%;
 
         .top-subtitle {
-            color: $logo-color;
+            color: $main-color;
             font-size: $small-text-font-size;
             margin: 0 0 $bottom-margin 0;
             font-weight: normal;
         }
 
         .name {
-            color: $name-color;
+            color: $title-1-color;
             font-family: $font-family;
             margin: 0 0 $bottom-margin 0;
         }
 
         .title {
-            color: $normal-text-color;
+            color: $title-2-color;
             font-family: $font-family;
             margin: 0 0 calc($bottom-margin * 2) 0;
         }
@@ -40,7 +40,7 @@ $font-family: 'Calibre', 'Inter', 'San Francisco', 'SF Pro Text', -apple-system,
         }
 
         .bottom-subtitle {
-            color: $normal-text-color;
+            color: $title-2-color;
             font-family: $font-family;
             font-size: $small-text-font-size;
         }
