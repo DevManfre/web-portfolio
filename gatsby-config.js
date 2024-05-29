@@ -5,6 +5,7 @@ module.exports = {
     siteMetadata: {
         title: `devmanfre`,
         description: 'Alessio Manfredini web portfolio',
+        developer: 'Alessio Manfredini',
         socialsURLs: {
             github: 'https://github.com/DevManfre',
             instagram: 'https://www.instagram.com/lost.manfre',
