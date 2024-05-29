@@ -44,6 +44,7 @@ header {
                 width: min-content;
                 top: 50%;
                 transform: translateY(-50%) scale(0.4);
+                transition: 0.5s;
             }
         }
 
@@ -63,7 +64,7 @@ header {
             display: none;
             position: relative;
             height: min-content;
-            top: 35%;
+            top: 50%;
             transition: all 0.7s ease;
 
             div {
@@ -84,6 +85,7 @@ header {
 
 @media screen and (max-width: 782px) {
     body {
+
         /* When sidebar is open */
         &.open-sidebar {
             overflow: hidden;
@@ -140,6 +142,11 @@ header {
                 }
             }
 
+            #logo-link {
+                transform: translateY(-50%) scale(0.3);
+                transition: 0.5s;
+            }
+
             .hamburger-icon {
                 display: block;
                 cursor: pointer;
@@ -150,6 +157,7 @@ header {
 
 @media screen and (max-width: 426px) {
     body {
+        
 
         /* When sidebar is open */
         &.open-sidebar {
@@ -159,6 +167,7 @@ header {
         }
 
         header .navbar {
+            height: calc($navbar-height - 10px);
             padding: 0 calc($navebar-lateral-padding / 2) 0 calc($navebar-lateral-padding / 2);
         }
     }
@@ -167,5 +176,9 @@ header {
 @media screen and (max-width: 320px) {
     header .navbar {
         padding: 0 calc($navebar-lateral-padding / 4) 0 calc($navebar-lateral-padding / 4);
+
+        .hamburger-icon {
+            padding-left: 0px;
+        }
     }
 }

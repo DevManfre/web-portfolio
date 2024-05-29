@@ -51,7 +51,10 @@ function NavBar({ reference }) {
                     </ol>
 
                     {/* Responsive Navbar side */}
-                    <button className="hamburger-icon" onKeyDown={() => { }} style={inViewStyle} onClick={() => document.body.classList.toggle('open-sidebar')}>
+                    <button className="hamburger-icon" onKeyDown={() => { }} style={{
+                        ...inViewStyle,
+                        transform: isInView ? "translateY(-50%)" : "translateY(-70px)",
+                    }} onClick={() => document.body.classList.toggle('open-sidebar')}>
                         <div className="line1" />
                         <div className="line2" />
                         <div className="line3" />
