@@ -33,25 +33,15 @@ module.exports = {
                 localeJsonSourceName: `locale`,
                 languages: [`en`, `it`],
                 defaultLanguage: `en`,
-                siteUrl: `http://localhost:8000/`,
+                generateDefaultLanguagePage: true,
+                redirect: false,
                 i18nextOptions: {
                     interpolation: {
                         escapeValue: false
                     },
                     keySeparator: false,
                     nsSeparator: false
-                },
-                /* pages: [
-                    {
-                        matchPath: '/:lang?/blog/:uid',
-                        getLanguageFromPath: true,
-                        excludeLanguages: ['es']
-                    },
-                    {
-                        matchPath: '/preview',
-                        languages: ['en']
-                    }
-                ] */
+                }
             }
         }
     ]
