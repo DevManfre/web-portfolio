@@ -14,6 +14,11 @@ module.exports = {
         },
         email: 'alessio.manfredini.work@gmail.com'
     },
+    flags: {
+        DEV_SSR: true,
+        FAST_DEV: true,
+        PARALLEL_SOURCING: true
+    },
     plugins: [
         {
             resolve: "gatsby-plugin-sass",
