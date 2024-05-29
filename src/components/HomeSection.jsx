@@ -2,6 +2,7 @@ import * as React from 'react';
 import { useInView } from 'framer-motion';
 import { navbarTotalFadeInTime } from './NavBar';
 import '../styles/HomeSection.scss';
+import { Trans } from "react-i18next"
 
 const transition = 1;
 const transitionDelay = 0.2;
@@ -26,10 +27,16 @@ function HomeSection() {
     return (
         <section className='home'>
             <div className="main-text" ref={ref}>
-                <h1 className="top-subtitle" style={{ ...inViewStyle, transitionDelay: `${navbarTotalFadeInTime + transitionDelay * 0}s` }}>Hi, my name is</h1>
+                <h1 className="top-subtitle" style={{ ...inViewStyle, transitionDelay: `${navbarTotalFadeInTime + transitionDelay * 0}s` }}>
+                    <Trans>homepage-greeting</Trans>
+                </h1>
                 <h2 className="name big-text" style={{ ...inViewStyle, transitionDelay: `${navbarTotalFadeInTime + transitionDelay * 1}s` }}>Alessio Manfredini</h2>
-                <h3 className="title big-text" style={{ ...inViewStyle, transitionDelay: `${navbarTotalFadeInTime + transitionDelay * 2}s` }}>I build things for the web.</h3>
-                <p className="bottom-subtitle" style={{ ...inViewStyle, transitionDelay: `${lastNodeFadeInTime}s` }}>I’m a software engineer specializing in building (and occasionally designing) web experiences.</p>
+                <h3 className="title big-text" style={{ ...inViewStyle, transitionDelay: `${navbarTotalFadeInTime + transitionDelay * 2}s` }}>
+                    <Trans>homepage-subtitle</Trans>
+                </h3>
+                <p className="bottom-subtitle" style={{ ...inViewStyle, transitionDelay: `${lastNodeFadeInTime}s` }}>
+                    <Trans>homepage-paragraph</Trans>
+                </p>
             </div>
         </section>
     );
