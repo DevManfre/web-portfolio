@@ -1,7 +1,7 @@
-import * as React from 'react'
-import LogoAnimated from './LogoAnimated';
-import { animationTime } from './LogoAnimated';
-import '../styles/LoadingScreen.scss'
+import * as React from 'react';
+import AnimatedLogo from './AnimatedLogo';
+import { animationTime } from './AnimatedLogo';
+import '../styles/LoadingScreen.scss';
 
 function LoadingScreen() {
     let freezeTimeBeforeFadeOut = 500;
@@ -17,7 +17,7 @@ function LoadingScreen() {
 
     return (
         <div id="container-loading-screen">
-            <LogoAnimated />
+            <AnimatedLogo />
         </div>
     );
 }

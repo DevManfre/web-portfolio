@@ -1,6 +1,7 @@
 @import 'Layout';
 
-$x-position: calc($content-lateral-padding / 5 * 2);
+$x-position-responsive: calc($content-lateral-padding / 5);
+$x-position: calc($x-position-responsive * 2);
 $content-spacing-value: 10px;
 $content-spacing: $content-spacing-value 0 $content-spacing-value 0;
 
@@ -26,13 +27,13 @@ $content-spacing: $content-spacing-value 0 $content-spacing-value 0;
             padding: $content-spacing;
 
             svg {
-                color: $secondary-color;
+                color: $link-color;
                 filter: brightness(0.8);
                 transition: 0.3s;
             }
 
             &:hover svg {
-                color: $logo-color;
+                color: $main-color;
                 filter: brightness(1);
                 transform: translateY(-5px) scale(1.2);
             }
@@ -51,19 +52,19 @@ $content-spacing: $content-spacing-value 0 $content-spacing-value 0;
 
         a {
             padding: 5px;
-            color: $secondary-color;
+            color: $link-color;
             filter: brightness(0.8);
             transition: 0.3s;
             letter-spacing: 2px;
 
             &:hover {
-                color: $logo-color;
+                color: $main-color;
             }
         }
     }
 
     .line {
-        background-color: $secondary-color;
+        background-color: $link-color;
         position: relative;
         left: 50%;
         transform: translateX(-50%);
@@ -75,11 +76,11 @@ $content-spacing: $content-spacing-value 0 $content-spacing-value 0;
 
 @media screen and (max-width: 1024px) {
     .sider.left {
-        left: calc($content-lateral-padding / 5);
+        left: $x-position-responsive;
     }
 
     .sider.right {
-        right: calc($content-lateral-padding / 5);
+        right: $x-position-responsive;
     }
 }
 
@@ -91,7 +92,7 @@ $content-spacing: $content-spacing-value 0 $content-spacing-value 0;
     /* TODO: set contacts info in the footer */
 }
 
-@media screen and (max-height: 560px) {
+@media screen and (max-height: 532px) {
     .sider {
         display: none;
     }

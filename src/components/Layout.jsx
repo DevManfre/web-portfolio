@@ -1,11 +1,14 @@
-import * as React from 'react'
+import * as React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
-import NavBar from './NavBar'
+import NavBar from './NavBar';
 import Sider from './Sider';
-import '../styles/Layout.scss'
+import '../styles/Layout.scss';
 
 function Layout({ children }) {
+    /* inView reference */
     const ref = React.useRef(null);
+
+    /* Socials List vars */
     const query = (useStaticQuery(graphql`
         query {
             site {
@@ -27,7 +30,6 @@ function Layout({ children }) {
         <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-linkedin"><title>LinkedIn</title><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>,
         <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-codepen"><title>CodePen</title><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon><line x1="12" y1="22" x2="12" y2="15.5"></line><polyline points="22 8.5 12 15.5 2 8.5"></polyline><polyline points="2 15.5 12 8.5 22 15.5"></polyline><line x1="12" y1="2" x2="12" y2="8.5"></line></svg>
     ].reverse();
-
     let socialsList = [];
 
     /* Get one object with svg and url so it can be use in a cycle */
@@ -37,21 +39,13 @@ function Layout({ children }) {
         <div className="layout" ref={ref}>
             <NavBar reference={ref} />
             <Sider orientation="left" content="icons" reference={ref}>
-                {socialsList.map((social) => {
-                    return (
-                        <a key={social['url']} href={social['url']} target='_blank' rel="noreferrer">
-                            {social['svg']}
-                        </a>
-                    );
-                })}
+                {socialsList.map((social) => <a key={social['url']} href={social['url']} target='_blank' rel="noreferrer">{social['svg']}</a>)}
             </Sider>
             <div className="content">
                 {children}
             </div>
             <Sider orientation="right" content="text" reference={ref}>
-                <a href={`mailto:${query.email}`}>
-                    {query.email}
-                </a>
+                <a href={`mailto:${query.email}`}>{query.email}</a>
             </Sider>
         </div>
     );
