@@ -3,6 +3,7 @@ import useDetectScroll, { Direction } from '@smakss/react-scroll-direction';
 import { useInView } from 'framer-motion';
 import Logo from './Logo';
 import NavBarLink from './NavBarLink';
+import $ from 'jquery';
 import '../styles/NavBar.scss';
 
 const links = ['About', 'Experience', 'Work', 'Contact'];
@@ -19,21 +20,19 @@ function NavBar({ reference }) {
     };
     let navbarLinks = [];
 
-    window.addEventListener('scroll', () => {
-        let header = document.querySelector('header');
-
+    React.useEffect(() => {
         switch (scrollDir) {
             case Direction.Up:
-                header.classList.remove('hidden');
+                $('header').removeClass('hidden');
                 break;
             case Direction.Down:
-                header.classList.add('hidden');
+                $('header').addClass('hidden');
                 break;
             default:
                 // Add for removing warning
                 break;
         }
-    });
+    }, [scrollDir]);
 
     for (let i = 0; i < links.length; i++)
         navbarLinks.push(<NavBarLink key={links[i]} style={{ ...inViewStyle, transitionDelay: `${(i + 1) * transitionDelay}s` }}>{links[i]}</NavBarLink>);
@@ -54,14 +53,14 @@ function NavBar({ reference }) {
                     <button className="hamburger-icon" onKeyDown={() => { }} style={{
                         ...inViewStyle,
                         transform: isInView ? "translateY(-50%)" : "translateY(-70px)",
-                    }} onClick={() => document.body.classList.toggle('open-sidebar')}>
+                    }} onClick={() => $('body').toggleClass('open-sidebar')}>
                         <div className="line1" />
                         <div className="line2" />
                         <div className="line3" />
                     </button>
                 </nav>
             </header >
-            <div className='navbar-spacer'></div>
+            <div className='navbar-spacer' />
         </>
     );
 }

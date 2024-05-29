@@ -1,5 +1,6 @@
 import * as React from "react";
 import Logo from "./Logo";
+import $ from 'jquery';
 import '../styles/Logo.scss';
 import '../styles/AnimatedLogo.scss';
 
@@ -10,10 +11,12 @@ let logoFreeze = 500;
 let total = delay + lineAnimation + symbolsFadeIn + logoFreeze;
 
 function AnimatedLogo() {
-    setTimeout(() => document.querySelector('.line').classList.add('active'), delay);
-    setTimeout(() => document.querySelectorAll('.lateral').forEach(el => el.classList.add('active')), delay + lineAnimation);
-    setTimeout(() => document.querySelector('.container-logo').classList.add('disappeared'), total);
-    
+    React.useEffect(() => {
+        setTimeout(() => $('.line').addClass('active'), delay);
+        setTimeout(() => $('.lateral').each((index, el) => el.classList.add('active')), delay + lineAnimation);
+        setTimeout(() => $('.container-logo').addClass('disappeared'), total);
+    }, []);
+
     return (
         <div className="animated-logo">
             <Logo />

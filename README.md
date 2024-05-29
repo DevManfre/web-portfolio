@@ -12,5 +12,7 @@
 
 <!--
 TODO: Aggiungere il multilingua
+        - language switch
+        - scelta dinamica in base alla lingua del browser
 TODO: Commentare tutto
 -->
