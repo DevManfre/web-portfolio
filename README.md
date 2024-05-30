@@ -9,8 +9,3 @@
 - animated text -> https://codepen.io/adamcurzon/pen/ExrwpMN
 - timeline -> https://codepen.io/jkantner/pen/NWoVGXx
 - web resume -> https://codepen.io/xichen/pen/wzpeMM
-
-<!--
-TODO: Aggiungere il multilingua
-TODO: Commentare tutto
--->

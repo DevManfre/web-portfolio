@@ -1,19 +1,23 @@
 import * as React from 'react';
 import AnimatedLogo from './AnimatedLogo';
 import { animationTime } from './AnimatedLogo';
+import $ from 'jquery';
 import '../styles/LoadingScreen.scss';
 
 function LoadingScreen() {
-    let freezeTimeBeforeFadeOut = 500;
+    React.useEffect(() => {
+        let freezeTimeBeforeFadeOut = 500;
+        
+        /* Block body so isInView doesn't start */
+        $('body').addClass('loading-screen');
 
-    document.body.classList.add('loading-screen');
-    
-    setTimeout(() => {
-        document.getElementById('container-loading-screen').classList.add('removed');
-        document.body.classList.remove('loading-screen');
-    }, animationTime + freezeTimeBeforeFadeOut);
+        setTimeout(() => {
+            $('#container-loading-screen').addClass('removed');
+            $('body').removeClass('loading-screen');
+        }, animationTime + freezeTimeBeforeFadeOut);
 
-    setTimeout(() => document.getElementById('container-loading-screen').remove(), animationTime + freezeTimeBeforeFadeOut + 200);
+        setTimeout(() => $('#container-loading-screen').remove(), animationTime + freezeTimeBeforeFadeOut + 200);
+    }, []);
 
     return (
         <div id="container-loading-screen">

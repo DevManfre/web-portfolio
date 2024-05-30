@@ -5,6 +5,7 @@ module.exports = {
     siteMetadata: {
         title: `devmanfre`,
         description: 'Alessio Manfredini web portfolio',
+        developer: 'Alessio Manfredini',
         socialsURLs: {
             github: 'https://github.com/DevManfre',
             instagram: 'https://www.instagram.com/lost.manfre',
@@ -13,11 +14,40 @@ module.exports = {
         },
         email: 'alessio.manfredini.work@gmail.com'
     },
+    flags: {
+        DEV_SSR: false,
+        FAST_DEV: true,
+        PARALLEL_SOURCING: true
+    },
     plugins: [
         {
             resolve: "gatsby-plugin-sass",
             options: {
                 additionalData: "@use 'Colors' as *;"
+            }
+        },
+        {
+            resolve: `gatsby-source-filesystem`,
+            options: {
+                path: `${__dirname}/locales`,
+                name: `locale`
+            }
+        },
+        {
+            resolve: `gatsby-plugin-react-i18next`,
+            options: {
+                localeJsonSourceName: `locale`,
+                languages: [`en`, `it`],
+                defaultLanguage: `en`,
+                generateDefaultLanguagePage: true,
+                redirect: true,
+                i18nextOptions: {
+                    interpolation: {
+                        escapeValue: false
+                    },
+                    keySeparator: false,
+                    nsSeparator: false
+                }
             }
         }
     ]

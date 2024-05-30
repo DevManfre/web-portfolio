@@ -41,9 +41,9 @@ function Layout({ children }) {
             <Sider orientation="left" content="icons" reference={ref}>
                 {socialsList.map((social) => <a key={social['url']} href={social['url']} target='_blank' rel="noreferrer">{social['svg']}</a>)}
             </Sider>
-            <div className="content">
+            <main className="content">
                 {children}
-            </div>
+            </main>
             <Sider orientation="right" content="text" reference={ref}>
                 <a href={`mailto:${query.email}`}>{query.email}</a>
             </Sider>
