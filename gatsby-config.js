@@ -15,7 +15,7 @@ module.exports = {
         email: 'alessio.manfredini.work@gmail.com'
     },
     flags: {
-        DEV_SSR: true,
+        DEV_SSR: false,
         FAST_DEV: true,
         PARALLEL_SOURCING: true
     },
@@ -40,7 +40,7 @@ module.exports = {
                 languages: [`en`, `it`],
                 defaultLanguage: `en`,
                 generateDefaultLanguagePage: true,
-                redirect: false,
+                redirect: true,
                 i18nextOptions: {
                     interpolation: {
                         escapeValue: false
