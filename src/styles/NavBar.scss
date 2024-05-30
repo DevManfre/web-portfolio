@@ -1,15 +1,20 @@
 $navbar-height: 80px;
-$navebar-lateral-padding: calc($navbar-height / 2);
+$navbar-lateral-padding: calc($navbar-height / 2);
 $transition-time: 0.2s;
 $sidebar-width: 60%;
 $blur-value: blur(15px);
 $navbar-height-on-top: calc($navbar-height + 20px);
 
-header {
+.navbar {
+    height: $navbar-height;
     transition: $transition-time;
     backdrop-filter: $blur-value;
+    padding: 0 $navbar-lateral-padding 0 $navbar-lateral-padding;
+    width: calc(100vw - $navbar-lateral-padding * 2);
     position: fixed;
-    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    user-select: none;
     transform: translateY(0px);
     box-shadow: 0 10px 30px -10px rgba(2, 10, 22, 0.7);
     z-index: 5;
@@ -20,67 +25,52 @@ header {
     }
 
     &[scroll-from-top="0"] {
+        transition: $transition-time;
+        height: $navbar-height-on-top;
         box-shadow: none;
+    }
 
-        .navbar {
-            transition: $transition-time;
-            height: $navbar-height-on-top;
+    a {
+        height: min-content;
+
+        &#logo-link {
+            position: relative;
+            transform-origin: left;
+            width: min-content;
+            top: 50%;
+            transform: translateY(-50%) scale(0.4);
+            transition: 0.5s;
         }
     }
 
-    .navbar {
-        height: $navbar-height;
-        padding: 0 $navebar-lateral-padding 0 $navebar-lateral-padding;
-        display: flex;
-        justify-content: space-between;
-        user-select: none;
+    #navbar-link-list {
+        height: min-content;
+        position: relative;
+        counter-reset: link-counter 0;
+        padding-inline-start: 0;
+        margin: 0;
+        top: 50%;
+        transform: translateY(-50%);
+    }
 
-        a {
-            height: min-content;
+    .hamburger-icon {
+        background-color: transparent;
+        border: none;
+        display: none;
+        position: relative;
+        height: min-content;
+        top: 50%;
+        transition: all 0.7s ease;
 
-            &#logo-link {
-                position: relative;
-                transform-origin: left;
-                width: min-content;
-                top: 50%;
-                transform: translateY(-50%) scale(0.4);
-                transition: 0.5s;
-            }
-        }
-
-        #navbar-link-list {
-            height: min-content;
-            position: relative;
-            counter-reset: link-counter 0;
-            padding-inline-start: 0;
-            margin: 0;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-        .hamburger-icon {
-            background-color: transparent;
-            border: none;
-            display: none;
-            position: relative;
-            height: min-content;
-            top: 50%;
-            transition: all 0.7s ease;
-
-            div {
-                background: $main-color;
-                transition: all 0.3s ease;
-                width: 40px;
-                height: 4px;
-                margin: 6px;
-                border-radius: 3px;
-            }
+        div {
+            background: $main-color;
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 4px;
+            margin: 6px;
+            border-radius: 3px;
         }
     }
-}
-
-.navbar-spacer {
-    height: $navbar-height-on-top;
 }
 
 @media screen and (max-width: 782px) {
@@ -90,39 +80,38 @@ header {
         &.open-sidebar {
             overflow: hidden;
 
-            header {
-                height: 100vh;
+            .navbar {
+                backdrop-filter: blur(0);
 
-                .navbar {
-                    #logo-link {
-                        transition: $transition-time;
+                #logo-link {
+                    transition: $transition-time;
+                    opacity: 0;
+                }
+
+                #navbar-link-list {
+                    height: 100vh;
+                    right: 0;
+                }
+
+                .hamburger-icon {
+                    .line1 {
+                        transform: rotate(-45deg) translate(-2mm, 1.8mm);
+                    }
+
+                    .line2 {
+                        transition: all 0.3s ease;
                         opacity: 0;
                     }
 
-                    #navbar-link-list {
-                        right: 0;
-                    }
-
-                    .hamburger-icon {
-                        .line1 {
-                            transform: rotate(-45deg) translate(-2mm, 1.8mm);
-                        }
-
-                        .line2 {
-                            transition: all 0.3s ease;
-                            opacity: 0;
-                        }
-
-                        .line3 {
-                            transform: rotate(45deg) translate(-2mm, -1.8mm);
-                        }
+                    .line3 {
+                        transform: rotate(45deg) translate(-2mm, -1.8mm);
                     }
                 }
             }
         }
 
         /* When sidebar is closed */
-        header .navbar {
+        .navbar {
             #navbar-link-list {
                 background-color: $background-color;
                 transition: $transition-time;
@@ -156,29 +145,14 @@ header {
 }
 
 @media screen and (max-width: 426px) {
-    body {
-        
-
-        /* When sidebar is open */
-        &.open-sidebar {
-            header .navbar #navbar-link-list {
-                width: 100%;
-            }
+    body{
+        &.open-sidebar .navbar > #navbar-link-list {
+            width: 100vw;
         }
 
-        header .navbar {
-            height: calc($navbar-height - 10px);
-            padding: 0 calc($navebar-lateral-padding / 2) 0 calc($navebar-lateral-padding / 2);
-        }
-    }
-}
-
-@media screen and (max-width: 320px) {
-    header .navbar {
-        padding: 0 calc($navebar-lateral-padding / 4) 0 calc($navebar-lateral-padding / 4);
-
-        .hamburger-icon {
-            padding-left: 0px;
+        .navbar {
+            width: calc(100vw - calc($navbar-lateral-padding / 2));
+            padding: 0 calc($navbar-lateral-padding / 4) 0 calc($navbar-lateral-padding / 4);
         }
     }
 }

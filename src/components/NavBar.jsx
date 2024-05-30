@@ -23,40 +23,35 @@ function NavBar({ reference }) {
     /* Hide navbar when scroll down */
     React.useEffect(() => {
         if (scrollDir === Direction.Up)
-            $('header').removeClass('hidden');
+            $('nav').removeClass('hidden');
         else if (scrollDir === Direction.Down)
-            $('header').addClass('hidden');
+            $('nav').addClass('hidden');
     }, [scrollDir]);
-
+    
     /* Create navbarLink list */
     for (let i = 0; i < links.length; i++)
         navbarLinks.push(<NavBarLink key={links[i]} style={{ ...inViewStyle, transitionDelay: `${(i + 1) * transitionDelay}s` }}>{links[i]}</NavBarLink>);
 
     return (
-        <>
-            <header scroll-from-top={scrollPosition.top} ref={reference}>
-                <nav className="navbar">
-                    <a href='/' id='logo-link' >
-                        <div style={inViewStyle}><Logo /></div>
-                    </a>
+        <nav className="navbar" scroll-from-top={scrollPosition.top} ref={reference}>
+            <a href='/' id='logo-link' >
+                <div style={inViewStyle}><Logo /></div>
+            </a>
 
-                    <ol id='navbar-link-list'>
-                        {navbarLinks}
-                    </ol>
+            <ol id='navbar-link-list'>
+                {navbarLinks}
+            </ol>
 
-                    {/* Responsive Navbar side */}
-                    <button className="hamburger-icon" onKeyDown={() => { }} style={{
-                        ...inViewStyle,
-                        transform: isInView ? "translateY(-50%)" : "translateY(-70px)",
-                    }} onClick={() => $('body').toggleClass('open-sidebar')}>
-                        <div className="line1" />
-                        <div className="line2" />
-                        <div className="line3" />
-                    </button>
-                </nav>
-            </header >
-            <div className='navbar-spacer' />
-        </>
+            {/* Responsive Navbar side */}
+            <button className="hamburger-icon" onKeyDown={() => { }} style={{
+                ...inViewStyle,
+                transform: isInView ? "translateY(-50%)" : "translateY(-70px)",
+            }} onClick={() => $('body').toggleClass('open-sidebar')}>
+                <div className="line1" />
+                <div className="line2" />
+                <div className="line3" />
+            </button>
+        </nav>
     );
 }
 
