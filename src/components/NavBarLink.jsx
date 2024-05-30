@@ -7,7 +7,7 @@ function NavBarLink({ children, style }) {
     children = children.substring(1, children.length - 1);
 
     return (
-        <li>
+        <li className='navbar-link-element'>
             <a href={`/${children.toLowerCase()}`} style={style}>
                 {children}
             </a>
