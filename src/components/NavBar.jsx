@@ -20,20 +20,15 @@ function NavBar({ reference }) {
     };
     let navbarLinks = [];
 
+    /* Hide navbar when scroll down */
     React.useEffect(() => {
-        switch (scrollDir) {
-            case Direction.Up:
-                $('header').removeClass('hidden');
-                break;
-            case Direction.Down:
-                $('header').addClass('hidden');
-                break;
-            default:
-                // Add for removing warning
-                break;
-        }
+        if (scrollDir === Direction.Up)
+            $('header').removeClass('hidden');
+        else if (scrollDir === Direction.Down)
+            $('header').addClass('hidden');
     }, [scrollDir]);
 
+    /* Create navbarLink list */
     for (let i = 0; i < links.length; i++)
         navbarLinks.push(<NavBarLink key={links[i]} style={{ ...inViewStyle, transitionDelay: `${(i + 1) * transitionDelay}s` }}>{links[i]}</NavBarLink>);
 

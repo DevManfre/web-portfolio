@@ -4,6 +4,7 @@ import $ from 'jquery';
 import '../styles/Logo.scss';
 import '../styles/AnimatedLogo.scss';
 
+/* Animations time vars */
 let delay = 250;
 let lineAnimation = 1000;
 let symbolsFadeIn = 1000;

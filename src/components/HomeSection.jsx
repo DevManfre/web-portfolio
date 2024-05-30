@@ -5,6 +5,7 @@ import { navbarTotalFadeInTime } from './NavBar';
 import '../styles/HomeSection.scss';
 import { Trans } from "react-i18next"
 
+/* Animations time vars */
 const transition = 1;
 const transitionDelay = 0.2;
 
@@ -27,6 +28,7 @@ function HomeSection() {
         transition: `${transition}s`
     };
 
+    /* Remove transition for window resize timing bug */
     if (isInView) setTimeout(() => {
         for (let child of document.querySelector('.main-text').children) {
             child.style.transitionDelay = '0s';

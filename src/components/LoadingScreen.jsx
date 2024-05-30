@@ -8,6 +8,7 @@ function LoadingScreen() {
     React.useEffect(() => {
         let freezeTimeBeforeFadeOut = 500;
         
+        /* Block body so isInView doesn't start */
         $('body').addClass('loading-screen');
 
         setTimeout(() => {

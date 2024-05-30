@@ -1,8 +1,8 @@
 import * as React from 'react'
 import '../styles/NavBarLink.scss'
 
-
 function NavBarLink({ children, style }) {
+    /* Set children as a child */
     children = JSON.stringify(children);
     children = children.substring(1, children.length - 1);
 
