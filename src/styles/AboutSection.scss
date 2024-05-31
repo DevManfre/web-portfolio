@@ -1,0 +1,63 @@
+#about>.main-text {
+    .section-title {
+        color: $title-1-color;
+        display: flex;
+        align-items: center;
+        white-space: nowrap;
+        font-size: clamp(26px, 5vw, 32px);
+        padding: 10px 0px 40px;
+        margin: 0;
+
+        &::before {
+            color: $main-color;
+            content: '0' counter(section-title-counter)'.';
+            font-weight: normal;
+            counter-increment: link-counter;
+            font-size: clamp(16px, 3vw, 20px);
+            margin-right: 10px;
+        }
+
+        &::after {
+            background-color: $title-1-color;
+            content: '';
+            display: block;
+            filter: brightness(0.4);
+            margin-left: 20px;
+            width: 300px;
+            height: 0.5px;
+        }
+    }
+
+    .inner {
+        display: grid;
+        grid-template-columns: 3fr 2fr;
+        gap: 50px;
+        padding: 0 1vw 0 1vw;
+
+        .text>p {
+            color: $title-2-color;
+            font-family: $normal-text-font;
+            text-align: justify;
+            font-size: 20px;
+            font-weight: 100;
+            margin: 0 0 15px 0;
+        }
+
+        .img {
+            position: relative;
+            max-width: 300px;
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    #about>.main-text>.section-title::after {
+        width: 200px;
+    }
+}
+
+@media screen and (max-width: 426px) {
+    #about>.main-text>.inner>.text>p {
+        font-size: 18px;
+    }
+}
