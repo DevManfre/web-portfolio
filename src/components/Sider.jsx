@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useInView } from 'framer-motion';
 import { homeSectionTotalFadeInTime } from './HomeSection';
+import $ from 'jquery';
 import '../styles/Sider.scss';
 
 function Sider({ orientation, content, children, reference }) {
@@ -15,7 +16,7 @@ function Sider({ orientation, content, children, reference }) {
     };
 
     if (isInView) setTimeout(
-        () => document.getElementById(`sider-${orientation}`).style.transitionDelay = '0s',
+        () => $(`#sider-${orientation}`).css('transition-delay', '0s'),
         (homeSectionTotalFadeInTime + transition + delay) * 1000
     );
 

@@ -1,14 +1,15 @@
 $spacing: 7px;
+$transition: 0.2s;
 
-ol > li {
+.navbar-link-element {
     display: inline;
 
     a {
         color: $link-color;
         padding: $spacing;
         margin: $spacing;
+        transition: $transition;
         display: inline-block;
-        transition: 0.2s;
 
         &::before {
             color: $main-color;
@@ -19,7 +20,7 @@ ol > li {
 
         &:hover {
             color: $main-color;
-            transition: 0.2s;
+            transition: $transition;
         }
     }
 }
