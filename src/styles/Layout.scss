@@ -7,6 +7,10 @@ $content-lateral-margin-4k: calc((100vw - 1440px)/2);
     display: none;
 }
 
+* {
+    scroll-behavior: smooth;
+}
+
 body {
     background-color: $background-color;
     font-family: $code-font;

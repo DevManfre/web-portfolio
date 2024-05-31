@@ -1,5 +1,5 @@
-import * as React from 'react'
-import '../styles/NavBarLink.scss'
+import * as React from 'react';
+import '../styles/NavBarLink.scss';
 
 function NavBarLink({ children, style }) {
     /* Set children as a child */
@@ -8,7 +8,7 @@ function NavBarLink({ children, style }) {
 
     return (
         <li className='navbar-link-element'>
-            <a href={`/${children.toLowerCase()}`} style={style}>
+            <a href={`#${children.toLowerCase()}`} style={style}>
                 {children}
             </a>
         </li>
