@@ -5,12 +5,12 @@ $big-text-font-size: clamp(30px, 7.5vw, 60px);
 $small-text-font-size: clamp(14px, 18px, 18px);
 
 .home {
+    padding-top: $navbar-height-on-top;
     min-height: calc(100vh - $navbar-height-on-top);
     display: flex;
     justify-content: center;
     flex-direction: column;
     margin: 0 5vw 0 5vw;
-    padding-top: $navbar-height-on-top;
 
     .main-text {
         position: relative;
