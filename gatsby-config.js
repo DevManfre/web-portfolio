@@ -49,6 +49,8 @@ module.exports = {
                     nsSeparator: false
                 }
             }
-        }
+        },
+        `gatsby-plugin-image`,
+        `gatsby-plugin-sharp`
     ]
 };
