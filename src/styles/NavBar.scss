@@ -112,6 +112,10 @@ $navbar-height-on-top: calc($navbar-height + 20px);
 
         /* When sidebar is closed */
         .navbar {
+            &.hidden {
+                transform: translateY(0);
+            }
+
             #navbar-link-list {
                 background-color: $background-color;
                 transition: $transition-time;
@@ -136,6 +140,10 @@ $navbar-height-on-top: calc($navbar-height + 20px);
                 transition: 0.5s;
             }
 
+            #navbar-link-list {
+                transition: 0.6s ease-in-out;
+            }
+
             .hamburger-icon {
                 display: block;
                 cursor: pointer;
@@ -153,6 +161,10 @@ $navbar-height-on-top: calc($navbar-height + 20px);
         .navbar {
             width: calc(100vw - calc($navbar-lateral-padding / 2));
             padding: 0 calc($navbar-lateral-padding / 4) 0 calc($navbar-lateral-padding / 4);
+
+            .hamburger-icon {
+                padding: 0;
+            }
         }
     }
 }
