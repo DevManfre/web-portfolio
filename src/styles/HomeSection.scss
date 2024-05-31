@@ -10,6 +10,7 @@ $small-text-font-size: clamp(14px, 18px, 18px);
     justify-content: center;
     flex-direction: column;
     margin: 0 5vw 0 5vw;
+    padding-top: $navbar-height-on-top;
 
     .main-text {
         position: relative;
