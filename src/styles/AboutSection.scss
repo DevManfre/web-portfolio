@@ -34,24 +34,54 @@
         gap: 50px;
         padding: 0 1vw 0 1vw;
 
-        .text>p {
+        .text {
             color: $title-2-color;
             font-family: $normal-text-font;
-            text-align: justify;
             font-size: 20px;
             font-weight: 100;
-            margin: 0 0 15px 0;
 
-            a {
-                color: $main-color;
-                border-bottom: solid 2px rgba(red($main-color), green($main-color), blue($main-color), 0);
-                font-weight: 400;
-                transition: 0.1s;
+            p {
+                text-align: justify;
+                margin: 0 0 15px 0;
 
-                &:hover {
-                    border-color: rgba(red($main-color), green($main-color), blue($main-color), 1);
+                a {
+                    color: $main-color;
+                    border-bottom: solid 2px rgba(red($main-color), green($main-color), blue($main-color), 0);
+                    font-weight: 400;
                     transition: 0.1s;
+
+                    &:hover {
+                        border-color: rgba(red($main-color), green($main-color), blue($main-color), 1);
+                        transition: 0.1s;
+                    }
                 }
+            }
+
+            .skill-list {
+                display: grid;
+                list-style: none;
+                width: min-content;
+                grid-template-columns: auto auto;
+                // position: relative;
+                // left: 50%;
+                // transform: translateX(-50%);
+                column-gap: 40px;
+                padding: 0;
+
+                li {
+                    text-wrap: nowrap;
+                    font-size: 20px;
+
+                    &::before {
+                        content: '♢ ';
+                        color: $main-color;
+                        position: relative;
+                        bottom: 2px;
+                        font-size: 14px;
+                    }
+                }
+
+                color: $title-2-color;
             }
         }
 

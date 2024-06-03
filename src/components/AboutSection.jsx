@@ -28,6 +28,13 @@ function HomeSection() {
                             <Trans>about-paragraph-3</Trans>
                         </p>
                         <p><Trans>about-paragraph-4</Trans></p>
+                    <ul className='skill-list'>
+                        <li>Javascript (ES6+)</li>
+                        <li>React</li>
+                        <li>Gatsby</li>
+                        <li>Python</li>
+                        <li>GraphQL</li>
+                    </ul>
                     </div>
                     <div className='img'>
                         <StaticImage alt='' src='../images/profile.webp' />
