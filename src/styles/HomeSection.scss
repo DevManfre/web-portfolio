@@ -4,7 +4,7 @@ $bottom-margin: 10px;
 $big-text-font-size: clamp(30px, 7.5vw, 60px);
 $small-text-font-size: clamp(14px, 18px, 18px);
 
-.home {
+#home {
     padding-top: $navbar-height-on-top;
     min-height: calc(100vh - $navbar-height-on-top);
     display: flex;
