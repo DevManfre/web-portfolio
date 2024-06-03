@@ -28,7 +28,7 @@ body {
     .content {
         margin: 0 $content-lateral-margin-4k 0 $content-lateral-margin-4k;
         padding: 0 $content-lateral-padding 0 $content-lateral-padding;
-        counter-reset: section-title-counter 1;
+        counter-reset: section-title-counter 0;
     }
 }
 

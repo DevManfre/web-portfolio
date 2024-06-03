@@ -15,9 +15,9 @@ section {
 
         &::before {
             color: $main-color;
+            counter-increment: section-title-counter;
             content: '0' counter(section-title-counter)'.';
             font-weight: normal;
-            counter-increment: link-counter;
             font-size: clamp(16px, 3vw, 20px);
             margin-right: 10px;
         }
