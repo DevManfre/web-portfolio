@@ -57,14 +57,28 @@
 
         .img {
             position: relative;
+            height: min-content;
+            overflow: hidden;
+            border-radius: 10px;
             max-width: 300px;
         }
     }
 }
 
 @media screen and (max-width: 767px) {
-    #about>.main-text>.section-title::after {
-        width: 200px;
+    #about>.main-text {
+        .section-title::after {
+            width: 200px;
+        }
+
+        .inner {
+            display: contents;
+
+            .img {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
     }
 }
 
