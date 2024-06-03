@@ -4,6 +4,8 @@
     "homepage-paragraph": "I’m a software engineer specializing in building (and occasionally designing) web experiences.",
 
     "about-paragraph-1": "Hello! My name is Alessio and I enjoy creating things that live on the internet. My interest in web development began in 2020, when I developed a website traffic management portal for a university exam — turns out that creating a custom website taught me a lot about HTML and CSS and made me discover this passion!",
-    "about-paragraph-2": "Fast-forward to today, I have the privilege of working at an ecommerce and my main focus is building accessible and inclusive digital products and experiences.",
-    "about-paragraph-3": "Here are a few technologies I’ve been working with recently:"
+    "about-paragraph-2": "Fast-forward to today, I have the privilege of working at an ",
+    "about-link-1": "ecommerce",
+    "about-paragraph-3": " and my main focus is building accessible and inclusive digital products and experiences.",
+    "about-paragraph-4": "Here are a few technologies I’ve been working with recently:"
 }

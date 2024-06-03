@@ -20,8 +20,14 @@ function HomeSection() {
                 <div className='inner'>
                     <div className='text'>
                         <p><Trans>about-paragraph-1</Trans></p>
-                        <p><Trans>about-paragraph-2</Trans></p>
-                        <p><Trans>about-paragraph-3</Trans></p>
+                        <p>
+                            <Trans>about-paragraph-2</Trans>
+                            <a href='https://www.italiangres.com/' target='_blank' rel='noreferrer'>
+                                <Trans>about-link-1</Trans>
+                            </a>
+                            <Trans>about-paragraph-3</Trans>
+                        </p>
+                        <p><Trans>about-paragraph-4</Trans></p>
                     </div>
                     <div className='img'>
                         <StaticImage alt='' src='../images/profile.webp' />
