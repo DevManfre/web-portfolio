@@ -3,7 +3,8 @@ import { graphql, useStaticQuery } from 'gatsby';
 import { useInView } from 'framer-motion';
 import { navbarTotalFadeInTime } from './NavBar';
 import '../styles/HomeSection.scss';
-import { Trans } from "react-i18next"
+import { Trans } from "react-i18next";
+import Section from './Section';
 
 /* Animations time vars */
 const transition = 1;
@@ -37,22 +38,20 @@ function HomeSection() {
     }, lastNodeFadeInTime * 1000);
 
     return (
-        <section className='home'>
-            <div className="main-text" ref={ref}>
-                <h1 className="top-subtitle" style={{ ...inViewStyle, transitionDelay: `${navbarTotalFadeInTime + transitionDelay * 0}s` }}>
-                    <Trans>homepage-greeting</Trans>
-                </h1>
-                <h2 className="name big-text" style={{ ...inViewStyle, transitionDelay: `${navbarTotalFadeInTime + transitionDelay * 1}s` }}>
-                    {query.developer}
-                </h2>
-                <h3 className="title big-text" style={{ ...inViewStyle, transitionDelay: `${navbarTotalFadeInTime + transitionDelay * 2}s` }}>
-                    <Trans>homepage-subtitle</Trans>
-                </h3>
-                <p className="bottom-subtitle" style={{ ...inViewStyle, transitionDelay: `${lastNodeFadeInTime}s` }}>
-                    <Trans>homepage-paragraph</Trans>
-                </p>
-            </div>
-        </section>
+        <Section id='home' reference={ref}>
+            <h1 className="top-subtitle" style={{ ...inViewStyle, transitionDelay: `${navbarTotalFadeInTime + transitionDelay * 0}s` }}>
+                <Trans>homepage-greeting</Trans>
+            </h1>
+            <h2 className="name big-text" style={{ ...inViewStyle, transitionDelay: `${navbarTotalFadeInTime + transitionDelay * 1}s` }}>
+                {query.developer}
+            </h2>
+            <h3 className="title big-text" style={{ ...inViewStyle, transitionDelay: `${navbarTotalFadeInTime + transitionDelay * 2}s` }}>
+                <Trans>homepage-subtitle</Trans>
+            </h3>
+            <p className="bottom-subtitle" style={{ ...inViewStyle, transitionDelay: `${lastNodeFadeInTime}s` }}>
+                <Trans>homepage-paragraph</Trans>
+            </p>
+        </Section>
     );
 }
 

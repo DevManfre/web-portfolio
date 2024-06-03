@@ -1,114 +1,86 @@
-#about>.main-text {
-    .section-title {
-        color: $title-1-color;
-        display: flex;
-        align-items: center;
-        white-space: nowrap;
-        font-size: clamp(26px, 5vw, 32px);
-        padding: 10px 0px 40px;
-        margin: 0;
+#about>.main-text>.inner {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 50px;
 
-        &::before {
-            color: $main-color;
-            content: '0' counter(section-title-counter)'.';
-            font-weight: normal;
-            counter-increment: link-counter;
-            font-size: clamp(16px, 3vw, 20px);
-            margin-right: 10px;
+    .text {
+        color: $title-2-color;
+        font-family: $normal-text-font;
+        font-size: 20px;
+        font-weight: 100;
+
+        p {
+            text-align: justify;
+            margin: 0 0 15px 0;
+
+            a {
+                color: $main-color;
+                border-bottom: solid 2px rgba(red($main-color), green($main-color), blue($main-color), 0);
+                font-weight: 400;
+                transition: 0.1s;
+
+                &:hover {
+                    border-color: rgba(red($main-color), green($main-color), blue($main-color), 1);
+                    transition: 0.1s;
+                }
+            }
         }
 
-        &::after {
-            background-color: $title-1-color;
-            content: '';
-            display: block;
-            filter: brightness(0.4);
-            margin-left: 20px;
-            width: 300px;
-            height: 0.5px;
+        .skill-list {
+            display: grid;
+            list-style: none;
+            width: min-content;
+            grid-template-columns: auto auto;
+            column-gap: 40px;
+            padding: 0;
+
+            li {
+                text-wrap: nowrap;
+                font-size: 20px;
+
+                &::before {
+                    content: '♢ ';
+                    color: $main-color;
+                    position: relative;
+                    bottom: 2px;
+                    font-size: 14px;
+                }
+            }
         }
     }
 
-    .inner {
-        display: grid;
-        grid-template-columns: 3fr 2fr;
-        gap: 50px;
-        padding: 0 1vw 0 1vw;
-
-        .text {
-            color: $title-2-color;
-            font-family: $normal-text-font;
-            font-size: 20px;
-            font-weight: 100;
-
-            p {
-                text-align: justify;
-                margin: 0 0 15px 0;
-
-                a {
-                    color: $main-color;
-                    border-bottom: solid 2px rgba(red($main-color), green($main-color), blue($main-color), 0);
-                    font-weight: 400;
-                    transition: 0.1s;
-
-                    &:hover {
-                        border-color: rgba(red($main-color), green($main-color), blue($main-color), 1);
-                        transition: 0.1s;
-                    }
-                }
-            }
-
-            .skill-list {
-                display: grid;
-                list-style: none;
-                width: min-content;
-                grid-template-columns: auto auto;
-                column-gap: 40px;
-                padding: 0;
-
-                li {
-                    text-wrap: nowrap;
-                    font-size: 20px;
-
-                    &::before {
-                        content: '♢ ';
-                        color: $main-color;
-                        position: relative;
-                        bottom: 2px;
-                        font-size: 14px;
-                    }
-                }
-            }
-        }
-
-        .img {
-            position: relative;
-            height: min-content;
-            overflow: hidden;
-            border-radius: 10px;
-            max-width: 300px;
-        }
+    .img {
+        position: relative;
+        height: min-content;
+        overflow: hidden;
+        border-radius: 10px;
+        max-width: 300px;
     }
 }
 
 @media screen and (max-width: 767px) {
-    #about>.main-text {
-        .section-title::after {
-            width: 200px;
-        }
+    #about>.main-text>.inner {
+        display: contents;
 
-        .inner {
-            display: contents;
-
-            .img {
-                left: 50%;
-                transform: translateX(-50%);
-            }
+        .img {
+            left: 50%;
+            transform: translateX(-50%);
         }
     }
 }
 
 @media screen and (max-width: 426px) {
-    #about>.main-text>.inner>.text>p {
-        font-size: 18px;
+    #about>.main-text>.inner>.text {
+        p {
+            font-size: 18px;
+        }
+
+        .skill-list {
+            column-gap: 20px;
+
+            li {
+                font-size: 18px;
+            }
+        }
     }
 }

@@ -1,0 +1,45 @@
+section {
+    min-height: calc(100vh - 5vh);
+    margin: 0 5vw 0 5vw;
+    padding: 0 1vw 5vh 1vw;
+
+    .main-text>.section-title {
+        color: $title-1-color;
+        display: flex;
+        align-items: center;
+        white-space: nowrap;
+        font-weight: 600;
+        font-size: clamp(26px, 5vw, 32px);
+        padding: 10px 0px 40px;
+        margin: 0;
+
+        &::before {
+            color: $main-color;
+            content: '0' counter(section-title-counter)'.';
+            font-weight: normal;
+            counter-increment: link-counter;
+            font-size: clamp(16px, 3vw, 20px);
+            margin-right: 10px;
+        }
+
+        &::after {
+            background-color: $title-1-color;
+            content: '';
+            display: block;
+            filter: brightness(0.4);
+            margin-left: 20px;
+            width: 300px;
+            height: 0.5px;
+        }
+    }
+}
+
+@media screen and (max-width: 769px) {
+    section {
+        margin: 0;
+
+        .main-text>.section-title::after {
+            width: 200px;
+        }
+    }
+}

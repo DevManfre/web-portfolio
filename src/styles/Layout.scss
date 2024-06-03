@@ -29,11 +29,6 @@ body {
         margin: 0 $content-lateral-margin-4k 0 $content-lateral-margin-4k;
         padding: 0 $content-lateral-padding 0 $content-lateral-padding;
         counter-reset: section-title-counter 1;
-
-        section {
-            min-height: 100vh;
-            margin: 0 5vw 0 5vw;
-        }
     }
 }
 
@@ -46,12 +41,6 @@ body {
 @media screen and (max-width: 1024px) {
     body .content {
         padding: 0 $content-lateral-padding-1024 0 $content-lateral-padding-1024;
-    }
-}
-
-@media screen and (max-width: 769px) {
-    body .content>section {
-        margin: 0;
     }
 }
 
