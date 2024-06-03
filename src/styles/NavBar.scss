@@ -80,12 +80,17 @@ $navbar-height-on-top: calc($navbar-height + 20px);
         &.open-sidebar {
             overflow: hidden;
 
+            main {
+                filter: blur(10px);
+                transition: 0.2s;
+            }
+
             .navbar {
                 backdrop-filter: blur(0);
 
                 #logo-link {
                     transition: $transition-time;
-                    opacity: 0;
+                    filter: blur(10px);
                 }
 
                 #navbar-link-list {
@@ -112,6 +117,7 @@ $navbar-height-on-top: calc($navbar-height + 20px);
 
         /* When sidebar is closed */
         .navbar {
+
             #navbar-link-list {
                 background-color: $background-color;
                 transition: $transition-time;
@@ -145,14 +151,18 @@ $navbar-height-on-top: calc($navbar-height + 20px);
 }
 
 @media screen and (max-width: 426px) {
-    body{
-        &.open-sidebar .navbar > #navbar-link-list {
+    body {
+        &.open-sidebar .navbar>#navbar-link-list {
             width: 100vw;
         }
 
         .navbar {
             width: calc(100vw - calc($navbar-lateral-padding / 2));
             padding: 0 calc($navbar-lateral-padding / 4) 0 calc($navbar-lateral-padding / 4);
+
+            .hamburger-icon {
+                padding: 0;
+            }
         }
     }
 }
