@@ -7,6 +7,11 @@ $content-lateral-margin-4k: calc((100vw - 1440px)/2);
     display: none;
 }
 
+::selection {
+    background-color: #233554;
+    color: #ccd6f6;
+}
+
 * {
     scroll-behavior: smooth;
 }
