@@ -1,7 +1,7 @@
 section {
-    min-height: 100vh;
+    min-height: calc(100vh - 5vh);
     margin: 0 5vw 0 5vw;
-    padding: 0 1vw 0 1vw;
+    padding: 0 1vw 5vh 1vw;
 
     .main-text>.section-title {
         color: $title-1-color;
