@@ -13,7 +13,7 @@ function ExperienceSection() {
     };
 
     return (
-        <Section id='experience' title="Where I've Worked" reference={ref} style={inViewStyle}>
+        <Section id='experience' title="Experience" reference={ref} style={inViewStyle}>
 
         </Section>
     );
