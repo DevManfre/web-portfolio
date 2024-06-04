@@ -47,6 +47,7 @@ $small-text-font-size: clamp(14px, 18px, 18px);
             color: $title-2-color;
             font-family: $normal-text-font;
             font-size: $small-text-font-size;
+            max-width: 440px;
         }
     }
 }

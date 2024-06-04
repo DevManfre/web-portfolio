@@ -10,6 +10,7 @@ $transition: 0.2s;
         margin: $spacing;
         transition: $transition;
         display: inline-block;
+        border: none;
 
         &::before {
             color: $main-color;
@@ -21,6 +22,7 @@ $transition: 0.2s;
         &:hover {
             color: $main-color;
             transition: $transition;
+            border: none;
         }
     }
 }

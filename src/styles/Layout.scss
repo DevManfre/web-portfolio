@@ -22,7 +22,16 @@ body {
     margin: 0;
 
     a {
+        color: $main-color;
         text-decoration: none;
+        border-bottom: solid 2px rgba(red($main-color), green($main-color), blue($main-color), 0);
+        font-weight: 500;
+        transition: 0.1s;
+
+        &:hover {
+            border-color: rgba(red($main-color), green($main-color), blue($main-color), 1);
+            transition: 0.1s;
+        }
     }
 
     .content {
