@@ -49,3 +49,10 @@ body {
         padding: 0 $content-lateral-padding-425 0 $content-lateral-padding-425;
     }
 }
+
+@media screen and (max-width: 300px) {
+    body {
+        opacity: 0;
+        transition: 0.3s;
+    }
+}
