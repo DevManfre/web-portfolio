@@ -16,7 +16,7 @@ function HomeSection() {
 
     return (
         <Section id='about' reference={ref} title={'About Me'} style={inViewStyle}>
-            <div className='inner' >
+            <div className='grid' >
                 <div className='text'>
                     <p><Trans>about-paragraph-1</Trans></p>
                     <p>

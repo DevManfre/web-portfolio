@@ -1,4 +1,4 @@
-#about>.main-text>.inner {
+#about>.inner>.grid {
     display: grid;
     grid-template-columns: 3fr 2fr;
     gap: 50px;
@@ -59,7 +59,7 @@
 }
 
 @media screen and (max-width: 767px) {
-    #about>.main-text>.inner {
+    #about>.inner>.grid {
         display: contents;
 
         .img {
@@ -70,7 +70,7 @@
 }
 
 @media screen and (max-width: 426px) {
-    #about>.main-text>.inner>.text {
+    #about>.inner>.grid>.text {
         p {
             font-size: 18px;
         }

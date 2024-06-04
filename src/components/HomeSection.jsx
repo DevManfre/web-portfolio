@@ -31,7 +31,7 @@ function HomeSection() {
 
     /* Remove transition for window resize timing bug */
     if (isInView) setTimeout(() => {
-        for (let child of document.querySelector('.main-text').children) {
+        for (let child of document.querySelector('.inner').children) {
             child.style.transitionDelay = '0s';
             child.style.transition = '0s';
         }

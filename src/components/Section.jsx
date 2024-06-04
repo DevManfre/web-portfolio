@@ -4,7 +4,7 @@ import '../styles/Section.scss';
 function Section({ children, id, reference, style, title }) {
     return (
         <section id={id}>
-            <div className="main-text" ref={reference} style={style}>
+            <div className="inner" ref={reference} style={style}>
                 <div className="section-title">
                     {title}
                 </div>
