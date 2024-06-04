@@ -1,7 +1,9 @@
+@import 'NavBar';
+
 section {
-    min-height: calc(100vh - 5vh);
+    min-height: calc(95vh - $navbar-height);
     margin: 0 5vw 0 5vw;
-    padding: 0 1vw 5vh 1vw;
+    padding: $navbar-height 1vw 5vh 1vw;
 
     .inner>.section-title {
         color: $title-1-color;
