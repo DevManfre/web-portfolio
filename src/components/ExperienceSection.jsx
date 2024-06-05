@@ -23,6 +23,9 @@ function ExperienceSection() {
         /* Set attribute just for selected job */
         $(`.job-container .panel`).attr('isselected', false);
         $(`.job-container #panel-${jobId}`).attr('isselected', true);
+
+        /* Move selection line */
+        $('.selection-line').css('top', 42 * jobId);
     }
 
     /* Start with the first one selected */

@@ -31,6 +31,15 @@
                 backdrop-filter: brightness(1.5);
             }
         }
+
+        .selection-line {
+            background-color: $main-color;
+            position: absolute;
+            transition: 0.3s;
+            top: 0;
+            width: 2px;
+            height: 42px;
+        }
     }
 
     .job-container {
@@ -50,7 +59,7 @@
             &[isselected='false'] {
                 opacity: 0;
             }
-            
+
             &[isselected='true'] {
                 transition-delay: 0.15s;
             }
