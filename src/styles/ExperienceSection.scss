@@ -62,6 +62,7 @@
 
             &[isselected='true'] {
                 transition-delay: 0.15s;
+                z-index: 10;
             }
 
             h3 {

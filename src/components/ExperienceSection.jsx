@@ -4,6 +4,7 @@ import { useInView } from "framer-motion";
 import Section from './Section';
 import $ from 'jquery';
 import '../styles/ExperienceSection.scss';
+import { Trans } from "react-i18next";
 
 function ExperienceSection() {
     const ref = React.useRef(null);
@@ -21,6 +22,7 @@ function ExperienceSection() {
                         name
                         job
                         url
+                        itemsList
                     }
                 }
             }
@@ -43,6 +45,15 @@ function ExperienceSection() {
         $('.selection-line').css('top', 42 * jobId);
     }
 
+    let getCompanyText = (company) => {
+        let text = [];
+
+        for (let i = 0; i < company['itemsList']; i++)
+            text.push(<li><Trans>{`company-${company['name']}-${i}`}</Trans></li>);
+
+        return text;
+    }
+
     /* Start with the first one selected */
     React.useEffect(() => $('.tablist button').first().trigger('click'), []);
 
@@ -63,21 +74,20 @@ function ExperienceSection() {
                 <div className="job-container">
                     {count = 0}
                     {query.map(company => {
+                        let text = getCompanyText(company);
+
                         return (
                             <div key={count} id={`panel-${count++}`} className="panel" isselected='false'>
                                 <h3>
                                     <span>{company['job']}&nbsp;</span>
                                     <a href={company['url']} className="link-text" rel="noopener noreferrer" target="_blank">
-                                        {company['job']}
+                                        {company['name']}
                                     </a>
                                 </h3>
-                                <p className="range">May 2018 - Present</p>
+                                <p className="range"><Trans>{`company-${company['name']}-date`}</Trans></p>
                                 <div className="text">
                                     <ul>
-                                        <li>Deliver high-quality, robust production code for a diverse array of projects for clients including Harvard Business School, Everytown for Gun Safety, Pratt Institute, Koala Health, Vanderbilt University, The 19th News, and more</li>
-                                        <li>Work alongside creative directors to lead the research, development, and architecture of technical solutions to fulfill business requirements</li>
-                                        <li>Collaborate with designers, project managers, and other engineers to transform creative concepts into production realities for clients and stakeholders</li>
-                                        <li>Provide leadership within engineering department through close collaboration, knowledge shares, and mentorship</li>
+                                        {text}
                                     </ul>
                                 </div>
                             </div>
