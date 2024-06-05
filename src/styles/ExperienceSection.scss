@@ -1,5 +1,6 @@
 #experience>.inner>.timeline {
     display: flex;
+    max-width: 800px;
 
     .tablist {
         font-family: $code-font;
@@ -24,7 +25,8 @@
             padding: 0 20px 2px;
             font-size: 15px;
 
-            &:hover {
+            &:hover,
+            &[isselected='true'] {
                 color: $main-color;
                 backdrop-filter: brightness(1.5);
             }
@@ -40,8 +42,18 @@
         .panel {
             color: $title-2-color;
             height: auto;
+            position: absolute;
             width: 100%;
             padding: 10px 5px;
+            transition: 0.15s;
+
+            &[isselected='false'] {
+                opacity: 0;
+            }
+            
+            &[isselected='true'] {
+                transition-delay: 0.15s;
+            }
 
             h3 {
                 margin-bottom: 2px;

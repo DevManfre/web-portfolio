@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useInView } from "framer-motion";
 import Section from './Section';
+import $ from 'jquery';
 import '../styles/ExperienceSection.scss';
 
 function ExperienceSection() {
@@ -12,25 +13,36 @@ function ExperienceSection() {
         transition: `1s`
     };
 
+    let handleOnClick = (event) => {
+        let jobId = event.target.id.replace('tab-', '');
+
+        /* Set attribute just for clicked button */
+        $(`.tablist button`).attr('isselected', false);
+        $(`#tab-${jobId}`).attr('isselected', true);
+        
+        /* Set attribute just for selected job */
+        $(`.job-container .panel`).attr('isselected', false);
+        $(`.job-container #panel-${jobId}`).attr('isselected', true);
+    }
+
+    /* Start with the first one selected */
+    React.useEffect(() => $('.tablist button').first().trigger('click'), []);
+
     return (
         <Section id='experience' title="Experience" reference={ref} style={inViewStyle}>
-            <div class="timeline">
+            <div className="timeline">
                 <div className="tablist">
-                    <button id="tab-0">
-                        <span>Upstatement</span>
-                    </button>
-                    <button id="tab-1">
-                        <span>Apple</span>
-                    </button>
-                    <div class="jobs__StyledHighlight-sc-59sdss-3 fLsUxN" />
+                    <button id="tab-0" isselected='false' onClick={handleOnClick}>Upstatement</button>
+                    <button id="tab-1" isselected='false' onClick={handleOnClick}>Apple</button>
+                    <div className="selection-line" />
                 </div>
-                <div class="job-container">
-                    <div id="panel-0" class="panel">
+                <div className="job-container">
+                    <div id="panel-0" className="panel" isselected='false'>
                         <h3>
                             <span>Lead Engineer&nbsp;</span>
-                            <a href="https://www.upstatement.com/" class="link-text" rel="noopener noreferrer" target="_blank">Upstatement</a>
+                            <a href="https://www.upstatement.com/" className="link-text" rel="noopener noreferrer" target="_blank">Upstatement</a>
                         </h3>
-                        <p class="range">May 2018 - Present</p>
+                        <p className="range">May 2018 - Present</p>
                         <div className="text">
                             <ul>
                                 <li>Deliver high-quality, robust production code for a diverse array of projects for clients including Harvard Business School, Everytown for Gun Safety, Pratt Institute, Koala Health, Vanderbilt University, The 19th News, and more</li>
@@ -40,12 +52,12 @@ function ExperienceSection() {
                             </ul>
                         </div>
                     </div>
-                    <div id="panel-1" class="panel">
+                    <div id="panel-1" className="panel" isselected='false'>
                         <h3>
                             <span>UI Engineer Co-op&nbsp;</span>
-                            <a href="https://www.apple.com/music/" class="inline-link" rel="noopener noreferrer" target="_blank">Apple</a>
+                            <a href="https://www.apple.com/music/" className="inline-link" rel="noopener noreferrer" target="_blank">Apple</a>
                         </h3>
-                        <p class="range">July - December 2017</p>
+                        <p className="range">July - December 2017</p>
                         <div className="text">
                             <ul>
                                 <li>Developed and styled interactive web applications for Apple Music using Ember and SCSS</li>
