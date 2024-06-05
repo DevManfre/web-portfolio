@@ -28,6 +28,8 @@ function ExperienceSection() {
     /* Start with the first one selected */
     React.useEffect(() => $('.tablist button').first().trigger('click'), []);
 
+    /* TODO: generate automatically the dom */
+
     return (
         <Section id='experience' title="Experience" reference={ref} style={inViewStyle}>
             <div className="timeline">
@@ -55,7 +57,7 @@ function ExperienceSection() {
                     <div id="panel-1" className="panel" isselected='false'>
                         <h3>
                             <span>UI Engineer Co-op&nbsp;</span>
-                            <a href="https://www.apple.com/music/" className="inline-link" rel="noopener noreferrer" target="_blank">Apple</a>
+                            <a href="https://www.apple.com/music/" className="link-text" rel="noopener noreferrer" target="_blank">Apple</a>
                         </h3>
                         <p className="range">July - December 2017</p>
                         <div className="text">
