@@ -12,7 +12,19 @@ module.exports = {
             linkedin: 'https://www.linkedin.com/in/alessio-manfredini-developer/',
             codepen: 'https://codepen.io/devmanfre'
         },
-        email: 'alessio.manfredini.work@gmail.com'
+        email: 'alessio.manfredini.work@gmail.com',
+        companies: [
+            {
+                name: 'expert.ai',
+                job: 'Backend Developer',
+                url: 'www.expert.ai'
+            },
+            {
+                name: 'ItalianGres',
+                job: 'Web Developer',
+                url: 'www.italiangres.com/'
+            }
+        ]
     },
     flags: {
         DEV_SSR: false,
