@@ -28,7 +28,7 @@ body {
         font-weight: 500;
         transition: 0.1s;
 
-        &:hover {
+        &.link-text:hover {
             border-color: rgba(red($main-color), green($main-color), blue($main-color), 1);
             transition: 0.1s;
         }

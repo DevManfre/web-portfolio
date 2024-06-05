@@ -12,8 +12,6 @@ function ExperienceSection() {
         transition: `1s`
     };
 
-    
-
     return (
         <Section id='experience' title="Experience" reference={ref} style={inViewStyle}>
             <div class="timeline">
@@ -24,22 +22,13 @@ function ExperienceSection() {
                     <button id="tab-1">
                         <span>Apple</span>
                     </button>
-                    <button id="tab-2">
-                        <span>Scout Studio</span>
-                    </button>
-                    <button id="tab-3">
-                        <span>Starry</span>
-                    </button>
-                    <button id="tab-4">
-                        <span>MullenLowe</span>
-                    </button>
                     <div class="jobs__StyledHighlight-sc-59sdss-3 fLsUxN" />
                 </div>
                 <div class="job-container">
                     <div id="panel-0" class="panel">
                         <h3>
                             <span>Lead Engineer&nbsp;</span>
-                            <a href="https://www.upstatement.com/" class="inline-link" rel="noopener noreferrer" target="_blank">Upstatement</a>
+                            <a href="https://www.upstatement.com/" class="link-text" rel="noopener noreferrer" target="_blank">Upstatement</a>
                         </h3>
                         <p class="range">May 2018 - Present</p>
                         <div className="text">
