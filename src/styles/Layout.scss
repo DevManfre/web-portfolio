@@ -22,13 +22,22 @@ body {
     margin: 0;
 
     a {
+        color: $main-color;
         text-decoration: none;
+        border-bottom: solid 2px rgba(red($main-color), green($main-color), blue($main-color), 0);
+        font-weight: 500;
+        transition: 0.1s;
+
+        &.link-text:hover {
+            border-color: rgba(red($main-color), green($main-color), blue($main-color), 1);
+            transition: 0.1s;
+        }
     }
 
     .content {
         margin: 0 $content-lateral-margin-4k 0 $content-lateral-margin-4k;
         padding: 0 $content-lateral-padding 0 $content-lateral-padding;
-        counter-reset: section-title-counter 1;
+        counter-reset: section-title-counter 0;
     }
 }
 
@@ -47,5 +56,12 @@ body {
 @media screen and (max-width: 425px) {
     body .content {
         padding: 0 $content-lateral-padding-425 0 $content-lateral-padding-425;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    body {
+        opacity: 0;
+        transition: 0.3s;
     }
 }

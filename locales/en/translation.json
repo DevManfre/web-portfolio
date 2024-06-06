@@ -7,5 +7,14 @@
     "about-paragraph-2": "Fast-forward to today, I have the privilege of working at an ",
     "about-link-1": "e-commerce",
     "about-paragraph-3": " and my main focus is building accessible and inclusive digital products and experiences.",
-    "about-paragraph-4": "Here are a few technologies I’ve been working with recently:"
+    "about-paragraph-4": "Here are a few technologies I’ve been working with recently:",
+
+    "company-ItalianGres-date": "february 2024 - present",
+    "company-ItalianGres-0": "Developed and maintained new features for the website, both front-office and back-office, using Prestashop CMR and PHP",
+    "company-ItalianGres-1": "Improved site performance and SEO indexing through the introduction of best practices and fixes",
+    "company-ItalianGres-2": "Developed off-site scripts for managing internal company processes using primarily Python",
+    "company-expert.ai-date": "may 2017, april 2018, october - november 2019",
+    "company-expert.ai-0": "Developed extension for IntelliJ about code coloring for particular file extensions used by the company",
+    "company-expert.ai-1": "New features developed for proprietary artificial intelligence called Cogito",
+    "company-expert.ai-2": "The features were developed using Java"
 }

@@ -3,6 +3,7 @@ import { graphql } from "gatsby";
 import LoadingScreen from "../components/LoadingScreen";
 import HomeSection from "../components/HomeSection";
 import AboutSection from "../components/AboutSection";
+import ExperienceSection from "../components/ExperienceSection";
 import Layout from "../components/Layout";
 
 const IndexPage = () => {
@@ -12,6 +13,7 @@ const IndexPage = () => {
             <Layout>
                 <HomeSection />
                 <AboutSection />
+                <ExperienceSection />
             </Layout>
         </>
     );

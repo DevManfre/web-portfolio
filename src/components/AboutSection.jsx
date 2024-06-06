@@ -16,12 +16,12 @@ function HomeSection() {
 
     return (
         <Section id='about' reference={ref} title={'About Me'} style={inViewStyle}>
-            <div className='inner' >
+            <div className='grid' >
                 <div className='text'>
                     <p><Trans>about-paragraph-1</Trans></p>
                     <p>
                         <Trans>about-paragraph-2</Trans>
-                        <a href='https://www.italiangres.com/' target='_blank' rel='noreferrer'>
+                        <a href='https://www.italiangres.com/' className='link-text' target='_blank' rel='noreferrer'>
                             <Trans>about-link-1</Trans>
                         </a>
                         <Trans>about-paragraph-3</Trans>

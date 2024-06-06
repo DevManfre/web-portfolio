@@ -1,0 +1,135 @@
+#experience>.inner>.timeline {
+    display: flex;
+    max-width: 800px;
+
+    .tablist {
+        font-family: $code-font;
+        position: relative;
+        width: max-content;
+        margin: 0px;
+        z-index: 3;
+        padding: 0px;
+
+        button {
+            color: $title-2-color;
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            border-left: 2px solid $title-2-color;
+            transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+            width: 100%;
+            height: 42px;
+            padding: 0 20px 2px;
+            font-size: 15px;
+
+            &:hover,
+            &[isselected='true'] {
+                color: $main-color;
+                backdrop-filter: brightness(1.5);
+            }
+        }
+
+        .selection-line {
+            background-color: $main-color;
+            position: absolute;
+            transition: 0.3s;
+            top: 0;
+            width: 2px;
+            height: 42px;
+        }
+    }
+
+    .job-container {
+        font-family: $normal-text-font;
+        position: relative;
+        width: 100%;
+        margin-left: 20px;
+
+        .panel {
+            color: $title-2-color;
+            height: auto;
+            position: absolute;
+            width: 100%;
+            padding: 0px 5px;
+            transition: 0.15s;
+
+            &[isselected='false'] {
+                opacity: 0;
+            }
+
+            &[isselected='true'] {
+                transition-delay: 0.15s;
+                z-index: 10;
+            }
+
+            h3 {
+                margin-bottom: 2px;
+                font-size: 22px;
+                font-weight: 500;
+                line-height: 1.3;
+                margin-top: 0;
+
+                span {
+                    color: $title-1-color;
+                }
+
+                a::before {
+                    content: '@';
+                }
+            }
+
+            .range {
+                font-family: $code-font;
+                margin-top: 10px;
+                margin-bottom: 25px;
+                font-size: 14px;
+            }
+
+            .text>ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                font-size: clamp(14px, 5vw, 18px);
+
+                li {
+                    position: relative;
+                    padding-left: 30px;
+                    margin-bottom: 10px;
+
+                    &::before {
+                        content: '▹ ';
+                        color: $main-color;
+                        position: absolute;
+                        left: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #experience>.inner>.timeline {
+        display: block;
+
+        .tablist {
+            display: none;
+        }
+
+        .job-container {
+            margin: 0;
+
+            .panel {
+                position: static;
+                margin-bottom: 30px;
+
+                &[isselected='false'] {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}

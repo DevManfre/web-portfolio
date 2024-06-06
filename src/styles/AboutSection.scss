@@ -1,4 +1,4 @@
-#about>.main-text>.inner {
+#about>.inner>.grid {
     display: grid;
     grid-template-columns: 3fr 2fr;
     gap: 50px;
@@ -6,24 +6,12 @@
     .text {
         color: $title-2-color;
         font-family: $normal-text-font;
-        font-size: 20px;
-        font-weight: 100;
+        font-size: clamp(14px, 5vw, 18px);
+        font-weight: 400;
 
         p {
             text-align: justify;
             margin: 0 0 15px 0;
-
-            a {
-                color: $main-color;
-                border-bottom: solid 2px rgba(red($main-color), green($main-color), blue($main-color), 0);
-                font-weight: 400;
-                transition: 0.1s;
-
-                &:hover {
-                    border-color: rgba(red($main-color), green($main-color), blue($main-color), 1);
-                    transition: 0.1s;
-                }
-            }
         }
 
         .skill-list {
@@ -39,11 +27,11 @@
                 font-size: 20px;
 
                 &::before {
-                    content: '♢ ';
+                    content: '▹ ';
                     color: $main-color;
                     position: relative;
                     bottom: 2px;
-                    font-size: 14px;
+                    font-size: clamp(14px, 5vw, 18px);
                 }
             }
         }
@@ -59,7 +47,7 @@
 }
 
 @media screen and (max-width: 767px) {
-    #about>.main-text>.inner {
+    #about>.inner>.grid {
         display: contents;
 
         .img {
@@ -70,17 +58,11 @@
 }
 
 @media screen and (max-width: 426px) {
-    #about>.main-text>.inner>.text {
-        p {
+    #about>.inner>.grid>.text>.skill-list {
+        column-gap: 20px;
+
+        li {
             font-size: 18px;
-        }
-
-        .skill-list {
-            column-gap: 20px;
-
-            li {
-                font-size: 18px;
-            }
         }
     }
 }
