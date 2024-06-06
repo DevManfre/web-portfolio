@@ -28,7 +28,8 @@ function ExperienceSection() {
             }
         }
     `)).site.siteMetadata.companies;
-    let count = 0;
+    let btnCount = 0;
+    let panelCount = 0;
 
     let handleOnClick = (event) => {
         let jobId = event.target.id.replace('tab-', '');
@@ -63,7 +64,7 @@ function ExperienceSection() {
                 <div className="tablist">
                     {query.map(company => {
                         return (
-                            <button key={count} id={`tab-${count++}`} isselected='false' onClick={handleOnClick}>
+                            <button key={btnCount} id={`tab-${btnCount++}`} isselected='false' onClick={handleOnClick}>
                                 {company['name']}
                             </button>
                         )
@@ -72,12 +73,11 @@ function ExperienceSection() {
                 </div>
 
                 <div className="job-container">
-                    {count = 0}
                     {query.map(company => {
                         let text = getCompanyText(company);
 
                         return (
-                            <div key={count} id={`panel-${count++}`} className="panel" isselected='false'>
+                            <div key={panelCount} id={`panel-${panelCount++}`} className="panel" isselected='false'>
                                 <h3>
                                     <span>{company['job']}&nbsp;</span>
                                     <a href={company['url']} className="link-text" rel="noopener noreferrer" target="_blank">

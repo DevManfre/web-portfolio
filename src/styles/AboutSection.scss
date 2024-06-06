@@ -6,7 +6,7 @@
     .text {
         color: $title-2-color;
         font-family: $normal-text-font;
-        font-size: 20px;
+        font-size: clamp(14px, 5vw, 18px);
         font-weight: 400;
 
         p {
@@ -31,7 +31,7 @@
                     color: $main-color;
                     position: relative;
                     bottom: 2px;
-                    font-size: 14px;
+                    font-size: clamp(14px, 5vw, 18px);
                 }
             }
         }
@@ -58,17 +58,11 @@
 }
 
 @media screen and (max-width: 426px) {
-    #about>.inner>.grid>.text {
-        p {
+    #about>.inner>.grid>.text>.skill-list {
+        column-gap: 20px;
+
+        li {
             font-size: 18px;
-        }
-
-        .skill-list {
-            column-gap: 20px;
-
-            li {
-                font-size: 18px;
-            }
         }
     }
 }

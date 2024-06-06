@@ -92,7 +92,7 @@
                 list-style: none;
                 padding: 0;
                 margin: 0;
-                font-size: 18px;
+                font-size: clamp(14px, 5vw, 18px);
 
                 li {
                     position: relative;
@@ -105,6 +105,29 @@
                         position: absolute;
                         left: 0;
                     }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #experience>.inner>.timeline {
+        display: block;
+
+        .tablist {
+            display: none;
+        }
+
+        .job-container {
+            margin: 0;
+
+            .panel {
+                position: static;
+                margin-bottom: 30px;
+
+                &[isselected='false'] {
+                    opacity: 1;
                 }
             }
         }
