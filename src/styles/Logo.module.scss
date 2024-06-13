@@ -12,7 +12,7 @@ $logo-total-animation-time: calc($logo-line-delay + $logo-line-transition + $log
 .container-logo {
     color: $main-color;
     font-size: $font-size;
-    font-family: $logo-font;
+    font-family: $font-family-logo;
     user-select: none;
     display: grid;
     width: min-content;

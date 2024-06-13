@@ -1,7 +1,7 @@
 import * as React from "react";
-import { containerLogo, logoTotalAnimationTime } from '../styles/Logo.module.scss';
 import $ from 'jquery';
 import { fromCssSecondsToJsMilliseconds } from '../utils/cssModuleUtils';
+import { containerLogo, logoTotalAnimationTime } from '../styles/Logo.module.scss';
 
 function Logo({ loadingScreen = "false" }) {
     /* After component mount, set hidden layout so the layout animations don't start. */

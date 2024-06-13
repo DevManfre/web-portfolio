@@ -28,13 +28,13 @@ $small-text-font-size: clamp(14px, 18px, 18px);
 
         .name {
             color: $title-1-color;
-            font-family: $normal-text-font;
+            font-family: $font-family-normal-text;
             margin: 0 0 $bottom-margin 0;
         }
 
         .title {
             color: $title-2-color;
-            font-family: $normal-text-font;
+            font-family: $font-family-normal-text;
             margin: 0 0 calc($bottom-margin * 2) 0;
         }
 
@@ -45,7 +45,7 @@ $small-text-font-size: clamp(14px, 18px, 18px);
 
         .bottom-subtitle {
             color: $title-2-color;
-            font-family: $normal-text-font;
+            font-family: $font-family-normal-text;
             font-size: $small-text-font-size;
             max-width: 440px;
         }

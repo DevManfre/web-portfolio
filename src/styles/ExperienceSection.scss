@@ -3,7 +3,7 @@
     max-width: 800px;
 
     .tablist {
-        font-family: $code-font;
+        font-family: $font-family-code;
         position: relative;
         width: max-content;
         margin: 0px;
@@ -43,7 +43,7 @@
     }
 
     .job-container {
-        font-family: $normal-text-font;
+        font-family: $font-family-normal-text;
         position: relative;
         width: 100%;
         margin-left: 20px;
@@ -82,7 +82,7 @@
             }
 
             .range {
-                font-family: $code-font;
+                font-family: $font-family-code;
                 margin-top: 10px;
                 margin-bottom: 25px;
                 font-size: 14px;

@@ -6,12 +6,24 @@ module.exports = {
         title: `devmanfre`,
         description: 'Alessio Manfredini web portfolio',
         developer: 'Alessio Manfredini',
-        socialsURLs: {
-            github: 'https://github.com/DevManfre',
-            instagram: 'https://www.instagram.com/lost.manfre',
-            linkedin: 'https://www.linkedin.com/in/alessio-manfredini-developer/',
-            codepen: 'https://codepen.io/devmanfre'
-        },
+        socials: [
+            {
+                name: 'github',
+                url: 'https://github.com/DevManfre'
+            },
+            {
+                name: 'instagram',
+                url: 'https://www.instagram.com/lost.manfre'
+            },
+            {
+                name: 'linkedin',
+                url: 'https://www.linkedin.com/in/alessio-manfredini-developer/'
+            },
+            {
+                name: 'codepen',
+                url: 'https://codepen.io/devmanfre'
+            }
+        ],
         email: 'alessio.manfredini.work@gmail.com',
         companies: [
             {
