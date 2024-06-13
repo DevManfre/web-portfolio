@@ -1,0 +1,100 @@
+$font-size: 150px;
+$logo-line-height: 90%;
+
+/* Animation time vars */
+$logo-line-delay: 0.25s;
+$logo-line-transition: 1s;
+$logo-laterals-transition: 1s;
+$logo-animation: 0.2s;
+$logo-total-animation-time: calc($logo-line-delay + $logo-line-transition + $logo-laterals-transition + $logo-animation);
+/* -------------------- */
+
+.container-logo {
+    color: $main-color;
+    font-size: $font-size;
+    font-family: $logo-font;
+    user-select: none;
+    display: grid;
+    width: min-content;
+    grid-template-columns: repeat(3, auto);
+    font-weight: 700;
+
+    /* When logo is animated */
+    &[animation="true"] {
+        animation: logo $logo-animation calc($logo-line-delay + $logo-line-transition + $logo-laterals-transition) forwards;
+        position: absolute;
+        transform-origin: center center;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%) scale(0.8);
+
+        >div:nth-child(1),
+        >div:nth-child(3) {
+            animation: logo-laterals $logo-laterals-transition calc($logo-line-transition + $logo-line-delay) forwards;
+            opacity: 0;
+        }
+
+        div:nth-child(2)>div {
+            animation: logo-line $logo-line-transition $logo-line-delay forwards;
+            height: 0;
+        }
+    }
+
+    &:nth-child(3) {
+        text-align: right;
+    }
+
+    div:nth-child(2) {
+        width: calc($font-size / 5 * 2);
+        position: relative;
+        height: 80%;
+        top: 50%;
+        transform: translateY(-50%);
+
+        div {
+            background-color: $main-color;
+            height: $logo-line-height;
+            width: calc($font-size / 9);
+            border-radius: calc($font-size / 30);
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(20deg);
+        }
+    }
+}
+
+@keyframes logo-line {
+    0% {
+        height: 0%;
+    }
+
+    100% {
+        height: $logo-line-height;
+    }
+}
+
+@keyframes logo-laterals {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes logo {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(0.5) translate(-100%, -100%);
+        opacity: 0;
+    }
+}
+
+:export {
+    logoTotalAnimationTime: $logo-total-animation-time;
+}

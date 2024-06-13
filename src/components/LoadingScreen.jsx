@@ -1,8 +1,9 @@
 import * as React from 'react';
-import AnimatedLogo from './AnimatedLogo';
-import { animationTime } from './AnimatedLogo';
+import Logo from './Logo';
 import $ from 'jquery';
 import '../styles/LoadingScreen.scss';
+
+const animationTime = 2450;
 
 function LoadingScreen() {
     React.useEffect(() => {
@@ -21,7 +22,7 @@ function LoadingScreen() {
 
     return (
         <div id="container-loading-screen">
-            <AnimatedLogo />
+            <Logo animation='true' />
         </div>
     );
 }

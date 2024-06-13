@@ -1,12 +1,14 @@
 import * as React from "react";
-import '../styles/Logo.scss';
+import { containerLogo } from '../styles/Logo.module.scss';
 
-function Logo() {
+function Logo({ animation = false }) {
     return (
-        <div className="container-logo">
-            <div className="lateral minor">&lt;</div>
-            <div className="central"><div className="line" /></div>
-            <div className="lateral major">&gt;</div>
+        <div className={containerLogo} animation={animation}>
+            <div>&lt;</div>
+            <div>
+                <div />
+            </div>
+            <div>&gt;</div>
         </div>
     );
 }
