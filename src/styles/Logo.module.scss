@@ -20,7 +20,7 @@ $logo-total-animation-time: calc($logo-line-delay + $logo-line-transition + $log
     font-weight: 700;
 
     /* When logo is animated */
-    &[animation="true"] {
+    &[loadingScreen="true"] {
         animation: logo $logo-animation calc($logo-line-delay + $logo-line-transition + $logo-laterals-transition) forwards;
         position: absolute;
         transform-origin: center center;
