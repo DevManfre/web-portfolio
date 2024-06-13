@@ -1,30 +1,21 @@
 import * as React from 'react';
 import Logo from './Logo';
+import { containerLogo, logoTotalAnimationTime } from '../styles/Logo.module.scss';
 import $ from 'jquery';
-import '../styles/LoadingScreen.scss';
-
-const animationTime = 2450;
+import { fromCssSecondsToJsMilliseconds } from '../utils/cssModuleUtils';
 
 function LoadingScreen() {
+    /* After component mount set hidden layout so the layout animations don't start. */
     React.useEffect(() => {
-        let freezeTimeBeforeFadeOut = 500;
-        
-        /* Block body so isInView doesn't start */
-        $('body').addClass('loading-screen');
+        $('.layout').css('display', 'none');
 
         setTimeout(() => {
-            $('#container-loading-screen').addClass('removed');
-            $('body').removeClass('loading-screen');
-        }, animationTime + freezeTimeBeforeFadeOut);
-
-        setTimeout(() => $('#container-loading-screen').remove(), animationTime + freezeTimeBeforeFadeOut + 200);
+            $('.layout').css('display', 'block');
+            $(`.${containerLogo}[animation="true"]`).remove();
+        }, fromCssSecondsToJsMilliseconds(logoTotalAnimationTime));
     }, []);
 
-    return (
-        <div id="container-loading-screen">
-            <Logo animation='true' />
-        </div>
-    );
+    return <Logo animation='true' />;
 }
 
 export default LoadingScreen;
