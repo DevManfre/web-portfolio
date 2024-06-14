@@ -2,6 +2,7 @@
 $links: About, Experience, Work, Contact;
 $transition-time: 0.3s;
 $navbar-link-transition-delay: 0.1s;
+$navbar-total-animation-time: $transition-time + calc($navbar-link-transition-delay * length($links));
 /* ------------------------------------------------------ */
 
 /* Change this vars for navbar appearence */
@@ -204,6 +205,5 @@ $list-element-spacing: 7px;
 
 :export {
     navbarLinkTransition: $transition-time;
-    navbarLinkTransitionDelay: $navbar-link-transition-delay;
     navbarLinks: $links;
 }
