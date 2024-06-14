@@ -16,24 +16,22 @@ function Layout({ children }) {
 
     return (
         <div className="layout" ref={ref}>
-            <NavBar reference={ref} />
+            <NavBar />
 
             <Sider orientation="left" content="icons" reference={ref}>
-                {query.socials.map(social => {
-                    return (
-                        <a key={social['name']} href={social['url']} target='_blank' rel="noreferrer">
-                            {icons[social['name']]}
-                        </a>
-                    );
-                })}
+                {query.socials.map(social =>
+                    <a key={social['name']} href={social['url']} target='_blank' rel="noreferrer">
+                        {icons[social['name']]}
+                    </a>
+                )}
             </Sider>
-            
+
             <main className="content">
                 {children}
             </main>
-            
+
             <Sider orientation="right" content="text" reference={ref}>
-                <a href={`mailto:${query.email}`}>{query.email}</a>
+                <a href={`mailto:${query.email}`} title='Email'>{query.email}</a>
             </Sider>
         </div>
     );

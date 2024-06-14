@@ -1,12 +1,12 @@
+$transition-time: 0.3s;
+$navbar-link-transition-delay: 0.1s;
+
 $navbar-height: 80px;
 $navbar-lateral-padding: calc($navbar-height / 2);
-$transition-time: 0.2s;
 $sidebar-width: 60%;
 $blur-value: blur(15px);
 $navbar-height-on-top: calc($navbar-height + 20px);
-
-$spacing: 7px;
-$transition: 0.2s;
+$list-element-spacing: 7px;
 
 .navbar {
     height: $navbar-height;
@@ -22,12 +22,12 @@ $transition: 0.2s;
     box-shadow: 0 10px 30px -10px rgba(2, 10, 22, 0.7);
     z-index: 5;
 
-    &.hidden {
+    &[scroll-direction="down"] {
         transform: translateY(-$navbar-height);
         box-shadow: none;
     }
 
-    &[scroll-from-top="0"] {
+    &[starting-from-top="1"] {
         transition: $transition-time;
         height: $navbar-height-on-top;
         box-shadow: none;
@@ -36,17 +36,16 @@ $transition: 0.2s;
     a {
         height: min-content;
 
-        &#logo-link {
+        &[href="/"] {
             position: relative;
             transform-origin: left;
             width: min-content;
             top: 50%;
             transform: translateY(-50%) scale(0.4);
-            transition: 0.5s;
         }
     }
 
-    #navbar-link-list {
+    ol {
         height: min-content;
         position: relative;
         counter-reset: link-counter 0;
@@ -55,14 +54,14 @@ $transition: 0.2s;
         top: 50%;
         transform: translateY(-50%);
 
-        .navbar-link-element {
+        li {
             display: inline;
 
             a {
                 color: $link-color;
-                padding: $spacing;
-                margin: $spacing;
-                transition: $transition;
+                padding: $list-element-spacing;
+                margin: $list-element-spacing;
+                transition: $transition-time;
                 display: inline-block;
                 border: none;
 
@@ -75,25 +74,24 @@ $transition: 0.2s;
 
                 &:hover {
                     color: $main-color;
-                    transition: $transition;
+                    transition: $transition-time;
                     border: none;
                 }
             }
         }
     }
 
-    .hamburger-icon {
+    button {
         background-color: transparent;
         border: none;
         display: none;
         position: relative;
         height: min-content;
         top: 50%;
-        transition: all 0.7s ease;
 
         div {
             background: $main-color;
-            transition: all 0.3s ease;
+            transition: all $transition-time ease;
             width: 40px;
             height: 4px;
             margin: 6px;
@@ -110,34 +108,34 @@ $transition: 0.2s;
             overflow: hidden;
 
             main {
-                filter: blur(10px);
-                transition: 0.2s;
+                transition: $transition-time;
+                filter: $blur-value;
             }
 
             .navbar {
                 backdrop-filter: blur(0);
 
-                #logo-link {
+                a[href="/"] {
                     transition: $transition-time;
-                    filter: blur(10px);
+                    filter: $blur-value;
                 }
 
-                #navbar-link-list {
+                ol {
                     height: 100vh;
                     right: 0;
                 }
 
-                .hamburger-icon {
-                    .line1 {
+                button {
+                    div:nth-child(1) {
                         transform: rotate(-45deg) translate(-2mm, 1.8mm);
                     }
 
-                    .line2 {
-                        transition: all 0.3s ease;
+                    div:nth-child(2) {
+                        transition: all $transition-time ease;
                         opacity: 0;
                     }
 
-                    .line3 {
+                    div:nth-child(3) {
                         transform: rotate(45deg) translate(-2mm, -1.8mm);
                     }
                 }
@@ -146,8 +144,7 @@ $transition: 0.2s;
 
         /* When sidebar is closed */
         .navbar {
-
-            #navbar-link-list {
+            ol {
                 background-color: $background-color;
                 transition: $transition-time;
                 right: -$sidebar-width;
@@ -155,7 +152,6 @@ $transition: 0.2s;
                 position: absolute;
                 transform: none;
                 text-align: center;
-                filter: brightness(0.85);
                 top: 0;
                 height: 100vh;
 
@@ -166,12 +162,11 @@ $transition: 0.2s;
                 }
             }
 
-            #logo-link {
+            a[href="/"] {
                 transform: translateY(-50%) scale(0.3);
-                transition: 0.5s;
             }
 
-            .hamburger-icon {
+            button {
                 display: block;
                 cursor: pointer;
             }
@@ -181,17 +176,22 @@ $transition: 0.2s;
 
 @media screen and (max-width: 426px) {
     body {
-        &.open-sidebar .navbar>#navbar-link-list {
+        &.open-sidebar .navbar>ol {
             width: 100vw;
         }
 
         .navbar {
             width: calc(100vw - calc($navbar-lateral-padding / 2));
-            padding: 0 calc($navbar-lateral-padding / 4) 0 calc($navbar-lateral-padding / 4);
+            padding: 0 calc($navbar-lateral-padding / 4);
 
-            .hamburger-icon {
+            button {
                 padding: 0;
             }
         }
     }
+}
+
+:export {
+    navbarLinkTransition: $transition-time;
+    navbarLinkTransitionDelay: $navbar-link-transition-delay;
 }

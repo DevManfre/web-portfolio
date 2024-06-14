@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import { useInView } from 'framer-motion';
-import { navbarTotalFadeInTime } from './NavBar';
 import '../styles/HomeSection.scss';
 import { Trans } from "react-i18next";
 import Section from './Section';
+
+const navbarTotalFadeInTime = 0.7;
 
 /* Animations time vars */
 const transition = 1;

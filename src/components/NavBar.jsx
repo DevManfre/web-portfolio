@@ -1,70 +1,49 @@
 import * as React from 'react';
-import useDetectScroll, { Direction } from '@smakss/react-scroll-direction';
-import { useInView } from 'framer-motion';
-import Logo from './Logo';
+import useDetectScroll from '@smakss/react-scroll-direction';
 import $ from 'jquery';
-import '../styles/NavBar.scss';
+import Logo from './Logo';
+import { useIsInView, getInViewStyle, fromCssSecondsToNumber } from '../utils/cssModuleUtils';
+import { navbar, openSidebar, navbarLinkTransition, navbarLinkTransitionDelay } from '../styles/NavBar.module.scss';
 
-const links = ['About', 'Experience', 'Work', 'Contact'];
-const transition = 0.3;
-const transitionDelay = 0.1;
-
-function NavBar({ reference }) {
+function NavBar() {
+    const links = ['About', 'Experience', 'Work', 'Contact'];
     const { scrollDir, scrollPosition } = useDetectScroll();
-    const isInView = useInView(reference, { once: true });
-    let inViewStyle = {
-        transform: isInView ? "none" : "translateY(-50px)",
-        opacity: isInView ? 1 : 0,
-        transition: `${transition}s`
-    };
-    let navbarLinks = [];
+    const ref = React.useRef(null);
+    const isInView = useIsInView(ref);
+    let inViewStyle = getInViewStyle(isInView, navbarLinkTransition, -50);
+    let count = 0;
 
     /* Hide navbar when scroll down */
-    React.useEffect(() => {
-        if (scrollDir === Direction.Up)
-            $('nav').removeClass('hidden');
-        else if (scrollDir === Direction.Down)
-            $('nav').addClass('hidden');
-    }, [scrollDir]);
+    React.useEffect(() => { $('nav').attr('scroll-direction', scrollDir) }, [scrollDir]);
 
-    let handleOnClick = () => {
-        if ($('.hamburger-icon').is(':visible'))
-            $('.hamburger-icon').trigger('click');
-    }
-
-    /* Create navbarLink list */
-    for (let i = 0; i < links.length; i++)
-        navbarLinks.push(
-            <li key={links[i]} className='navbar-link-element'>
-                <a href={`#${links[i].toLowerCase()}`} onClick={handleOnClick} style={{ ...inViewStyle, transitionDelay: `${(i + 1) * transitionDelay}s` }}>
-                    {links[i]}
-                </a>
-            </li>
-        );
+    /* linkHandleClick to close sidebar on phone view, otherwise the page doesn't scroll */
+    let handleOnClick = () => { if ($('nav>button').is(':visible')) $('nav>button').trigger('click') };
 
     return (
-        <nav className="navbar" scroll-from-top={scrollPosition.top} ref={reference}>
-            <a href='/' id='logo-link' >
+        <nav className={navbar} starting-from-top={scrollPosition.top ? 0 : 1} ref={ref}>
+            <a href='/' >
                 <div style={inViewStyle}><Logo /></div>
             </a>
 
-            <ol id='navbar-link-list'>
-                {navbarLinks}
+            <ol>
+                {links.map(link =>
+                    <li key={link}>
+                        <a href={`#${link.toLowerCase()}`} onClick={handleOnClick} style={{ ...inViewStyle, transitionDelay: `${(++count) * fromCssSecondsToNumber(navbarLinkTransitionDelay)}s` }}>
+                            {link}
+                        </a>
+                    </li>
+                )}
             </ol>
 
             {/* Responsive Navbar side */}
-            <button className="hamburger-icon" onKeyDown={() => { }} style={{
+            <button onKeyDown={() => { }} onClick={() => $('body').toggleClass(openSidebar)} style={{
                 ...inViewStyle,
                 transform: isInView ? "translateY(-50%)" : "translateY(-70px)",
-            }} onClick={() => $('body').toggleClass('open-sidebar')}>
-                <div className="line1" />
-                <div className="line2" />
-                <div className="line3" />
+            }}>
+                <div /><div /><div />
             </button>
         </nav>
     );
 }
 
 export default NavBar;
-
-export const navbarTotalFadeInTime = transition + links.length * transitionDelay;

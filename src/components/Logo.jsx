@@ -17,7 +17,7 @@ function Logo({ loadingScreen = "false" }) {
     }, [loadingScreen]);
 
     return (
-        <div className={containerLogo} loadingScreen={loadingScreen}>
+        <div className={containerLogo} loading-screen={loadingScreen}>
             <div>&lt;</div>
             <div>
                 <div />

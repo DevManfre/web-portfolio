@@ -1,4 +1,4 @@
-@import 'NavBar';
+@import './NavBar.module.scss';
 
 section {
     min-height: calc(95vh - $navbar-height);
