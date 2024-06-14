@@ -2,7 +2,6 @@ import * as React from 'react';
 import useDetectScroll, { Direction } from '@smakss/react-scroll-direction';
 import { useInView } from 'framer-motion';
 import Logo from './Logo';
-import NavBarLink from './NavBarLink';
 import $ from 'jquery';
 import '../styles/NavBar.scss';
 
@@ -27,10 +26,21 @@ function NavBar({ reference }) {
         else if (scrollDir === Direction.Down)
             $('nav').addClass('hidden');
     }, [scrollDir]);
-    
+
+    let handleOnClick = () => {
+        if ($('.hamburger-icon').is(':visible'))
+            $('.hamburger-icon').trigger('click');
+    }
+
     /* Create navbarLink list */
     for (let i = 0; i < links.length; i++)
-        navbarLinks.push(<NavBarLink key={links[i]} style={{ ...inViewStyle, transitionDelay: `${(i + 1) * transitionDelay}s` }}>{links[i]}</NavBarLink>);
+        navbarLinks.push(
+            <li key={links[i]} className='navbar-link-element'>
+                <a href={`#${links[i].toLowerCase()}`} onClick={handleOnClick} style={{ ...inViewStyle, transitionDelay: `${(i + 1) * transitionDelay}s` }}>
+                    {links[i]}
+                </a>
+            </li>
+        );
 
     return (
         <nav className="navbar" scroll-from-top={scrollPosition.top} ref={reference}>

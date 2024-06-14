@@ -5,6 +5,9 @@ $sidebar-width: 60%;
 $blur-value: blur(15px);
 $navbar-height-on-top: calc($navbar-height + 20px);
 
+$spacing: 7px;
+$transition: 0.2s;
+
 .navbar {
     height: $navbar-height;
     transition: $transition-time;
@@ -51,6 +54,32 @@ $navbar-height-on-top: calc($navbar-height + 20px);
         margin: 0;
         top: 50%;
         transform: translateY(-50%);
+
+        .navbar-link-element {
+            display: inline;
+
+            a {
+                color: $link-color;
+                padding: $spacing;
+                margin: $spacing;
+                transition: $transition;
+                display: inline-block;
+                border: none;
+
+                &::before {
+                    color: $main-color;
+                    content: '0' counter(link-counter)'.';
+                    counter-increment: link-counter;
+                    margin-right: 5px;
+                }
+
+                &:hover {
+                    color: $main-color;
+                    transition: $transition;
+                    border: none;
+                }
+            }
+        }
     }
 
     .hamburger-icon {
