@@ -1,12 +1,17 @@
+/* Change this vars for navbar links and their animations */
+$links: About, Experience, Work, Contact;
 $transition-time: 0.3s;
 $navbar-link-transition-delay: 0.1s;
+/* ------------------------------------------------------ */
 
+/* Change this vars for navbar appearence */
 $navbar-height: 80px;
 $navbar-lateral-padding: calc($navbar-height / 2);
 $sidebar-width: 60%;
 $blur-value: blur(15px);
 $navbar-height-on-top: calc($navbar-height + 20px);
 $list-element-spacing: 7px;
+/* --------------------------------------- */
 
 .navbar {
     height: $navbar-height;
@@ -56,6 +61,12 @@ $list-element-spacing: 7px;
 
         li {
             display: inline;
+
+            @for $i from 1 through length($links) {
+                &:nth-child(#{$i}) a {
+                    transition-delay: calc((#{$i}) * $navbar-link-transition-delay) !important;
+                }
+            }
 
             a {
                 color: $link-color;
@@ -194,4 +205,5 @@ $list-element-spacing: 7px;
 :export {
     navbarLinkTransition: $transition-time;
     navbarLinkTransitionDelay: $navbar-link-transition-delay;
+    navbarLinks: $links;
 }

@@ -49,7 +49,7 @@ module.exports = {
         {
             resolve: "gatsby-plugin-sass",
             options: {
-                additionalData: "@use 'Colors' as *; @use 'Font' as *;"
+                additionalData: "@use 'Colors' as *; @use 'Font' as *; @use 'sass:list' as *;"
             }
         },
         {
