@@ -11,11 +11,12 @@ $small-text-font-size: clamp(14px, 18px, 18px);
     justify-content: center;
     flex-direction: column;
 
-    .inner {
+    >div {
         position: relative;
         padding-bottom: 13vh;
         
-        .section-title {
+        /* Section title */
+        >div:nth-child(1) {
             display: none;
         }
 
