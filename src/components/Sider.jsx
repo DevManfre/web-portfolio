@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { useInView } from 'framer-motion';
-import { homeSectionTotalFadeInTime } from './HomeSection';
 import $ from 'jquery';
 import '../styles/Sider.scss';
+
+const homeSectionTotalFadeInTime = 1.4;
 
 function Sider({ orientation, content, children, reference }) {
     const isInView = useInView(reference, { once: true });

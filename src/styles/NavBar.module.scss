@@ -112,7 +112,7 @@ $list-element-spacing: 7px;
     }
 }
 
-@media screen and (max-width: 782px) {
+@media screen and (max-width: 799px) {
     body {
 
         /* When sidebar is open */
@@ -206,5 +206,4 @@ $list-element-spacing: 7px;
 :export {
     navbarLinkTransition: $transition-time;
     navbarLinks: $links;
-    navbarTotaAnimationTime: $navbar-total-animation-time;
 }

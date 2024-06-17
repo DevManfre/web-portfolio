@@ -22,7 +22,7 @@ export const useIsInView = (reference) => {
 }
 
 /* This function return a global style for all components entering in the viewport. */
-export const getInViewStyle = (isInView, transition = 1, translateY = 50) => {
+export const getInViewStyle = (isInView, transition = '1', translateY = 50) => {
     return {
         opacity: isInView ? 1 : 0,
         transform: isInView ? "none" : `translateY(${translateY}px)`,

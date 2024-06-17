@@ -1,8 +1,11 @@
 @import './NavBar.module.scss';
 
+/* Animation time vars */
+$home-section-transition: 0.8s;
+$home-section-transition-delay: 0.2s;
+/* ------------------- */
+
 $bottom-margin: 10px;
-$big-text-font-size: clamp(30px, 7.5vw, 60px);
-$small-text-font-size: clamp(14px, 18px, 18px);
 
 #home {
     padding: $navbar-height-on-top 0 0 0;
@@ -14,40 +17,48 @@ $small-text-font-size: clamp(14px, 18px, 18px);
     >div {
         position: relative;
         padding-bottom: 13vh;
-        
+
         /* Section title */
         >div:nth-child(1) {
             display: none;
         }
 
-        .top-subtitle {
+        /* Delay for inView */
+        @for $i from 2 through 5 {
+            div:nth-child(#{$i}) {
+                transition-delay: calc($navbar-total-animation-time + (#{$i} - 2) * $home-section-transition-delay) !important;
+            }
+        }
+
+        h1 {
             color: $main-color;
-            font-size: $small-text-font-size;
+            font-size: $font-size-small-text;
             margin: 0 0 $bottom-margin 0;
             font-weight: normal;
         }
 
-        .name {
+        h2 {
             color: $title-1-color;
             font-family: $font-family-normal-text;
             margin: 0 0 $bottom-margin 0;
         }
 
-        .title {
+        h3 {
             color: $title-2-color;
             font-family: $font-family-normal-text;
             margin: 0 0 calc($bottom-margin * 2) 0;
         }
 
-        .big-text {
-            font-size: $big-text-font-size;
-            line-height: $big-text-font-size;
+        h2,
+        h3 {
+            font-size: $font-size-big-text;
+            line-height: $font-size-big-text;
         }
 
-        .bottom-subtitle {
+        p {
             color: $title-2-color;
             font-family: $font-family-normal-text;
-            font-size: $small-text-font-size;
+            font-size: $font-size-small-text;
             max-width: 440px;
         }
     }
