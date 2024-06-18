@@ -3,6 +3,7 @@
 /* Animation time vars */
 $home-section-transition: 0.8s;
 $home-section-transition-delay: 0.2s;
+$home-section-total-animation-time: calc($home-section-transition + $home-section-transition-delay * 3);
 /* ------------------- */
 
 $bottom-margin: 10px;

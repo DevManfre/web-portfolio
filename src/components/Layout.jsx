@@ -18,7 +18,7 @@ function Layout({ children }) {
         <div className="layout" ref={ref}>
             <NavBar />
 
-            <Sider orientation="left" content="icons" reference={ref}>
+            <Sider orientation="left" content="icons">
                 {query.socials.map(social =>
                     <a key={social['name']} href={social['url']} target='_blank' rel="noreferrer">
                         {icons[social['name']]}
@@ -30,7 +30,7 @@ function Layout({ children }) {
                 {children}
             </main>
 
-            <Sider orientation="right" content="text" reference={ref}>
+            <Sider orientation="right" content="text">
                 <a href={`mailto:${query.email}`} title='Email'>{query.email}</a>
             </Sider>
         </div>
