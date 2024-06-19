@@ -1,4 +1,7 @@
-#experience>.inner>.timeline {
+$experience-button-height: 42px;
+$experience-job-transition: 0.15s;
+
+.experience>div>.timeline {
     display: flex;
     max-width: 800px;
 
@@ -12,6 +15,7 @@
 
         button {
             color: $title-2-color;
+            height: $experience-button-height;
             display: flex;
             align-items: center;
             white-space: nowrap;
@@ -21,7 +25,6 @@
             border-left: 2px solid $title-2-color;
             transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
             width: 100%;
-            height: 42px;
             padding: 0 20px 2px;
             font-size: 15px;
 
@@ -32,7 +35,8 @@
             }
         }
 
-        .selection-line {
+        /* Selection line */
+        div {
             background-color: $main-color;
             position: absolute;
             transition: 0.3s;
@@ -48,20 +52,20 @@
         width: 100%;
         margin-left: 20px;
 
-        .panel {
+        >div {
             color: $title-2-color;
+            transition: $experience-job-transition;
             height: auto;
             position: absolute;
             width: 100%;
             padding: 0px 5px;
-            transition: 0.15s;
 
             &[isselected='false'] {
                 opacity: 0;
             }
 
             &[isselected='true'] {
-                transition-delay: 0.15s;
+                transition-delay: $experience-job-transition;
                 z-index: 10;
             }
 
@@ -81,18 +85,18 @@
                 }
             }
 
-            .range {
+            p {
                 font-family: $font-family-code;
                 margin-top: 10px;
                 margin-bottom: 25px;
                 font-size: 14px;
             }
 
-            .text>ul {
+            div>ul {
+                font-size: $font-size-small-text;
                 list-style: none;
                 padding: 0;
                 margin: 0;
-                font-size: clamp(14px, 5vw, 18px);
 
                 li {
                     position: relative;
@@ -112,7 +116,7 @@
 }
 
 @media screen and (max-width: 600px) {
-    #experience>.inner>.timeline {
+    .experience>div>.timeline {
         display: block;
 
         .tablist {
@@ -122,7 +126,7 @@
         .job-container {
             margin: 0;
 
-            .panel {
+            div {
                 position: static;
                 margin-bottom: 30px;
 
@@ -132,4 +136,8 @@
             }
         }
     }
+}
+
+:export {
+    experienceButtonHeight: $experience-button-height;
 }

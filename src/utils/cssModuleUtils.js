@@ -29,3 +29,7 @@ export const getInViewStyle = (isInView, transition = '1', translateY = 50) => {
         transition: `${fromCssSecondsToNumber(transition)}s`
     };
 }
+
+export const fromPxToInt = (px) => {
+    return px.replace('px', '');
+}
