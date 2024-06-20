@@ -1,31 +1,21 @@
 import * as React from 'react';
-import { useInView } from 'framer-motion';
-import { homeSectionTotalFadeInTime } from './HomeSection';
 import $ from 'jquery';
-import '../styles/Sider.scss';
+import { useIsInView, getInViewStyle, fromCssSecondsToJsMilliseconds } from '../utils/cssModuleUtils';
+import { sider, removedDelay, siderTransition, siderTotalAnimationTime } from '../styles/Sider.module.scss';
 
-function Sider({ orientation, content, children, reference }) {
-    const isInView = useInView(reference, { once: true });
-    const transition = 0.7;
-    const delay = 0.3;
-    let inViewStyle = {
-        transform: isInView ? "none" : "translateY(50px)",
-        opacity: isInView ? 1 : 0,
-        transition: `${transition}s`,
-        transitionDelay: `${homeSectionTotalFadeInTime + delay}s`
-    };
+function Sider({ orientation, content, children }) {
+    const ref = React.useRef(null);
+    const isInView = useIsInView(ref);
 
-    if (isInView) setTimeout(
-        () => $(`#sider-${orientation}`).css('transition-delay', '0s'),
-        (homeSectionTotalFadeInTime + transition + delay) * 1000
-    );
+    /* Remove transition delay for resizing bug */
+    if (isInView) setTimeout(() => $(`.${sider}`).addClass(removedDelay), fromCssSecondsToJsMilliseconds(siderTotalAnimationTime));
 
     return (
-        <div id={`sider-${orientation}`} className={`sider ${orientation}`} style={inViewStyle}>
-            <div className={`sider-content-${content}`}>
+        <div orientation={orientation} className={sider} style={getInViewStyle(isInView, siderTransition)} ref={ref}>
+            <div content={content}>
                 {children}
             </div>
-            <div className='line' />
+            <div /> {/* Line */}
         </div>
     );
 }

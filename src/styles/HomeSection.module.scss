@@ -1,0 +1,66 @@
+@import './NavBar.module.scss';
+
+/* Animation time vars */
+$home-section-transition: 0.8s;
+$home-section-transition-delay: 0.2s;
+$home-section-total-animation-time: calc($home-section-transition + $home-section-transition-delay * 3);
+/* ------------------- */
+
+$bottom-margin: 10px;
+
+#home {
+    padding: $navbar-height-on-top 0 0 0;
+    min-height: calc(100vh - $navbar-height-on-top);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    >div {
+        position: relative;
+        padding-bottom: 13vh;
+
+        /* Section title */
+        >div:nth-child(1) {
+            display: none;
+        }
+
+        /* Delay for inView */
+        @for $i from 2 through 5 {
+            div:nth-child(#{$i}) {
+                transition-delay: calc($navbar-total-animation-time + (#{$i} - 2) * $home-section-transition-delay) !important;
+            }
+        }
+
+        h1 {
+            color: $main-color;
+            font-size: $font-size-small-text;
+            margin: 0 0 $bottom-margin 0;
+            font-weight: normal;
+        }
+
+        h2 {
+            color: $title-1-color;
+            font-family: $font-family-normal-text;
+            margin: 0 0 $bottom-margin 0;
+        }
+
+        h3 {
+            color: $title-2-color;
+            font-family: $font-family-normal-text;
+            margin: 0 0 calc($bottom-margin * 2) 0;
+        }
+
+        h2,
+        h3 {
+            font-size: $font-size-big-text;
+            line-height: $font-size-big-text;
+        }
+
+        p {
+            color: $title-2-color;
+            font-family: $font-family-normal-text;
+            font-size: $font-size-small-text;
+            max-width: 440px;
+        }
+    }
+}

@@ -1,24 +1,20 @@
 import * as React from 'react';
-import { useInView } from 'framer-motion';
 import { StaticImage } from 'gatsby-plugin-image';
 import { Trans } from 'react-i18next';
 import Section from './Section';
-import '../styles/AboutSection.scss';
+import { useIsInView, getInViewStyle } from '../utils/cssModuleUtils';
+import { about, grid, profilePic } from '../styles/AboutSection.module.scss';
 
 function HomeSection() {
     const ref = React.useRef(null);
-    const isInView = useInView(ref, { once: true });
-    let inViewStyle = {
-        transform: isInView ? "none" : "translateY(50px)",
-        opacity: isInView ? 1 : 0,
-        transition: `1s`
-    };
 
     return (
-        <Section id='about' reference={ref} title={'About Me'} style={inViewStyle}>
-            <div className='grid' >
-                <div className='text'>
-                    <p><Trans>about-paragraph-1</Trans></p>
+        <Section id='about' classes={about} reference={ref} title={'About Me'} style={getInViewStyle(useIsInView(ref))}>
+            <div className={grid} >
+                <div>
+                    <p>
+                        <Trans>about-paragraph-1</Trans>
+                    </p>
                     <p>
                         <Trans>about-paragraph-2</Trans>
                         <a href='https://www.italiangres.com/' className='link-text' target='_blank' rel='noreferrer'>
@@ -26,8 +22,10 @@ function HomeSection() {
                         </a>
                         <Trans>about-paragraph-3</Trans>
                     </p>
-                    <p><Trans>about-paragraph-4</Trans></p>
-                    <ul className='skill-list'>
+                    <p>
+                        <Trans>about-paragraph-4</Trans>
+                    </p>
+                    <ul>
                         <li>Javascript (ES6+)</li>
                         <li>React</li>
                         <li>Gatsby</li>
@@ -35,7 +33,7 @@ function HomeSection() {
                         <li>GraphQL</li>
                     </ul>
                 </div>
-                <div className='img'>
+                <div className={profilePic}>
                     <StaticImage alt='' src='../images/profile.webp' />
                 </div>
             </div>

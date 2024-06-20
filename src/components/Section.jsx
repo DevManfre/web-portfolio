@@ -1,11 +1,11 @@
 import * as React from "react";
-import '../styles/Section.scss';
+import {sectionTitle} from '../styles/Section.module.scss';
 
-function Section({ children, id, reference, style, title }) {
+function Section({ children, classes, id, reference, style, title }) {
     return (
-        <section id={id}>
+        <section id={id} className={classes}>
             <div className="inner" ref={reference} style={style}>
-                <div className="section-title">
+                <div className={sectionTitle}>
                     {title}
                 </div>
                 {children}

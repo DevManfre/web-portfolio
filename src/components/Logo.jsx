@@ -1,12 +1,28 @@
 import * as React from "react";
-import '../styles/Logo.scss';
+import $ from 'jquery';
+import { fromCssSecondsToJsMilliseconds } from '../utils/cssModuleUtils';
+import { containerLogo, logoTotalAnimationTime } from '../styles/Logo.module.scss';
 
-function Logo() {
+function Logo({ loadingScreen = "false" }) {
+    /* After component mount, set hidden layout so the layout animations don't start. */
+    React.useEffect(() => {
+        if (loadingScreen === 'true') {
+            $('.layout').css('display', 'none');
+
+            setTimeout(() => {
+                $('.layout').css('display', 'block');
+                $(`.${containerLogo}[animation="true"]`).remove();
+            }, fromCssSecondsToJsMilliseconds(logoTotalAnimationTime));
+        }
+    }, [loadingScreen]);
+
     return (
-        <div className="container-logo">
-            <div className="lateral minor">&lt;</div>
-            <div className="central"><div className="line" /></div>
-            <div className="lateral major">&gt;</div>
+        <div className={containerLogo} loading-screen={loadingScreen}>
+            <div>&lt;</div>
+            <div>
+                <div />
+            </div>
+            <div>&gt;</div>
         </div>
     );
 }
