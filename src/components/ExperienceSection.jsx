@@ -36,41 +36,37 @@ function ExperienceSection() {
             <div className={timeline}>
                 <div className={tablist}>
                     {/* Print the companies' buttons you work for */}
-                    {query.map(company => {
-                        return (
-                            <button key={btnCount} id={`tab-${btnCount++}`} isselected='false' onClick={handleOnClick}>
-                                {company['name']}
-                            </button>
-                        )
-                    })}
+                    {query.map(company =>
+                        <button key={btnCount} id={`tab-${btnCount++}`} isselected='false' onClick={handleOnClick}>
+                            {company['name']}
+                        </button>
+                    )}
                     <div /> {/* selection line */}
                 </div>
 
                 <div className={jobContainer}>
                     {/* Print the companies' panels */}
-                    {query.map(company => {
-                        return (
-                            <div key={panelCount} id={`panel-${panelCount++}`} isselected='false'>
-                                <h3>
-                                    <span>{company['job']}&nbsp;</span>
-                                    <a href={company['url']} className="link-text" rel="noopener noreferrer" target="_blank">
-                                        {company['name']}
-                                    </a>
-                                </h3>
-                                <p><Trans>{`company-${company['name']}-date`}</Trans></p>
-                                <div>
-                                    <ul>
-                                        {/* Print the informations list from translations */}
-                                        {Object.keys(translations).filter(key => new RegExp(`^company-${company['name']}-`).test(key)).map(t => {
-                                            if (parseInt(t.replace(`company-${company['name']}-`, '')))
-                                                return <li key={t}><Trans>{t}</Trans></li>
-                                            return undefined;
-                                        })}
-                                    </ul>
-                                </div>
+                    {query.map(company =>
+                        <div key={panelCount} id={`panel-${panelCount++}`} isselected='false'>
+                            <h3>
+                                <span>{company['job']}&nbsp;</span>
+                                <a href={company['url']} className="link-text" rel="noopener noreferrer" target="_blank">
+                                    {company['name']}
+                                </a>
+                            </h3>
+                            <p><Trans>{`company-${company['name']}-date`}</Trans></p>
+                            <div>
+                                <ul>
+                                    {/* Print the informations list from translations */}
+                                    {Object.keys(translations).filter(key => new RegExp(`^company-${company['name']}-`).test(key)).map(t => {
+                                        if (parseInt(t.replace(`company-${company['name']}-`, '')))
+                                            return <li key={t}><Trans>{t}</Trans></li>
+                                        return undefined;
+                                    })}
+                                </ul>
                             </div>
-                        )
-                    })}
+                        </div>
+                    )}
                 </div>
             </div>
         </Section>

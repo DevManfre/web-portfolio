@@ -6,7 +6,7 @@ import { useIsInView, getInViewStyle } from '../utils/cssModuleUtils';
 import { navbar, openSidebar, navbarLinkTransition, navbarLinks } from '../styles/NavBar.module.scss';
 
 function NavBar() {
-    const links = navbarLinks.replace(' ', '').split(',');
+    const links = navbarLinks.replaceAll(' ', '').split(',');
     const { scrollDir, scrollPosition } = useDetectScroll();
     const ref = React.useRef(null);
     const isInView = useIsInView(ref);
@@ -25,12 +25,15 @@ function NavBar() {
             </a>
 
             <ol>
-                {links.map(link =>
-                    <li key={link}>
-                        <a href={`#${link.toLowerCase()}`} onClick={handleOnClick} style={inViewStyle}>
-                            {link}
-                        </a>
-                    </li>
+                {links.map(link => {
+                    return (
+                        <li key={link}>
+                            <a href={`#${link.toLowerCase()}`} onClick={handleOnClick} style={inViewStyle}>
+                                {link}
+                            </a>
+                        </li>
+                    )
+                }
                 )}
             </ol>
 
