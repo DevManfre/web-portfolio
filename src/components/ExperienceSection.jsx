@@ -1,6 +1,6 @@
 import * as React from "react";
 import { graphql, useStaticQuery } from "gatsby";
-import { Trans } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 import $ from 'jquery';
 import Section from './Section';
 import { useIsInView, getInViewStyle, fromPxToInt } from '../utils/cssModuleUtils';
@@ -8,7 +8,9 @@ import { experience, timeline, tablist, jobContainer, experienceButtonHeight } f
 
 function ExperienceSection() {
     const ref = React.useRef(null);
-    const query = (useStaticQuery(graphql`query{site{siteMetadata{companies{name job url itemsList}}}}`)).site.siteMetadata.companies;
+    const query = (useStaticQuery(graphql`query{site{siteMetadata{companies{name job url}}}}`)).site.siteMetadata.companies;
+    const { i18n } = useTranslation();
+    const translations = i18n.getDataByLanguage(i18n.language)['translation'];
     let btnCount = 0, panelCount = 0;
 
     /* Start with the first one selected */
@@ -29,19 +31,11 @@ function ExperienceSection() {
         $(`.${tablist} > div`).css('top', fromPxToInt(experienceButtonHeight) * jobId);
     }
 
-    let getCompanyText = (company) => {
-        let text = [];
-
-        for (let i = 0; i < company['itemsList']; i++)
-            text.push(<li key={i}><Trans>{`company-${company['name']}-${i}`}</Trans></li>);
-
-        return text;
-    }
-
     return (
         <Section id='experience' title="Experience" reference={ref} style={getInViewStyle(useIsInView(ref))} classes={experience}>
             <div className={timeline}>
                 <div className={tablist}>
+                    {/* Print the companies' buttons you work for */}
                     {query.map(company => {
                         return (
                             <button key={btnCount} id={`tab-${btnCount++}`} isselected='false' onClick={handleOnClick}>
@@ -53,6 +47,7 @@ function ExperienceSection() {
                 </div>
 
                 <div className={jobContainer}>
+                    {/* Print the companies' panels */}
                     {query.map(company => {
                         return (
                             <div key={panelCount} id={`panel-${panelCount++}`} isselected='false'>
@@ -65,7 +60,12 @@ function ExperienceSection() {
                                 <p><Trans>{`company-${company['name']}-date`}</Trans></p>
                                 <div>
                                     <ul>
-                                        {getCompanyText(company)}
+                                        {/* Print the informations list from translations */}
+                                        {Object.keys(translations).filter(key => new RegExp(`^company-${company['name']}-`).test(key)).map(t => {
+                                            if (parseInt(t.replace(`company-${company['name']}-`, '')))
+                                                return <li key={t}><Trans>{t}</Trans></li>
+                                            return undefined;
+                                        })}
                                     </ul>
                                 </div>
                             </div>

@@ -30,13 +30,11 @@ module.exports = {
                 name: 'ItalianGres',
                 job: 'Web Developer',
                 url: 'www.italiangres.com',
-                itemsList: 3
             },
             {
                 name: 'expert.ai',
                 job: 'Backend Developer',
                 url: 'https://www.expert.ai',
-                itemsList: 3
             },
         ]
     },
