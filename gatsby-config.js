@@ -36,6 +36,53 @@ module.exports = {
                 job: 'Backend Developer',
                 url: 'https://www.expert.ai',
             },
+        ],
+        projects: [
+            {
+                title: 'title',
+                description: 'description',
+                tags: [
+                    '1',
+                    '2',
+                    '3',
+                ],
+                links: [
+                    {
+                        url: 'link a caso',
+                        icon: 'icona a caso'
+                    }
+                ]
+            },
+            {
+                title: 'title',
+                description: 'description',
+                tags: [
+                    '1',
+                    '2',
+                    '3',
+                ],
+                links: [
+                    {
+                        url: 'link a caso',
+                        icon: 'icona a caso'
+                    }
+                ]
+            },
+            {
+                title: 'title',
+                description: 'description',
+                tags: [
+                    '1',
+                    '2',
+                    '3',
+                ],
+                links: [
+                    {
+                        url: 'link a caso',
+                        icon: 'icona a caso'
+                    }
+                ]
+            }
         ]
     },
     flags: {

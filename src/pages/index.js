@@ -1,10 +1,11 @@
 import * as React from "react";
 import { graphql } from "gatsby";
 import Logo from "../components/Logo";
+import Layout from "../components/Layout";
 import HomeSection from "../components/HomeSection";
 import AboutSection from "../components/AboutSection";
 import ExperienceSection from "../components/ExperienceSection";
-import Layout from "../components/Layout";
+import WorkSection from "../components/WorkSection";
 
 const IndexPage = () => {
     return (
@@ -14,6 +15,7 @@ const IndexPage = () => {
                 <HomeSection />
                 <AboutSection />
                 <ExperienceSection />
+                <WorkSection />
             </Layout>
         </>
     );

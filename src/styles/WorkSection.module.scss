@@ -1,0 +1,13 @@
+.projects-container {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: 15px;
+
+    .project-card {
+        background-color: $background-color;
+        filter: brightness(1.5);
+        border-radius: 10px;
+
+        min-height: 100px;
+    }
+}
