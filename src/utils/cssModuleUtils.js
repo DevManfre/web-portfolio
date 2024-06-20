@@ -16,7 +16,8 @@ export const useIsInView = (reference) => {
     return useInView(
         reference,
         {
-            once: true
+            once: true,
+            amount: 0.3
         }
     );
 }
