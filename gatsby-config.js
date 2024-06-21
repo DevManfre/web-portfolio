@@ -39,50 +39,30 @@ module.exports = {
         ],
         projects: [
             {
-                title: 'Game of Thrones random quotes',
-                description: 'description',
+                title: 'project-title-web-portfolio-v2',
+                description: 'project-description-web-portfolio-v2',
                 tags: [
-                    '1',
-                    '2',
-                    '3',
+                    'React',
+                    'Gatsby',
+                    'SCSS'
                 ],
                 links: [
                     {
                         icon: 'github',
-                        url: 'https://github.com/DevManfre/random-got-quotes'
+                        url: 'https://github.com/DevManfre/portfolio-v2'
                     },
                     {
                         icon: 'external-site',
-                        url: 'https://got-random-quotes.netlify.app/'
+                        url: ''
                     }
                 ]
             },
             {
-                title: 'Drum Machine',
-                description: 'description',
+                title: 'project-title-common-js-calculator',
+                description: 'project-description-common-js-calculator',
                 tags: [
-                    '1',
-                    '2',
-                    '3',
-                ],
-                links: [
-                    {
-                        icon: 'github',
-                        url: 'https://github.com/DevManfre/rhythm-forge'
-                    },
-                    {
-                        icon: 'external-site',
-                        url: 'https://rhythm-forge.netlify.app/'
-                    }
-                ]
-            },
-            {
-                title: 'Common JS Calculator',
-                description: 'description',
-                tags: [
-                    '1',
-                    '2',
-                    '3',
+                    'React',
+                    'SCSS'
                 ],
                 links: [
                     {
@@ -96,24 +76,42 @@ module.exports = {
                 ]
             },
             {
-                title: 'My web portfolio v2',
-                description: 'description',
+                title: 'project-title-drum-machine',
+                description: 'project-description-drum-machine',
                 tags: [
-                    '1',
-                    '2',
-                    '3',
+                    'React',
+                    'SCSS'
                 ],
                 links: [
                     {
                         icon: 'github',
-                        url: 'https://github.com/DevManfre/portfolio-v2'
+                        url: 'https://github.com/DevManfre/rhythm-forge'
                     },
                     {
                         icon: 'external-site',
-                        url: ''
+                        url: 'https://rhythm-forge.netlify.app/'
                     }
                 ]
-            }
+            },
+            {
+                title: 'project-title-got-random-quotes',
+                description: 'project-description-got-random-quotes',
+                tags: [
+                    'React',
+                    'SCSS',
+                    'API',
+                ],
+                links: [
+                    {
+                        icon: 'github',
+                        url: 'https://github.com/DevManfre/random-got-quotes'
+                    },
+                    {
+                        icon: 'external-site',
+                        url: 'https://got-random-quotes.netlify.app/'
+                    }
+                ]
+            },
         ]
     },
     flags: {

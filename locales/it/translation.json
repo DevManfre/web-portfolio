@@ -16,5 +16,14 @@
     "company-expert.ai-date": "marzo 2017, aprile 2018, ottobre - novembre 2019",
     "company-expert.ai-1": "Sviluppata estensione per IntelliJ in merito alla colorazione del codice per estensioni di file particolari utilizzati dall'azienda",
     "company-expert.ai-2": "Sviluppate nuove feature per l'intelligienza artificiale proprietaria Cogito",
-    "company-expert.ai-3": "Le feature sono state sviluppate utilizzando Java"
+    "company-expert.ai-3": "Le feature sono state sviluppate utilizzando Java",
+
+    "project-title-got-random-quotes": "Generatore di citazioni di Game of Thrones",
+    "project-description-got-random-quotes": "Implementazione grafica di API che permettono la genererazione di citazioni appartenenti alla famosa serie TV Game of Thrones",
+    "project-title-drum-machine": "React Drum Machine",
+    "project-description-drum-machine": "Implementazione di una drum machine come esercizio per imparare il funzionamento di React",
+    "project-title-common-js-calculator": "Calcolatrice React",
+    "project-description-common-js-calculator": "Semplice implementazione di una calcolatrice come esercizio per imparare il funzionamento di React",
+    "project-title-web-portfolio-v2": "Portfolio web v2",
+    "project-description-web-portfolio-v2": "Seconda versione del mio portfolio web, implementata ricostruendo da zero la versione creata da Brittany Chiang"
 }

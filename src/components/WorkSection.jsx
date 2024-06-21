@@ -1,9 +1,11 @@
 import * as React from 'react';
 import { graphql, useStaticQuery } from "gatsby";
+import { Trans } from "react-i18next";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import Section from './Section';
 import { useIsInView, getInViewStyle } from '../utils/cssModuleUtils';
-import { projectsContainer, projectCard, iconsRow } from '../styles/WorkSection.module.scss';
+import { icons } from '../utils/svgIcons';
+import { projectsContainer } from '../styles/WorkSection.module.scss';
 
 function WorkSection() {
     const ref = React.useRef(null);
@@ -14,10 +16,32 @@ function WorkSection() {
             <div className={projectsContainer}>
                 {/* Print a card for every project */}
                 {query.map(project =>
-                    <div className={projectCard} key={project['title']}>
-                        <div className={iconsRow}>
-                            <i class="bi bi-folder2"></i>
-                        </div>
+                    <div key={project['title']}>
+                        <header>
+                            <div>
+                                <i className="bi bi-folder2"></i>
+                                <span>
+                                    {/* Print an icon for each url */}
+                                    {project['links'].map(link =>
+                                        <a key={link['icon']} href={link['url']}>
+                                            {icons[link['icon']]}
+                                        </a>
+                                    )}
+                                </span>
+                            </div>
+
+                            <h4><Trans>{project['title']}</Trans></h4>
+                            <p><Trans>{project['description']}</Trans></p>
+                        </header>
+
+                        <footer>
+                            <ul>
+                                {/* Print all project tags */}
+                                {project['tags'].map(tag =>
+                                    <li>{tag}</li>
+                                )}
+                            </ul>
+                        </footer>
                     </div>
                 )}
             </div>

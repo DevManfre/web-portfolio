@@ -1,29 +1,86 @@
-$project-card-hover-transition: 0.4s ease-in-out;
+$project-card-hover-transition: 0.3s ease-in-out;
 
 .projects-container {
     display: grid;
-    grid-template-columns: repeat(3, auto);
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
 
-    .project-card {
-        background-color: $background-color;
+    >div {
+        background-color: lighten($color: $background-color, $amount: 5%);
         transition: $project-card-hover-transition;
-        filter: brightness(1.5);
-        padding: 15px;
+        font-family: $font-family-normal-text;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        
+        padding: 20px;
         border-radius: 10px;
 
-        .icons-row {
+        &:hover {
+            transition: $project-card-hover-transition;
+            transform: translateY(-10px);
+
+            h4 {
+                transition: $project-card-hover-transition;
+                color: $main-color;
+            }
+        }
+
+        div {
+            display: flex;
+            justify-content: space-between;
+
             i {
                 color: $main-color;
                 font-size: 40px;
             }
 
-            
+            span {
+                display: grid;
+                position: relative;
+                grid-template-columns: repeat(3, auto);
+                top: 15px;
+                gap: 15px;
+
+                a {
+
+                    &:hover svg {
+                        transition: $project-card-hover-transition;
+                        color: $main-color;
+                    }
+
+                    svg {
+                        color: $title-1-color;
+                        transition: $project-card-hover-transition;
+                        width: 20px;
+                    }
+                }
+            }
         }
 
-        &:hover {
+        h4 {
+            color: $title-1-color;
+            font-size: $font-size-normal-text;
             transition: $project-card-hover-transition;
-            transform: translateY(-15px);
+            margin: 10px 0;
+        }
+
+        p {
+            color: $title-1-color;
+            font-weight: 0;
+        }
+
+        ul {
+            color: $title-2-color;
+            list-style: none;
+            padding-inline-start: 0;
+            margin: 0;
+
+            li {
+                font-family: $font-family-code;
+                display: inline;
+                margin-right: 15px;
+            }
         }
     }
 }
