@@ -39,7 +39,7 @@ module.exports = {
         ],
         projects: [
             {
-                title: 'title',
+                title: 'Game of Thrones random quotes',
                 description: 'description',
                 tags: [
                     '1',
@@ -48,13 +48,17 @@ module.exports = {
                 ],
                 links: [
                     {
-                        url: 'link a caso',
-                        icon: 'icona a caso'
+                        icon: 'github',
+                        url: 'https://github.com/DevManfre/random-got-quotes'
+                    },
+                    {
+                        icon: 'external-site',
+                        url: 'https://got-random-quotes.netlify.app/'
                     }
                 ]
             },
             {
-                title: 'title',
+                title: 'Drum Machine',
                 description: 'description',
                 tags: [
                     '1',
@@ -63,13 +67,17 @@ module.exports = {
                 ],
                 links: [
                     {
-                        url: 'link a caso',
-                        icon: 'icona a caso'
+                        icon: 'github',
+                        url: 'https://github.com/DevManfre/rhythm-forge'
+                    },
+                    {
+                        icon: 'external-site',
+                        url: 'https://rhythm-forge.netlify.app/'
                     }
                 ]
             },
             {
-                title: 'title',
+                title: 'Common JS Calculator',
                 description: 'description',
                 tags: [
                     '1',
@@ -78,8 +86,31 @@ module.exports = {
                 ],
                 links: [
                     {
-                        url: 'link a caso',
-                        icon: 'icona a caso'
+                        icon: 'github',
+                        url: 'https://github.com/DevManfre/common-calculator'
+                    },
+                    {
+                        icon: 'external-site',
+                        url: 'https://common-calculator-devmanfre.netlify.app/'
+                    }
+                ]
+            },
+            {
+                title: 'My web portfolio v2',
+                description: 'description',
+                tags: [
+                    '1',
+                    '2',
+                    '3',
+                ],
+                links: [
+                    {
+                        icon: 'github',
+                        url: 'https://github.com/DevManfre/portfolio-v2'
+                    },
+                    {
+                        icon: 'external-site',
+                        url: ''
                     }
                 ]
             }

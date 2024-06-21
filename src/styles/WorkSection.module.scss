@@ -1,13 +1,29 @@
+$project-card-hover-transition: 0.4s ease-in-out;
+
 .projects-container {
     display: grid;
     grid-template-columns: repeat(3, auto);
-    gap: 15px;
+    gap: 20px;
 
     .project-card {
         background-color: $background-color;
+        transition: $project-card-hover-transition;
         filter: brightness(1.5);
+        padding: 15px;
         border-radius: 10px;
 
-        min-height: 100px;
+        .icons-row {
+            i {
+                color: $main-color;
+                font-size: 40px;
+            }
+
+            
+        }
+
+        &:hover {
+            transition: $project-card-hover-transition;
+            transform: translateY(-15px);
+        }
     }
 }

@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { graphql, useStaticQuery } from "gatsby";
+import "bootstrap-icons/font/bootstrap-icons.css";
 import Section from './Section';
 import { useIsInView, getInViewStyle } from '../utils/cssModuleUtils';
-import { projectsContainer, projectCard } from '../styles/WorkSection.module.scss';
+import { projectsContainer, projectCard, iconsRow } from '../styles/WorkSection.module.scss';
 
 function WorkSection() {
     const ref = React.useRef(null);
@@ -13,8 +14,10 @@ function WorkSection() {
             <div className={projectsContainer}>
                 {/* Print a card for every project */}
                 {query.map(project =>
-                    <div className={projectCard}>
-                        
+                    <div className={projectCard} key={project['title']}>
+                        <div className={iconsRow}>
+                            <i class="bi bi-folder2"></i>
+                        </div>
                     </div>
                 )}
             </div>
