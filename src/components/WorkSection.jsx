@@ -14,7 +14,7 @@ function WorkSection() {
     /* Add project icon svg to file and remove bootstrap icons dependency */
 
     return (
-        <Section id='work' title={'Some Things I’ve Built'} reference={ref} style={getInViewStyle(useIsInView(ref))}>
+        <Section id='work' title={'My works'} reference={ref} style={getInViewStyle(useIsInView(ref))}>
             <div className={projectsContainer}>
                 {/* Print a card for every project */}
                 {query.map(project =>
@@ -25,7 +25,7 @@ function WorkSection() {
                                 <span>
                                     {/* Print an icon for each url */}
                                     {project['links'].map(link =>
-                                        <a key={link['icon']} href={link['url']}>
+                                        <a key={link['icon']} href={link['url']} target='_blank' rel="noreferrer">
                                             {icons[link['icon']]}
                                         </a>
                                     )}
