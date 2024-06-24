@@ -3,11 +3,10 @@ import { graphql, useStaticQuery } from "gatsby";
 import { Trans, useTranslation } from "react-i18next";
 import $ from 'jquery';
 import Section from './Section';
-import { useIsInView, getInViewStyle, fromPxToInt } from '../utils/cssModuleUtils';
+import { fromPxToInt } from '../utils/cssModuleUtils';
 import { experience, timeline, tablist, jobContainer, experienceButtonHeight } from '../styles/ExperienceSection.module.scss';
 
 function ExperienceSection() {
-    const ref = React.useRef(null);
     const query = (useStaticQuery(graphql`query{site{siteMetadata{companies{name job url}}}}`)).site.siteMetadata.companies;
     const { i18n } = useTranslation();
     const translations = i18n.getDataByLanguage(i18n.language)['translation'];
@@ -32,7 +31,7 @@ function ExperienceSection() {
     }
 
     return (
-        <Section id='experience' title="Experience" reference={ref} style={getInViewStyle(useIsInView(ref))} classes={experience}>
+        <Section id='experience' title="Experience" classes={experience}>
             <div className={timeline}>
                 <div className={tablist}>
                     {/* Print the companies' buttons you work for */}

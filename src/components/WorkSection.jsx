@@ -3,18 +3,16 @@ import { graphql, useStaticQuery } from "gatsby";
 import { Trans } from "react-i18next";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import Section from './Section';
-import { useIsInView, getInViewStyle } from '../utils/cssModuleUtils';
 import { icons } from '../utils/svgIcons';
 import { projectsContainer } from '../styles/WorkSection.module.scss';
 
 function WorkSection() {
-    const ref = React.useRef(null);
     const query = (useStaticQuery(graphql`query{site{siteMetadata{projects{title description tags links{url icon}}}}}`)).site.siteMetadata.projects;
 
-    /* Add project icon svg to file and remove bootstrap icons dependency */
+    /* TODO: Add project icon svg to file and remove bootstrap icons dependency */
 
     return (
-        <Section id='work' title={'My works'} reference={ref} style={getInViewStyle(useIsInView(ref))}>
+        <Section id='work' title={'My works'}>
             <div className={projectsContainer}>
                 {/* Print a card for every project */}
                 {query.map(project =>

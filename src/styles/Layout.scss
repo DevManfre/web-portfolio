@@ -57,7 +57,7 @@ body {
 
 @media screen and (max-width: 768px) {
     body .content {
-        padding: 0 calc($content-lateral-padding-1024 / 2);
+        padding: 0 calc($content-lateral-padding-1024 / 1.5);
     }
 }
 

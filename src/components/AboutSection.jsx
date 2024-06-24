@@ -2,14 +2,11 @@ import * as React from 'react';
 import { StaticImage } from 'gatsby-plugin-image';
 import { Trans } from 'react-i18next';
 import Section from './Section';
-import { useIsInView, getInViewStyle } from '../utils/cssModuleUtils';
 import { about, grid, profilePic } from '../styles/AboutSection.module.scss';
 
 function HomeSection() {
-    const ref = React.useRef(null);
-
     return (
-        <Section id='about' classes={about} reference={ref} title={'About Me'} style={getInViewStyle(useIsInView(ref))}>
+        <Section id='about' classes={about} title={'About Me'}>
             <div className={grid} >
                 <div>
                     <p>

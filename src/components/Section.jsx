@@ -1,11 +1,14 @@
 import * as React from "react";
+import {getInViewStyle, useIsInView} from '../utils/cssModuleUtils';
 import {sectionTitle} from '../styles/Section.module.scss';
 
 function Section({ children, classes, id, reference, style, title }) {
-    /* TODO: find a way to create ref and style inside this module and not every time I create a section */
+    const defaultRef = React.useRef(null);
+    const defaultInViewStyle = getInViewStyle(useIsInView(defaultRef));
+    
     return (
         <section id={id} className={classes}>
-            <div className="inner" ref={reference} style={style}>
+            <div className="inner" ref={reference ? reference : defaultRef} style={reference ? style : defaultInViewStyle}>
                 <div className={sectionTitle}>
                     {title}
                 </div>
