@@ -1,6 +1,6 @@
 $content-lateral-padding: 150px;
 $content-lateral-padding-1024: calc($content-lateral-padding / 2);
-$content-lateral-padding-425: calc($content-lateral-padding / 4);
+$content-lateral-padding-425: calc($content-lateral-padding / 8);
 $content-lateral-margin-4k: calc((100vw - 1440px)/2);
 
 $link-transition: 0.1s;
@@ -52,6 +52,12 @@ body {
 @media screen and (max-width: 1024px) {
     body .content {
         padding: 0 $content-lateral-padding-1024;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    body .content {
+        padding: 0 calc($content-lateral-padding-1024 / 1.5);
     }
 }
 

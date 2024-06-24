@@ -3,11 +3,10 @@ import { graphql, useStaticQuery } from "gatsby";
 import { Trans, useTranslation } from "react-i18next";
 import $ from 'jquery';
 import Section from './Section';
-import { useIsInView, getInViewStyle, fromPxToInt } from '../utils/cssModuleUtils';
+import { fromPxToInt } from '../utils/cssModuleUtils';
 import { experience, timeline, tablist, jobContainer, experienceButtonHeight } from '../styles/ExperienceSection.module.scss';
 
 function ExperienceSection() {
-    const ref = React.useRef(null);
     const query = (useStaticQuery(graphql`query{site{siteMetadata{companies{name job url}}}}`)).site.siteMetadata.companies;
     const { i18n } = useTranslation();
     const translations = i18n.getDataByLanguage(i18n.language)['translation'];
@@ -32,45 +31,41 @@ function ExperienceSection() {
     }
 
     return (
-        <Section id='experience' title="Experience" reference={ref} style={getInViewStyle(useIsInView(ref))} classes={experience}>
+        <Section id='experience' title="Experience" classes={experience}>
             <div className={timeline}>
                 <div className={tablist}>
                     {/* Print the companies' buttons you work for */}
-                    {query.map(company => {
-                        return (
-                            <button key={btnCount} id={`tab-${btnCount++}`} isselected='false' onClick={handleOnClick}>
-                                {company['name']}
-                            </button>
-                        )
-                    })}
+                    {query.map(company =>
+                        <button key={btnCount} id={`tab-${btnCount++}`} isselected='false' onClick={handleOnClick}>
+                            {company['name']}
+                        </button>
+                    )}
                     <div /> {/* selection line */}
                 </div>
 
                 <div className={jobContainer}>
                     {/* Print the companies' panels */}
-                    {query.map(company => {
-                        return (
-                            <div key={panelCount} id={`panel-${panelCount++}`} isselected='false'>
-                                <h3>
-                                    <span>{company['job']}&nbsp;</span>
-                                    <a href={company['url']} className="link-text" rel="noopener noreferrer" target="_blank">
-                                        {company['name']}
-                                    </a>
-                                </h3>
-                                <p><Trans>{`company-${company['name']}-date`}</Trans></p>
-                                <div>
-                                    <ul>
-                                        {/* Print the informations list from translations */}
-                                        {Object.keys(translations).filter(key => new RegExp(`^company-${company['name']}-`).test(key)).map(t => {
-                                            if (parseInt(t.replace(`company-${company['name']}-`, '')))
-                                                return <li key={t}><Trans>{t}</Trans></li>
-                                            return undefined;
-                                        })}
-                                    </ul>
-                                </div>
+                    {query.map(company =>
+                        <div key={panelCount} id={`panel-${panelCount++}`} isselected='false'>
+                            <h3>
+                                <span>{company['job']}&nbsp;</span>
+                                <a href={company['url']} className="link-text" rel="noopener noreferrer" target="_blank">
+                                    {company['name']}
+                                </a>
+                            </h3>
+                            <p><Trans>{`company-${company['name']}-date`}</Trans></p>
+                            <div>
+                                <ul>
+                                    {/* Print the informations list from translations */}
+                                    {Object.keys(translations).filter(key => new RegExp(`^company-${company['name']}-`).test(key)).map(t => {
+                                        if (parseInt(t.replace(`company-${company['name']}-`, '')))
+                                            return <li key={t}><Trans>{t}</Trans></li>
+                                        return undefined;
+                                    })}
+                                </ul>
                             </div>
-                        )
-                    })}
+                        </div>
+                    )}
                 </div>
             </div>
         </Section>

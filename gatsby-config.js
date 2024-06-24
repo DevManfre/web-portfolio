@@ -36,6 +36,82 @@ module.exports = {
                 job: 'Backend Developer',
                 url: 'https://www.expert.ai',
             },
+        ],
+        projects: [
+            {
+                title: 'project-title-web-portfolio-v2',
+                description: 'project-description-web-portfolio-v2',
+                tags: [
+                    'React',
+                    'Gatsby',
+                    'SCSS'
+                ],
+                links: [
+                    {
+                        icon: 'github',
+                        url: 'https://github.com/DevManfre/portfolio-v2'
+                    },
+                    {
+                        icon: 'external-site',
+                        url: ''
+                    }
+                ]
+            },
+            {
+                title: 'project-title-common-js-calculator',
+                description: 'project-description-common-js-calculator',
+                tags: [
+                    'React',
+                    'SCSS'
+                ],
+                links: [
+                    {
+                        icon: 'github',
+                        url: 'https://github.com/DevManfre/common-calculator'
+                    },
+                    {
+                        icon: 'external-site',
+                        url: 'https://common-calculator-devmanfre.netlify.app/'
+                    }
+                ]
+            },
+            {
+                title: 'project-title-drum-machine',
+                description: 'project-description-drum-machine',
+                tags: [
+                    'React',
+                    'SCSS'
+                ],
+                links: [
+                    {
+                        icon: 'github',
+                        url: 'https://github.com/DevManfre/rhythm-forge'
+                    },
+                    {
+                        icon: 'external-site',
+                        url: 'https://rhythm-forge.netlify.app/'
+                    }
+                ]
+            },
+            {
+                title: 'project-title-got-random-quotes',
+                description: 'project-description-got-random-quotes',
+                tags: [
+                    'React',
+                    'SCSS',
+                    'API',
+                ],
+                links: [
+                    {
+                        icon: 'github',
+                        url: 'https://github.com/DevManfre/random-got-quotes'
+                    },
+                    {
+                        icon: 'external-site',
+                        url: 'https://got-random-quotes.netlify.app/'
+                    }
+                ]
+            },
         ]
     },
     flags: {

@@ -138,6 +138,12 @@ $experience-job-transition: 0.15s;
     }
 }
 
+@media screen and (max-width: 468px) {
+    .experience>div>.timeline>.job-container>div>h3>span {
+        display: block;
+    }
+}
+
 :export {
     experienceButtonHeight: $experience-button-height;
 }

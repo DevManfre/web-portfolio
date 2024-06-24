@@ -46,7 +46,7 @@
 }
 
 @media screen and (max-width: 767px) {
-    #about>div>.grid {
+    .about>div>.grid {
         display: contents;
 
         .profile-pic {
@@ -57,7 +57,7 @@
 }
 
 @media screen and (max-width: 426px) {
-    #about>div>.grid>div>ul {
+    .about>div>.grid>div>ul {
         column-gap: 20px;
     }
 }

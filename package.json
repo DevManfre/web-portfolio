@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@smakss/react-scroll-direction": "^4.1.0",
+    "bootstrap-icons": "^1.11.3",
     "framer-motion": "^11.2.4",
     "gatsby": "^5.13.3",
     "gatsby-plugin-html-attributes": "^1.0.5",
