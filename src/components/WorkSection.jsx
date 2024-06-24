@@ -9,8 +9,6 @@ import { projectsContainer } from '../styles/WorkSection.module.scss';
 function WorkSection() {
     const query = (useStaticQuery(graphql`query{site{siteMetadata{projects{title description tags links{url icon}}}}}`)).site.siteMetadata.projects;
 
-    /* TODO: Add project icon svg to file and remove bootstrap icons dependency */
-
     return (
         <Section id='work' title={'My works'}>
             <div className={projectsContainer}>
