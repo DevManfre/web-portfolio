@@ -11,6 +11,8 @@ function WorkSection() {
     const ref = React.useRef(null);
     const query = (useStaticQuery(graphql`query{site{siteMetadata{projects{title description tags links{url icon}}}}}`)).site.siteMetadata.projects;
 
+    /* Add project icon svg to file and remove bootstrap icons dependency */
+
     return (
         <Section id='work' title={'Some Things I’ve Built'} reference={ref} style={getInViewStyle(useIsInView(ref))}>
             <div className={projectsContainer}>
@@ -36,10 +38,7 @@ function WorkSection() {
 
                         <footer>
                             <ul>
-                                {/* Print all project tags */}
-                                {project['tags'].map(tag =>
-                                    <li>{tag}</li>
-                                )}
+                                {project['tags'].map(tag => <li key={tag}>{tag}</li>)}
                             </ul>
                         </footer>
                     </div>
