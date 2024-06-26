@@ -4,8 +4,8 @@ $section-padding-bottom: 5vh;
 
 section {
     min-height: calc(100vh - $section-padding-bottom - $navbar-height);
-    margin: 0 5vw;
     padding: $navbar-height 1vw $section-padding-bottom;
+    margin: 0 5vw;
 
     >div>.section-title {
         color: $title-1-color;

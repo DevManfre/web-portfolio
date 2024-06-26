@@ -6,6 +6,7 @@ import HomeSection from "../components/HomeSection";
 import AboutSection from "../components/AboutSection";
 import ExperienceSection from "../components/ExperienceSection";
 import WorkSection from "../components/WorkSection";
+import ContactSection from "../components/ContactSection";
 
 const IndexPage = () => {
     return (
@@ -16,6 +17,7 @@ const IndexPage = () => {
                 <AboutSection />
                 <ExperienceSection />
                 <WorkSection />
+                <ContactSection />
             </Layout>
         </>
     );
