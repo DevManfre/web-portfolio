@@ -4,7 +4,7 @@ import {contact} from '../styles/ContactSection.module.scss';
 
 function ContactSection() {
     return (
-        <Section id={contact} title='Contact'>
+        <Section id='contact' classes={contact} central='true' title='Contact'>
             
         </Section>
     );

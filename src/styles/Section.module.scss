@@ -2,6 +2,15 @@
 
 $section-padding-bottom: 5vh;
 
+@mixin title-line {
+    background-color: $title-1-color;
+    content: '';
+    display: block;
+    filter: brightness(0.45);
+    width: 300px;
+    height: 0.5px;
+}
+
 section {
     min-height: calc(100vh - $section-padding-bottom - $navbar-height);
     padding: $navbar-height 1vw $section-padding-bottom;
@@ -17,7 +26,19 @@ section {
         padding: 10px 0px 40px;
         margin: 0;
 
-        &::before {
+        &[central='true'] {
+            width: min-content;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+
+            &::before {
+                @include title-line;
+                margin-right: 20px;
+            }
+        }
+
+        &[central='false']::before {
             color: $main-color;
             font-size: $font-size-section-title-counter;
             counter-increment: section-title-counter;
@@ -27,13 +48,18 @@ section {
         }
 
         &::after {
-            background-color: $title-1-color;
-            content: '';
-            display: block;
-            filter: brightness(0.45);
+            @include title-line;
             margin-left: 20px;
-            width: 300px;
-            height: 0.5px;
+        }
+    }
+}
+
+@media screen and (max-width: 1210px) {
+    section>div>.section-title[central='true'] {
+
+        &::before,
+        &::after {
+            max-width: 200px;
         }
     }
 }
@@ -42,8 +68,27 @@ section {
     section {
         margin: 0;
 
-        >div>.section-title::after {
-            width: 200px;
+        >div>.section-title {
+            &[central='false']::after {
+                width: 200px;
+            }
+
+            &[central='true'] {
+                &::before,
+                &::after {
+                    max-width: 100px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 475px) {
+    section>div>.section-title[central='true'] {
+
+        &::before,
+        &::after {
+            max-width: 50px;
         }
     }
 }
