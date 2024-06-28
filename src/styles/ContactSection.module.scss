@@ -1,3 +1,42 @@
 .contact {
-    background-color: transparent;
+    p {
+        color: $title-1-color;
+        font-family: $font-family-normal-text;
+        font-size: $font-size-small-text;
+        background-color: lighten($color: $background-color, $amount: 5%);
+        text-align: center;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        width: minmax(270px, 1fr);
+        max-width: 500px;
+        margin: 0;
+        padding: 20px;
+        border-radius: 10px;
+
+        div {
+            margin-top: 40px;
+
+            a {
+                color: $main-color;
+                transition: 0.3s;
+                border: solid 1px $main-color;
+                background-color: transparent;
+                font-size: 15px;
+                border-radius: 20px;
+                padding: 10px 20px;
+    
+                &:hover {
+                    background-color: $main-color;
+                    color: $background-color;
+                    transition: 0.3s;
+                }
+    
+                svg {
+                    transform: translateY(2px);
+                    margin-right: 5px;
+                }
+            }
+        }
+    }
 }

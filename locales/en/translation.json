@@ -25,5 +25,8 @@
     "project-title-common-js-calculator": "Common JS calculator",
     "project-description-common-js-calculator": "Simple implementation of a calculator as an exercise to learn how React works",
     "project-title-web-portfolio-v2": "Web portfolio v2",
-    "project-description-web-portfolio-v2": "Second version of my web portfolio, implemented by rebuilding from scratch the version created by Brittany Chiang"
+    "project-description-web-portfolio-v2": "Second version of my web portfolio, implemented by rebuilding from scratch the version created by Brittany Chiang",
+
+    "contact-message": "Although I’m not currently looking for any new opportunities, my inbox is always open.Whether you have a question or just want to say hi, I’ll try my best to get back to you!",
+    "contact-email-btn": "Shoot me an email"
 }
