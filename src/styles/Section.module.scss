@@ -16,40 +16,53 @@ section {
     padding: $navbar-height 1vw $section-padding-bottom;
     margin: 0 5vw;
 
-    >div>.section-title {
-        color: $title-1-color;
-        font-size: $font-size-section-title;
-        display: flex;
-        align-items: center;
-        white-space: nowrap;
-        font-weight: 600;
-        padding: 10px 0px 40px;
-        margin: 0;
-
-        &[central='true'] {
-            width: min-content;
-            position: relative;
-            left: 50%;
-            transform: translateX(-50%);
+    >div {
+        .central-section-subtitle {
+            color: $main-color;
+            text-align: center;
 
             &::before {
-                @include title-line;
-                margin-right: 20px;
+                counter-increment: section-title-counter;
+                content: '0' counter(section-title-counter)'. ';
+                font-weight: normal;
             }
         }
 
-        &[central='false']::before {
-            color: $main-color;
-            font-size: $font-size-section-title-counter;
-            counter-increment: section-title-counter;
-            content: '0' counter(section-title-counter)'.';
-            font-weight: normal;
-            margin-right: 10px;
-        }
+        .section-title {
+            color: $title-1-color;
+            font-size: $font-size-section-title;
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+            font-weight: 600;
+            padding: 10px 0px 40px;
+            margin: 0;
 
-        &::after {
-            @include title-line;
-            margin-left: 20px;
+            &[central='true'] {
+                width: min-content;
+                position: relative;
+                left: 50%;
+                transform: translateX(-50%);
+
+                &::before {
+                    @include title-line;
+                    margin-right: 20px;
+                }
+            }
+
+            &[central='false']::before {
+                color: $main-color;
+                font-size: $font-size-section-title-counter;
+                counter-increment: section-title-counter;
+                content: '0' counter(section-title-counter)'.';
+                font-weight: normal;
+                margin-right: 10px;
+            }
+
+            &::after {
+                @include title-line;
+                margin-left: 20px;
+            }
         }
     }
 }
@@ -74,6 +87,7 @@ section {
             }
 
             &[central='true'] {
+
                 &::before,
                 &::after {
                     max-width: 100px;
