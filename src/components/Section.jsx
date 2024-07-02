@@ -10,7 +10,7 @@ function Section({ central, children, classes, id, reference, style, title }) {
     return (
         <section id={id} className={classes}>
             <div className="inner" ref={reference ? reference : defaultRef} style={reference ? style : defaultInViewStyle}>
-                {central == 'true' &&
+                {central === 'true' &&
                     <div className={centralSectionSubtitle}>
                         <Trans>section-subtitle</Trans>
                     </div>
