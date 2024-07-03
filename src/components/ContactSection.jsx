@@ -13,12 +13,12 @@ function ContactSection() {
             <p>
                 <Trans>contact-message</Trans>
 
-                <div>
+                <span>
                     <a href={`mailto:${email}`} title='Email'>
                         {icons['email']}
                         <Trans>contact-email-btn</Trans>
                     </a>
-                </div>
+                </span>
             </p>
         </Section>
     );
