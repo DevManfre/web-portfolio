@@ -54,6 +54,10 @@ module.exports = {
                     {
                         icon: 'external-site',
                         url: ''
+                    },
+                    {
+                        icon: 'original-authors',
+                        url: 'https://v4.brittanychiang.com/'
                     }
                 ]
             },

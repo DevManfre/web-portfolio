@@ -3,6 +3,8 @@
     "homepage-subtitle": "Costruisco cose per il web.",
     "homepage-paragraph": "Sono uno sviluppatore web specializzato nel costruire (e occasionalmente creare il design) di esperienze web.",
 
+    "section-subtitle": "What's next?",
+
     "about-paragraph-1": "Ciao! Mi chiamo Alessio e mi piace creare cose che vivono su internet. Il mio interesse nello sviluppo web è iniziato nel 2020, quando sviluppai un portale di gestione del traffico di siti web per un esame universitario — creare un sito personalizzato mi ha insegnato molto e mi ha fatto scoprire questa passione!",
     "about-paragraph-2": "Oggi ho il privilegio di lavorare per un ",
     "about-link-1": "e-commerce",
@@ -25,5 +27,8 @@
     "project-title-common-js-calculator": "Calcolatrice React",
     "project-description-common-js-calculator": "Semplice implementazione di una calcolatrice come esercizio per imparare il funzionamento di React",
     "project-title-web-portfolio-v2": "Portfolio web v2",
-    "project-description-web-portfolio-v2": "Seconda versione del mio portfolio web, implementata ricostruendo da zero la versione creata da Brittany Chiang"
+    "project-description-web-portfolio-v2": "Seconda versione del mio portfolio web, implementata ricostruendo da zero la versione creata da Brittany Chiang",
+    
+    "contact-message": "Attualmente non sto cercando nuove opportunità, ma leggo sempre i messaggi. Per qualsiasi domanda o semplicemente per dire \"ciao\", farò del mio meglio per rispondere quanto prima!",
+    "contact-email-btn": "Mandami una email"
 }

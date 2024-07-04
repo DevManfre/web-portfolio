@@ -5,6 +5,8 @@ import Logo from './Logo';
 import { useIsInView, getInViewStyle } from '../utils/cssModuleUtils';
 import { navbar, openSidebar, navbarLinkTransition, navbarLinks } from '../styles/NavBar.module.scss';
 
+/* TODO: al click del navbar link se la direzione è up lasciare normale, se è down allora andare un pelo più avanti così da essere in pari con la finestra */
+
 function NavBar() {
     const links = navbarLinks.replaceAll(' ', '').split(',');
     const { scrollDir, scrollPosition } = useDetectScroll();
