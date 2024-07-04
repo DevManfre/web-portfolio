@@ -11,7 +11,7 @@ import ContactSection from "../components/ContactSection";
 const IndexPage = () => {
     return (
         <>
-        <Logo loadingScreen="true" />
+            <Logo loadingScreen="true" />
             <Layout>
                 <HomeSection />
                 <AboutSection />
@@ -23,20 +23,13 @@ const IndexPage = () => {
     );
 }
 
-export const query = graphql`
-    query($language: String!) {
-        locales: allLocale(filter: {language: {eq: $language}}) {
-            edges {
-                node {
-                    ns
-                    data
-                    language
-                }
-            }
-        }
-    }
-`;
+export const query = graphql`query($language: String!){locales:allLocale(filter:{language:{eq:$language}}){edges{node{ns data language}}}site{siteMetadata{title description}}}`;
 
 export default IndexPage;
 
-export const Head = () => <title>Home Page</title>;
+export const Head = ({ data, pageContext }) =>
+    <>
+        <html lang={pageContext['language']} />
+        <title>{data.site.siteMetadata.title}</title>
+        <meta name="description" content={data.site.siteMetadata.description} />
+    </>

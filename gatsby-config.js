@@ -3,7 +3,7 @@
  */
 module.exports = {
     siteMetadata: {
-        title: `devmanfre`,
+        title: 'DevManfre',
         description: 'Alessio Manfredini web portfolio',
         developer: 'Alessio Manfredini',
         socials: [
