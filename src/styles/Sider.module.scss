@@ -8,6 +8,7 @@ $sider-transition-delay: 0.3s;
 $sider-total-animation-time: calc($home-section-total-animation-time + $sider-transition-delay + $sider-transition);
 /* ------------------- */
 
+$sider-viewport-fade-out: 768px;
 $x-position-responsive: calc($content-lateral-padding / 5);
 $x-position: calc($x-position-responsive * 2);
 $content-spacing-value: 10px;
@@ -100,7 +101,7 @@ $content-spacing: $content-spacing-value 0;
     }
 }
 
-@media screen and (max-width: 768px),
+@media screen and (max-width: $sider-viewport-fade-out),
 screen and (max-height: 532px) {
     .sider {
         display: none;

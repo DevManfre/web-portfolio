@@ -3,10 +3,10 @@ import { Trans } from "react-i18next";
 import { graphql, useStaticQuery } from 'gatsby';
 import Section from '../components/Section';
 import { icons } from '../utils/svgIcons';
-import { contact } from '../styles/ContactSection.module.scss';
+import { contact, socials } from '../styles/ContactSection.module.scss';
 
 function ContactSection() {
-    const email = (useStaticQuery(graphql`query{site{siteMetadata{email}}}`)).site.siteMetadata.email;
+    const query = (useStaticQuery(graphql`query{site{siteMetadata{socials{name url}email}}}`)).site.siteMetadata;
 
     return (
         <Section id='contact' classes={contact} central='true' title='Contact'>
@@ -14,12 +14,20 @@ function ContactSection() {
                 <Trans>contact-message</Trans>
 
                 <span>
-                    <a href={`mailto:${email}`} title='Email'>
+                    <a href={`mailto:${query.email}`} title='Email'>
                         {icons['email']}
                         <Trans>contact-email-btn</Trans>
                     </a>
                 </span>
             </p>
+            <div className={socials}>
+                <br /><br /><br /><br />
+                {query.socials.map(social =>
+                    <a key={social['name']} href={social['url']} target='_blank' rel="noreferrer">
+                        {icons[social['name']]}
+                    </a>
+                )}
+            </div>
         </Section>
     );
 }

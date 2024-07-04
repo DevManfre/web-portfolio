@@ -1,42 +1,84 @@
+@import './Sider.module.scss';
+
+$svg-margin-padding: 5px;
+
 .contact {
-    p {
-        color: $title-1-color;
-        font-family: $font-family-normal-text;
-        font-size: $font-size-small-text;
-        background-color: lighten($color: $background-color, $amount: 5%);
-        text-align: center;
-        position: relative;
-        left: 50%;
-        transform: translateX(-50%);
-        width: minmax(270px, 1fr);
-        max-width: 500px;
-        margin: 0;
-        padding: 20px;
-        border-radius: 10px;
+    >div {
+        height: max-content;
 
-        span {
-            margin-top: 40px;
+        >p {
+            color: $title-1-color;
+            font-family: $font-family-normal-text;
+            font-size: $font-size-small-text;
+            background-color: lighten($color: $background-color, $amount: 5%);
+            text-align: center;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            width: minmax(270px, 1fr);
+            max-width: 500px;
+            margin: 0;
+            padding: 20px;
+            border-radius: 10px;
 
-            a {
-                color: $main-color;
-                transition: 0.3s;
-                border: solid 1px $main-color;
-                background-color: transparent;
-                font-size: 15px;
-                border-radius: 20px;
-                padding: 10px 20px;
-    
-                &:hover {
-                    background-color: $main-color;
-                    color: $background-color;
+            span {
+                display: block;
+                margin-top: 40px;
+
+                a {
+                    color: $main-color;
                     transition: 0.3s;
-                }
-    
-                svg {
-                    transform: translateY(2px);
-                    margin-right: 5px;
+                    border: solid 1px $main-color;
+                    background-color: transparent;
+                    font-size: 15px;
+                    border-radius: 20px;
+                    padding: 10px 20px;
+
+                    &:hover {
+                        background-color: $main-color;
+                        color: $background-color;
+                        transition: 0.3s;
+                    }
+
+                    svg {
+                        transform: translateY(2px);
+                        margin-right: 5px;
+                    }
                 }
             }
         }
+
+        .socials {
+            width: min-content;
+            text-wrap: nowrap;
+            position: relative;
+            display: none;
+            left: 50%;
+            transform: translateX(-50%);
+
+            a {
+                margin: $svg-margin-padding;
+                padding: $svg-margin-padding;
+
+                svg {
+                    color: $link-color;
+                    transition: $sider-links-hover-transition;
+                    width: 30px;
+                    filter: brightness(0.8);
+                }
+
+                &:hover svg {
+                    color: $main-color;
+                    filter: brightness(1);
+                    transform: translateY(-5px) scale(1.2);
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $sider-viewport-fade-out) {
+    .contact >div .socials {
+        display: block;
     }
 }
