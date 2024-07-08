@@ -3,7 +3,7 @@
  */
 module.exports = {
     siteMetadata: {
-        title: `devmanfre`,
+        title: 'DevManfre',
         description: 'Alessio Manfredini web portfolio',
         developer: 'Alessio Manfredini',
         socials: [
@@ -152,6 +152,12 @@ module.exports = {
                     keySeparator: false,
                     nsSeparator: false
                 }
+            }
+        },
+        {
+            resolve: 'gatsby-plugin-manifest',
+            options: {
+                "icon": "src/images/icon.png"
             }
         },
         `gatsby-plugin-image`,
