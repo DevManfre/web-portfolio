@@ -1,0 +1,34 @@
+{
+    "homepage-greeting": "Ciao, mi chiamo",
+    "homepage-subtitle": "Costruisco cose per il web.",
+    "homepage-paragraph": "Sono uno sviluppatore web specializzato nel costruire (e occasionalmente creare il design) di esperienze web.",
+
+    "section-subtitle": "What's next?",
+
+    "about-paragraph-1": "Ciao! Mi chiamo Alessio e mi piace creare cose che vivono su internet. Il mio interesse nello sviluppo web è iniziato nel 2020, quando sviluppai un portale di gestione del traffico di siti web per un esame universitario — creare un sito personalizzato mi ha insegnato molto e mi ha fatto scoprire questa passione!",
+    "about-paragraph-2": "Oggi ho il privilegio di lavorare per un ",
+    "about-link-1": "e-commerce",
+    "about-paragraph-3": " e il mio obiettivo principale è costruire prodotti ed esperienze digitali accessibili ed inclusive.",
+    "about-paragraph-4": "Queste sono alcune tecnologie con cui ho lavorato di recente:",
+
+    "company-ItalianGres-date": "febbraio 2024 - presente",
+    "company-ItalianGres-1": "Sviluppate e mantenute nuove funzionalità per il sito web, sia per il front-office che per il back-office, sfruttando il CMR Prestashop e PHP",
+    "company-ItalianGres-2": "Migliorate performance e indicizzazione del sito tramite l'introduzione di best practice e correzioni",
+    "company-ItalianGres-3": "Sviluppati script esterni al sito per la gestione di processi interni all'azienda utilizzando principalmente Python",
+    "company-expert.ai-date": "marzo 2017, aprile 2018, ottobre - novembre 2019",
+    "company-expert.ai-1": "Sviluppata estensione per IntelliJ in merito alla colorazione del codice per estensioni di file particolari utilizzati dall'azienda",
+    "company-expert.ai-2": "Sviluppate nuove feature per l'intelligienza artificiale proprietaria Cogito",
+    "company-expert.ai-3": "Le feature sono state sviluppate utilizzando Java",
+
+    "project-title-got-random-quotes": "Generatore di citazioni di Game of Thrones",
+    "project-description-got-random-quotes": "Implementazione grafica di API che permettono la genererazione di citazioni appartenenti alla famosa serie TV Game of Thrones",
+    "project-title-drum-machine": "React Drum Machine",
+    "project-description-drum-machine": "Implementazione di una drum machine come esercizio per imparare il funzionamento di React",
+    "project-title-common-js-calculator": "Calcolatrice React",
+    "project-description-common-js-calculator": "Semplice implementazione di una calcolatrice come esercizio per imparare il funzionamento di React",
+    "project-title-web-portfolio-v2": "Portfolio web v2",
+    "project-description-web-portfolio-v2": "Seconda versione del mio portfolio web, implementata ricostruendo da zero la versione creata da Brittany Chiang",
+    
+    "contact-message": "Attualmente non sto cercando nuove opportunità, ma leggo sempre i messaggi. Per qualsiasi domanda o semplicemente per dire \"ciao\", farò del mio meglio per rispondere quanto prima!",
+    "contact-email-btn": "Mandami una email"
+}
