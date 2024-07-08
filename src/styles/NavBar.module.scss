@@ -63,7 +63,7 @@ $list-element-spacing: 7px;
         li {
             display: inline;
 
-            @for $i from 1 through length($links) {
+            @for $i from 1 through calc(length($links) + 1) {
                 &:nth-child(#{$i}) a {
                     transition-delay: calc((#{$i}) * $navbar-link-transition-delay) !important;
                 }
@@ -89,6 +89,12 @@ $list-element-spacing: 7px;
                     transition: $transition-time;
                     border: none;
                 }
+
+                &.without-count {
+                    &::before{
+                        display: none;
+                    }
+                }
             }
         }
     }
@@ -112,7 +118,7 @@ $list-element-spacing: 7px;
     }
 }
 
-@media screen and (max-width: 799px) {
+@media screen and (max-width: 870px) {
     body {
 
         /* When sidebar is open */

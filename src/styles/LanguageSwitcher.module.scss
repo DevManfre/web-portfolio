@@ -1,0 +1,101 @@
+// Variables
+$deep-blue: lighten($color: $background-color, $amount: 15%);
+$speed3: cubic-bezier(0.26, 0.48, 0.08, 0.9);
+$transition: 0.4s;
+
+// Size var
+// Update this value to change the language switcher size
+$height: 30px;
+
+.language-switcher {
+    position: relative;
+    display: inline-block;
+    width: calc($height * 2);
+    height: $height;
+    transform: translateY(-25%);
+
+    // Closing Animation
+    -webkit-transition: transform 0.17s $speed3;
+    -moz-transition: transform 0.17s $speed3;
+    -ms-transition: transform 0.17s $speed3;
+    -o-transition: transform 0.17s $speed3;
+    transition: transform 0.17s $speed3;
+
+    input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+
+        &:checked+.slider {
+            background-color: $deep-blue;
+        }
+        
+        &:focus+.slider {
+            box-shadow: none;
+        }
+        
+        &:checked+.slider:before {
+            -webkit-transform: translateX($height);
+            -ms-transform: translateX($height);
+            transform: translateX($height);
+        }
+    }
+
+    .select-1,
+    .select-2 {
+        position: absolute;
+        font-size: calc($height / 2.5);
+        font-family: $font-family-code;
+        top: calc($height / 4);
+        color: $background-color;
+        font-weight: 600;
+        transition: $transition ease-in-out;
+    
+        &:not(.selected) {
+            color: $title-1-color;
+            transition: $transition ease-in-out;
+        }
+    }
+
+    .select-1 {
+        left: calc($height / 3.5);
+    }
+
+    .select-2 {
+        right: calc($height / 4);
+    }
+
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: $deep-blue;
+        box-shadow: 0 3px 64px rgba($deep-blue, .1);
+        -webkit-transition: $transition;
+        transition: $transition;
+
+        &:before {
+            position: absolute;
+            content: "";
+            height: $height;
+            width: $height;
+            left: 0;
+            bottom: 0;
+            background-color: $main-color;
+            box-shadow: 0 3px 64px rgba($deep-blue, .16);
+            -webkit-transition: $transition;
+            transition: $transition;
+        }
+
+        &.round {
+            border-radius: $height;
+        
+            &:before {
+                border-radius: 50%;
+            }
+        }
+    }
+}

@@ -2,10 +2,9 @@ import * as React from 'react';
 import useDetectScroll from '@smakss/react-scroll-direction';
 import $ from 'jquery';
 import Logo from './Logo';
+import LanguageSwitcher from './LanguageSwitcher';
 import { useIsInView, getInViewStyle } from '../utils/cssModuleUtils';
-import { navbar, openSidebar, navbarLinkTransition, navbarLinks } from '../styles/NavBar.module.scss';
-
-/* TODO: al click del navbar link se la direzione è up lasciare normale, se è down allora andare un pelo più avanti così da essere in pari con la finestra */
+import { navbar, openSidebar, navbarLinkTransition, navbarLinks, withoutCount } from '../styles/NavBar.module.scss';
 
 function NavBar() {
     const links = navbarLinks.replaceAll(' ', '').split(',');
@@ -25,7 +24,7 @@ function NavBar() {
             <a href='/' >
                 <div style={inViewStyle}><Logo /></div>
             </a>
-
+            
             <ol>
                 {links.map(link => {
                     return (
@@ -37,6 +36,12 @@ function NavBar() {
                     )
                 }
                 )}
+                <li>
+                    <a href style={inViewStyle} className={withoutCount}>
+                        <input type="text" style={{display: 'none'}}/>
+                        <LanguageSwitcher />
+                    </a>
+                </li>
             </ol>
 
             {/* Responsive Navbar side */}
