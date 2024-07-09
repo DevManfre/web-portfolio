@@ -7,7 +7,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import Logo from './Logo';
 import { getAllAvailableLanguages } from '../utils/i18nLanguages';
 import { useIsInView, getInViewStyle } from '../utils/cssModuleUtils';
-import { navbar, openSidebar, navbarLinkTransition, navbarLinks, withoutCount } from '../styles/NavBar.module.scss';
+import { navbar, openSidebar, navbarLinkTransition, navbarLinks, withoutCount, removedDelay } from '../styles/NavBar.module.scss';
 
 function NavBar() {
     const links = navbarLinks.replaceAll(' ', '').split(',');
@@ -19,6 +19,11 @@ function NavBar() {
 
     /* Hide navbar when scroll down */
     React.useEffect(() => { $('nav').attr('scroll-direction', scrollDir) }, [scrollDir]);
+
+    /* Remove hover delay after mount */
+    React.useEffect(() => {
+        if (isInView) setTimeout(() => $(`nav ol li a`).addClass(removedDelay), 1000);
+    }, [isInView]);
 
     /* linkHandleClick to close sidebar on phone view, otherwise the page doesn't scroll */
     let handleOnClick = () => { if ($('nav>button').is(':visible')) $('nav>button').trigger('click') };

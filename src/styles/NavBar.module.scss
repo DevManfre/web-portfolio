@@ -93,6 +93,10 @@ $list-element-spacing: 7px;
                 &.without-count::before {
                     display: none;
                 }
+                
+                &.removed-delay {
+                    transition-delay: 0s !important;
+                }
 
                 i {
                     font-size: 20px;
