@@ -9,9 +9,16 @@ import WorkSection from "../components/WorkSection";
 import ContactSection from "../components/ContactSection";
 
 const IndexPage = () => {
+    let useLoadingScreen = true;
+
+    if (sessionStorage.getItem("useLoadingScreen"))
+        useLoadingScreen = false;
+    else
+        sessionStorage.setItem('useLoadingScreen', true);
+
     return (
         <>
-            <Logo loadingScreen="true" />
+            {useLoadingScreen && <Logo loadingScreen="true" />}
             <Layout>
                 <HomeSection />
                 <AboutSection />
