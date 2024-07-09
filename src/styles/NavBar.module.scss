@@ -90,10 +90,12 @@ $list-element-spacing: 7px;
                     border: none;
                 }
 
-                &.without-count {
-                    &::before{
-                        display: none;
-                    }
+                &.without-count::before {
+                    display: none;
+                }
+
+                i {
+                    font-size: 20px;
                 }
             }
         }

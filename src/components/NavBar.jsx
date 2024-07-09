@@ -1,14 +1,18 @@
 import * as React from 'react';
 import useDetectScroll from '@smakss/react-scroll-direction';
+import { Link } from 'gatsby';
+import { useTranslation } from 'react-i18next';
 import $ from 'jquery';
+import "bootstrap-icons/font/bootstrap-icons.css";
 import Logo from './Logo';
-import LanguageSwitcher from './LanguageSwitcher';
+import { getAllAvailableLanguages } from '../utils/i18nLanguages';
 import { useIsInView, getInViewStyle } from '../utils/cssModuleUtils';
 import { navbar, openSidebar, navbarLinkTransition, navbarLinks, withoutCount } from '../styles/NavBar.module.scss';
 
 function NavBar() {
     const links = navbarLinks.replaceAll(' ', '').split(',');
     const { scrollDir, scrollPosition } = useDetectScroll();
+    const { i18n } = useTranslation();
     const ref = React.useRef(null);
     const isInView = useIsInView(ref);
     let inViewStyle = getInViewStyle(isInView, navbarLinkTransition, -50);
@@ -24,8 +28,9 @@ function NavBar() {
             <a href='/' >
                 <div style={inViewStyle}><Logo /></div>
             </a>
-            
+
             <ol>
+                {/* Page section links */}
                 {links.map(link => {
                     return (
                         <li key={link}>
@@ -36,12 +41,18 @@ function NavBar() {
                     )
                 }
                 )}
-                <li>
-                    <a href style={inViewStyle} className={withoutCount}>
-                        <input type="text" style={{display: 'none'}}/>
-                        <LanguageSwitcher />
-                    </a>
-                </li>
+                {/* i18n languages */}
+                {getAllAvailableLanguages().map(lang => {
+                    if (lang === i18n.language) return null;
+
+                    return (
+                        <li key={lang}>
+                            <Link to={`/${lang}`} className={withoutCount} style={inViewStyle}>
+                                <i className="bi bi-translate"></i>
+                            </Link>
+                        </li>
+                    );
+                })}
             </ol>
 
             {/* Responsive Navbar side */}
