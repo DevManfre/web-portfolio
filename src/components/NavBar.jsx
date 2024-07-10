@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import $ from 'jquery';
 import "bootstrap-icons/font/bootstrap-icons.css";
 import Logo from './Logo';
-import { getAllAvailableLanguages } from '../utils/i18nLanguages';
+import { getAllAvailableLanguages } from '../utils/generalUtils.js';
 import { useIsInView, getInViewStyle } from '../utils/cssModuleUtils';
 import { navbar, openSidebar, navbarLinkTransition, navbarLinks, withoutCount, removedDelay } from '../styles/NavBar.module.scss';
 
