@@ -1,6 +1,5 @@
 import * as React from "react";
-import { Link } from "gatsby";
-import { Trans } from "react-i18next";
+import { Link, graphql } from "gatsby";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import '../styles/404.scss';
 
@@ -17,7 +16,7 @@ const NotFoundPage = () => {
                         {createTabulations(1)}<span className="orange">&lt;head&gt;</span><br />
                         {createTabulations(2)}<span className="orange">&lt;style&gt;</span><br />
                         {createTabulations(3)}* {'{'}<br />
-                        {createTabulations(4)}<span className="green"><Trans>404-style-key</Trans></span>:<span className="blue"> <Trans>404-style-value</Trans></span>;<br />
+                        {createTabulations(4)}<span className="green">everything</span>:<span className="blue"> awesome</span>;<br />
                         {createTabulations(3)}{'}'}<br />
                         {createTabulations(2)}<span className="orange">&lt;/style&gt;</span><br />
                         {createTabulations(1)}<span className="orange">&lt;/head&gt;</span><br /><br />
@@ -27,13 +26,13 @@ const NotFoundPage = () => {
                             {createTabulations(2)}is not where you think it is.--&gt;</span><br />
                         {createTabulations(1)}<span className="orange">&lt;/body&gt;</span><br />
                         <span className="orange">&lt;/html&gt;</span>
-                        <span className="info"></span>
+                        <span className="info" />
                     </code>
                 </div>
             </div>
 
             <Link to="/">
-                <i class="bi bi-house-fill"></i>
+                <i className="bi bi-house-fill"></i>
             </Link>
         </div>
     );
@@ -41,4 +40,11 @@ const NotFoundPage = () => {
 
 export default NotFoundPage;
 
-export const Head = () => <title>Not found</title>;
+export const query = graphql`query($language: String!){locales:allLocale(filter:{language:{eq:$language}}){edges{node{ns data language}}}site{siteMetadata{title description}}}`;
+
+export const Head = ({ data, pageContext }) =>
+    <>
+        <html lang={pageContext['language']} />
+        <title>404 - {data.site.siteMetadata.title}</title>
+        <meta name="description" content={data.site.siteMetadata.description} />
+    </>
