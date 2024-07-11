@@ -57,7 +57,7 @@ $logo-total-animation-time: calc($logo-line-delay + $logo-line-transition + $log
             width: calc($font-size / 9);
             border-radius: calc($font-size / 30);
             position: relative;
-            top: 50%;
+            top: calc(50% + 5px);
             left: 50%;
             transform: translate(-50%, -50%) rotate(20deg);
         }

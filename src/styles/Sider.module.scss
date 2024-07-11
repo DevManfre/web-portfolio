@@ -8,7 +8,7 @@ $sider-transition-delay: 0.3s;
 $sider-total-animation-time: calc($home-section-total-animation-time + $sider-transition-delay + $sider-transition);
 /* ------------------- */
 
-$sider-viewport-fade-out: 768px;
+$sider-viewport-fade-out: 870px;
 $x-position-responsive: calc($content-lateral-padding / 5);
 $x-position: calc($x-position-responsive * 2);
 $content-spacing-value: 10px;

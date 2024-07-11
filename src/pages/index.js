@@ -7,21 +7,19 @@ import AboutSection from "../components/AboutSection";
 import ExperienceSection from "../components/ExperienceSection";
 import WorkSection from "../components/WorkSection";
 import ContactSection from "../components/ContactSection";
+import { isFirstLanding } from "../utils/generalUtils";
 
-const IndexPage = () => {
-    return (
-        <>
-            <Logo loadingScreen="true" />
-            <Layout>
-                <HomeSection />
-                <AboutSection />
-                <ExperienceSection />
-                <WorkSection />
-                <ContactSection />
-            </Layout>
-        </>
-    );
-}
+const IndexPage = () =>
+    <>
+        {isFirstLanding() && <Logo loadingScreen="true" />}
+        <Layout>
+            <HomeSection />
+            <AboutSection />
+            <ExperienceSection />
+            <WorkSection />
+            <ContactSection />
+        </Layout>
+    </>
 
 export const query = graphql`query($language: String!){locales:allLocale(filter:{language:{eq:$language}}){edges{node{ns data language}}}site{siteMetadata{title description}}}`;
 
