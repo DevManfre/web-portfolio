@@ -13,10 +13,15 @@ export const getAllAvailableLanguages = () => {
 
 /* Check if is the first session landind in the page */
 export const isFirstLanding = () => {
-    if (sessionStorage.getItem("isFirstLanding"))
-        return false;
-    else
-        sessionStorage.setItem('isFirstLanding', true);
+    try {
+        if (sessionStorage.getItem("isFirstLanding"))
+            return false;
+        else
+            sessionStorage.setItem('isFirstLanding', true);
+    } catch (error) {
+        /* sessionStorage is not available. Maybe for permission or for build time */
+        /* In this case do nothing and return always true */
+    }
 
     return true;
 }
