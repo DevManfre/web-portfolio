@@ -1,0 +1,221 @@
+/* Change this vars for navbar links and their animations */
+$links: About, Experience, Work, Contact;
+$transition-time: 0.3s;
+$navbar-link-transition-delay: 0.1s;
+$navbar-total-animation-time: $transition-time + calc($navbar-link-transition-delay * length($links));
+/* ------------------------------------------------------ */
+
+/* Change this vars for navbar appearence */
+$navbar-height: 80px;
+$navbar-lateral-padding: calc($navbar-height / 2);
+$sidebar-width: 60%;
+$blur-value: blur(15px);
+$navbar-height-on-top: calc($navbar-height + 20px);
+$list-element-spacing: 7px;
+/* --------------------------------------- */
+
+.navbar {
+    height: $navbar-height;
+    transition: $transition-time;
+    backdrop-filter: $blur-value;
+    padding: 0 $navbar-lateral-padding 0 $navbar-lateral-padding;
+    width: calc(100vw - $navbar-lateral-padding * 2);
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    user-select: none;
+    transform: translateY(0px);
+    box-shadow: 0 10px 30px -10px rgba(2, 10, 22, 0.7);
+    z-index: 11;
+
+    &[scroll-direction="down"] {
+        transform: translateY(-$navbar-height);
+        box-shadow: none;
+    }
+
+    &[starting-from-top="1"] {
+        transition: $transition-time;
+        height: $navbar-height-on-top;
+        box-shadow: none;
+    }
+
+    a {
+        height: min-content;
+
+        &[href="/"] {
+            position: relative;
+            transform-origin: left;
+            width: min-content;
+            top: 50%;
+            transform: translateY(-50%) scale(0.4);
+        }
+    }
+
+    ol {
+        height: min-content;
+        position: relative;
+        counter-reset: link-counter 0;
+        padding-inline-start: 0;
+        margin: 0;
+        top: 50%;
+        transform: translateY(-50%);
+
+        li {
+            display: inline;
+
+            @for $i from 1 through calc(length($links) + 1) {
+                &:nth-child(#{$i}) a {
+                    transition-delay: calc((#{$i}) * $navbar-link-transition-delay) !important;
+                }
+            }
+
+            a {
+                color: $link-color;
+                padding: $list-element-spacing;
+                margin: $list-element-spacing;
+                transition: $transition-time;
+                display: inline-block;
+                border: none;
+
+                &::before {
+                    color: $main-color;
+                    content: '0' counter(link-counter)'.';
+                    counter-increment: link-counter;
+                    margin-right: 5px;
+                }
+
+                &:hover {
+                    color: $main-color;
+                    transition: $transition-time;
+                    border: none;
+                }
+
+                &.without-count::before {
+                    display: none;
+                }
+                
+                &.removed-delay {
+                    transition-delay: 0s !important;
+                }
+
+                i {
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+
+    button {
+        background-color: transparent;
+        border: none;
+        display: none;
+        position: relative;
+        height: min-content;
+        top: 50%;
+
+        div {
+            background: $main-color;
+            transition: all $transition-time ease;
+            width: 40px;
+            height: 4px;
+            margin: 6px;
+            border-radius: 3px;
+        }
+    }
+}
+
+@media screen and (max-width: 870px) {
+    body {
+
+        /* When sidebar is open */
+        &.open-sidebar {
+            overflow: hidden;
+
+            main {
+                transition: $transition-time;
+                filter: $blur-value;
+            }
+
+            .navbar {
+                backdrop-filter: blur(0);
+
+                a[href="/"] {
+                    transition: $transition-time;
+                    filter: $blur-value;
+                }
+
+                ol {
+                    height: 100vh;
+                    right: 0;
+                }
+
+                button {
+                    div:nth-child(1) {
+                        transform: rotate(-45deg) translate(-2mm, 1.8mm);
+                    }
+
+                    div:nth-child(2) {
+                        transition: all $transition-time ease;
+                        opacity: 0;
+                    }
+
+                    div:nth-child(3) {
+                        transform: rotate(45deg) translate(-2mm, -1.8mm);
+                    }
+                }
+            }
+        }
+
+        /* When sidebar is closed */
+        .navbar {
+            ol {
+                background-color: $background-color;
+                transition: $transition-time;
+                right: -$sidebar-width;
+                width: $sidebar-width;
+                position: absolute;
+                transform: none;
+                text-align: center;
+                top: 0;
+                height: 100vh;
+
+                a {
+                    position: relative;
+                    top: 30%;
+                    width: 100%;
+                }
+            }
+
+            a[href="/"] {
+                transform: translateY(-50%) scale(0.3);
+            }
+
+            button {
+                display: block;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 426px) {
+    body {
+        &.open-sidebar .navbar>ol {
+            width: 100vw;
+        }
+
+        .navbar {
+            width: calc(100vw - calc($navbar-lateral-padding / 2));
+            padding: 0 calc($navbar-lateral-padding / 4);
+
+            button {
+                padding: 0;
+            }
+        }
+    }
+}
+
+:export {
+    navbarLinkTransition: $transition-time;
+    navbarLinks: $links;
+}
