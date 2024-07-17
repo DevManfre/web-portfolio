@@ -11,3 +11,9 @@
         <a href="./README.it.md">🇮🇹</a>
     </p>
 </div>
+
+### Summary
+1. Introduction
+2. Installation
+3. Credits
+4. Other

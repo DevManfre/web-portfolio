@@ -11,3 +11,9 @@
         <a href="./README.md">🇬🇧</a>
     </p>
 </div>
+
+### Indice
+1. Introduzione
+2. Installazione su locale
+3. Note
+4. Altro
