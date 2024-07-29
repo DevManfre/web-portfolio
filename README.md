@@ -12,8 +12,5 @@
     </p>
 </div>
 
-### Summary
-1. Introduction
-2. Installation
-3. Credits
-4. Other
+# 🫀 Introduction
+Repository for the site I use to introduce myself to companies. The site is built using React as the frontend framework and Gatsby for getting the data.
