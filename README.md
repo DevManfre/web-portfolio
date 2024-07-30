@@ -14,3 +14,18 @@
 
 # 🫀 Introduction
 Repository for the site I use to introduce myself to companies. The site is built using React as the frontend framework and Gatsby for getting the data.
+
+# 🔧 Local installation
+## Setup 
+1. Install Gatsby CLI
+    ```
+    npm install -g gatsby-cli
+    ```
+2. Install the repository dependencies
+    ```
+    npm install
+    ```
+3. Run the development server
+    ```
+    npm run start
+    ```
