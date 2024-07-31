@@ -29,3 +29,13 @@ Repository for the site I use to introduce myself to companies. The site is buil
     ```
     npm run start
     ```
+## Build
+1. Generate the static build
+    ```
+    npm run build
+    ```
+2. To run the build execute the following command
+    ```
+    npm run serve
+    ```
+
