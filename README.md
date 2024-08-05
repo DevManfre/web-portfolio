@@ -39,3 +39,13 @@ Repository for the site I use to introduce myself to companies. The site is buil
     npm run serve
     ```
 
+# 🎨 Colors
+All colors used in the site are viewable within the file of the same name in the css folder.
+| Color | Hex |
+| ----- | --- |
+| Background | ![#0a192f](https://via.placeholder.com/10/0a192f?text=+) `#0a192f` |
+| Selection Background | ![#233554](https://via.placeholder.com/10/233554?text=+) `#233554` |
+| Main | ![#64FFDA](https://via.placeholder.com/10/64ffda?text=+) `#64ffda` |
+| Subtitle | ![#8892b0](https://via.placeholder.com/10/8892b0?text=+) `#8892b0` |
+| Title | ![#b1ccf1](https://via.placeholder.com/10/b1ccf1?text=+) `#b1ccf1` |
+| Link | ![#ccd6f6](https://via.placeholder.com/10/ccd6f6?text=+) `#ccd6f6` |
