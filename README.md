@@ -49,3 +49,12 @@ All colors used in the site are viewable within the file of the same name in the
 | Subtitle | ![#8892b0](https://via.placeholder.com/10/8892b0?text=+) `#8892b0` |
 | Title | ![#b1ccf1](https://via.placeholder.com/10/b1ccf1?text=+) `#b1ccf1` |
 | Link | ![#ccd6f6](https://via.placeholder.com/10/ccd6f6?text=+) `#ccd6f6` |
+
+# 🚨 Credits
+The site design is created by [Brittany Chiang](https://github.com/bchiang7), but the code was rewritten from scratch. The changes are:
+| Brittany Version | My Version |
+| --- | --- |
+| Written only in JS | Code split between JS and CSS (SCSS) |
+| Without i18n | With i18n |
+| Multipage (home and project archive) | Single page (homepage only) |
+| Simple 404 page | More aesthetically curated 404 page |
