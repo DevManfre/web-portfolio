@@ -58,3 +58,7 @@ The site design is created by [Brittany Chiang](https://github.com/bchiang7), bu
 | Without i18n | With i18n |
 | Multipage (home and project archive) | Single page (homepage only) |
 | Simple 404 page | More aesthetically curated 404 page |
+
+# 📝 Notes
+## Code
+The site was written in such a way that it is easily customizable and expandable.
