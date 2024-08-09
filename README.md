@@ -62,3 +62,6 @@ The site design is created by [Brittany Chiang](https://github.com/bchiang7), bu
 # 📝 Notes
 ## Code
 The site was written in such a way that it is easily customizable and expandable.
+
+### Personal information
+Most of the personal information is configurable within the `gatsby-config.js` file (name, page title, projects and work experience...).
