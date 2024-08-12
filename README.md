@@ -65,3 +65,7 @@ The site was written in such a way that it is easily customizable and expandable
 
 ### Personal information
 Most of the personal information is configurable within the `gatsby-config.js` file (name, page title, projects and work experience...).
+
+### Languages
+The languages currently configured are English and Italian. To add new ones simply add them to the file `gatsby-config.js` and add the file with the translations inside `/locales/`. <br />
+<b>Pay attention</b>: the language selector inside the site is configured to allow the choice between two languages. If you want to have more than two languages included, the selector must be modified accordingly.
