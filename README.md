@@ -69,3 +69,6 @@ Most of the personal information is configurable within the `gatsby-config.js` f
 ### Languages
 The languages currently configured are English and Italian. To add new ones simply add them to the file `gatsby-config.js` and add the file with the translations inside `/locales/`. <br />
 <b>Pay attention</b>: the language selector inside the site is configured to allow the choice between two languages. If you want to have more than two languages included, the selector must be modified accordingly.
+
+### Style
+All style is managed inside the `/src/styles/` folder by scss files. Font style and colors are managed by dedicated files and you only need to change those variables to change all the colors on the site. Each component has its own style file with its own variables and you just have to change those mainly. The scss files are written in such a way that their variables are also visible to js files, so you just have to edit them there to make them effective throughout the project.
