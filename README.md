@@ -72,3 +72,6 @@ The languages currently configured are English and Italian. To add new ones simp
 
 ### Style
 All style is managed inside the `/src/styles/` folder by scss files. Font style and colors are managed by dedicated files and you only need to change those variables to change all the colors on the site. Each component has its own style file with its own variables and you just have to change those mainly. The scss files are written in such a way that their variables are also visible to js files, so you just have to edit them there to make them effective throughout the project.
+
+### Homepage
+The homepage is nothing more than a page composed of many Section components, so that it can be more modular. If you want to modify it just create custom components using `/src/components/Section.jsx` inside them and then put them inside `/src/pages/index.js`.
