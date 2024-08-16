@@ -75,3 +75,9 @@ All style is managed inside the `/src/styles/` folder by scss files. Font style 
 
 ### Homepage
 The homepage is nothing more than a page composed of many Section components, so that it can be more modular. If you want to modify it just create custom components using `/src/components/Section.jsx` inside them and then put them inside `/src/pages/index.js`.
+
+### Custom Components
+#### Experience Section
+To add work experience you must:
+1. Add a new entry in the `gatsby-config.js` file under companies (see other companies as examples);
+2. Add inside the inherent translation file the labels that you want to display using `company-[companyName]-date` for the time within the company and `company-[companyName]-[id]` for the various labels that you want to insert inside the company tab as a key.
