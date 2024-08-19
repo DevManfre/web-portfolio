@@ -85,4 +85,4 @@ Per aggiungere esperienze lavorative bisogna:
 2. Aggiugnere all'interno del file di traduzione inerente le label che si vogliono visualizzare utilizzando come chiave `company-[companyName]-date` per il tempo all'interno della azienda e `company-[companyName]-[id]` per le varie label che si vogliono inserire dentro la scheda dell'azienda. 
 
 #### Work Section
-Per aggiungere nuovi progetti bisogna aggiungere una nuova voce nel file `gatsby-config.js` sotto project (vedere le altre companies come esempio). Per aggiungere icone nuove basta inserirle all'interno di `/src/utils/svgIcons.js`. Per titolo e descrizione bisogna inserire l'id della label per poi tradurla all'interno dei file appositi.
+Per aggiungere nuovi progetti bisogna aggiungere una nuova voce nel file `gatsby-config.js` sotto project (vedere altri progeti come esempio come esempio). Per aggiungere icone nuove basta inserirle all'interno di `/src/utils/svgIcons.js`. Per titolo e descrizione bisogna inserire l'id della label per poi tradurla all'interno dei file appositi.

@@ -81,3 +81,6 @@ The homepage is nothing more than a page composed of many Section components, so
 To add work experience you must:
 1. Add a new entry in the `gatsby-config.js` file under companies (see other companies as examples);
 2. Add inside the inherent translation file the labels that you want to display using `company-[companyName]-date` for the time within the company and `company-[companyName]-[id]` for the various labels that you want to insert inside the company tab as a key.
+
+#### Work Section
+To add new projects you have to add a new entry in the `gatsby-config.js` file under project (see other projects as an example). To add new icons just insert them inside `/src/utils/svgIcons.js`. For title and description you have to enter the id of the label and then translate it within the appropriate files.
