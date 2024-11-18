@@ -11,7 +11,7 @@ import { isFirstLanding } from "../utils/generalUtils";
 
 const IndexPage = () =>
     <>
-        {isFirstLanding() && <Logo loadingScreen="true" />}
+        {/* {isFirstLanding() && <Logo loadingScreen="true" />} */}         {/* Decomment this to add loading screen */}
         <Layout>
             <HomeSection />
             <AboutSection />
