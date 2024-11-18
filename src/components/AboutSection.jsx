@@ -31,7 +31,7 @@ function HomeSection() {
                     </ul>
                 </div>
                 <div className={profilePic}>
-                    <StaticImage alt='' src='../images/profile.webp' />
+                    <StaticImage alt='' src='../images/profile.jpg' />
                 </div>
             </div>
         </Section>
