@@ -17,7 +17,10 @@ function NavBar() {
     let inViewStyle = getInViewStyle(isInView, navbarLinkTransition, -50);
 
     /* Hide navbar when scroll down */
-    React.useEffect(() => { $('nav').attr('scroll-direction', scrollDir) }, [scrollDir]);
+    React.useEffect(() => { 
+        if ($(window).width() > 870)
+            $('nav').attr('scroll-direction', scrollDir);
+     }, [scrollDir]);
 
     /* Remove hover delay after mount */
     React.useEffect(() => {
