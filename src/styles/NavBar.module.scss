@@ -168,6 +168,8 @@ $list-element-spacing: 7px;
 
         /* When sidebar is closed */
         .navbar {
+            height: 50px !important;
+            
             ol {
                 background-color: $background-color;
                 transition: $transition-time;
@@ -207,7 +209,6 @@ $list-element-spacing: 7px;
         .navbar {
             width: calc(100vw - calc($navbar-lateral-padding / 2));
             padding: 0 calc($navbar-lateral-padding / 4);
-            height: 50px !important;
 
             button {
                 padding: 0;
