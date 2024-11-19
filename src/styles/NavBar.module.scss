@@ -22,7 +22,7 @@ $list-element-spacing: 7px;
     width: calc(100vw - $navbar-lateral-padding * 2);
     position: fixed;
     display: flex;
-    justify-content: space-between;
+    justify-content: end;
     user-select: none;
     transform: translateY(0px);
     box-shadow: 0 10px 30px -10px rgba(2, 10, 22, 0.7);
@@ -207,6 +207,7 @@ $list-element-spacing: 7px;
         .navbar {
             width: calc(100vw - calc($navbar-lateral-padding / 2));
             padding: 0 calc($navbar-lateral-padding / 4);
+            height: 50px !important;
 
             button {
                 padding: 0;

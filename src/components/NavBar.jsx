@@ -4,7 +4,6 @@ import { Link } from 'gatsby';
 import { useTranslation } from 'react-i18next';
 import $ from 'jquery';
 import "bootstrap-icons/font/bootstrap-icons.css";
-import Logo from './Logo';
 import { getAllAvailableLanguages } from '../utils/generalUtils.js';
 import { useIsInView, getInViewStyle } from '../utils/cssModuleUtils';
 import { navbar, openSidebar, navbarLinkTransition, navbarLinks, withoutCount, removedDelay } from '../styles/NavBar.module.scss';
@@ -30,10 +29,6 @@ function NavBar() {
 
     return (
         <nav className={navbar} starting-from-top={scrollPosition.top ? 0 : 1} ref={ref}>
-            <a href='/' >
-                <div style={inViewStyle}><Logo /></div>
-            </a>
-
             <ol>
                 {/* Page section links */}
                 {links.map(link => {
@@ -52,7 +47,7 @@ function NavBar() {
 
                     return (
                         <li key={lang}>
-                            <Link to={`/${lang}`} className={withoutCount} style={inViewStyle}>
+                            <Link to={`/${lang}`} aria-label="change-language" className={withoutCount} style={inViewStyle}>
                                 <i className="bi bi-translate"></i>
                             </Link>
                         </li>
@@ -64,7 +59,7 @@ function NavBar() {
             <button onKeyDown={() => { }} onClick={() => $('body').toggleClass(openSidebar)} style={{
                 ...inViewStyle,
                 transform: isInView ? "translateY(-50%)" : "translateY(-70px)",
-            }}>
+            }} aria-label="burger">
                 <div /><div /><div />
             </button>
         </nav>

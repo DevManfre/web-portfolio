@@ -1,17 +1,14 @@
 import * as React from "react";
 import { graphql } from "gatsby";
-import Logo from "../components/Logo";
 import Layout from "../components/Layout";
 import HomeSection from "../components/HomeSection";
 import AboutSection from "../components/AboutSection";
 import ExperienceSection from "../components/ExperienceSection";
 import WorkSection from "../components/WorkSection";
 import ContactSection from "../components/ContactSection";
-import { isFirstLanding } from "../utils/generalUtils";
 
 const IndexPage = () =>
     <>
-        {/* {isFirstLanding() && <Logo loadingScreen="true" />} */}         {/* Decomment this to add loading screen */}
         <Layout>
             <HomeSection />
             <AboutSection />
