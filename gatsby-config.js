@@ -62,6 +62,21 @@ module.exports = {
                 ]
             },
             {
+                title: 'project-title-first-work',
+                description: 'project-description-first-work',
+                tags: [
+                    'PHP',
+                    'CMS',
+                    'jQuery'
+                ],
+                links: [
+                    {
+                        icon: 'external-site',
+                        url: 'https://www.italiangres.com'
+                    },
+                ]
+            },
+            {
                 title: 'project-title-common-js-calculator',
                 description: 'project-description-common-js-calculator',
                 tags: [
