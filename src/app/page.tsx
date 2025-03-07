@@ -6,7 +6,6 @@ import { ResumeCard } from "@/components/resume-card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { DATA } from "@/data/resume";
-import Link from "next/link";
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -26,7 +25,7 @@ export default function Page() {
                             <BlurFadeText className="max-w-[600px] md:text-xl" delay={BLUR_FADE_DELAY} text={DATA.description} />
                         </div>
                         <BlurFade delay={BLUR_FADE_DELAY}>
-                            <Avatar className="size-28 border">
+                            <Avatar className="size-28 border select-none">
                                 <AvatarImage alt={DATA.name} src={DATA.avatarUrl} />
                                 <AvatarFallback>{DATA.initials}</AvatarFallback>
                             </Avatar>
@@ -167,11 +166,7 @@ export default function Page() {
                             <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">Contact</div>
                             <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Get in Touch</h2>
                             <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                                Want to chat? Just shoot me a dm{" "}
-                                <Link href={DATA.contact.social.X.url} className="text-blue-500 hover:underline">
-                                    with a direct question on twitter
-                                </Link>{" "}
-                                and I&apos;ll respond whenever I can. I will ignore all soliciting.
+                                Want to chat? Just shoot me a dm{" "}and I&apos;ll respond whenever I can. I will ignore all soliciting.
                             </p>
                         </div>
                     </BlurFade>
