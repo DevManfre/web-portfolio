@@ -33,7 +33,7 @@ export const DATA = {
                 name: "CodePen",
                 url: "https://codepen.io/devmanfre",
                 icon: Icons.codepen,
-                
+
                 navbar: true,
             },
             email: {
@@ -50,7 +50,7 @@ export const DATA = {
         {
             company: "Italiangres",
             href: "https://italiangres.com",
-            badges: ['JavaScript', 'Python', 'MySQL'],
+            badges: ["JavaScript", "Python", "MySQL"],
             title: "Full Stack Developer",
             logoUrl: "/italiangres.png",
             start: "Feb 2024",
