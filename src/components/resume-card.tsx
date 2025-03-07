@@ -30,7 +30,7 @@ export const ResumeCard = ({ logoUrl, altText, title, subtitle, href, badges, pe
     };
 
     return (
-        <Link href={href || "#"} className="block cursor-pointer" onClick={handleClick}>
+        <Link href={href || "#"} target="about:blank" className="block cursor-pointer" onClick={handleClick}>
             <Card className="flex">
                 <div className="flex-none">
                     <Avatar className="border size-12 m-auto bg-muted-background dark:bg-foreground">
@@ -70,9 +70,9 @@ export const ResumeCard = ({ logoUrl, altText, title, subtitle, href, badges, pe
                             className="mt-2 text-xs sm:text-sm"
                         >
                             {description}
-
+                            <br/>
                             {badges && (
-                                <span className="inline-flex gap-x-1 mt-3">
+                                <span className="inline-flex flex-wrap gap-x-1 mt-3 gap-y-1">
                                     {badges.map((badge, index) => (
                                         <Badge variant="secondary" className="align-middle text-xs" key={index}>
                                             {badge}
