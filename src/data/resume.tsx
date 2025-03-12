@@ -19,7 +19,7 @@ export const DATA = {
         "> sudo work --mode hard ..."
     ],
     avatarUrl: "/me.png",
-    skills: ["React", "Next.js", "Typescript", "Node.js", "Python", "Javascript", "MySQL", "Java", "PHP"],
+    skills: ["React", "Next.js", "Typescript", "Node.js", "Python", "Javascript", "MySQL", "Java", "PHP", "Tailwind"],
     contact: {
         email: "alessio.manfredini.work@gmail.com",
         tel: "+123456789",
