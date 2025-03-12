@@ -11,6 +11,8 @@ import { DATA } from "@/data/resume";
 const BLUR_FADE_DELAY = 0.04;
 
 export default function Page() {
+    let terminalDelayCount = 0;
+
     return (
         <main className="flex flex-col min-h-[100dvh] space-y-10">
             <section id="hero">
@@ -42,15 +44,23 @@ export default function Page() {
                         <BlurFadeText className="md:text-xl mt-2 text-justify" delay={BLUR_FADE_DELAY} text={DATA.summary} />
 
                         <Terminal className="min-w-[300px] min-h-[192px]">
-                            <TypingAnimation>&gt; get-graduation --spec IT</TypingAnimation>
-                            <AnimatedSpan delay={2500} className="text-green-500">
-                                ✔ IT graduation getted.
-                            </AnimatedSpan>
-                            <TypingAnimation delay={3100}>&gt; get-degree --spec CS</TypingAnimation>
-                            <AnimatedSpan delay={5600} className="text-green-500">
-                                ✔ CS degree getted.
-                            </AnimatedSpan>
-                            <TypingAnimation delay={6200}>&gt; sudo work --mode hard ...</TypingAnimation>
+                            {DATA.terminal.map((text, id) => {
+                                const actualTerminalDelayCount = terminalDelayCount;
+                                if (id % 2 == 0) {
+                                    terminalDelayCount += text.length * 100;
+                                    return (
+                                        <TypingAnimation key={id} delay={actualTerminalDelayCount}>
+                                            {text}
+                                        </TypingAnimation>
+                                    );
+                                }
+                                terminalDelayCount += 300;
+                                return (
+                                    <AnimatedSpan key={id} delay={actualTerminalDelayCount} className="text-green-500">
+                                        {text}
+                                    </AnimatedSpan>
+                                );
+                            })}
                         </Terminal>
                     </div>
                 </BlurFade>

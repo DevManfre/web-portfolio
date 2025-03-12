@@ -11,6 +11,13 @@ export const DATA = {
         `After graduating in CS in late 2023, I started working as a full stack developer.
         I explored various technologies, both back-end and front-end.
         Among all of them, React has become my favorite one.`,
+    terminal: [
+        "> get-graduation --spec IT",
+        "✔ IT graduation getted.",
+        "> get-degree --spec CS",
+        "✔ CS degree getted.",
+        "> sudo work --mode hard ..."
+    ],
     avatarUrl: "/me.png",
     skills: ["React", "Next.js", "Typescript", "Node.js", "Python", "Javascript", "MySQL", "Java", "PHP"],
     contact: {
