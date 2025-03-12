@@ -1,6 +1,7 @@
 import { HackathonCard } from "@/components/hackathon-card";
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
+import { AnimatedSpan, Terminal, TypingAnimation } from "@/components/magicui/terminal";
 import { ProjectCard } from "@/components/project-card";
 import { ResumeCard } from "@/components/resume-card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -36,7 +37,22 @@ export default function Page() {
             <section id="about">
                 <BlurFade delay={BLUR_FADE_DELAY * 3}>
                     <h2 className="text-xl font-bold">About</h2>
-                    <BlurFadeText className="max-w-[600px] md:text-xl mt-2" delay={BLUR_FADE_DELAY} text={DATA.summary} />
+
+                    <div className="sm:flex gap-x-10">
+                        <BlurFadeText className="md:text-xl mt-2 text-justify" delay={BLUR_FADE_DELAY} text={DATA.summary} />
+
+                        <Terminal className="min-w-[300px] min-h-[192px]">
+                            <TypingAnimation>&gt; get-graduation --spec IT</TypingAnimation>
+                            <AnimatedSpan delay={2500} className="text-green-500">
+                                ✔ IT graduation getted.
+                            </AnimatedSpan>
+                            <TypingAnimation delay={3100}>&gt; get-degree --spec CS</TypingAnimation>
+                            <AnimatedSpan delay={5600} className="text-green-500">
+                                ✔ CS degree getted.
+                            </AnimatedSpan>
+                            <TypingAnimation delay={6200}>&gt; sudo work --mode hard ...</TypingAnimation>
+                        </Terminal>
+                    </div>
                 </BlurFade>
             </section>
             <section id="work">
@@ -89,7 +105,9 @@ export default function Page() {
                     <div className="flex flex-wrap gap-1">
                         {DATA.skills.map((skill, id) => (
                             <BlurFade key={skill} delay={BLUR_FADE_DELAY * 10 + id * 0.05}>
-                                <Badge className="select-none" key={skill}>{skill}</Badge>
+                                <Badge className="select-none" key={skill}>
+                                    {skill}
+                                </Badge>
                             </BlurFade>
                         ))}
                     </div>

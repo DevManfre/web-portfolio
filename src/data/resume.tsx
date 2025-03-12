@@ -8,7 +8,9 @@ export const DATA = {
     locationLink: "https://www.google.com/maps/place/sanfrancisco",
     description: "Full stack developer for a young Italian company. I love building things and helping people.",
     summary:
-        "After graduating in Computer Science in late 2023, I started working as a full stack developer. I explored various technologies, both back-end and front-end. Among all of them, React has become my favorite one.",
+        `After graduating in CS in late 2023, I started working as a full stack developer.
+        I explored various technologies, both back-end and front-end.
+        Among all of them, React has become my favorite one.`,
     avatarUrl: "/me.png",
     skills: ["React", "Next.js", "Typescript", "Node.js", "Python", "Javascript", "MySQL", "Java", "PHP"],
     contact: {
