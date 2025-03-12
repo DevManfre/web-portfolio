@@ -66,7 +66,7 @@ export const DATA = {
             end: "Nov 2019",
             description:
                 "Developed extension for IntelliJ regarding code coloring for particular file extensions used by the company. Developed new small features for the company's proprietary Cogito artificial intelligence.",
-        }
+        },
     ],
     education: [
         {
@@ -80,7 +80,7 @@ export const DATA = {
         {
             school: "Primo Levi",
             href: "https://istitutolevi.edu.it",
-            degree: "IT graduation",
+            degree: "IT Graduation",
             logoUrl: "/primo-levi.png",
             start: "2014",
             end: "2019",
