@@ -63,6 +63,7 @@ export const DATA = {
             title: "Full Stack Developer",
             logoUrl: "/italiangres.png",
             start: "Feb 2024",
+            end: "Current",
             description:
                 "Developed and maintained new features for the ecommerce, both front-office and back-office. Improve site performance and indexing by introducing best practices and performance fixes. Developed off-site scripts for managing internal company processes using mostly Python.",
         },
