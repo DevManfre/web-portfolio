@@ -3,6 +3,7 @@ import { Icons } from "@/components/icons";
 export const DATA = {
     name: "Alessio Manfredini",
     initials: "AM",
+    username: "devmanfre",
     url: "https://dillion.io",
     location: "San Francisco, CA",
     locationLink: "https://www.google.com/maps/place/sanfrancisco",
