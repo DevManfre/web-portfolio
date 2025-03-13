@@ -28,6 +28,7 @@ export default function Navbar() {
                             </Tooltip>
                         </DockIcon>
                     ))}
+                {/* TODO: add cv link */}
                 <Separator orientation="vertical" className="h-full py-2" />
                 <DockIcon>
                     <Tooltip>
