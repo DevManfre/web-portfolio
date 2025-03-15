@@ -1,8 +1,19 @@
-Progetto creato con -> npx create-next-app@latest
+# Portfolio V2
+Questo progetto è stato creato utilizzando Next.js.
 
-Per runnare:
+## Come iniziare
+
+Per avviare il progetto, eseguire i seguenti comandi:
+
 ```bash
+npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Come visualizzare il progetto
+
+Apri [http://localhost:3000](http://localhost:3000) nel tuo browser per vedere il risultato.
+
+## Licenza
+
+Questo progetto è concesso in licenza sotto i termini della licenza MIT.
