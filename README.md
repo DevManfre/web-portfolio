@@ -1,19 +1,30 @@
-# Portfolio V2
-Questo progetto è stato creato utilizzando Next.js.
+# Web Portfolio
 
-## Come iniziare
+## 🫀 Introduction
+Repository for the site I use to introduce myself to companies. The site is built using NextJS.
 
-Per avviare il progetto, eseguire i seguenti comandi:
+## 🔧 Local installation
+### Setup install -g gatsby-cli
+1. Install the repository dependencies
+    ```
+    npm install
+    ```
+2. Run the development server
+    ```
+    npm run dev
+    ```
+### Build
+1. Generate the static build
+    ```
+    npm run build
+    ```
+2. To run the build execute the following command
+    ```
+    npm run serve
+    ```
 
-```bash
-npm install
-npm run dev
-```
+## 👨🏻‍🦰 Personal information
+Most of the personal information is configurable within the `src/data/resume.tsx` file (name, page title, projects and work experience...).
 
-## Come visualizzare il progetto
-
-Apri [http://localhost:3000](http://localhost:3000) nel tuo browser per vedere il risultato.
-
-## Licenza
-
-Questo progetto è concesso in licenza sotto i termini della licenza MIT.
+## 📝 License
+This project is licensed under the terms of the MIT license.
