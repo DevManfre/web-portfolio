@@ -38,10 +38,7 @@ export default function Page() {
             <section id="about">
                 <BlurFade delay={BLUR_FADE_DELAY * 3}>
                     <h2 className="text-xl font-bold">About</h2>
-
-                    {/* <div className="sm:flex gap-x-10"> */}
                     <BlurFadeText className="md:text-xl mt-2 text-justify" delay={BLUR_FADE_DELAY} text={DATA.summary} />
-                    {/* </div> */}
                 </BlurFade>
             </section>
             <section id="work">
@@ -85,25 +82,27 @@ export default function Page() {
                         </BlurFade>
                     ))}
                 </div>
-                <Terminal className="min-w-[300px] min-h-[192px] mt-2">
-                    {DATA.terminal.map((text, id) => {
-                        const actualTerminalDelayCount = terminalDelayCount;
-                        if (id % 2 == 0) {
-                            terminalDelayCount += text.length * 100;
+                <BlurFade delay={BLUR_FADE_DELAY * 7}>
+                    <Terminal className="min-w-[300px] min-h-[192px] mt-2">
+                        {DATA.terminal.map((text, id) => {
+                            const actualTerminalDelayCount = terminalDelayCount;
+                            if (id % 2 == 0) {
+                                terminalDelayCount += text.length * 100;
+                                return (
+                                    <TypingAnimation key={id} delay={actualTerminalDelayCount}>
+                                        {text}
+                                    </TypingAnimation>
+                                );
+                            }
+                            terminalDelayCount += 300;
                             return (
-                                <TypingAnimation key={id} delay={actualTerminalDelayCount}>
+                                <AnimatedSpan key={id} delay={actualTerminalDelayCount} className="dark:text-green-500 text-green-700">
                                     {text}
-                                </TypingAnimation>
+                                </AnimatedSpan>
                             );
-                        }
-                        terminalDelayCount += 300;
-                        return (
-                            <AnimatedSpan key={id} delay={actualTerminalDelayCount} className="dark:text-green-500 text-green-700">
-                                {text}
-                            </AnimatedSpan>
-                        );
-                    })}
-                </Terminal>
+                        })}
+                    </Terminal>
+                </BlurFade>
             </section>
             <section id="skills">
                 <div className="flex min-h-0 flex-col gap-y-3">

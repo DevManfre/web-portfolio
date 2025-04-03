@@ -6,6 +6,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip
 import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { Icons } from "@/components/icons";
 
 export default function Navbar() {
     return (
@@ -28,7 +29,19 @@ export default function Navbar() {
                             </Tooltip>
                         </DockIcon>
                     ))}
-                {/* TODO: add cv link */}
+                <Separator orientation="vertical" className="h-full py-2" />
+                <DockIcon>
+                    <Tooltip>
+                        <TooltipTrigger asChild>
+                            <Link href='resume.pdf' download target="about:blank" className={cn(buttonVariants({ variant: "ghost", size: "icon" }), "size-12")}>
+                                <Icons.cv className="size-4" />
+                            </Link>
+                        </TooltipTrigger>
+                        <TooltipContent>
+                            <p>Curriculum Vitae</p>
+                        </TooltipContent>
+                    </Tooltip>
+                </DockIcon>
                 <Separator orientation="vertical" className="h-full py-2" />
                 <DockIcon>
                     <Tooltip>
