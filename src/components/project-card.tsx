@@ -23,8 +23,8 @@ interface Props {
 
 export function ProjectCard({ title, href, description, dates, tags, link, image, video, links, className }: Props) {
     return (
-        <Card className={"flex flex-col overflow-hidden border hover:shadow-lg transition-all duration-300 ease-out h-full"}>
-            <Link href={href || "#"} className={cn("block cursor-pointer", className)}>
+        <Card className={"flex flex-col overflow-hidden border hover:shadow-lg hover:scale-105 transition-all duration-300 ease-out h-full"}>
+            <Link href={href || "#"} target="about:blank" className={cn("block cursor-pointer", className)}>
                 {video && (
                     <video
                         src={video}
@@ -40,7 +40,7 @@ export function ProjectCard({ title, href, description, dates, tags, link, image
             <CardHeader className="px-2">
                 <div className="space-y-1">
                     <CardTitle className="mt-1 text-base">{title}</CardTitle>
-                    <time className="font-sans text-xs">{dates}</time>
+                    <time className="font-sans text-xs block italic">{dates}</time>
                     <div className="hidden font-sans text-xs underline print:visible">{link?.replace("https://", "").replace("www.", "").replace("/", "")}</div>
                     {description}
                 </div>
