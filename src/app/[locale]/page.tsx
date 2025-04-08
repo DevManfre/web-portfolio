@@ -7,11 +7,14 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { DATA } from "@/data/resume";
 import { ProjectCard } from "@/components/project-card";
+import { getLocale, getTranslations } from "next-intl/server";
 
 const BLUR_FADE_DELAY = 0.04;
 
-export default function Page() {
+export default async function Page() {
     let terminalDelayCount = 0;
+    const t = await getTranslations('HomePage');
+    console.log("Locale: ", await getLocale());
 
     return (
         <main className="flex flex-col min-h-[100dvh] space-y-10">
@@ -23,7 +26,7 @@ export default function Page() {
                                 delay={BLUR_FADE_DELAY}
                                 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none"
                                 yOffset={8}
-                                text={`Hi, I'm ${DATA.name.split(" ")[0]} 👋`}
+                                text={`${t("hello-title")} ${DATA.name.split(" ")[0]} 👋`}
                             />
                             <BlurFadeText className="max-w-[600px] md:text-xl" delay={BLUR_FADE_DELAY} text={DATA.description} />
                         </div>

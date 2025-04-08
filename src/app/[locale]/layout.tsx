@@ -7,6 +7,9 @@ import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
 import "./globals.css";
 import { ScrollProgress } from "@/components/magicui/scroll-progress";
+import { NextIntlClientProvider, hasLocale } from "next-intl";
+import { notFound } from "next/navigation";
+import { routing } from "@/i18n/routing";
 
 const fontSans = FontSans({
     subsets: ["latin"],
@@ -45,22 +48,31 @@ export const metadata: Metadata = {
     },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
     children,
+    params,
 }: Readonly<{
     children: React.ReactNode;
+    params: Promise<{ locale: string }>;
 }>) {
+    // Ensure that the incoming `locale` is valid
+    const { locale } = await params;
+    if (!hasLocale(routing.locales, locale)) {
+        notFound();
+    }
+
     return (
-        /* TODO: add i18n */
-        <html lang="en" suppressHydrationWarning>
+        <html lang={locale} suppressHydrationWarning>
             <body className={cn("min-h-screen bg-background font-sans antialiased max-w-2xl mx-auto py-12 sm:py-24 px-6", fontSans.variable)}>
-                <ThemeProvider attribute="class" defaultTheme="light">
-                    <TooltipProvider delayDuration={0}>
-                        <ScrollProgress className="max-sm:hidden" />
-                        {children}
-                        <Navbar />
-                    </TooltipProvider>
-                </ThemeProvider>
+                <NextIntlClientProvider>
+                    <ThemeProvider attribute="class" defaultTheme="light">
+                        <TooltipProvider delayDuration={0}>
+                            <ScrollProgress className="max-sm:hidden" />
+                            {children}
+                            <Navbar />
+                        </TooltipProvider>
+                    </ThemeProvider>
+                </NextIntlClientProvider>
             </body>
         </html>
     );

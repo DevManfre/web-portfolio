@@ -1,6 +1,5 @@
 {
     "HomePage": {
-        "title": "Ciao Mondo!",
-        "about": "asdrubale"
+        "hello-title": "Ciao, mi chiamo"
     }
 }
