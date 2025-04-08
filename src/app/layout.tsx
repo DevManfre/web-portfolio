@@ -39,10 +39,6 @@ export const metadata: Metadata = {
             "max-snippet": -1,
         },
     },
-    twitter: {
-        title: `${DATA.name}`,
-        card: "summary_large_image",
-    },
     verification: {
         google: "",
         yandex: "",
