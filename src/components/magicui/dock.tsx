@@ -56,8 +56,6 @@ const DockIcon = ({ magnification = DEFAULT_MAGNIFICATION, distance = DEFAULT_DI
     const ref = useRef<HTMLDivElement>(null);
     mousex = useMotionValue(mousex);
 
-    const isMobile = window.innerWidth <= 768;
-
     const distanceCalc = useTransform(mousex, (val: number) => {
         const bounds = ref.current?.getBoundingClientRect() ?? { x: 0, width: 0 };
         return val - bounds.x - bounds.width / 2;
@@ -72,7 +70,7 @@ const DockIcon = ({ magnification = DEFAULT_MAGNIFICATION, distance = DEFAULT_DI
     });
 
     return (
-        <motion.div ref={ref} style={{ width: isMobile ? 'auto' : width }} className={cn("flex aspect-square cursor-pointer items-center justify-center rounded-full", className)} {...props}>
+        <motion.div ref={ref} style={{ width: width }} className={cn("flex aspect-square cursor-pointer items-center justify-center rounded-full", className)} {...props}>
             {children}
         </motion.div>
     );
