@@ -13,8 +13,8 @@ const BLUR_FADE_DELAY = 0.04;
 
 export default async function Page() {
     let terminalDelayCount = 0;
-    const t = await getTranslations('HomePage');
-    console.log("Locale: ", await getLocale());
+    const t = await getTranslations("HomePage"),
+        locale = await getLocale() as keyof typeof DATA.description;
 
     return (
         <main className="flex flex-col min-h-[100dvh] space-y-10">
@@ -28,7 +28,7 @@ export default async function Page() {
                                 yOffset={8}
                                 text={`${t("hello-title")} ${DATA.name.split(" ")[0]} 👋`}
                             />
-                            <BlurFadeText className="max-w-[600px] md:text-xl" delay={BLUR_FADE_DELAY} text={DATA.description} />
+                            <BlurFadeText className="max-w-[600px] md:text-xl" delay={BLUR_FADE_DELAY} text={DATA.description[locale]} />
                         </div>
                         <BlurFade delay={BLUR_FADE_DELAY}>
                             <Avatar className="size-28 border select-none">
@@ -41,14 +41,14 @@ export default async function Page() {
             </section>
             <section id="about">
                 <BlurFade delay={BLUR_FADE_DELAY * 3}>
-                    <h2 className="text-xl font-bold">About</h2>
-                    <BlurFadeText className="md:text-xl mt-2 text-justify" delay={BLUR_FADE_DELAY} text={DATA.summary} />
+                    <h2 className="text-xl font-bold">{t("about")}</h2>
+                    <BlurFadeText className="md:text-xl mt-2 text-justify" delay={BLUR_FADE_DELAY} text={DATA.summary[locale]} />
                 </BlurFade>
             </section>
             <section id="work">
                 <div className="flex min-h-0 flex-col gap-y-3">
                     <BlurFade delay={BLUR_FADE_DELAY * 5}>
-                        <h2 className="text-xl font-bold">Work Experience</h2>
+                        <h2 className="text-xl font-bold">{t("work-experience")}</h2>
                     </BlurFade>
                     {DATA.work.map((work, id) => (
                         <BlurFade key={work.company} delay={BLUR_FADE_DELAY * 6 + id * 0.05}>
@@ -57,11 +57,12 @@ export default async function Page() {
                                 logoUrl={work.logoUrl}
                                 altText={work.company}
                                 title={work.company}
-                                subtitle={work.title}
+                                subtitle={work.title[locale]}
                                 href={work.href}
                                 badges={work.badges}
-                                period={`${work.start} - ${work.end}`}
-                                description={work.description}
+                                start={work.start}
+                                end={work.end}
+                                description={(work.description as Record<keyof typeof DATA.description, string>)[locale]}
                             />
                         </BlurFade>
                     ))}
@@ -70,7 +71,7 @@ export default async function Page() {
             <section id="education">
                 <div className="flex min-h-0 flex-col gap-y-3">
                     <BlurFade delay={BLUR_FADE_DELAY * 7}>
-                        <h2 className="text-xl font-bold">Education</h2>
+                        <h2 className="text-xl font-bold">{t("education")}</h2>
                     </BlurFade>
                     {DATA.education.map((education, id) => (
                         <BlurFade key={education.school} delay={BLUR_FADE_DELAY * 8 + id * 0.05}>
@@ -81,7 +82,8 @@ export default async function Page() {
                                 altText={education.school}
                                 title={education.school}
                                 subtitle={education.degree}
-                                period={`${education.start} - ${education.end}`}
+                                start={education.start}
+                                end={education.end}
                             />
                         </BlurFade>
                     ))}

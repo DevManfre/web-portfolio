@@ -22,10 +22,10 @@ export const metadata: Metadata = {
         default: DATA.username,
         template: `%s | ${DATA.name}`,
     },
-    description: DATA.description,
+    description: DATA.description['en'],
     openGraph: {
         title: `${DATA.name}`,
-        description: DATA.description,
+        description: DATA.description['en'],
         url: DATA.url,
         siteName: `${DATA.name}`,
         locale: "en_US",

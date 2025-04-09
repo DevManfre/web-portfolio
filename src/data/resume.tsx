@@ -5,18 +5,19 @@ export const DATA = {
     initials: "AM",
     username: "devmanfre",
     url: "https://devmanfre.netlify.app",
-    description: "Full stack developer for a young Italian company. I love building things and helping people.",
-    summary:
-        `After graduating in CS in late 2023, I started working as a full stack developer.
+    description: {
+        en: "Full stack developer for a young Italian company. I love building things and helping people.",
+        it: "Sviluppatore full stack per una giovane azienda italiana. Mi piace costruire cose per farle girare sul Web.",
+    },
+    summary: {
+        en: `After graduating in CS in late 2023, I started working as a full stack developer.
         I explored various technologies, both back-end and front-end.
         Among all of them, React has become my favorite one.`,
-    terminal: [
-        "> get-graduation --spec IT",
-        "✔ IT graduation getted.",
-        "> get-degree --spec CS",
-        "✔ CS degree getted.",
-        "> sudo work --mode hard ..."
-    ],
+        it: `Dopo essermi laureato in informatica a fine 2023, ho iniziato a lavorare come sviluppatore full stack.
+        Ho approfondito diverse tecnologie, sia back-end che front-end.
+        Tra tutte, React è diventata la mia preferita.`,
+    },
+    terminal: ["> get-graduation --spec IT", "✔ IT graduation getted.", "> get-degree --spec CS", "✔ CS degree getted.", "> sudo work --mode hard ..."],
     avatarUrl: "/me.png",
     skills: ["React", "Next.js", "Typescript", "Node.js", "Python", "Javascript", "MySQL", "Java", "PHP", "Tailwind"],
     contact: {
@@ -58,23 +59,39 @@ export const DATA = {
             company: "Italiangres",
             href: "https://italiangres.com",
             badges: ["Prestashop", "JavaScript", "PHP", "Python", "MySQL"],
-            title: "Full Stack Developer",
+            title: {
+                en: "Full Stack Developer",
+                it: "Sviluppatore Full Stack",
+            },
             logoUrl: "/italiangres.png",
             start: "Feb 2024",
-            end: "Current",
-            description:
-                "Developed and maintained new features for the ecommerce, both front-office and back-office. Improve site performance and indexing by introducing best practices and performance fixes. Developed off-site scripts for managing internal company processes using mostly Python.",
+            end: "current",
+            description: {
+                en: `Developed and maintained new features for the ecommerce, both front-office and back-office.
+                Improve site performance and indexing by introducing best practices and performance fixes.
+                Developed off-site scripts for managing internal company processes using mostly Python.`,
+                it: `Sviluppo e manutenzione di nuove funzionalità per l'e-commerce, sia per il front-office che per il back-office.
+                Miglioramento delle prestazioni e dell'indicizzazione del sito mediante l'introduzione di best practice e correzioni delle prestazioni.
+                Sviluppo di script off-site per la gestione dei processi interni all'azienda, utilizzando principalmente Python.`,
+            },
         },
         {
             company: "expert.ai",
             href: "https://expert.ai",
             badges: ["Java"],
-            title: "Backend Developer",
+            title: {
+                en: "Backend Developer",
+                it: "Sviluppatore Backend",
+            },
             logoUrl: "/expert.ai.svg",
-            start: "Mar 2017, Apr 2018, Oct",
-            end: "Nov 2019",
-            description:
-                "Developed extension for IntelliJ regarding code coloring for particular file extensions used by the company. Developed new small features for the company's proprietary Cogito artificial intelligence.",
+            start: "Mar 2017, Apr 2018, Nov 2019",
+            end: "",
+            description: {
+                en: `Developed extension for IntelliJ regarding code coloring for particular file extensions used by the company.
+                Developed new small features for the company's proprietary Cogito artificial intelligence.`,
+                it: `Sviluppo di un'estensione per IntelliJ relativa alla colorazione del codice per particolari estensioni di file utilizzate dall'azienda.
+                Sviluppo di nuove piccole funzionalità per l'intelligenza artificiale Cogito, di proprietà dell'azienda.`,
+            },
         },
     ],
     education: [

@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 import { ChevronRightIcon } from "lucide-react";
 import Link from "next/link";
 import React from "react";
+import { useTranslations } from 'next-intl';
 
 interface ResumeCardProps {
     logoUrl: string;
@@ -16,10 +17,12 @@ interface ResumeCardProps {
     subtitle?: string;
     href?: string;
     badges?: readonly string[];
-    period: string;
+    start: string;
+    end: string;
     description?: string;
 }
-export const ResumeCard = ({ logoUrl, altText, title, subtitle, href, badges, period, description }: ResumeCardProps) => {
+export const ResumeCard = ({ logoUrl, altText, title, subtitle, href, badges, description, start, end }: ResumeCardProps) => {
+    const t = useTranslations('CardResume');
     const [isExpanded, setIsExpanded] = React.useState(false);
 
     const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
@@ -50,7 +53,7 @@ export const ResumeCard = ({ logoUrl, altText, title, subtitle, href, badges, pe
                                     )}
                                 />
                             </h3>
-                            <div className="text-xs sm:text-sm tabular-nums text-muted-foreground text-right">{period}</div>
+                            <div className="text-xs sm:text-sm tabular-nums text-muted-foreground text-right">{start}{end != "" ? ` - ${end == "current" ? t(end) : end}` : ""}</div>
                         </div>
 
                         {subtitle && <div className="font-sans text-xs">{subtitle}</div>}

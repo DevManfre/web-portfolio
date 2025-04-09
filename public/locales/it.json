@@ -1,5 +1,12 @@
 {
     "HomePage": {
-        "hello-title": "Ciao, mi chiamo"
+        "hello-title": "Ciao, mi chiamo",
+        "about": "Informazioni",
+        "work-experience": "Esperienza",
+        "current": "Presente",
+        "education": "Formazione"
+    },
+    "CardResume": {
+        "current": "Presente"
     }
 }

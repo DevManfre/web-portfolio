@@ -1,5 +1,11 @@
 {
     "HomePage": {
-        "hello-title": "Hi, I'm"
+        "hello-title": "Hi, I'm",
+        "about": "About",
+        "work-experience": "Work Experience",
+        "education": "Education"
+    },
+    "CardResume": {
+        "current": "Current"
     }
 }
