@@ -89,7 +89,7 @@ export default async function Page() {
                     ))}
                 </div>
                 <BlurFade delay={BLUR_FADE_DELAY * 7}>
-                    <Terminal className="min-w-[300px] min-h-[192px] mt-2">
+                    <Terminal className="min-w-[300px] min-h-[192px] mt-4">
                         {DATA.terminal.map((text, id) => {
                             const actualTerminalDelayCount = terminalDelayCount;
                             if (id % 2 == 0) {
