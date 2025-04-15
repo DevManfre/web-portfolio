@@ -4,7 +4,8 @@
         "about": "Informazioni",
         "work-experience": "Esperienza",
         "current": "Presente",
-        "education": "Formazione"
+        "education": "Formazione",
+        "skills": "Linguaggi e Tecnologie"
     },
     "CardResume": {
         "current": "Presente"

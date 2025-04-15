@@ -3,7 +3,8 @@
         "hello-title": "Hi, I'm",
         "about": "About",
         "work-experience": "Work Experience",
-        "education": "Education"
+        "education": "Education",
+        "skills": "Skills"
     },
     "CardResume": {
         "current": "Current"

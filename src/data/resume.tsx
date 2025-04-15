@@ -19,7 +19,7 @@ export const DATA = {
     },
     terminal: ["> get-graduation --spec IT", "✔ IT graduation getted.", "> get-degree --spec CS", "✔ CS degree getted.", "> sudo work --mode hard ..."],
     avatarUrl: "/me.png",
-    skills: ["React", "Next.js", "Typescript", "Node.js", "Python", "Javascript", "MySQL", "Java", "PHP", "Tailwind"],
+    skills: ["React", "Next.js", "Typescript", "Node.js", "Python", "Javascript", "MySQL", "PHP", "Tailwind", "SCSS", "Docker", "Git"].sort(),
     contact: {
         email: "alessio.manfredini.work@gmail.com",
         tel: "+123456789",
