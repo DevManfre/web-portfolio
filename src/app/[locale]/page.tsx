@@ -15,6 +15,8 @@ export default async function Page() {
     let terminalDelayCount = 0;
     const t = await getTranslations("HomePage"),
         locale = await getLocale() as keyof typeof DATA.description;
+    
+    /* TODO: guardare grandi componenti in react per ottenere un effetto visivo migliore */
 
     return (
         <main className="flex flex-col min-h-[100dvh] space-y-10">
@@ -113,6 +115,7 @@ export default async function Page() {
             <section id="skills">
                 <div className="flex min-h-0 flex-col gap-y-3">
                     <BlurFade delay={BLUR_FADE_DELAY * 9}>
+                        {/* TODO: aggiungere animazione quando vado sopra si deve vedere l'icona della tech */}
                         <h2 className="text-xl font-bold">{t("skills")}</h2>
                     </BlurFade>
                     <div className="flex flex-wrap gap-1">
