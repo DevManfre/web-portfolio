@@ -64,7 +64,7 @@ export const DATA = {
                 it: "Sviluppatore Full Stack",
             },
             logoUrl: "/italiangres.png",
-            start: "Feb 2024",
+            start: "02/2024",
             end: "current",
             description: {
                 en: `Developed and maintained new features for the ecommerce, both front-office and back-office.
@@ -84,7 +84,7 @@ export const DATA = {
                 it: "Sviluppatore Backend",
             },
             logoUrl: "/expert.ai.svg",
-            start: "Mar 2017, Apr 2018, Nov 2019",
+            start: "03/2017, 04/2018, 09/2019",
             end: "",
             description: {
                 en: `Developed extension for IntelliJ regarding code coloring for particular file extensions used by the company.
@@ -150,3 +150,5 @@ export const DATA = {
         },
     ],
 } as const;
+
+/* TODO: dividere la cartella delle immagini */

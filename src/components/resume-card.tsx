@@ -3,12 +3,12 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardHeader } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
+import { cn, formatDate } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { ChevronRightIcon } from "lucide-react";
 import Link from "next/link";
 import React from "react";
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from "next-intl";
 
 interface ResumeCardProps {
     logoUrl: string;
@@ -22,8 +22,9 @@ interface ResumeCardProps {
     description?: string;
 }
 export const ResumeCard = ({ logoUrl, altText, title, subtitle, href, badges, description, start, end }: ResumeCardProps) => {
-    const t = useTranslations('CardResume');
-    const [isExpanded, setIsExpanded] = React.useState(false);
+    const t = useTranslations("CardResume"),
+        [isExpanded, setIsExpanded] = React.useState(false),
+        locale = useLocale();
 
     const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
         if (description) {
@@ -53,7 +54,10 @@ export const ResumeCard = ({ logoUrl, altText, title, subtitle, href, badges, de
                                     )}
                                 />
                             </h3>
-                            <div className="text-xs sm:text-sm tabular-nums text-muted-foreground text-right">{start}{end != "" ? ` - ${end == "current" ? t(end) : end}` : ""}</div>
+                            <div className="text-xs sm:text-sm tabular-nums text-muted-foreground text-right">
+                                {formatDate(start, locale)}
+                                {end != "" ? ` - ${end == "current" ? t(end) : formatDate(end, locale)}` : ""}
+                            </div>
                         </div>
 
                         {subtitle && <div className="font-sans text-xs">{subtitle}</div>}
@@ -73,7 +77,7 @@ export const ResumeCard = ({ logoUrl, altText, title, subtitle, href, badges, de
                             className="mt-2 text-xs sm:text-sm"
                         >
                             {description}
-                            <br/>
+                            <br />
                             {badges && (
                                 <span className="inline-flex flex-wrap gap-x-1 mt-3 gap-y-1">
                                     {badges.map((badge, index) => (
