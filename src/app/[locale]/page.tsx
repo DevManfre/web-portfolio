@@ -81,7 +81,7 @@ export default async function Page() {
                                 logoUrl={education.logoUrl}
                                 altText={education.school}
                                 title={education.school}
-                                subtitle={education.degree}
+                                subtitle={education.degree[locale]}
                                 start={education.start}
                                 end={education.end}
                             />

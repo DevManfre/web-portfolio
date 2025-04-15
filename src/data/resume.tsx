@@ -98,7 +98,10 @@ export const DATA = {
         {
             school: "UniMoRe",
             href: "https://www.unimore.it",
-            degree: "Computer Science Degree",
+            degree: {
+                it: "Laurea in Informatica",
+                en: "Computer Science Degree",
+            },
             logoUrl: "/unimore.png",
             start: "2019",
             end: "2023",
@@ -106,7 +109,10 @@ export const DATA = {
         {
             school: "Primo Levi",
             href: "https://istitutolevi.edu.it",
-            degree: "IT Graduation",
+            degree: {
+                it: "Diploma in Informatica",
+                en: "IT Graduation",
+            },
             logoUrl: "/primo-levi.png",
             start: "2014",
             end: "2019",
@@ -114,7 +120,10 @@ export const DATA = {
         {
             school: "AICA",
             href: "https://aicanet.it/",
-            degree: "ECDL Full Stardard",
+            degree: {
+                it: "ECDL Full Stardard",
+                en: "ECDL Full Stardard",
+            },
             logoUrl: "/aica.png",
             start: "2014",
             end: "2015",
