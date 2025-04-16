@@ -7,8 +7,11 @@ import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { Icons } from "@/components/icons";
+import { getLocale } from "next-intl/server";
 
-export default function Navbar() {
+export default async function Navbar() {
+    const locale = await getLocale();
+
     return (
         <div className="pointer-events-none fixed inset-x-0 bottom-0 z-30 mx-auto mb-4 flex origin-bottom h-full max-h-14">
             <div className="fixed bottom-0 inset-x-0 h-16 w-full bg-background to-transparent backdr backdrop-blur-lg [-webkit-mask-image:linear-gradient(to_top,black,transparent)] dark:bg-background"></div>
@@ -33,7 +36,7 @@ export default function Navbar() {
                 <DockIcon>
                     <Tooltip>
                         <TooltipTrigger asChild>
-                            <Link href='resume.pdf' download target="about:blank" className={cn(buttonVariants({ variant: "ghost", size: "icon" }), "size-12")}>
+                            <Link href={`resume-${locale}.pdf`} download target="about:blank" className={cn(buttonVariants({ variant: "ghost", size: "icon" }), "size-12")}>
                                 <Icons.cv className="size-4" />
                             </Link>
                         </TooltipTrigger>
