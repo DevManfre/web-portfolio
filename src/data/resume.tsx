@@ -133,9 +133,14 @@ export const DATA = {
         {
             title: "Sophon",
             href: "https://dl.acm.org/doi/fullHtml/10.1145/3491418.3535163",
-            dates: "March 2023 - Aug 2023",
-            description:
-                "Sophon is a software that allows you to store, execute, and optionally share your research in a secure cloud hosted by your insitution. It was a research project developed by the University of Modena and Reggio Emilia.",
+            start: "03/2023",
+            end: "09/2023",
+            description: {
+                en: `Sophon is a software that allows you to store, execute, and optionally share your research in a secure cloud hosted by your insitution.
+                It was a research project developed by the University of Modena and Reggio Emilia.`,
+                it: `Sophon è un software che consente di archiviare, eseguire e, a scelta, condividere le proprie ricerche in un cloud sicuro ospitato dalla propria istituzione.
+                È un progetto di ricerca sviluppato dall'Università di Modena e Reggio Emilia.`
+            },
             technologies: ["Python", "Docker"],
             links: [
                 {
@@ -144,12 +149,12 @@ export const DATA = {
                     icon: <Icons.github className="size-4" />,
                 },
                 {
-                    type: "First article",
+                    type: "Article",
                     href: "https://dl.acm.org/doi/fullHtml/10.1145/3491418.3535163",
                     icon: <Icons.globe className="size-4" />,
                 },
                 {
-                    type: "Second article",
+                    type: "Article",
                     href: "http://iris.unimore.it/handle/11380/1328207?mode=complete",
                     icon: <Icons.globe className="size-4" />,
                 },

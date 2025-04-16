@@ -1,10 +1,17 @@
 {
     "HomePage": {
         "hello-title": "Hi, I'm",
-        "about": "About",
-        "work-experience": "Work Experience",
-        "education": "Education",
-        "skills": "Skills"
+        "about-title": "About",
+        "work-experience-title": "Work Experience",
+        "education-title": "Education",
+        "skills-title": "Skills",
+        "projects-title": "My Projects",
+        "projects-subtitle": "Check out my latest work",
+        "contact-title": "Contact",
+        "contact-subtitle": "Get in Touch",
+        "contact-text-1": "Want to chat? Just shoot me a",
+        "contact-text-2": "on Linkedin or send me an",
+        "contact-text-3": "and I'll respond whenever I can."
     },
     "CardResume": {
         "current": "Current"

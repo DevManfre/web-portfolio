@@ -29,7 +29,7 @@ export function formatDate(date: string, locale: string): string {
         returnString = new Date(date).getFullYear().toString();
     if (parts.length == 2 || parts.length == 3)
         /* "month yyyy", for example Apr 2017  */
-        returnString = new Date(`01/${parts[1]}/${parts[0]}`).toLocaleDateString(locale, { year: "numeric", month: "short" }).toString();
+        returnString = new Date(`${parts[1]}/01/${parts[0]}`).toLocaleDateString(locale, { year: "numeric", month: "short" }).toString();
 
     if (dates.length > 1)
         dates.forEach((date) => {
