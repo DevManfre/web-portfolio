@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
 import "./globals.css";
-import { ScrollProgress } from "@/components/magicui/scroll-progress";
+/* import { ScrollProgress } from "@/components/magicui/scroll-progress"; */
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
