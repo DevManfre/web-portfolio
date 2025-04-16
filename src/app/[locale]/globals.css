@@ -157,8 +157,3 @@ code[data-line-numbers-max-digits="2"] > [data-line]::before {
 code[data-line-numbers-max-digits="3"] > [data-line]::before {
     width: 3rem;
 }
-
-/* Hide scrollbar */
-::-webkit-scrollbar {
-    display: none;
-}

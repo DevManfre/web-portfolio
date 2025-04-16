@@ -70,7 +70,7 @@ export default async function RootLayout({
                 <NextIntlClientProvider>
                     <ThemeProvider attribute="class" defaultTheme="light">
                         <TooltipProvider delayDuration={0}>
-                            <ScrollProgress className="max-sm:hidden" />
+                            {/* <ScrollProgress className="max-sm:hidden" /> */}
                             {children}
                             <Navbar />
                         </TooltipProvider>
