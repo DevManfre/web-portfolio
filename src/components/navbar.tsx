@@ -36,7 +36,7 @@ export default async function Navbar() {
                 <DockIcon>
                     <Tooltip>
                         <TooltipTrigger asChild>
-                            <Link href={`resume-${locale}.pdf`} download target="about:blank" className={cn(buttonVariants({ variant: "ghost", size: "icon" }), "size-12")}>
+                            <Link href={`resumes/resume-${locale}.pdf`} download target="about:blank" className={cn(buttonVariants({ variant: "ghost", size: "icon" }), "size-12")}>
                                 <Icons.cv className="size-4" />
                             </Link>
                         </TooltipTrigger>
