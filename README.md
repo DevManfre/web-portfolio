@@ -20,7 +20,7 @@ Repository for the site I use to introduce myself to companies. The site is buil
     ```
 2. To run the build execute the following command
     ```
-    npm run serve
+    npm run start
     ```
 
 ## 👨🏻‍🦰 Personal information

@@ -15,8 +15,6 @@ export default async function Page() {
     let terminalDelayCount = 0;
     const t = await getTranslations("HomePage"),
         locale = await getLocale() as keyof typeof DATA.description;
-    
-    /* TODO: guardare grandi componenti in react per ottenere un effetto visivo migliore */
 
     return (
         <main className="flex flex-col min-h-[100dvh] space-y-10">
@@ -28,7 +26,7 @@ export default async function Page() {
                                 delay={BLUR_FADE_DELAY}
                                 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none"
                                 yOffset={8}
-                                text={`${t("hello-title")} ${DATA.name.split(" ")[0]} 👋`}
+                                text={`${t("hello-title")} ${DATA.name.split(" ")[0]}`}
                             />
                             <BlurFadeText className="max-w-[600px] md:text-xl" delay={BLUR_FADE_DELAY} text={DATA.description[locale]} />
                         </div>
