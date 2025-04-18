@@ -15,5 +15,9 @@
     },
     "CardResume": {
         "current": "Current"
+    },
+    "PageNotFound": {
+        "page-not-found": "Page not found",
+        "back-to-site": "Go to the site"
     }
 }

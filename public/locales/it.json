@@ -15,5 +15,9 @@
     },
     "CardResume": {
         "current": "Presente"
+    },
+    "PageNotFound": {
+        "page-not-found": "Pagina non trovata",
+        "back-to-site": "Torna al sito"
     }
 }
