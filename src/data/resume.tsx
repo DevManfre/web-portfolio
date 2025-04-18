@@ -164,5 +164,3 @@ export const DATA = {
         },
     ],
 } as const;
-
-/* TODO: dividere la cartella delle immagini */

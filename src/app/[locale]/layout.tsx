@@ -5,7 +5,7 @@ import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
-import "./globals.css";
+import "@/app/globals.css";
 /* import { ScrollProgress } from "@/components/magicui/scroll-progress"; */
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
@@ -22,10 +22,10 @@ export const metadata: Metadata = {
         default: DATA.username,
         template: `%s | ${DATA.name}`,
     },
-    description: DATA.description['en'],
+    description: DATA.description["en"],
     openGraph: {
         title: `${DATA.name}`,
-        description: DATA.description['en'],
+        description: DATA.description["en"],
         url: DATA.url,
         siteName: `${DATA.name}`,
         locale: "en_US",
@@ -57,8 +57,7 @@ export default async function RootLayout({
 }>) {
     // Ensure that the incoming `locale` is valid
     const { locale } = await params;
-    if (!hasLocale(routing.locales, locale))
-        notFound();
+    if (!hasLocale(routing.locales, locale)) notFound();
     metadata.description = DATA.description[locale as keyof typeof DATA.description];
     metadata.openGraph = metadata.openGraph ?? {};
     metadata.openGraph.description = DATA.description[locale as keyof typeof DATA.description];
