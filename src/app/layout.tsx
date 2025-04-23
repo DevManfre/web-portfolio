@@ -1,12 +1,10 @@
-import Navbar from "@/components/navbar";
 import { ThemeProvider } from "@/components/theme-provider";
-import { TooltipProvider } from "@/components/ui/tooltip";
 import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
-import "./globals.css";
-import { ScrollProgress } from "@/components/magicui/scroll-progress";
+import "@/app/globals.css";
+import { NextIntlClientProvider } from "next-intl";
 
 const fontSans = FontSans({
     subsets: ["latin"],
@@ -19,10 +17,10 @@ export const metadata: Metadata = {
         default: DATA.username,
         template: `%s | ${DATA.name}`,
     },
-    description: DATA.description,
+    description: DATA.description["en"],
     openGraph: {
         title: `${DATA.name}`,
-        description: DATA.description,
+        description: DATA.description["en"],
         url: DATA.url,
         siteName: `${DATA.name}`,
         locale: "en_US",
@@ -39,32 +37,34 @@ export const metadata: Metadata = {
             "max-snippet": -1,
         },
     },
-    twitter: {
-        title: `${DATA.name}`,
-        card: "summary_large_image",
-    },
     verification: {
         google: "",
         yandex: "",
     },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
     children,
+    params,
 }: Readonly<{
     children: React.ReactNode;
+    params: Promise<{ locale: string }>;
 }>) {
+    // Ensure that the incoming `locale` is valid
+    const { locale } = await params;
+    metadata.description = DATA.description[locale as keyof typeof DATA.description];
+    metadata.openGraph = metadata.openGraph ?? {};
+    metadata.openGraph.description = DATA.description[locale as keyof typeof DATA.description];
+    metadata.openGraph.locale = locale as string;
+
     return (
-        /* TODO: add i18n */
-        <html lang="en" suppressHydrationWarning>
-            <body className={cn("min-h-screen bg-background font-sans antialiased max-w-2xl mx-auto py-12 sm:py-24 px-6", fontSans.variable)}>
-                <ThemeProvider attribute="class" defaultTheme="light">
-                    <TooltipProvider delayDuration={0}>
-                        <ScrollProgress className="max-sm:hidden" />
+        <html lang={locale} suppressHydrationWarning>
+            <body className={cn("min-h-screen bg-background font-sans antialiased", fontSans.variable)}>
+                <NextIntlClientProvider>
+                    <ThemeProvider attribute="class" defaultTheme="light">
                         {children}
-                        <Navbar />
-                    </TooltipProvider>
-                </ThemeProvider>
+                    </ThemeProvider>
+                </NextIntlClientProvider>
             </body>
         </html>
     );

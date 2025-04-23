@@ -1,14 +1,16 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
+import { cn, formatDate } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
+import { getLocale } from "next-intl/server";
 
 interface Props {
     title: string;
     href?: string;
     description: string;
-    dates: string;
+    start: string;
+    end: string;
     tags: readonly string[];
     link?: string;
     image?: string;
@@ -21,10 +23,11 @@ interface Props {
     className?: string;
 }
 
-export function ProjectCard({ title, href, description, dates, tags, link, image, video, links, className }: Props) {
+export async function ProjectCard({ title, href, description, start, end, tags, link, image, video, links, className }: Props) {
+    const locale = await getLocale();
     return (
-        <Card className={"flex flex-col overflow-hidden border hover:shadow-lg transition-all duration-300 ease-out h-full"}>
-            <Link href={href || "#"} className={cn("block cursor-pointer", className)}>
+        <Card className={"flex flex-col overflow-hidden border hover:shadow-lg hover:scale-105 transition-all duration-300 ease-out h-full"}>
+            <Link href={href || "#"} target="about:blank" className={cn("block cursor-pointer", className)}>
                 {video && (
                     <video
                         src={video}
@@ -40,7 +43,7 @@ export function ProjectCard({ title, href, description, dates, tags, link, image
             <CardHeader className="px-2">
                 <div className="space-y-1">
                     <CardTitle className="mt-1 text-base">{title}</CardTitle>
-                    <time className="font-sans text-xs">{dates}</time>
+                    <time className="font-sans text-xs block italic">{`${formatDate(start, locale)} - ${formatDate(end, locale)}`}</time>
                     <div className="hidden font-sans text-xs underline print:visible">{link?.replace("https://", "").replace("www.", "").replace("/", "")}</div>
                     {description}
                 </div>

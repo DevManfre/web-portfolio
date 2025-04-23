@@ -4,23 +4,22 @@ export const DATA = {
     name: "Alessio Manfredini",
     initials: "AM",
     username: "devmanfre",
-    url: "https://dillion.io",
-    location: "San Francisco, CA",
-    locationLink: "https://www.google.com/maps/place/sanfrancisco",
-    description: "Full stack developer for a young Italian company. I love building things and helping people.",
-    summary:
-        `After graduating in CS in late 2023, I started working as a full stack developer.
+    url: "https://devmanfre.netlify.app",
+    description: {
+        en: "Full stack developer for a young Italian company. I love building things and helping people.",
+        it: "Sviluppatore full stack per una giovane azienda italiana. Mi piace costruire cose per farle girare sul Web.",
+    },
+    summary: {
+        en: `After graduating in CS in late 2023, I started working as a full stack developer.
         I explored various technologies, both back-end and front-end.
         Among all of them, React has become my favorite one.`,
-    terminal: [
-        "> get-graduation --spec IT",
-        "✔ IT graduation getted.",
-        "> get-degree --spec CS",
-        "✔ CS degree getted.",
-        "> sudo work --mode hard ..."
-    ],
+        it: `Dopo essermi laureato in informatica a fine 2023, ho iniziato a lavorare come sviluppatore full stack.
+        Ho approfondito diverse tecnologie, sia back-end che front-end.
+        Tra tutte, React è diventata la mia preferita.`,
+    },
+    terminal: ["> get-graduation --spec IT", "✔ IT graduation getted.", "> get-degree --spec CS", "✔ CS degree getted.", "> sudo work --mode hard ..."],
     avatarUrl: "/me.png",
-    skills: ["React", "Next.js", "Typescript", "Node.js", "Python", "Javascript", "MySQL", "Java", "PHP", "Tailwind"],
+    skills: ["React", "Next.js", "Typescript", "Node.js", "Python", "Javascript", "MySQL", "PHP", "Tailwind", "SCSS", "Docker", "Git"].sort(),
     contact: {
         email: "alessio.manfredini.work@gmail.com",
         tel: "+123456789",
@@ -60,30 +59,49 @@ export const DATA = {
             company: "Italiangres",
             href: "https://italiangres.com",
             badges: ["Prestashop", "JavaScript", "PHP", "Python", "MySQL"],
-            title: "Full Stack Developer",
+            title: {
+                en: "Full Stack Developer",
+                it: "Sviluppatore Full Stack",
+            },
             logoUrl: "/italiangres.png",
-            start: "Feb 2024",
-            end: "Current",
-            description:
-                "Developed and maintained new features for the ecommerce, both front-office and back-office. Improve site performance and indexing by introducing best practices and performance fixes. Developed off-site scripts for managing internal company processes using mostly Python.",
+            start: "02/2024",
+            end: "current",
+            description: {
+                en: `Developed and maintained new features for the ecommerce, both front-office and back-office.
+                Improve site performance and indexing by introducing best practices and performance fixes.
+                Developed off-site scripts for managing internal company processes using mostly Python.`,
+                it: `Sviluppo e manutenzione di nuove funzionalità per l'e-commerce, sia per il front-office che per il back-office.
+                Miglioramento delle prestazioni e dell'indicizzazione del sito mediante l'introduzione di best practice e correzioni delle prestazioni.
+                Sviluppo di script off-site per la gestione dei processi interni all'azienda, utilizzando principalmente Python.`,
+            },
         },
         {
             company: "expert.ai",
             href: "https://expert.ai",
             badges: ["Java"],
-            title: "Backend Developer",
+            title: {
+                en: "Backend Developer",
+                it: "Sviluppatore Backend",
+            },
             logoUrl: "/expert.ai.svg",
-            start: "Mar 2017, Apr 2018, Oct",
-            end: "Nov 2019",
-            description:
-                "Developed extension for IntelliJ regarding code coloring for particular file extensions used by the company. Developed new small features for the company's proprietary Cogito artificial intelligence.",
+            start: "03/2017, 04/2018, 09/2019",
+            end: "",
+            description: {
+                en: `Developed extension for IntelliJ regarding code coloring for particular file extensions used by the company.
+                Developed new small features for the company's proprietary Cogito artificial intelligence.`,
+                it: `Sviluppo di un'estensione per IntelliJ relativa alla colorazione del codice per particolari estensioni di file utilizzate dall'azienda.
+                Sviluppo di nuove piccole funzionalità per l'intelligenza artificiale Cogito, di proprietà dell'azienda.`,
+            },
         },
     ],
     education: [
         {
             school: "UniMoRe",
             href: "https://www.unimore.it",
-            degree: "Computer Science Degree",
+            degree: {
+                it: "Laurea in Informatica",
+                en: "Computer Science Degree",
+            },
             logoUrl: "/unimore.png",
             start: "2019",
             end: "2023",
@@ -91,7 +109,10 @@ export const DATA = {
         {
             school: "Primo Levi",
             href: "https://istitutolevi.edu.it",
-            degree: "IT Graduation",
+            degree: {
+                it: "Diploma in Informatica",
+                en: "IT Graduation",
+            },
             logoUrl: "/primo-levi.png",
             start: "2014",
             end: "2019",
@@ -99,7 +120,10 @@ export const DATA = {
         {
             school: "AICA",
             href: "https://aicanet.it/",
-            degree: "ECDL Full Stardard",
+            degree: {
+                it: "ECDL Full Stardard",
+                en: "ECDL Full Stardard",
+            },
             logoUrl: "/aica.png",
             start: "2014",
             end: "2015",
@@ -107,83 +131,36 @@ export const DATA = {
     ],
     projects: [
         {
-            title: "Chat Collect",
-            href: "https://chatcollect.com",
-            dates: "Jan 2024 - Feb 2024",
-            active: true,
-            description:
-                "With the release of the [OpenAI GPT Store](https://openai.com/blog/introducing-the-gpt-store), I decided to build a SaaS which allows users to collect email addresses from their GPT users. This is a great way to build an audience and monetize your GPT API usage.",
-            technologies: ["Next.js", "Typescript", "PostgreSQL", "Prisma", "TailwindCSS", "Stripe", "Shadcn UI", "Magic UI"],
+            title: "Sophon",
+            href: "https://dl.acm.org/doi/fullHtml/10.1145/3491418.3535163",
+            start: "03/2023",
+            end: "09/2023",
+            description: {
+                en: `Sophon is a software that allows you to store, execute, and optionally share your research in a secure cloud hosted by your insitution.
+                It was a research project developed by the University of Modena and Reggio Emilia.`,
+                it: `Sophon è un software che consente di archiviare, eseguire e, a scelta, condividere le proprie ricerche in un cloud sicuro ospitato dalla propria istituzione.
+                È un progetto di ricerca sviluppato dall'Università di Modena e Reggio Emilia.`
+            },
+            technologies: ["Python", "Docker"],
             links: [
                 {
-                    type: "Website",
-                    href: "https://chatcollect.com",
-                    icon: <Icons.globe className="size-3" />,
+                    type: "Github",
+                    href: "https://github.com/Steffo99/sophon",
+                    icon: <Icons.github className="size-4" />,
+                },
+                {
+                    type: "Article",
+                    href: "https://dl.acm.org/doi/fullHtml/10.1145/3491418.3535163",
+                    icon: <Icons.globe className="size-4" />,
+                },
+                {
+                    type: "Article",
+                    href: "http://iris.unimore.it/handle/11380/1328207?mode=complete",
+                    icon: <Icons.globe className="size-4" />,
                 },
             ],
-            image: "",
-            video: "https://pub-83c5db439b40468498f97946200806f7.r2.dev/chat-collect.mp4",
-        },
-        {
-            title: "Magic UI",
-            href: "https://magicui.design",
-            dates: "June 2023 - Present",
-            active: true,
-            description: "Designed, developed and sold animated UI components for developers.",
-            technologies: ["Next.js", "Typescript", "PostgreSQL", "Prisma", "TailwindCSS", "Stripe", "Shadcn UI", "Magic UI"],
-            links: [
-                {
-                    type: "Website",
-                    href: "https://magicui.design",
-                    icon: <Icons.globe className="size-3" />,
-                },
-                {
-                    type: "Source",
-                    href: "https://github.com/magicuidesign/magicui",
-                    icon: <Icons.github className="size-3" />,
-                },
-            ],
-            image: "",
-            video: "https://cdn.magicui.design/bento-grid.mp4",
-        },
-        {
-            title: "llm.report",
-            href: "https://llm.report",
-            dates: "April 2023 - September 2023",
-            active: true,
-            description: "Developed an open-source logging and analytics platform for OpenAI: Log your ChatGPT API requests, analyze costs, and improve your prompts.",
-            technologies: ["Next.js", "Typescript", "PostgreSQL", "Prisma", "TailwindCSS", "Shadcn UI", "Magic UI", "Stripe", "Cloudflare Workers"],
-            links: [
-                {
-                    type: "Website",
-                    href: "https://llm.report",
-                    icon: <Icons.globe className="size-3" />,
-                },
-                {
-                    type: "Source",
-                    href: "https://github.com/dillionverma/llm.report",
-                    icon: <Icons.github className="size-3" />,
-                },
-            ],
-            image: "",
-            video: "https://cdn.llm.report/openai-demo.mp4",
-        },
-        {
-            title: "Automatic Chat",
-            href: "https://automatic.chat",
-            dates: "April 2023 - March 2024",
-            active: true,
-            description: "Developed an AI Customer Support Chatbot which automatically responds to customer support tickets using the latest GPT models.",
-            technologies: ["Next.js", "Typescript", "PostgreSQL", "Prisma", "TailwindCSS", "Shadcn UI", "Magic UI", "Stripe", "Cloudflare Workers"],
-            links: [
-                {
-                    type: "Website",
-                    href: "https://automatic.chat",
-                    icon: <Icons.globe className="size-3" />,
-                },
-            ],
-            image: "",
-            video: "https://pub-83c5db439b40468498f97946200806f7.r2.dev/automatic-chat.mp4",
+            image: "/sophon.png",
+            video: "",
         },
     ],
 } as const;

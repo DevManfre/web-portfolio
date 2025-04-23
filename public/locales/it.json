@@ -1,0 +1,23 @@
+{
+    "HomePage": {
+        "hello-title": "Ciao, mi chiamo",
+        "about-title": "Informazioni",
+        "work-experience-title": "Esperienza",
+        "education-title": "Formazione",
+        "skills-title": "Linguaggi e Tecnologie",
+        "projects-title": "I miei progetti",
+        "projects-subtitle": "Guarda i progetti più recenti",
+        "contact-title": "Contatti",
+        "contact-subtitle": "Contattami sui social",
+        "contact-text-1": "Mandami un",
+        "contact-text-2": "su Linkedin o mandami una",
+        "contact-text-3": "e ti risponderò appena potrò."
+    },
+    "CardResume": {
+        "current": "Presente"
+    },
+    "PageNotFound": {
+        "page-not-found": "Pagina non trovata",
+        "back-to-site": "Torna al sito"
+    }
+}
