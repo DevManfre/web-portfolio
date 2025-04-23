@@ -102,7 +102,7 @@ export default async function Page() {
                             }
                             terminalDelayCount += 300;
                             return (
-                                <AnimatedSpan key={id} delay={actualTerminalDelayCount} className="dark:text-green-500 text-green-700">
+                                <AnimatedSpan key={id} delay={actualTerminalDelayCount} className="dark:text-green-400 text-green-700">
                                     {text}
                                 </AnimatedSpan>
                             );
@@ -113,7 +113,6 @@ export default async function Page() {
             <section id="skills">
                 <div className="flex min-h-0 flex-col gap-y-3">
                     <BlurFade delay={BLUR_FADE_DELAY * 9}>
-                        {/* TODO: aggiungere animazione quando vado sopra si deve vedere l'icona della tech */}
                         <h2 className="text-xl font-bold">{t("skills-title")}</h2>
                     </BlurFade>
                     <div className="flex flex-wrap gap-1">
