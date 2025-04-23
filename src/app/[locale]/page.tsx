@@ -14,7 +14,7 @@ const BLUR_FADE_DELAY = 0.04;
 export default async function Page() {
     let terminalDelayCount = 0;
     const t = await getTranslations("HomePage"),
-        locale = await getLocale() as keyof typeof DATA.description;
+        locale = (await getLocale()) as keyof typeof DATA.description;
 
     return (
         <main className="flex flex-col min-h-[100dvh] space-y-10">
