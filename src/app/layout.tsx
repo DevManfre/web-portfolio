@@ -6,7 +6,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getLocale } from "next-intl/server";
 
 export async function generateMetadata(): Promise<Metadata> {
-    const locale = await getLocale();
+    const locale = await getLocale() as keyof typeof DATA.description;
     
     return {
         metadataBase: new URL(DATA.url),
