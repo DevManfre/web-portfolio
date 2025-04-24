@@ -4,7 +4,7 @@
 Repository for the site I use to introduce myself to companies. The site is built using NextJS.
 
 ## 🔧 Local installation
-### Setup install -g gatsby-cli
+### Setup
 1. Install the repository dependencies
     ```
     npm install
@@ -28,3 +28,6 @@ Most of the personal information is configurable within the `src/data/resume.tsx
 
 ## 📝 License
 This project is licensed under the terms of the MIT license.
+
+TODO: readme aggiornato
+TODO: add lighthouse measure to readme (see starred repos)

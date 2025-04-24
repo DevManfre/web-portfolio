@@ -1,65 +1,54 @@
 import { ThemeProvider } from "@/components/theme-provider";
 import { DATA } from "@/data/resume";
-import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
-import { Inter as FontSans } from "next/font/google";
 import "@/app/globals.css";
 import { NextIntlClientProvider } from "next-intl";
+import { getLocale } from "next-intl/server";
 
-const fontSans = FontSans({
-    subsets: ["latin"],
-    variable: "--font-sans",
-});
-
-export const metadata: Metadata = {
-    metadataBase: new URL(DATA.url),
-    title: {
-        default: DATA.username,
-        template: `%s | ${DATA.name}`,
-    },
-    description: DATA.description["en"],
-    openGraph: {
-        title: `${DATA.name}`,
-        description: DATA.description["en"],
-        url: DATA.url,
-        siteName: `${DATA.name}`,
-        locale: "en_US",
-        type: "website",
-    },
-    robots: {
-        index: true,
-        follow: true,
-        googleBot: {
+export async function generateMetadata(): Promise<Metadata> {
+    const locale = await getLocale() as keyof typeof DATA.description;
+    
+    return {
+        metadataBase: new URL(DATA.url),
+        title: {
+            default: DATA.username,
+            template: `%s | ${DATA.name}`,
+        },
+        description: DATA.description[locale],
+        openGraph: {
+            title: `${DATA.name}`,
+            description: DATA.description[locale],
+            url: DATA.url,
+            siteName: `${DATA.name}`,
+            locale: locale,
+            type: "website",
+        },
+        robots: {
             index: true,
             follow: true,
-            "max-video-preview": -1,
-            "max-image-preview": "large",
-            "max-snippet": -1,
+            googleBot: {
+                index: true,
+                follow: true,
+                "max-video-preview": -1,
+                "max-image-preview": "large",
+                "max-snippet": -1,
+            },
         },
-    },
-    verification: {
-        google: "",
-        yandex: "",
-    },
-};
+        verification: {
+            google: "",
+            yandex: "",
+        },
+    };
+}
 
 export default async function RootLayout({
-    children,
-    params,
+    children
 }: Readonly<{
     children: React.ReactNode;
-    params: Promise<{ locale: string }>;
 }>) {
-    // Ensure that the incoming `locale` is valid
-    const { locale } = await params;
-    metadata.description = DATA.description[locale as keyof typeof DATA.description];
-    metadata.openGraph = metadata.openGraph ?? {};
-    metadata.openGraph.description = DATA.description[locale as keyof typeof DATA.description];
-    metadata.openGraph.locale = locale as string;
-
     return (
-        <html lang={locale} suppressHydrationWarning>
-            <body className={cn("min-h-screen bg-background font-sans antialiased", fontSans.variable)}>
+        <html lang={await getLocale()} suppressHydrationWarning>
+            <body className="min-h-screen bg-background font-sans antialiased --font-sans">
                 <NextIntlClientProvider>
                     <ThemeProvider attribute="class" defaultTheme="light">
                         {children}
