@@ -50,7 +50,7 @@ export default async function RootLayout({
         <html lang={await getLocale()} suppressHydrationWarning>
             <body className="min-h-screen bg-background font-sans antialiased --font-sans">
                 <NextIntlClientProvider>
-                    <ThemeProvider attribute="class" defaultTheme="light">
+                    <ThemeProvider attribute="class" defaultTheme="dark">
                         {children}
                     </ThemeProvider>
                 </NextIntlClientProvider>
