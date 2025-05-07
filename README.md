@@ -1,6 +1,7 @@
 ![header](https://capsule-render.vercel.app/api?type=waving&color=898380&text=web-portfolio&height=250&desc=Repository%20for%20the%20site%20I%20use%20to%20introduce%20myself%20to%20companies&fontAlignY=25&descAlignY=50)
-[![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/Naereen/StrapDown.js/blob/master/LICENSE)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/20aaaf4a-1edf-47e9-96e1-a093ed4e427b/deploy-status)](https://app.netlify.com/sites/devmanfre/deploys)
 [![GitHub release](https://img.shields.io/github/release/devmanfre/web-portfolio.svg)](https://GitHub.com//devmanfre/web-portfolio/releases/)
+[![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/Naereen/StrapDown.js/blob/master/LICENSE)
 
 ## 🚀 Latest Updates
 - **404 Page**: Added a custom 404 page to improve user experience when navigating to non-existent routes.
