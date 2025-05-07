@@ -131,6 +131,27 @@ export const DATA = {
     ],
     projects: [
         {
+            title: "web-portfolio",
+            href: "https://devmanfre.netlify.app",
+            start: "02/2023",
+            end: "04/2024",
+            description: {
+                it: `Questo progetto è il mio portfolio personale da Web Developer,
+                pensato per presentare le mie competenze, i progetti realizzati e le tecnologie con cui lavoro.`,
+                en: `This project is my personal Web Developer portfolio, designed to present my skills, the projects I have done, and the technologies I work with.`
+            },
+            technologies: ["Next.js", "Typescript", "Tailwind"],
+            links: [
+                {
+                    type: "Github",
+                    href: "https://github.com/DevManfre/web-portfolio",
+                    icon: <Icons.github className="size-4" />,
+                },
+            ],
+            image: "/img/projects/web-portfolio.png",
+            video: "",
+        },
+        {
             title: "Sophon",
             href: "https://dl.acm.org/doi/fullHtml/10.1145/3491418.3535163",
             start: "03/2023",
