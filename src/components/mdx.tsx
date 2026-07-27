@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image, { ImageProps } from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -24,8 +24,8 @@ function Table({ data }: { data: { headers: string[]; rows: string[][] } }) {
   );
 }
 
-function CustomLink(props: any) {
-  const href = props.href;
+function CustomLink(props: React.ComponentPropsWithoutRef<"a">) {
+  const href = props.href ?? "";
 
   if (href.startsWith("/")) {
     return (
@@ -42,8 +42,8 @@ function CustomLink(props: any) {
   return <a target="_blank" rel="noopener noreferrer" {...props} />;
 }
 
-function RoundedImage(props: any) {
-  return <Image alt={props.alt} className="rounded-lg" {...props} />;
+function RoundedImage(props: ImageProps) {
+  return <Image className="rounded-lg" {...props} />;
 }
 
 // This replaces rehype-slug
