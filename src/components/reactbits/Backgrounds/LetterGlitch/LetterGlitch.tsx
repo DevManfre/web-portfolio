@@ -126,6 +126,7 @@ const LetterGlitch = ({
         };
 
         const glitch = () => {
+            if (cells.length === 0) return;
             const count = Math.max(1, Math.floor(cells.length * 0.05));
             for (let n = 0; n < count; n++) {
                 const i = Math.floor(Math.random() * cells.length);
