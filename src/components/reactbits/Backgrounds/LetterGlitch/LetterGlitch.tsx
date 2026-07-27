@@ -259,7 +259,7 @@ const LetterGlitch = ({
         background: hydrated
             ? `linear-gradient(to bottom, ${
                   theme === "dark" ? "rgba(0,0,0, 0.2)" : "rgba(255,255,255, 0.2)"
-              } 0%, ${theme === "dark" ? "rgba(0,0,0, 1)" : "rgba(255,255,255, 1)"} 45%)`
+              } 0%, hsl(var(--background)) 45%)`
             : "transparent",
     };
 
