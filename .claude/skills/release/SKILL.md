@@ -11,7 +11,7 @@ result; GitHub Actions runs CI on both branches.
 ## Pre-flight (all on `development`, all must pass)
 
 1. `git status` — working tree must be clean; stop if not.
-2. `git pull` on `development` (fast-forward only).
+2. `git pull --ff-only` on `development`.
 3. `npm run lint` — must exit 0.
 4. `npm run typecheck` — must exit 0.
 5. `npm run build` — must exit 0.

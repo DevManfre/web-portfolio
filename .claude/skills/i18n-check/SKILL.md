@@ -9,22 +9,28 @@ Read-only audit. Report findings; fix only if the user asks.
 
 ## Checks
 
-1. **Locale JSON parity** — compare key sets recursively:
+1. **Locale JSON parity** — compare key sets recursively (no external deps):
 
    ```bash
-   diff <(jq -S 'paths(scalars) | join(".")' public/locales/en.json | sort) \
-        <(jq -S 'paths(scalars) | join(".")' public/locales/it.json | sort)
+   node -e '
+   const flat = (o, p = "") => Object.entries(o).flatMap(([k, v]) =>
+       v && typeof v === "object" ? flat(v, p + k + ".") : [p + k]);
+   const en = flat(require("./public/locales/en.json"));
+   const it = flat(require("./public/locales/it.json"));
+   en.filter(k => !it.includes(k)).forEach(k => console.log("missing in it.json: " + k));
+   it.filter(k => !en.includes(k)).forEach(k => console.log("missing in en.json: " + k));
+   '
    ```
 
-   Any diff line = missing key in one locale.
+   Any output line = missing key in that locale. No output = parity.
 
 2. **Bilingual fields in resume.tsx** — read `src/data/resume.tsx` and check
    every `{ en: ..., it: ... }` object has BOTH keys non-empty. Grep helper
    to find candidates:
 
    ```bash
-   grep -n "en:" src/data/resume.tsx
-   grep -n "it:" src/data/resume.tsx
+   grep -cE '^\s*en:' src/data/resume.tsx
+   grep -cE '^\s*it:' src/data/resume.tsx
    ```
 
    Counts should match; then eyeball each object for empty strings.
