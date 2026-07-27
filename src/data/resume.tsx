@@ -117,17 +117,21 @@ export const DATA = {
             start: "2014",
             end: "2019",
         },
+    ],
+    certifications: [
         {
-            school: "AICA",
+            name: "ECDL Full Standard",
+            issuer: "AICA",
             href: "https://aicanet.it/",
-            degree: {
-                it: "ECDL Full Stardard",
-                en: "ECDL Full Stardard",
-            },
             logoUrl: "/img/education/aica.webp",
             start: "2014",
             end: "2015",
+            badge: "",
         },
+    ],
+    languages: [
+        { name: { en: "Italian", it: "Italiano" }, level: { en: "Native", it: "Madrelingua" } },
+        { name: { en: "English", it: "Inglese" }, level: { en: "B2", it: "B2" } },
     ],
     projects: [
         {
@@ -157,7 +161,7 @@ export const DATA = {
             start: "03/2023",
             end: "09/2023",
             description: {
-                en: `Sophon is a software that allows you to store, execute, and optionally share your research in a secure cloud hosted by your insitution.
+                en: `Sophon is a software that allows you to store, execute, and optionally share your research in a secure cloud hosted by your institution.
                 It was a research project developed by the University of Modena and Reggio Emilia.`,
                 it: `Sophon è un software che consente di archiviare, eseguire e, a scelta, condividere le proprie ricerche in un cloud sicuro ospitato dalla propria istituzione.
                 È un progetto di ricerca sviluppato dall'Università di Modena e Reggio Emilia.`
