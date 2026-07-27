@@ -26,7 +26,7 @@ export async function generateMetadata(): Promise<Metadata> {
         openGraph: {
             title: `${DATA.name}`,
             description: DATA.description[locale],
-            url: DATA.url,
+            url: `/${locale}`,
             siteName: `${DATA.name}`,
             locale: locale === "it" ? "it_IT" : "en_US",
             type: "website",

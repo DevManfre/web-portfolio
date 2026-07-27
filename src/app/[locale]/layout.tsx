@@ -25,12 +25,15 @@ export default async function RootLayout({
         jobTitle: "Full Stack Developer",
         image: `${DATA.url}${DATA.avatarUrl}`,
         sameAs: [DATA.contact.social.GitHub.url, DATA.contact.social.LinkedIn.url, DATA.contact.social.CodePen.url],
-        alumniOf: "Università degli Studi di Modena e Reggio Emilia",
+        alumniOf: {
+            "@type": "CollegeOrUniversity",
+            name: "Università degli Studi di Modena e Reggio Emilia",
+        },
     };
 
     return (
         <TooltipProvider delayDuration={0}>
-            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
             <LetterGlitch glitchSpeed={50} smooth={true} disappeareVignette={true} />
             <div className="max-w-2xl mx-auto py-12 sm:py-24 px-6 relative">
                 {children}
