@@ -70,3 +70,7 @@ Every user-facing string MUST exist in both English and Italian:
   `npm run lint` green.
 - `public/resumes/resume-en.pdf` and `resume-it.pdf` are exported externally;
   remind the user to regenerate them whenever CV data changes.
+- The GitHub section (`src/components/github-section.tsx`) needs a
+  `GITHUB_TOKEN` env var (classic PAT, scope `read:user`) — in `.env.local`
+  locally and in the Netlify dashboard in production. Without it (or on any
+  API failure) the section is silently hidden; CI builds without it by design.
