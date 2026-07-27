@@ -18,7 +18,7 @@ export default async function RootLayout({
 
     return (
         <TooltipProvider delayDuration={0}>
-            <LetterGlitch glitchSpeed={0.1} smooth={true} disappeareVignette={true} />
+            <LetterGlitch glitchSpeed={50} smooth={true} disappeareVignette={true} />
             <div className="max-w-2xl mx-auto py-12 sm:py-24 px-6 relative">
                 {children}
                 <Navbar />
