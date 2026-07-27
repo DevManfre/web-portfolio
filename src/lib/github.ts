@@ -95,6 +95,7 @@ export async function getGithubData(): Promise<GithubData | null> {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({ query: QUERY, variables: { login: DATA.username } }),
+            signal: AbortSignal.timeout(5000),
             next: { revalidate: 86400 },
         });
 
@@ -110,6 +111,7 @@ export async function getGithubData(): Promise<GithubData | null> {
             return null;
         }
 
+        // Stars/top-language aggregate the first 100 repos only; publicRepos uses totalCount.
         const repoNodes = user.repositories.nodes.filter((node) => node !== null);
         const languageCounts = new Map<string, number>();
         for (const repo of repoNodes) {
