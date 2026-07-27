@@ -126,9 +126,43 @@ export default async function Page() {
                     </div>
                 </div>
             </section>
+            <section id="languages">
+                <div className="flex min-h-0 flex-col gap-y-3">
+                    <BlurFade delay={BLUR_FADE_DELAY * 10}>
+                        <h2 className="text-xl font-bold">{t("languages-title")}</h2>
+                    </BlurFade>
+                    <div className="flex flex-wrap gap-1">
+                        {DATA.languages.map((language, id) => (
+                            <BlurFade key={language.name.en} delay={BLUR_FADE_DELAY * 11 + id * 0.05}>
+                                <Badge className="select-none">{`${language.name[locale]} — ${language.level[locale]}`}</Badge>
+                            </BlurFade>
+                        ))}
+                    </div>
+                </div>
+            </section>
+            <section id="certifications">
+                <div className="flex min-h-0 flex-col gap-y-3">
+                    <BlurFade delay={BLUR_FADE_DELAY * 11}>
+                        <h2 className="text-xl font-bold">{t("certifications-title")}</h2>
+                    </BlurFade>
+                    {DATA.certifications.map((certification, id) => (
+                        <BlurFade key={certification.name} delay={BLUR_FADE_DELAY * 12 + id * 0.05}>
+                            <ResumeCard
+                                href={certification.href}
+                                logoUrl={certification.logoUrl}
+                                altText={certification.issuer}
+                                title={certification.name}
+                                subtitle={certification.issuer}
+                                start={certification.start}
+                                end={certification.end}
+                            />
+                        </BlurFade>
+                    ))}
+                </div>
+            </section>
             <section id="projects">
                 <div className="space-y-12 w-full py-12">
-                    <BlurFade delay={BLUR_FADE_DELAY * 11}>
+                    <BlurFade delay={BLUR_FADE_DELAY * 13}>
                         <div className="flex flex-col items-center justify-center space-y-4 text-center">
                             <div className="space-y-2">
                                 <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">{t("projects-title")}</div>
@@ -141,7 +175,7 @@ export default async function Page() {
                     </BlurFade>
                     <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 max-w-[800px] mx-auto">
                         {DATA.projects.map((project, id) => (
-                            <BlurFade key={project.title} delay={BLUR_FADE_DELAY * 12 + id * 0.05}>
+                            <BlurFade key={project.title} delay={BLUR_FADE_DELAY * 14 + id * 0.05}>
                                 <ProjectCard
                                     href={project.href}
                                     key={project.title}
