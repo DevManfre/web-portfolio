@@ -12,9 +12,9 @@
         "projects-subtitle": "Guarda i progetti più recenti",
         "contact-title": "Contatti",
         "contact-subtitle": "Contattami sui social",
-        "contact-text-1": "Mandami un",
-        "contact-text-2": "su Linkedin o mandami una",
-        "contact-text-3": "e ti risponderò appena potrò."
+        "contact-lead": "Vuoi lavorare con me o semplicemente fare due chiacchiere?",
+        "contact-linkedin": "Scrivimi su LinkedIn",
+        "contact-email": "Mandami una email"
     },
     "CardResume": {
         "current": "Presente"

@@ -209,20 +209,22 @@ export default async function Page() {
                             <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">{t("contact-title")}</div>
                             <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">{t("contact-subtitle")}</h2>
                             <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                                {t("contact-text-1")}&nbsp;
-                                <a href={DATA.contact.social.LinkedIn.url} target="about:blank">
-                                    <Button variant="link" className="p-0 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                                        dm
-                                    </Button>
-                                </a>
-                                &nbsp;{t("contact-text-2")}&nbsp;
-                                <Button variant="link" className="p-0 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                                    <a href={DATA.contact.social.email.url} target="about:blank">
-                                        email
-                                    </a>{" "}
-                                </Button>
-                                &nbsp;{t("contact-text-3")}
+                                {t("contact-lead")}
                             </p>
+                            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+                                <Button asChild>
+                                    <a href={DATA.contact.social.LinkedIn.url} target="_blank" rel="noopener noreferrer">
+                                        <Icons.linkedin className="mr-2 size-4" />
+                                        {t("contact-linkedin")}
+                                    </a>
+                                </Button>
+                                <Button asChild variant="outline">
+                                    <a href={DATA.contact.social.email.url}>
+                                        <Icons.email className="mr-2 size-4" />
+                                        {t("contact-email")}
+                                    </a>
+                                </Button>
+                            </div>
                         </div>
                     </BlurFade>
                 </div>

@@ -12,9 +12,9 @@
         "projects-subtitle": "Check out my latest work",
         "contact-title": "Contact",
         "contact-subtitle": "Get in Touch",
-        "contact-text-1": "Want to chat? Just shoot me a",
-        "contact-text-2": "on Linkedin or send me an",
-        "contact-text-3": "and I'll respond whenever I can."
+        "contact-lead": "Want to work together or just say hi?",
+        "contact-linkedin": "Message me on LinkedIn",
+        "contact-email": "Send me an email"
     },
     "CardResume": {
         "current": "Current"
