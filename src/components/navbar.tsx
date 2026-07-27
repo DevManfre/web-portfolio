@@ -22,7 +22,7 @@ export default async function Navbar() {
                         <DockIcon key={name}>
                             <Tooltip>
                                 <TooltipTrigger asChild>
-                                    <Link href={social.url} aria-label={social.name} target="about:blank" className={cn(buttonVariants({ variant: "ghost", size: "icon" }), "size-12")}>
+                                    <Link href={social.url} aria-label={social.name} target="_blank" rel="noopener noreferrer" className={cn(buttonVariants({ variant: "ghost", size: "icon" }), "size-12")}>
                                         <social.icon className="size-4" />
                                     </Link>
                                 </TooltipTrigger>
@@ -36,7 +36,7 @@ export default async function Navbar() {
                 <DockIcon>
                     <Tooltip>
                         <TooltipTrigger asChild>
-                            <Link href={`resumes/resume-${locale}.pdf`} download target="about:blank" className={cn(buttonVariants({ variant: "ghost", size: "icon" }), "size-12")} aria-label="Download Curriculum Vitae">
+                            <Link href={`/resumes/resume-${locale}.pdf`} download target="_blank" rel="noopener noreferrer" className={cn(buttonVariants({ variant: "ghost", size: "icon" }), "size-12")} aria-label="Download Curriculum Vitae">
                                 <Icons.cv className="size-4" />
                             </Link>
                         </TooltipTrigger>

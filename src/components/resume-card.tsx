@@ -34,7 +34,7 @@ export const ResumeCard = ({ logoUrl, altText, title, subtitle, href, badges, de
     };
 
     return (
-        <Link href={href || "#"} target="about:blank" className="block cursor-pointer" onClick={handleClick}>
+        <Link href={href || "#"} target="_blank" rel="noopener noreferrer" className="block cursor-pointer" onClick={handleClick}>
             <Card className="flex bg-transparent">
                 <div className="flex-none">
                     <Avatar className="border size-12 m-auto bg-muted-background dark:bg-foreground">

@@ -27,7 +27,7 @@ export async function ProjectCard({ title, href, description, start, end, tags, 
     const locale = await getLocale();
     return (
         <Card className={"flex flex-col overflow-hidden border hover:shadow-lg hover:scale-105 transition-all duration-300 ease-out h-full"}>
-            <Link href={href || "#"} target="about:blank" className={cn("block cursor-pointer", className)}>
+            <Link href={href || "#"} target="_blank" rel="noopener noreferrer" className={cn("block cursor-pointer", className)}>
                 {video && (
                     <video
                         src={video}
