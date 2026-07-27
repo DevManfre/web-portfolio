@@ -5,6 +5,7 @@ import { ResumeCard } from "@/components/resume-card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Icons } from "@/components/icons";
 import { DATA } from "@/data/resume";
 import { ProjectCard } from "@/components/project-card";
 import { getLocale, getTranslations } from "next-intl/server";
@@ -29,6 +30,14 @@ export default async function Page() {
                                 text={`${t("hello-title")} ${DATA.name.split(" ")[0]}`}
                             />
                             <BlurFadeText className="max-w-[600px] md:text-xl" delay={BLUR_FADE_DELAY} text={DATA.description[locale]} />
+                            <BlurFade delay={BLUR_FADE_DELAY * 2}>
+                                <Button asChild size="sm" className="mt-2 w-fit">
+                                    <a href={`/resumes/resume-${locale}.pdf`} download>
+                                        <Icons.cv className="mr-2 size-4" />
+                                        {t("download-cv")}
+                                    </a>
+                                </Button>
+                            </BlurFade>
                         </div>
                         <BlurFade delay={BLUR_FADE_DELAY}>
                             <Avatar className="size-28 border select-none">
