@@ -63,7 +63,7 @@ const LetterGlitch = ({
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
     const { theme } = useTheme();
     const [hydrated, setHydrated] = useState(false);
-    const [vignetteHidden, setVignetteHidden] = useState(false);
+    const [bursting, setBursting] = useState(false);
 
     useEffect(() => {
         setHydrated(true);
@@ -219,12 +219,12 @@ const LetterGlitch = ({
         const onBurst = () => {
             if (reducedMotion || burstActive) return;
             burstActive = true;
-            resize();
-            setVignetteHidden(true);
+            setBursting(true);
+            requestAnimationFrame(() => resize());
             burstTimeout = setTimeout(() => {
                 burstActive = false;
-                resize();
-                setVignetteHidden(false);
+                setBursting(false);
+                requestAnimationFrame(() => resize());
             }, 5000);
         };
         window.addEventListener("matrix-burst", onBurst);
@@ -236,16 +236,18 @@ const LetterGlitch = ({
             window.removeEventListener("resize", onResize);
             window.removeEventListener("matrix-burst", onBurst);
             if (burstTimeout !== null) clearTimeout(burstTimeout);
-            setVignetteHidden(false);
+            setBursting(false);
             clearTimeout(resizeTimeout);
         };
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [colorsKey, glitchSpeed, smooth, disappeareVignette]);
 
     const containerStyle: React.CSSProperties = {
-        position: "absolute",
+        position: bursting ? "fixed" : "absolute",
+        top: 0,
+        left: 0,
         width: "100%",
-        height: "100%",
+        height: bursting ? "100vh" : "100%",
         backgroundColor: "transparent",
         overflow: "hidden",
     };
@@ -277,7 +279,7 @@ const LetterGlitch = ({
         width: "100%",
         height: "100%",
         pointerEvents: "none",
-        opacity: vignetteHidden ? 0 : 1,
+        opacity: bursting ? 0 : 1,
         transition: "opacity 0.5s ease",
         background: hydrated
             ? `linear-gradient(to bottom, ${

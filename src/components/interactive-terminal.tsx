@@ -29,6 +29,7 @@ export function InteractiveTerminal({ locale }: { locale: "en" | "it" }) {
     const [ready, setReady] = useState(false);
     const [history, setHistory] = useState<HistoryEntry[]>([]);
     const [input, setInput] = useState("");
+    const [introCleared, setIntroCleared] = useState(false);
     const inputRef = useRef<HTMLInputElement | null>(null);
     const endRef = useRef<HTMLDivElement | null>(null);
 
@@ -138,6 +139,7 @@ export function InteractiveTerminal({ locale }: { locale: "en" | "it" }) {
         const result = runCommand(value);
         if (result === "clear") {
             setHistory([]);
+            setIntroCleared(true);
             return;
         }
         setHistory((prev) => [...prev, { input: value, output: result }].slice(-HISTORY_CAP));
@@ -151,8 +153,8 @@ export function InteractiveTerminal({ locale }: { locale: "en" | "it" }) {
             }}
         >
             <Terminal className="min-w-[300px] min-h-[192px] mt-4 cursor-text">
-                <div className="grid gap-y-1 max-h-[320px] overflow-y-auto select-text">
-                    {intro}
+                <div className="grid gap-y-1 max-h-[320px] overflow-y-auto select-text text-sm font-normal tracking-tight">
+                    {!introCleared && intro}
                     {ready && (
                         <div role="log" aria-live="polite">
                             {history.map((entry, id) => (
@@ -168,7 +170,7 @@ export function InteractiveTerminal({ locale }: { locale: "en" | "it" }) {
                         </div>
                     )}
                     {ready && (
-                        <div className="flex items-center gap-2">
+                        <AnimatedSpan delay={0} className="flex items-center gap-2">
                             <span className="dark:text-green-400 text-green-700">{PROMPT}</span>
                             <input
                                 ref={inputRef}
@@ -183,7 +185,7 @@ export function InteractiveTerminal({ locale }: { locale: "en" | "it" }) {
                                 autoCorrect="off"
                                 spellCheck={false}
                             />
-                        </div>
+                        </AnimatedSpan>
                     )}
                     <div ref={endRef} />
                 </div>
