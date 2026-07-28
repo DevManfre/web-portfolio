@@ -181,6 +181,9 @@ export const DATA = {
         },
     ],
     // Hand-curated: CodePen has no public API (feed is Cloudflare-blocked).
-    // slug = last path segment pen URL: codepen.io/devmanfre/pen/<slug>
-    codepens: [] as { title: string; slug: string }[],
+    // slug = last path segment of the pen URL: codepen.io/devmanfre/pen/<slug>
+    codepens: [
+        { title: "Cup of Coffee LoadingScreen", slug: "PoggRKX" },
+        { title: "Code Icon Logo Animation", slug: "eYaYQmy" },
+    ] as { title: string; slug: string }[],
 } as const;
