@@ -98,6 +98,8 @@ export default async function Page() {
                                 start={work.start}
                                 end={work.end}
                                 description={(work.description as Record<keyof typeof DATA.description, string>)[locale]}
+                                defaultExpanded
+                                timeline={id === 0 ? "first" : id === DATA.work.length - 1 ? "last" : "middle"}
                             />
                         </BlurFade>
                     ))}
