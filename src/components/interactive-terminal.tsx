@@ -3,7 +3,7 @@
 import { AnimatedSpan, Terminal, TypingAnimation } from "@/components/magicui/terminal";
 import { DATA } from "@/data/resume";
 import { useTranslations } from "next-intl";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 type HistoryEntry = {
     input: string;
@@ -33,25 +33,27 @@ export function InteractiveTerminal({ locale }: { locale: "en" | "it" }) {
     const endRef = useRef<HTMLDivElement | null>(null);
 
     // Scripted intro, moved verbatim from page.tsx (accumulated delays).
-    let delayCount = 0;
-    const intro = DATA.terminal.map((text, id) => {
-        const delay = delayCount;
-        if (id % 2 === 0) {
-            delayCount += text.length * 100;
+    const { intro, totalIntroDelay } = useMemo(() => {
+        let delayCount = 0;
+        const nodes = DATA.terminal.map((text, id) => {
+            const delay = delayCount;
+            if (id % 2 === 0) {
+                delayCount += text.length * 100;
+                return (
+                    <TypingAnimation key={id} delay={delay}>
+                        {text}
+                    </TypingAnimation>
+                );
+            }
+            delayCount += 300;
             return (
-                <TypingAnimation key={id} delay={delay}>
+                <AnimatedSpan key={id} delay={delay} className="dark:text-green-400 text-green-700">
                     {text}
-                </TypingAnimation>
+                </AnimatedSpan>
             );
-        }
-        delayCount += 300;
-        return (
-            <AnimatedSpan key={id} delay={delay} className="dark:text-green-400 text-green-700">
-                {text}
-            </AnimatedSpan>
-        );
-    });
-    const totalIntroDelay = delayCount;
+        });
+        return { intro: nodes, totalIntroDelay: delayCount };
+    }, []);
 
     useEffect(() => {
         const timer = setTimeout(() => setReady(true), totalIntroDelay + 500);
@@ -59,6 +61,7 @@ export function InteractiveTerminal({ locale }: { locale: "en" | "it" }) {
     }, [totalIntroDelay]);
 
     useEffect(() => {
+        if (history.length === 0) return;
         endRef.current?.scrollIntoView({ block: "nearest" });
     }, [history]);
 
@@ -66,6 +69,7 @@ export function InteractiveTerminal({ locale }: { locale: "en" | "it" }) {
         const trimmed = raw.trim();
         const lower = trimmed.toLowerCase();
         const [cmd, ...args] = lower.split(/\s+/);
+        const typedCmd = trimmed.split(/\s+/)[0] ?? "";
 
         if (lower === "rm -rf /") return [t("terminal-rm")];
         if (cmd === "sudo") {
@@ -119,12 +123,12 @@ export function InteractiveTerminal({ locale }: { locale: "en" | "it" }) {
             case "exit":
                 return [t("terminal-exit")];
             default:
-                return [t("terminal-not-found", { cmd })];
+                return [t("terminal-not-found", { cmd: typedCmd })];
         }
     };
 
     const onKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-        if (event.key !== "Enter") return;
+        if (event.key !== "Enter" || event.nativeEvent.isComposing) return;
         const value = input;
         setInput("");
         if (value.trim() === "") {
@@ -140,41 +144,49 @@ export function InteractiveTerminal({ locale }: { locale: "en" | "it" }) {
     };
 
     return (
-        <div onClick={() => inputRef.current?.focus()}>
+        <div
+            onClick={() => {
+                if (window.getSelection()?.toString()) return;
+                inputRef.current?.focus();
+            }}
+        >
             <Terminal className="min-w-[300px] min-h-[192px] mt-4 cursor-text">
-                {intro}
-                {ready && (
-                    <div className="select-text" role="log" aria-live="polite">
-                        {history.map((entry, id) => (
-                            <div key={id}>
-                                <div>
-                                    <span className="dark:text-green-400 text-green-700">{PROMPT}</span> {entry.input}
+                <div className="grid gap-y-1 max-h-[320px] overflow-y-auto select-text">
+                    {intro}
+                    {ready && (
+                        <div role="log" aria-live="polite">
+                            {history.map((entry, id) => (
+                                <div key={id}>
+                                    <div>
+                                        <span className="dark:text-green-400 text-green-700">{PROMPT}</span> {entry.input}
+                                    </div>
+                                    {entry.output.map((node, nodeId) => (
+                                        <div key={nodeId}>{node}</div>
+                                    ))}
                                 </div>
-                                {entry.output.map((node, nodeId) => (
-                                    <div key={nodeId}>{node}</div>
-                                ))}
-                            </div>
-                        ))}
-                    </div>
-                )}
-                {ready && (
-                    <div className="flex items-center gap-2">
-                        <span className="dark:text-green-400 text-green-700">{PROMPT}</span>
-                        <input
-                            ref={inputRef}
-                            value={input}
-                            onChange={(event) => setInput(event.target.value)}
-                            onKeyDown={onKeyDown}
-                            aria-label="Terminal input"
-                            className="flex-1 bg-transparent text-sm tracking-tight outline-none border-none caret-green-500"
-                            autoCapitalize="none"
-                            autoComplete="off"
-                            autoCorrect="off"
-                            spellCheck={false}
-                        />
-                    </div>
-                )}
-                <div ref={endRef} />
+                            ))}
+                        </div>
+                    )}
+                    {ready && (
+                        <div className="flex items-center gap-2">
+                            <span className="dark:text-green-400 text-green-700">{PROMPT}</span>
+                            <input
+                                ref={inputRef}
+                                value={input}
+                                onChange={(event) => setInput(event.target.value)}
+                                onKeyDown={onKeyDown}
+                                aria-label="Terminal input"
+                                className="flex-1 bg-transparent text-sm tracking-tight outline-none border-none caret-green-500 select-text"
+                                enterKeyHint="go"
+                                autoCapitalize="none"
+                                autoComplete="off"
+                                autoCorrect="off"
+                                spellCheck={false}
+                            />
+                        </div>
+                    )}
+                    <div ref={endRef} />
+                </div>
             </Terminal>
         </div>
     );

@@ -236,6 +236,7 @@ const LetterGlitch = ({
             window.removeEventListener("resize", onResize);
             window.removeEventListener("matrix-burst", onBurst);
             if (burstTimeout !== null) clearTimeout(burstTimeout);
+            setVignetteHidden(false);
             clearTimeout(resizeTimeout);
         };
         // eslint-disable-next-line react-hooks/exhaustive-deps
