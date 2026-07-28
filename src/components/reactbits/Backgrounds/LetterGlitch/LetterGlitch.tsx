@@ -63,6 +63,7 @@ const LetterGlitch = ({
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
     const { theme } = useTheme();
     const [hydrated, setHydrated] = useState(false);
+    const [vignetteHidden, setVignetteHidden] = useState(false);
 
     useEffect(() => {
         setHydrated(true);
@@ -91,6 +92,7 @@ const LetterGlitch = ({
         let lastGlitch = 0;
         let lastFrame = 0;
         let inView = true;
+        let burstActive = false;
 
         const drawCell = (i: number) => {
             const cell = cells[i];
@@ -105,7 +107,7 @@ const LetterGlitch = ({
             const dpr = window.devicePixelRatio || 1;
             const rect = container.getBoundingClientRect();
             if (rect.width === 0 || rect.height === 0) return;
-            const height = disappeareVignette ? rect.height * VIGNETTE_VISIBLE_FRACTION : rect.height;
+            const height = disappeareVignette && !burstActive ? rect.height * VIGNETTE_VISIBLE_FRACTION : rect.height;
 
             canvas.width = Math.floor(rect.width * dpr);
             canvas.height = Math.floor(height * dpr);
@@ -156,7 +158,7 @@ const LetterGlitch = ({
             const dt = Math.min(lastFrame ? now - lastFrame : 16, 100);
             lastFrame = now;
 
-            if (now - lastGlitch >= glitchSpeed) {
+            if (now - lastGlitch >= (burstActive ? glitchSpeed / 5 : glitchSpeed)) {
                 lastGlitch = now;
                 glitch();
             }
@@ -211,11 +213,29 @@ const LetterGlitch = ({
         };
         window.addEventListener("resize", onResize);
 
+        let burstTimeout: ReturnType<typeof setTimeout> | null = null;
+
+        // "matrix-burst" event contract: see docs/superpowers/specs/2026-07-28-interactive-terminal-design.md
+        const onBurst = () => {
+            if (reducedMotion || burstActive) return;
+            burstActive = true;
+            resize();
+            setVignetteHidden(true);
+            burstTimeout = setTimeout(() => {
+                burstActive = false;
+                resize();
+                setVignetteHidden(false);
+            }, 5000);
+        };
+        window.addEventListener("matrix-burst", onBurst);
+
         return () => {
             stop();
             observer.disconnect();
             document.removeEventListener("visibilitychange", onVisibility);
             window.removeEventListener("resize", onResize);
+            window.removeEventListener("matrix-burst", onBurst);
+            if (burstTimeout !== null) clearTimeout(burstTimeout);
             clearTimeout(resizeTimeout);
         };
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -256,6 +276,8 @@ const LetterGlitch = ({
         width: "100%",
         height: "100%",
         pointerEvents: "none",
+        opacity: vignetteHidden ? 0 : 1,
+        transition: "opacity 0.5s ease",
         background: hydrated
             ? `linear-gradient(to bottom, ${
                   theme === "dark" ? "rgba(0,0,0, 0.2)" : "rgba(255,255,255, 0.2)"
