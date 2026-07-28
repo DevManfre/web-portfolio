@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import "@/app/globals.css";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale } from "next-intl/server";
+import Script from "next/script";
 
 export async function generateMetadata(): Promise<Metadata> {
     const locale = (await getLocale()) as keyof typeof DATA.description;
@@ -58,6 +59,13 @@ export default async function RootLayout({
                         {children}
                     </ThemeProvider>
                 </NextIntlClientProvider>
+                {process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID && (
+                    <Script
+                        src="https://cloud.umami.is/script.js"
+                        data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
+                        strategy="afterInteractive"
+                    />
+                )}
             </body>
         </html>
     );

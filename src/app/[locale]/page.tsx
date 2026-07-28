@@ -32,7 +32,7 @@ export default async function Page() {
                             <BlurFadeText className="max-w-[600px] md:text-xl" delay={BLUR_FADE_DELAY} text={DATA.description[locale]} />
                             <BlurFade delay={BLUR_FADE_DELAY * 2}>
                                 <Button asChild size="sm" className="mt-2 w-fit">
-                                    <a href={`/resumes/resume-${locale}.pdf`} download>
+                                    <a href={`/resumes/resume-${locale}.pdf`} download data-umami-event="cv-download" data-umami-event-source="hero">
                                         <Icons.cv className="mr-2 size-4" />
                                         {t("download-cv")}
                                     </a>
@@ -196,13 +196,13 @@ export default async function Page() {
                             </p>
                             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
                                 <Button asChild>
-                                    <a href={DATA.contact.social.LinkedIn.url} target="_blank" rel="noopener noreferrer">
+                                    <a href={DATA.contact.social.LinkedIn.url} target="_blank" rel="noopener noreferrer" data-umami-event="contact-linkedin">
                                         <Icons.linkedin className="mr-2 size-4" />
                                         {t("contact-linkedin")}
                                     </a>
                                 </Button>
                                 <Button asChild variant="outline">
-                                    <a href={DATA.contact.social.email.url}>
+                                    <a href={DATA.contact.social.email.url} data-umami-event="contact-email">
                                         <Icons.email className="mr-2 size-4" />
                                         {t("contact-email")}
                                     </a>

@@ -36,7 +36,7 @@ export default async function Navbar() {
                 <DockIcon>
                     <Tooltip>
                         <TooltipTrigger asChild>
-                            <Link href={`/resumes/resume-${locale}.pdf`} download target="_blank" rel="noopener noreferrer" className={cn(buttonVariants({ variant: "ghost", size: "icon" }), "size-12")} aria-label="Download Curriculum Vitae">
+                            <Link href={`/resumes/resume-${locale}.pdf`} download data-umami-event="cv-download" data-umami-event-source="navbar" target="_blank" rel="noopener noreferrer" className={cn(buttonVariants({ variant: "ghost", size: "icon" }), "size-12")} aria-label="Download Curriculum Vitae">
                                 <Icons.cv className="size-4" />
                             </Link>
                         </TooltipTrigger>
