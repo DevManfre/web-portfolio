@@ -10,6 +10,11 @@ sections in the same order, same tables with the same rows. Every edit lands
 in **both** files. The IT file is a translation, not a rewrite — code
 identifiers, event names, commands, paths, and URLs stay byte-identical.
 
+Structure: three H2 blocks — The Site / Development / Management & Operations
+(IT: Il sito / Sviluppo / Gestione e operazioni) — with H3 sections inside;
+the grouped TOC mirrors them. New sections go inside the right block, in both
+files and both TOCs.
+
 ## Procedure
 
 1. Diff the change (or `git diff production...development` before a release).
@@ -49,8 +54,8 @@ Regenerate from code, never from memory:
 ## Sync checks
 
 ```bash
-# Same section skeleton (counts must match)
-grep -c '^## ' README.md README.it.md
+# Same heading skeleton, blocks + sections (counts must match)
+grep -Ec '^#{2,3} ' README.md README.it.md
 # Same table shape (row counts must match)
 grep -c '^|' README.md README.it.md
 ```

@@ -13,12 +13,17 @@ Live at **[devmanfre.netlify.app](https://devmanfre.netlify.app)** — a single-
 
 ## Table of Contents
 
+**The Site**
 - [Features](#features)
 - [The Interactive Terminal](#the-interactive-terminal)
+
+**Development**
 - [Tech Stack](#tech-stack)
 - [Project Structure](#project-structure)
 - [Getting Started](#getting-started)
 - [Environment Variables](#environment-variables)
+
+**Management & Operations**
 - [Managing Content](#managing-content)
 - [Internationalization (i18n)](#internationalization-i18n)
 - [Analytics](#analytics)
@@ -28,7 +33,9 @@ Live at **[devmanfre.netlify.app](https://devmanfre.netlify.app)** — a single-
 - [AI-Assisted Maintenance](#ai-assisted-maintenance)
 - [License](#license)
 
-## Features
+## The Site
+
+### Features
 
 - **Single page, fully bilingual** — path-based locales (`/en`, `/it`) powered by [next-intl](https://next-intl.dev), with `x-default` fallback to English. Every user-facing string exists in both languages.
 - **Dark theme by default** — light/dark switch (top-right toggle) via [next-themes](https://github.com/pacocoursey/next-themes); theme tokens are CSS variables in `globals.css` mapped to semantic Tailwind colors.
@@ -45,7 +52,7 @@ Live at **[devmanfre.netlify.app](https://devmanfre.netlify.app)** — a single-
 - **Privacy-friendly analytics** — [Umami](https://umami.is) with custom events, loaded only when configured ([details](#analytics)).
 - **Accessibility touches** — `aria-live` terminal log, `aria-label`s on icon-only controls, reduced-motion support, keyboard-friendly terminal input.
 
-## The Interactive Terminal
+### The Interactive Terminal
 
 The Education section ends with a terminal (`src/components/interactive-terminal.tsx`). On load it plays a scripted typing intro (defined in `DATA.terminal`):
 
@@ -92,7 +99,9 @@ The `matrix-burst` event is a window-level `CustomEvent` contract between the te
 
 </details>
 
-## Tech Stack
+## Development
+
+### Tech Stack
 
 | Layer | Choice |
 |---|---|
@@ -107,7 +116,7 @@ The `matrix-burst` event is a window-level `CustomEvent` contract between the te
 | Hosting | [Netlify](https://netlify.com) |
 | Analytics | [Umami Cloud](https://umami.is) (optional) |
 
-## Project Structure
+### Project Structure
 
 ```
 src/
@@ -137,7 +146,7 @@ public/
 └── img/                       # avatar, work/education logos, project screenshots
 ```
 
-## Getting Started
+### Getting Started
 
 Requires **Node.js 20+** and npm.
 
@@ -158,7 +167,7 @@ npm run dev          # dev server with Turbopack → http://localhost:3000
 
 There are no tests. Lint + typecheck + build in CI are the quality gate.
 
-## Environment Variables
+### Environment Variables
 
 Both variables are **optional** — the site builds and runs without them; the related features simply switch off.
 
@@ -167,7 +176,9 @@ Both variables are **optional** — the site builds and runs without them; the r
 | `GITHUB_TOKEN` | `.env.local` locally, Netlify dashboard in production | Classic PAT with the `read:user` scope. Enables the GitHub Activity section (GraphQL API). Missing/invalid → section silently hidden. CI builds without it by design. |
 | `NEXT_PUBLIC_UMAMI_WEBSITE_ID` | Netlify dashboard (optionally `.env.local` to test) | Umami website ID. When unset the analytics `<script>` is simply not rendered — no tracking in dev/CI. |
 
-## Managing Content
+## Management & Operations
+
+### Managing Content
 
 Almost everything you see on the page comes from **`src/data/resume.tsx`** (the `DATA` const, typed `as const`):
 
@@ -187,13 +198,13 @@ Almost everything you see on the page comes from **`src/data/resume.tsx`** (the 
 
 Repo-specific [Claude Code](https://claude.com/claude-code) skills automate the common edits — see [AI-Assisted Maintenance](#ai-assisted-maintenance).
 
-## Internationalization (i18n)
+### Internationalization (i18n)
 
 - Locales: `en` (default) and `it`, path-prefixed (`/en`, `/it`); middleware redirects `/` by `Accept-Language`.
 - **Rule: every user-facing string must exist in both languages** — content as `{ en, it }` objects in `resume.tsx`, UI strings as the same key in both locale JSON files.
 - SEO follows along: `hreflang` alternates, per-locale OG metadata (`en_US` / `it_IT`), both locales in the sitemap.
 
-## Analytics
+### Analytics
 
 Umami (cookieless, GDPR-friendly) loads only when `NEXT_PUBLIC_UMAMI_WEBSITE_ID` is set. Custom events:
 
@@ -209,7 +220,7 @@ Umami (cookieless, GDPR-friendly) loads only when `NEXT_PUBLIC_UMAMI_WEBSITE_ID`
 
 Static elements use `data-umami-event` attributes; programmatic events go through the safe `trackEvent()` wrapper in `src/lib/analytics.ts` (no-op when Umami is absent).
 
-## External Services
+### External Services
 
 | Service | Role | Config lives in |
 |---|---|---|
@@ -220,13 +231,13 @@ Static elements use `data-umami-event` attributes; programmatic events go throug
 | **GitHub Actions** | CI quality gate | `.github/workflows/ci.yml` |
 | **capsule-render / shields.io** | README header art and badges | this file |
 
-## Deployment & CI
+### Deployment & CI
 
 - **Branches:** work happens on `development`; `production` is the release branch, updated only by merging `development` into it. Netlify deploys the site from `production`.
 - **CI (GitHub Actions):** on every push/PR to `development` or `production` — `npm ci` → `lint` → `typecheck` → `build` (Node 20).
 - ⚠️ ESLint errors are **ignored during builds** (`ignoreDuringBuilds: true` in `next.config.ts`), so CI lint is the real gate — keep it green.
 
-## Git Workflow
+### Git Workflow
 
 Commit messages use a Unicode gitmoji prefix + a short English message:
 
@@ -242,7 +253,7 @@ Commit messages use a Unicode gitmoji prefix + a short English message:
 | 📝 | docs |
 | 🚧 | WIP |
 
-## AI-Assisted Maintenance
+### AI-Assisted Maintenance
 
 The repo ships with a `CLAUDE.md` playbook and project-scoped [Claude Code](https://claude.com/claude-code) skills in `.claude/skills/`:
 
@@ -256,7 +267,7 @@ The repo ships with a `CLAUDE.md` playbook and project-scoped [Claude Code](http
 | `update-readme` | Keep this README and `README.it.md` in sync with the code |
 | `release` | Pre-flight checks, then merge `development` → `production` |
 
-## License
+### License
 
 [MIT](LICENSE) © Alessio Manfredini
 

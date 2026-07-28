@@ -13,12 +13,17 @@ Online su **[devmanfre.netlify.app](https://devmanfre.netlify.app)** — un sito
 
 ## Indice
 
+**Il sito**
 - [Funzionalità](#funzionalità)
 - [Il terminale interattivo](#il-terminale-interattivo)
+
+**Sviluppo**
 - [Stack tecnologico](#stack-tecnologico)
 - [Struttura del progetto](#struttura-del-progetto)
 - [Per iniziare](#per-iniziare)
 - [Variabili d'ambiente](#variabili-dambiente)
+
+**Gestione e operazioni**
 - [Gestione dei contenuti](#gestione-dei-contenuti)
 - [Internazionalizzazione (i18n)](#internazionalizzazione-i18n)
 - [Analytics](#analytics)
@@ -28,7 +33,9 @@ Online su **[devmanfre.netlify.app](https://devmanfre.netlify.app)** — un sito
 - [Manutenzione assistita da AI](#manutenzione-assistita-da-ai)
 - [Licenza](#licenza)
 
-## Funzionalità
+## Il sito
+
+### Funzionalità
 
 - **Pagina singola, completamente bilingue** — locale nel percorso (`/en`, `/it`) con [next-intl](https://next-intl.dev) e fallback `x-default` sull'inglese. Ogni stringa visibile all'utente esiste in entrambe le lingue.
 - **Tema scuro di default** — switch chiaro/scuro (toggle in alto a destra) via [next-themes](https://github.com/pacocoursey/next-themes); i token del tema sono variabili CSS in `globals.css` mappate su colori semantici Tailwind.
@@ -45,7 +52,7 @@ Online su **[devmanfre.netlify.app](https://devmanfre.netlify.app)** — un sito
 - **Analytics rispettosa della privacy** — [Umami](https://umami.is) con eventi custom, caricata solo se configurata ([dettagli](#analytics)).
 - **Accessibilità** — log del terminale `aria-live`, `aria-label` sui controlli a sola icona, supporto reduced-motion, input del terminale usabile da tastiera.
 
-## Il terminale interattivo
+### Il terminale interattivo
 
 La sezione Formazione termina con un terminale (`src/components/interactive-terminal.tsx`). Al caricamento riproduce un'intro scriptata con effetto digitazione (definita in `DATA.terminal`):
 
@@ -92,7 +99,9 @@ L'evento `matrix-burst` è un `CustomEvent` a livello di `window`: un contratto 
 
 </details>
 
-## Stack tecnologico
+## Sviluppo
+
+### Stack tecnologico
 
 | Livello | Scelta |
 |---|---|
@@ -107,7 +116,7 @@ L'evento `matrix-burst` è un `CustomEvent` a livello di `window`: un contratto 
 | Hosting | [Netlify](https://netlify.com) |
 | Analytics | [Umami Cloud](https://umami.is) (opzionale) |
 
-## Struttura del progetto
+### Struttura del progetto
 
 ```
 src/
@@ -137,7 +146,7 @@ public/
 └── img/                       # avatar, loghi lavoro/formazione, screenshot progetti
 ```
 
-## Per iniziare
+### Per iniziare
 
 Richiede **Node.js 20+** e npm.
 
@@ -158,7 +167,7 @@ npm run dev          # dev server con Turbopack → http://localhost:3000
 
 Non ci sono test. Lint + typecheck + build in CI fanno da quality gate.
 
-## Variabili d'ambiente
+### Variabili d'ambiente
 
 Entrambe le variabili sono **opzionali** — il sito si builda e funziona senza; le funzionalità collegate semplicemente si spengono.
 
@@ -167,7 +176,9 @@ Entrambe le variabili sono **opzionali** — il sito si builda e funziona senza;
 | `GITHUB_TOKEN` | `.env.local` in locale, dashboard Netlify in produzione | PAT classic con scope `read:user`. Abilita la sezione GitHub Activity (API GraphQL). Mancante/non valido → sezione nascosta in silenzio. La CI builda senza, by design. |
 | `NEXT_PUBLIC_UMAMI_WEBSITE_ID` | Dashboard Netlify (opzionalmente `.env.local` per test) | ID del sito Umami. Se assente, lo `<script>` di analytics non viene proprio renderizzato — nessun tracking in dev/CI. |
 
-## Gestione dei contenuti
+## Gestione e operazioni
+
+### Gestione dei contenuti
 
 Quasi tutto ciò che si vede in pagina viene da **`src/data/resume.tsx`** (la const `DATA`, tipizzata `as const`):
 
@@ -187,13 +198,13 @@ Quasi tutto ciò che si vede in pagina viene da **`src/data/resume.tsx`** (la co
 
 Le skill [Claude Code](https://claude.com/claude-code) specifiche del repo automatizzano le modifiche più comuni — vedi [Manutenzione assistita da AI](#manutenzione-assistita-da-ai).
 
-## Internazionalizzazione (i18n)
+### Internazionalizzazione (i18n)
 
 - Locale: `en` (default) e `it`, con prefisso nel percorso (`/en`, `/it`); il middleware reindirizza `/` in base ad `Accept-Language`.
 - **Regola: ogni stringa visibile all'utente deve esistere in entrambe le lingue** — contenuti come oggetti `{ en, it }` in `resume.tsx`, stringhe UI con la stessa chiave in entrambi i file di locale.
 - La SEO segue: alternates `hreflang`, metadata OG per locale (`en_US` / `it_IT`), entrambe le locale nella sitemap.
 
-## Analytics
+### Analytics
 
 Umami (senza cookie, GDPR-friendly) si carica solo quando `NEXT_PUBLIC_UMAMI_WEBSITE_ID` è impostata. Eventi custom:
 
@@ -209,7 +220,7 @@ Umami (senza cookie, GDPR-friendly) si carica solo quando `NEXT_PUBLIC_UMAMI_WEB
 
 Gli elementi statici usano attributi `data-umami-event`; gli eventi programmatici passano dal wrapper sicuro `trackEvent()` in `src/lib/analytics.ts` (no-op se Umami è assente).
 
-## Servizi esterni
+### Servizi esterni
 
 | Servizio | Ruolo | Config in |
 |---|---|---|
@@ -220,13 +231,13 @@ Gli elementi statici usano attributi `data-umami-event`; gli eventi programmatic
 | **GitHub Actions** | Quality gate CI | `.github/workflows/ci.yml` |
 | **capsule-render / shields.io** | Header grafico e badge del README | questo file |
 
-## Deploy e CI
+### Deploy e CI
 
 - **Branch:** si lavora su `development`; `production` è il branch di release, aggiornato solo mergiando `development` al suo interno. Netlify deploya il sito da `production`.
 - **CI (GitHub Actions):** a ogni push/PR su `development` o `production` — `npm ci` → `lint` → `typecheck` → `build` (Node 20).
 - ⚠️ Gli errori ESLint sono **ignorati durante le build** (`ignoreDuringBuilds: true` in `next.config.ts`), quindi il lint in CI è il vero gate — tenerlo verde.
 
-## Flusso Git
+### Flusso Git
 
 I messaggi di commit usano un prefisso gitmoji Unicode + un breve messaggio in inglese:
 
@@ -242,7 +253,7 @@ I messaggi di commit usano un prefisso gitmoji Unicode + un breve messaggio in i
 | 📝 | docs |
 | 🚧 | WIP |
 
-## Manutenzione assistita da AI
+### Manutenzione assistita da AI
 
 Il repo include un playbook `CLAUDE.md` e skill [Claude Code](https://claude.com/claude-code) di progetto in `.claude/skills/`:
 
@@ -256,7 +267,7 @@ Il repo include un playbook `CLAUDE.md` e skill [Claude Code](https://claude.com
 | `update-readme` | Tenere questo README e `README.md` allineati al codice |
 | `release` | Controlli pre-flight, poi merge `development` → `production` |
 
-## Licenza
+### Licenza
 
 [MIT](LICENSE) © Alessio Manfredini
 
