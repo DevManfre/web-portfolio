@@ -4,7 +4,9 @@ import { InteractiveTerminal } from "@/components/interactive-terminal";
 import { ResumeCard } from "@/components/resume-card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { cn } from "@/lib/utils";
 import { Icons } from "@/components/icons";
 import { DATA } from "@/data/resume";
 import { ProjectCard } from "@/components/project-card";
@@ -37,6 +39,29 @@ export default async function Page() {
                                         {t("download-cv")}
                                     </a>
                                 </Button>
+                            </BlurFade>
+                            <BlurFade delay={BLUR_FADE_DELAY * 2}>
+                                <div className="mt-1 flex gap-1">
+                                    {Object.entries(DATA.contact.social).map(([name, social]) => (
+                                        <Tooltip key={name}>
+                                            <TooltipTrigger asChild>
+                                                <a
+                                                    href={social.url}
+                                                    aria-label={social.name}
+                                                    target={social.url.startsWith("mailto:") ? undefined : "_blank"}
+                                                    rel={social.url.startsWith("mailto:") ? undefined : "noopener noreferrer"}
+                                                    data-umami-event={`social-${name.toLowerCase()}`}
+                                                    className={cn(buttonVariants({ variant: "ghost", size: "icon" }))}
+                                                >
+                                                    <social.icon className="size-4" />
+                                                </a>
+                                            </TooltipTrigger>
+                                            <TooltipContent>
+                                                <p>{social.name}</p>
+                                            </TooltipContent>
+                                        </Tooltip>
+                                    ))}
+                                </div>
                             </BlurFade>
                         </div>
                         <BlurFade delay={BLUR_FADE_DELAY}>
