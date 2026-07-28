@@ -64,6 +64,7 @@ const LetterGlitch = ({
     const { theme } = useTheme();
     const [hydrated, setHydrated] = useState(false);
     const [bursting, setBursting] = useState(false);
+    const [burstFading, setBurstFading] = useState(false);
 
     useEffect(() => {
         setHydrated(true);
@@ -214,6 +215,7 @@ const LetterGlitch = ({
         window.addEventListener("resize", onResize);
 
         let burstTimeout: ReturnType<typeof setTimeout> | null = null;
+        let burstEndTimeout: ReturnType<typeof setTimeout> | null = null;
 
         // "matrix-burst" event contract: see docs/superpowers/specs/2026-07-28-interactive-terminal-design.md
         const onBurst = () => {
@@ -222,9 +224,13 @@ const LetterGlitch = ({
             setBursting(true);
             requestAnimationFrame(() => resize());
             burstTimeout = setTimeout(() => {
-                burstActive = false;
-                setBursting(false);
-                requestAnimationFrame(() => resize());
+                setBurstFading(true);
+                burstEndTimeout = setTimeout(() => {
+                    burstActive = false;
+                    setBursting(false);
+                    setBurstFading(false);
+                    requestAnimationFrame(() => resize());
+                }, 700);
             }, 5000);
         };
         window.addEventListener("matrix-burst", onBurst);
@@ -236,7 +242,9 @@ const LetterGlitch = ({
             window.removeEventListener("resize", onResize);
             window.removeEventListener("matrix-burst", onBurst);
             if (burstTimeout !== null) clearTimeout(burstTimeout);
+            if (burstEndTimeout !== null) clearTimeout(burstEndTimeout);
             setBursting(false);
+            setBurstFading(false);
             clearTimeout(resizeTimeout);
         };
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -250,6 +258,8 @@ const LetterGlitch = ({
         height: bursting ? "100vh" : "100%",
         backgroundColor: "transparent",
         overflow: "hidden",
+        opacity: burstFading ? 0 : 1,
+        transition: "opacity 0.7s ease",
     };
 
     const outerVignetteStyle: React.CSSProperties = {
