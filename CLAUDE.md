@@ -55,6 +55,16 @@ Every user-facing string MUST exist in both English and Italian:
 - Content in `resume.tsx` → `{ en, it }` objects.
 - UI strings → the same key in both `public/locales/en.json` and `it.json`.
 
+## README maintenance (important)
+
+`README.md` (EN, GitHub default) and `README.it.md` (IT) are mirrored docs.
+Whenever a change alters what the site does or how the repo works — features,
+page sections, terminal commands/easter eggs, analytics events, env vars,
+external services, npm scripts, project structure, Claude skills, or
+workflows — and before every release, use the `update-readme` skill to update
+BOTH files in sync. Content-only edits (resume data, locale strings, new pens)
+do not require it.
+
 ## Git workflow
 
 - Work on `development`. `production` is the release branch — updated only by

@@ -15,6 +15,10 @@ result; GitHub Actions runs CI on both branches.
 3. `npm run lint` — must exit 0.
 4. `npm run typecheck` — must exit 0.
 5. `npm run build` — must exit 0.
+6. README sync — `grep -c '^## ' README.md README.it.md` and
+   `grep -c '^|' README.md README.it.md`: counts must match, and if any
+   feature/workflow changed since the last release without a README update,
+   run the `update-readme` skill first.
 
 If ANY step fails: STOP. Report the failing command and its output. Do not
 merge.
