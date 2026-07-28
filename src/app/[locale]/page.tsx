@@ -34,34 +34,34 @@ export default async function Page() {
                             />
                             <BlurFadeText className="max-w-[600px] md:text-xl" delay={BLUR_FADE_DELAY} text={DATA.description[locale]} />
                             <BlurFade delay={BLUR_FADE_DELAY * 2}>
-                                <Button asChild size="sm" className="mt-2 w-fit">
-                                    <a href={`/resumes/resume-${locale}.pdf`} download target="_blank" rel="noopener noreferrer" data-umami-event="cv-download" data-umami-event-source="hero">
-                                        <Icons.cv className="mr-2 size-4" />
-                                        {t("download-cv")}
-                                    </a>
-                                </Button>
-                            </BlurFade>
-                            <BlurFade delay={BLUR_FADE_DELAY * 2}>
-                                <div className="mt-1 flex gap-1">
-                                    {Object.entries(DATA.contact.social).map(([name, social]) => (
-                                        <Tooltip key={name}>
-                                            <TooltipTrigger asChild>
-                                                <a
-                                                    href={social.url}
-                                                    aria-label={social.name}
-                                                    target={social.url.startsWith("mailto:") ? undefined : "_blank"}
-                                                    rel={social.url.startsWith("mailto:") ? undefined : "noopener noreferrer"}
-                                                    data-umami-event={`social-${name.toLowerCase()}`}
-                                                    className={cn(buttonVariants({ variant: "ghost", size: "icon" }))}
-                                                >
-                                                    <social.icon className="size-4" />
-                                                </a>
-                                            </TooltipTrigger>
-                                            <TooltipContent>
-                                                <p>{social.name}</p>
-                                            </TooltipContent>
-                                        </Tooltip>
-                                    ))}
+                                <div className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1">
+                                    <Button asChild size="sm">
+                                        <a href={`/resumes/resume-${locale}.pdf`} download target="_blank" rel="noopener noreferrer" data-umami-event="cv-download" data-umami-event-source="hero">
+                                            <Icons.cv className="mr-2 size-4" />
+                                            {t("download-cv")}
+                                        </a>
+                                    </Button>
+                                    <div className="flex gap-1">
+                                        {Object.entries(DATA.contact.social).map(([name, social]) => (
+                                            <Tooltip key={name}>
+                                                <TooltipTrigger asChild>
+                                                    <a
+                                                        href={social.url}
+                                                        aria-label={social.name}
+                                                        target={social.url.startsWith("mailto:") ? undefined : "_blank"}
+                                                        rel={social.url.startsWith("mailto:") ? undefined : "noopener noreferrer"}
+                                                        data-umami-event={`social-${name.toLowerCase()}`}
+                                                        className={cn(buttonVariants({ variant: "ghost", size: "icon" }))}
+                                                    >
+                                                        <social.icon className="size-4" />
+                                                    </a>
+                                                </TooltipTrigger>
+                                                <TooltipContent>
+                                                    <p>{social.name}</p>
+                                                </TooltipContent>
+                                            </Tooltip>
+                                        ))}
+                                    </div>
                                 </div>
                             </BlurFade>
                         </div>
