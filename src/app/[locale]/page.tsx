@@ -32,7 +32,7 @@ export default async function Page() {
                             <BlurFadeText className="max-w-[600px] md:text-xl" delay={BLUR_FADE_DELAY} text={DATA.description[locale]} />
                             <BlurFade delay={BLUR_FADE_DELAY * 2}>
                                 <Button asChild size="sm" className="mt-2 w-fit">
-                                    <a href={`/resumes/resume-${locale}.pdf`} download data-umami-event="cv-download" data-umami-event-source="hero">
+                                    <a href={`/resumes/resume-${locale}.pdf`} download target="_blank" rel="noopener noreferrer" data-umami-event="cv-download" data-umami-event-source="hero">
                                         <Icons.cv className="mr-2 size-4" />
                                         {t("download-cv")}
                                     </a>
