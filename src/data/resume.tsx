@@ -180,4 +180,7 @@ export const DATA = {
             video: "",
         },
     ],
+    // Hand-curated: CodePen has no public API (feed is Cloudflare-blocked).
+    // slug = last path segment pen URL: codepen.io/devmanfre/pen/<slug>
+    codepens: [] as { title: string; slug: string }[],
 } as const;

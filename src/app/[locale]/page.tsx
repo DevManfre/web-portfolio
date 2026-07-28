@@ -11,6 +11,7 @@ import { Icons } from "@/components/icons";
 import { DATA } from "@/data/resume";
 import { ProjectCard } from "@/components/project-card";
 import { GithubSection } from "@/components/github-section";
+import { CodepenSection } from "@/components/codepen-section";
 import { getLocale, getTranslations } from "next-intl/server";
 
 const BLUR_FADE_DELAY = 0.04;
@@ -177,6 +178,7 @@ export default async function Page() {
                 </div>
             </section>
             <GithubSection delay={BLUR_FADE_DELAY * 12} />
+            <CodepenSection delay={BLUR_FADE_DELAY * 12} />
             <section id="projects">
                 <div className="space-y-12 w-full py-12">
                     <BlurFade delay={BLUR_FADE_DELAY * 12}>
