@@ -1,6 +1,6 @@
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
-import { AnimatedSpan, Terminal, TypingAnimation } from "@/components/magicui/terminal";
+import { InteractiveTerminal } from "@/components/interactive-terminal";
 import { ResumeCard } from "@/components/resume-card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
@@ -14,7 +14,6 @@ import { getLocale, getTranslations } from "next-intl/server";
 const BLUR_FADE_DELAY = 0.04;
 
 export default async function Page() {
-    let terminalDelayCount = 0;
     const t = await getTranslations("HomePage"),
         locale = (await getLocale()) as keyof typeof DATA.description;
 
@@ -99,25 +98,7 @@ export default async function Page() {
                     ))}
                 </div>
                 <BlurFade delay={BLUR_FADE_DELAY * 7}>
-                    <Terminal className="min-w-[300px] min-h-[192px] mt-4">
-                        {DATA.terminal.map((text, id) => {
-                            const actualTerminalDelayCount = terminalDelayCount;
-                            if (id % 2 == 0) {
-                                terminalDelayCount += text.length * 100;
-                                return (
-                                    <TypingAnimation key={id} delay={actualTerminalDelayCount}>
-                                        {text}
-                                    </TypingAnimation>
-                                );
-                            }
-                            terminalDelayCount += 300;
-                            return (
-                                <AnimatedSpan key={id} delay={actualTerminalDelayCount} className="dark:text-green-400 text-green-700">
-                                    {text}
-                                </AnimatedSpan>
-                            );
-                        })}
-                    </Terminal>
+                    <InteractiveTerminal locale={locale} />
                 </BlurFade>
             </section>
             <section id="skills">
