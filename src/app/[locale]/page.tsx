@@ -1,18 +1,22 @@
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
-import { AnimatedSpan, Terminal, TypingAnimation } from "@/components/magicui/terminal";
+import { InteractiveTerminal } from "@/components/interactive-terminal";
 import { ResumeCard } from "@/components/resume-card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { cn } from "@/lib/utils";
+import { Icons } from "@/components/icons";
 import { DATA } from "@/data/resume";
 import { ProjectCard } from "@/components/project-card";
+import { GithubSection } from "@/components/github-section";
+import { CodepenSection } from "@/components/codepen-section";
 import { getLocale, getTranslations } from "next-intl/server";
 
 const BLUR_FADE_DELAY = 0.04;
 
 export default async function Page() {
-    let terminalDelayCount = 0;
     const t = await getTranslations("HomePage"),
         locale = (await getLocale()) as keyof typeof DATA.description;
 
@@ -29,6 +33,37 @@ export default async function Page() {
                                 text={`${t("hello-title")} ${DATA.name.split(" ")[0]}`}
                             />
                             <BlurFadeText className="max-w-[600px] md:text-xl" delay={BLUR_FADE_DELAY} text={DATA.description[locale]} />
+                            <BlurFade delay={BLUR_FADE_DELAY * 2}>
+                                <div className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1">
+                                    <Button asChild size="sm">
+                                        <a href={`/resumes/resume-${locale}.pdf`} download target="_blank" rel="noopener noreferrer" data-umami-event="cv-download" data-umami-event-source="hero">
+                                            <Icons.cv className="mr-2 size-4" />
+                                            {t("download-cv")}
+                                        </a>
+                                    </Button>
+                                    <div className="flex gap-1">
+                                        {Object.entries(DATA.contact.social).map(([name, social]) => (
+                                            <Tooltip key={name}>
+                                                <TooltipTrigger asChild>
+                                                    <a
+                                                        href={social.url}
+                                                        aria-label={social.name}
+                                                        target={social.url.startsWith("mailto:") ? undefined : "_blank"}
+                                                        rel={social.url.startsWith("mailto:") ? undefined : "noopener noreferrer"}
+                                                        data-umami-event={`social-${name.toLowerCase()}`}
+                                                        className={cn(buttonVariants({ variant: "ghost", size: "icon" }))}
+                                                    >
+                                                        <social.icon className="size-4" />
+                                                    </a>
+                                                </TooltipTrigger>
+                                                <TooltipContent>
+                                                    <p>{social.name}</p>
+                                                </TooltipContent>
+                                            </Tooltip>
+                                        ))}
+                                    </div>
+                                </div>
+                            </BlurFade>
                         </div>
                         <BlurFade delay={BLUR_FADE_DELAY}>
                             <Avatar className="size-28 border select-none">
@@ -89,25 +124,7 @@ export default async function Page() {
                     ))}
                 </div>
                 <BlurFade delay={BLUR_FADE_DELAY * 7}>
-                    <Terminal className="min-w-[300px] min-h-[192px] mt-4">
-                        {DATA.terminal.map((text, id) => {
-                            const actualTerminalDelayCount = terminalDelayCount;
-                            if (id % 2 == 0) {
-                                terminalDelayCount += text.length * 100;
-                                return (
-                                    <TypingAnimation key={id} delay={actualTerminalDelayCount}>
-                                        {text}
-                                    </TypingAnimation>
-                                );
-                            }
-                            terminalDelayCount += 300;
-                            return (
-                                <AnimatedSpan key={id} delay={actualTerminalDelayCount} className="dark:text-green-400 text-green-700">
-                                    {text}
-                                </AnimatedSpan>
-                            );
-                        })}
-                    </Terminal>
+                    <InteractiveTerminal locale={locale} />
                 </BlurFade>
             </section>
             <section id="skills">
@@ -126,9 +143,45 @@ export default async function Page() {
                     </div>
                 </div>
             </section>
+            <section id="languages">
+                <div className="flex min-h-0 flex-col gap-y-3">
+                    <BlurFade delay={BLUR_FADE_DELAY * 10}>
+                        <h2 className="text-xl font-bold">{t("languages-title")}</h2>
+                    </BlurFade>
+                    <div className="flex flex-wrap gap-1">
+                        {DATA.languages.map((language, id) => (
+                            <BlurFade key={language.name.en} delay={BLUR_FADE_DELAY * 11 + id * 0.05}>
+                                <Badge className="select-none">{`${language.name[locale]} — ${language.level[locale]}`}</Badge>
+                            </BlurFade>
+                        ))}
+                    </div>
+                </div>
+            </section>
+            <section id="certifications">
+                <div className="flex min-h-0 flex-col gap-y-3">
+                    <BlurFade delay={BLUR_FADE_DELAY * 11}>
+                        <h2 className="text-xl font-bold">{t("certifications-title")}</h2>
+                    </BlurFade>
+                    {DATA.certifications.map((certification, id) => (
+                        <BlurFade key={certification.name} delay={BLUR_FADE_DELAY * 12 + id * 0.05}>
+                            <ResumeCard
+                                href={certification.href}
+                                logoUrl={certification.logoUrl}
+                                altText={certification.issuer}
+                                title={certification.name}
+                                subtitle={certification.issuer}
+                                start={certification.start}
+                                end={certification.end}
+                            />
+                        </BlurFade>
+                    ))}
+                </div>
+            </section>
+            <GithubSection delay={BLUR_FADE_DELAY * 12} />
+            <CodepenSection delay={BLUR_FADE_DELAY * 12} />
             <section id="projects">
                 <div className="space-y-12 w-full py-12">
-                    <BlurFade delay={BLUR_FADE_DELAY * 11}>
+                    <BlurFade delay={BLUR_FADE_DELAY * 12}>
                         <div className="flex flex-col items-center justify-center space-y-4 text-center">
                             <div className="space-y-2">
                                 <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">{t("projects-title")}</div>
@@ -141,7 +194,7 @@ export default async function Page() {
                     </BlurFade>
                     <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 max-w-[800px] mx-auto">
                         {DATA.projects.map((project, id) => (
-                            <BlurFade key={project.title} delay={BLUR_FADE_DELAY * 12 + id * 0.05}>
+                            <BlurFade key={project.title} delay={BLUR_FADE_DELAY * 13 + id * 0.05}>
                                 <ProjectCard
                                     href={project.href}
                                     key={project.title}
@@ -166,20 +219,22 @@ export default async function Page() {
                             <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">{t("contact-title")}</div>
                             <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">{t("contact-subtitle")}</h2>
                             <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                                {t("contact-text-1")}&nbsp;
-                                <a href={DATA.contact.social.LinkedIn.url} target="about:blank">
-                                    <Button variant="link" className="p-0 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                                        dm
-                                    </Button>
-                                </a>
-                                &nbsp;{t("contact-text-2")}&nbsp;
-                                <Button variant="link" className="p-0 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                                    <a href={DATA.contact.social.email.url} target="about:blank">
-                                        email
-                                    </a>{" "}
-                                </Button>
-                                &nbsp;{t("contact-text-3")}
+                                {t("contact-lead")}
                             </p>
+                            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+                                <Button asChild>
+                                    <a href={DATA.contact.social.LinkedIn.url} target="_blank" rel="noopener noreferrer" data-umami-event="contact-linkedin">
+                                        <Icons.linkedin className="mr-2 size-4" />
+                                        {t("contact-linkedin")}
+                                    </a>
+                                </Button>
+                                <Button asChild variant="outline">
+                                    <a href={DATA.contact.social.email.url} data-umami-event="contact-email">
+                                        <Icons.email className="mr-2 size-4" />
+                                        {t("contact-email")}
+                                    </a>
+                                </Button>
+                            </div>
                         </div>
                     </BlurFade>
                 </div>

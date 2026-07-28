@@ -1,9 +1,10 @@
-import Navbar from "@/components/navbar";
+import { ModeToggle } from "@/components/mode-toggle";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import LetterGlitch from "@/components/reactbits/Backgrounds/LetterGlitch/LetterGlitch";
+import { DATA } from "@/data/resume";
 
 export default async function RootLayout({
     children,
@@ -16,13 +17,28 @@ export default async function RootLayout({
     const { locale } = await params;
     if (!hasLocale(routing.locales, locale)) notFound();
 
+    const jsonLd = {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        name: DATA.name,
+        url: DATA.url,
+        jobTitle: "Full Stack Developer",
+        image: `${DATA.url}${DATA.avatarUrl}`,
+        sameAs: [DATA.contact.social.GitHub.url, DATA.contact.social.LinkedIn.url, DATA.contact.social.CodePen.url],
+        alumniOf: {
+            "@type": "CollegeOrUniversity",
+            name: "Università degli Studi di Modena e Reggio Emilia",
+        },
+    };
+
     return (
         <TooltipProvider delayDuration={0}>
-            <LetterGlitch glitchSpeed={0.1} smooth={true} disappeareVignette={true} />
-            <div className="max-w-2xl mx-auto py-12 sm:py-24 px-6 relative">
-                {children}
-                <Navbar />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
+            <LetterGlitch glitchSpeed={50} smooth={true} disappeareVignette={true} />
+            <div className="fixed right-4 top-4 z-50 rounded-full border bg-background/70 backdrop-blur-sm [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05)] dark:[border:1px_solid_rgba(255,255,255,.1)]">
+                <ModeToggle />
             </div>
+            <div className="max-w-2xl mx-auto py-12 sm:py-24 px-6 relative">{children}</div>
         </TooltipProvider>
     );
 }

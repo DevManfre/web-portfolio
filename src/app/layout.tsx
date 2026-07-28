@@ -4,23 +4,32 @@ import type { Metadata } from "next";
 import "@/app/globals.css";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale } from "next-intl/server";
+import Script from "next/script";
 
 export async function generateMetadata(): Promise<Metadata> {
-    const locale = await getLocale() as keyof typeof DATA.description;
-    
+    const locale = (await getLocale()) as keyof typeof DATA.description;
+
     return {
         metadataBase: new URL(DATA.url),
         title: {
-            default: DATA.username,
+            default: DATA.name,
             template: `%s | ${DATA.name}`,
         },
         description: DATA.description[locale],
+        alternates: {
+            canonical: `/${locale}`,
+            languages: {
+                en: "/en",
+                it: "/it",
+                "x-default": "/en",
+            },
+        },
         openGraph: {
             title: `${DATA.name}`,
             description: DATA.description[locale],
-            url: DATA.url,
+            url: `/${locale}`,
             siteName: `${DATA.name}`,
-            locale: locale,
+            locale: locale === "it" ? "it_IT" : "en_US",
             type: "website",
         },
         robots: {
@@ -33,10 +42,6 @@ export async function generateMetadata(): Promise<Metadata> {
                 "max-image-preview": "large",
                 "max-snippet": -1,
             },
-        },
-        verification: {
-            google: "",
-            yandex: "",
         },
     };
 }
@@ -54,6 +59,13 @@ export default async function RootLayout({
                         {children}
                     </ThemeProvider>
                 </NextIntlClientProvider>
+                {process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID && (
+                    <Script
+                        src="https://cloud.umami.is/script.js"
+                        data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
+                        strategy="afterInteractive"
+                    />
+                )}
             </body>
         </html>
     );
