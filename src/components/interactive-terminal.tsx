@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatedSpan, Terminal, TypingAnimation } from "@/components/magicui/terminal";
+import { trackEvent } from "@/lib/analytics";
 import { DATA } from "@/data/resume";
 import { motion } from "motion/react";
 import { useTranslations } from "next-intl";
@@ -34,6 +35,7 @@ export function InteractiveTerminal({ locale }: { locale: "en" | "it" }) {
     const inputRef = useRef<HTMLInputElement | null>(null);
     const endRef = useRef<HTMLDivElement | null>(null);
     const scrollRef = useRef<HTMLDivElement | null>(null);
+    const trackedUseRef = useRef(false);
     const [shellHeight, setShellHeight] = useState<number | "auto">("auto");
 
     // Scripted intro, moved verbatim from page.tsx (accumulated delays).
@@ -88,6 +90,7 @@ export function InteractiveTerminal({ locale }: { locale: "en" | "it" }) {
             if (args[0] === "matrix") {
                 // "matrix-burst" event contract: see docs/superpowers/specs/2026-07-28-interactive-terminal-design.md
                 window.dispatchEvent(new CustomEvent("matrix-burst"));
+                trackEvent("matrix-egg");
                 return ["Wake up, Neo…"];
             }
             return [t("terminal-sudo")];
@@ -124,6 +127,7 @@ export function InteractiveTerminal({ locale }: { locale: "en" | "it" }) {
                 document.body.appendChild(anchor);
                 anchor.click();
                 anchor.remove();
+                trackEvent("cv-download", { source: "terminal" });
                 return [t("terminal-cv-ok")];
             }
             case "clear":
@@ -146,6 +150,10 @@ export function InteractiveTerminal({ locale }: { locale: "en" | "it" }) {
         if (value.trim() === "") {
             setHistory((prev) => [...prev, { input: value, output: [] }].slice(-HISTORY_CAP));
             return;
+        }
+        if (!trackedUseRef.current) {
+            trackedUseRef.current = true;
+            trackEvent("terminal-used");
         }
         const result = runCommand(value);
         if (result === "clear") {

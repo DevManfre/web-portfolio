@@ -74,3 +74,6 @@ Every user-facing string MUST exist in both English and Italian:
   `GITHUB_TOKEN` env var (classic PAT, scope `read:user`) — in `.env.local`
   locally and in the Netlify dashboard in production. Without it (or on any
   API failure) the section is silently hidden; CI builds without it by design.
+- Umami analytics load only when `NEXT_PUBLIC_UMAMI_WEBSITE_ID` is set
+  (Netlify env var; optionally `.env.local` for testing). Without it the
+  script tag is simply not rendered — no tracking in dev/CI.
