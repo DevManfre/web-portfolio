@@ -1,4 +1,4 @@
-import Navbar from "@/components/navbar";
+import { ModeToggle } from "@/components/mode-toggle";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
@@ -35,10 +35,10 @@ export default async function RootLayout({
         <TooltipProvider delayDuration={0}>
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
             <LetterGlitch glitchSpeed={50} smooth={true} disappeareVignette={true} />
-            <div className="max-w-2xl mx-auto py-12 sm:py-24 px-6 relative">
-                {children}
-                <Navbar />
+            <div className="fixed right-4 top-4 z-50 rounded-full border bg-background/70 backdrop-blur-sm [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05)] dark:[border:1px_solid_rgba(255,255,255,.1)]">
+                <ModeToggle />
             </div>
+            <div className="max-w-2xl mx-auto py-12 sm:py-24 px-6 relative">{children}</div>
         </TooltipProvider>
     );
 }

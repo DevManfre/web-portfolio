@@ -28,29 +28,21 @@ export const DATA = {
                 name: "GitHub",
                 url: "https://github.com/DevManfre",
                 icon: Icons.github,
-
-                navbar: true,
             },
             LinkedIn: {
                 name: "LinkedIn",
                 url: "https://www.linkedin.com/in/alessio-manfredini-developer/",
                 icon: Icons.linkedin,
-
-                navbar: true,
             },
             CodePen: {
                 name: "CodePen",
                 url: "https://codepen.io/devmanfre",
                 icon: Icons.codepen,
-
-                navbar: true,
             },
             email: {
                 name: "Send Email",
                 url: "mailto:alessio.manfredini.work@gmail.com",
                 icon: Icons.email,
-
-                navbar: true,
             },
         },
     },
