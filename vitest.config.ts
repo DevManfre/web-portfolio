@@ -4,7 +4,7 @@ import { defineConfig } from "vitest/config";
 export default defineConfig({
     // resume.tsx (importato dai moduli sotto test) contiene JSX senza
     // `import React`: serve la transform automatic, tsconfig usa "preserve".
-    esbuild: { jsx: "automatic" } as any,
+    esbuild: { jsx: "automatic" },
     resolve: {
         alias: { "@": path.resolve(__dirname, "src") },
     },
