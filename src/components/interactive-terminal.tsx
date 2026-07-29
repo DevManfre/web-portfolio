@@ -3,6 +3,7 @@
 import { AnimatedSpan, Terminal, TypingAnimation } from "@/components/magicui/terminal";
 import { trackEvent } from "@/lib/analytics";
 import { DATA } from "@/data/resume";
+import type { Locale } from "@/i18n/routing";
 import { motion } from "motion/react";
 import { useTranslations } from "next-intl";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -26,7 +27,7 @@ const HELP: [string, string][] = [
     ["clear", "terminal-help-clear"],
 ];
 
-export function InteractiveTerminal({ locale }: { locale: "en" | "it" }) {
+export function InteractiveTerminal({ locale }: { locale: Locale }) {
     const t = useTranslations("HomePage");
     const [ready, setReady] = useState(false);
     const [history, setHistory] = useState<HistoryEntry[]>([]);

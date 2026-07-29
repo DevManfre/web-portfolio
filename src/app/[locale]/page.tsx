@@ -18,7 +18,7 @@ const BLUR_FADE_DELAY = 0.04;
 
 export default async function Page() {
     const t = await getTranslations("HomePage"),
-        locale = (await getLocale()) as keyof typeof DATA.description;
+        locale = await getLocale();
 
     return (
         <main className="flex flex-col min-h-[100dvh] space-y-10">
@@ -97,7 +97,7 @@ export default async function Page() {
                                 badges={work.badges}
                                 start={work.start}
                                 end={work.end}
-                                description={(work.description as Record<keyof typeof DATA.description, string>)[locale]}
+                                description={work.description[locale]}
                                 defaultExpanded
                                 timeline={id === 0 ? "first" : id === DATA.work.length - 1 ? "last" : "middle"}
                             />

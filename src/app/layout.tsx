@@ -4,10 +4,11 @@ import type { Metadata } from "next";
 import "@/app/globals.css";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale } from "next-intl/server";
+import { LOCALE_PATHS, OG_LOCALES, routing } from "@/i18n/routing";
 import Script from "next/script";
 
 export async function generateMetadata(): Promise<Metadata> {
-    const locale = (await getLocale()) as keyof typeof DATA.description;
+    const locale = await getLocale();
 
     return {
         metadataBase: new URL(DATA.url),
@@ -19,9 +20,8 @@ export async function generateMetadata(): Promise<Metadata> {
         alternates: {
             canonical: `/${locale}`,
             languages: {
-                en: "/en",
-                it: "/it",
-                "x-default": "/en",
+                ...LOCALE_PATHS,
+                "x-default": LOCALE_PATHS[routing.defaultLocale],
             },
         },
         openGraph: {
@@ -29,7 +29,7 @@ export async function generateMetadata(): Promise<Metadata> {
             description: DATA.description[locale],
             url: `/${locale}`,
             siteName: `${DATA.name}`,
-            locale: locale === "it" ? "it_IT" : "en_US",
+            locale: OG_LOCALES[locale],
             type: "website",
         },
         robots: {
