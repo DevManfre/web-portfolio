@@ -10,6 +10,15 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useTheme } from "next-themes";
+import { onMatrixBurst } from "@/lib/matrix-burst";
+import {
+    type BurstPhase,
+    type BurstState,
+    glitchInterval,
+    initialBurst,
+    startBurst,
+    tickBurst,
+} from "./burst-machine";
 
 type RGB = { r: number; g: number; b: number };
 
@@ -63,8 +72,8 @@ const LetterGlitch = ({
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
     const { theme } = useTheme();
     const [hydrated, setHydrated] = useState(false);
-    const [bursting, setBursting] = useState(false);
-    const [burstFading, setBurstFading] = useState(false);
+    const burstRef = useRef<BurstState>(initialBurst);
+    const [burstPhase, setBurstPhase] = useState<BurstPhase>("idle");
 
     useEffect(() => {
         setHydrated(true);
@@ -93,7 +102,6 @@ const LetterGlitch = ({
         let lastGlitch = 0;
         let lastFrame = 0;
         let inView = true;
-        let burstActive = false;
 
         const drawCell = (i: number) => {
             const cell = cells[i];
@@ -108,7 +116,10 @@ const LetterGlitch = ({
             const dpr = window.devicePixelRatio || 1;
             const rect = container.getBoundingClientRect();
             if (rect.width === 0 || rect.height === 0) return;
-            const height = disappeareVignette && !burstActive ? rect.height * VIGNETTE_VISIBLE_FRACTION : rect.height;
+            const height =
+                disappeareVignette && burstRef.current.phase === "idle"
+                    ? rect.height * VIGNETTE_VISIBLE_FRACTION
+                    : rect.height;
 
             canvas.width = Math.floor(rect.width * dpr);
             canvas.height = Math.floor(height * dpr);
@@ -159,7 +170,17 @@ const LetterGlitch = ({
             const dt = Math.min(lastFrame ? now - lastFrame : 16, 100);
             lastFrame = now;
 
-            if (now - lastGlitch >= (burstActive ? glitchSpeed / 5 : glitchSpeed)) {
+            if (burstRef.current.phase !== "idle") {
+                const next = tickBurst(burstRef.current, dt);
+                const phaseChanged = next.phase !== burstRef.current.phase;
+                burstRef.current = next;
+                if (phaseChanged) {
+                    setBurstPhase(next.phase);
+                    if (next.phase === "idle") requestAnimationFrame(() => resize());
+                }
+            }
+
+            if (now - lastGlitch >= glitchInterval(burstRef.current, glitchSpeed)) {
                 lastGlitch = now;
                 glitch();
             }
@@ -214,51 +235,37 @@ const LetterGlitch = ({
         };
         window.addEventListener("resize", onResize);
 
-        let burstTimeout: ReturnType<typeof setTimeout> | null = null;
-        let burstEndTimeout: ReturnType<typeof setTimeout> | null = null;
-
-        // "matrix-burst" event contract: see docs/superpowers/specs/2026-07-28-interactive-terminal-design.md
-        const onBurst = () => {
-            if (reducedMotion || burstActive) return;
-            burstActive = true;
-            setBursting(true);
+        const unsubscribeBurst = onMatrixBurst(() => {
+            if (reducedMotion) return;
+            const next = startBurst(burstRef.current);
+            if (next === burstRef.current) return;
+            burstRef.current = next;
+            setBurstPhase("bursting");
             requestAnimationFrame(() => resize());
-            burstTimeout = setTimeout(() => {
-                setBurstFading(true);
-                burstEndTimeout = setTimeout(() => {
-                    burstActive = false;
-                    setBursting(false);
-                    setBurstFading(false);
-                    requestAnimationFrame(() => resize());
-                }, 700);
-            }, 5000);
-        };
-        window.addEventListener("matrix-burst", onBurst);
+        });
 
         return () => {
             stop();
             observer.disconnect();
             document.removeEventListener("visibilitychange", onVisibility);
             window.removeEventListener("resize", onResize);
-            window.removeEventListener("matrix-burst", onBurst);
-            if (burstTimeout !== null) clearTimeout(burstTimeout);
-            if (burstEndTimeout !== null) clearTimeout(burstEndTimeout);
-            setBursting(false);
-            setBurstFading(false);
+            unsubscribeBurst();
+            burstRef.current = initialBurst;
+            setBurstPhase("idle");
             clearTimeout(resizeTimeout);
         };
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [colorsKey, glitchSpeed, smooth, disappeareVignette]);
 
     const containerStyle: React.CSSProperties = {
-        position: bursting ? "fixed" : "absolute",
+        position: burstPhase !== "idle" ? "fixed" : "absolute",
         top: 0,
         left: 0,
         width: "100%",
-        height: bursting ? "100vh" : "100%",
+        height: burstPhase !== "idle" ? "100vh" : "100%",
         backgroundColor: "transparent",
         overflow: "hidden",
-        opacity: burstFading ? 0 : 1,
+        opacity: burstPhase === "fading" ? 0 : 1,
         transition: "opacity 0.7s ease",
     };
 
@@ -289,7 +296,7 @@ const LetterGlitch = ({
         width: "100%",
         height: "100%",
         pointerEvents: "none",
-        opacity: bursting ? 0 : 1,
+        opacity: burstPhase !== "idle" ? 0 : 1,
         transition: "opacity 0.5s ease",
         background: hydrated
             ? `linear-gradient(to bottom, ${

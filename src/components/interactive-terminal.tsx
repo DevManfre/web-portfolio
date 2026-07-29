@@ -2,6 +2,7 @@
 
 import { AnimatedSpan, Terminal, TypingAnimation } from "@/components/magicui/terminal";
 import { trackEvent } from "@/lib/analytics";
+import { dispatchMatrixBurst } from "@/lib/matrix-burst";
 import { runCommand, type TerminalEffect, type TerminalLine } from "@/lib/terminal/commands";
 import { DATA } from "@/data/resume";
 import type { Locale } from "@/i18n/routing";
@@ -99,8 +100,7 @@ export function InteractiveTerminal({ locale }: { locale: Locale }) {
                 setIntroCleared(true);
                 return;
             case "matrix-burst":
-                // "matrix-burst" event contract: see docs/superpowers/specs/2026-07-28-interactive-terminal-design.md
-                window.dispatchEvent(new CustomEvent("matrix-burst"));
+                dispatchMatrixBurst();
                 trackEvent("matrix-egg");
                 return;
             case "download-cv": {
