@@ -187,3 +187,5 @@ export const DATA = {
         { title: "Code Icon Logo Animation", slug: "eYaYQmy" },
     ] as { title: string; slug: string }[],
 } as const;
+
+export type SocialKey = keyof typeof DATA.contact.social;

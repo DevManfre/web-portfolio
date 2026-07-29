@@ -9,16 +9,17 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip
 import { cn } from "@/lib/utils";
 import { Icons } from "@/components/icons";
 import { DATA } from "@/data/resume";
+import type { SocialKey } from "@/data/resume";
 import { ProjectCard } from "@/components/project-card";
 import { GithubSection } from "@/components/github-section";
 import { CodepenSection } from "@/components/codepen-section";
+import { eventAttrs, SOCIAL_EVENTS } from "@/lib/analytics";
+import { ITEM_STEP, SECTION_STEP, sectionDelay } from "@/lib/section-sequence";
 import { getLocale, getTranslations } from "next-intl/server";
-
-const BLUR_FADE_DELAY = 0.04;
 
 export default async function Page() {
     const t = await getTranslations("HomePage"),
-        locale = (await getLocale()) as keyof typeof DATA.description;
+        locale = await getLocale();
 
     return (
         <main className="flex flex-col min-h-[100dvh] space-y-10">
@@ -27,16 +28,16 @@ export default async function Page() {
                     <div className="gap-2 flex justify-between">
                         <div className="flex-col flex flex-1 space-y-1.5">
                             <BlurFadeText
-                                delay={BLUR_FADE_DELAY}
+                                delay={sectionDelay("hero")}
                                 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none"
                                 yOffset={8}
                                 text={`${t("hello-title")} ${DATA.name.split(" ")[0]}`}
                             />
-                            <BlurFadeText className="max-w-[600px] md:text-xl" delay={BLUR_FADE_DELAY} text={DATA.description[locale]} />
-                            <BlurFade delay={BLUR_FADE_DELAY * 2}>
+                            <BlurFadeText className="max-w-[600px] md:text-xl" delay={sectionDelay("hero")} text={DATA.description[locale]} />
+                            <BlurFade delay={sectionDelay("hero") + SECTION_STEP}>
                                 <div className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1">
                                     <Button asChild size="sm">
-                                        <a href={`/resumes/resume-${locale}.pdf`} download target="_blank" rel="noopener noreferrer" data-umami-event="cv-download" data-umami-event-source="hero">
+                                        <a href={`/resumes/resume-${locale}.pdf`} download target="_blank" rel="noopener noreferrer" {...eventAttrs("cv-download", { source: "hero" })}>
                                             <Icons.cv className="mr-2 size-4" />
                                             {t("download-cv")}
                                         </a>
@@ -50,7 +51,7 @@ export default async function Page() {
                                                         aria-label={social.name}
                                                         target={social.url.startsWith("mailto:") ? undefined : "_blank"}
                                                         rel={social.url.startsWith("mailto:") ? undefined : "noopener noreferrer"}
-                                                        data-umami-event={`social-${name.toLowerCase()}`}
+                                                        {...eventAttrs(SOCIAL_EVENTS[name as SocialKey])}
                                                         className={cn(buttonVariants({ variant: "ghost", size: "icon" }))}
                                                     >
                                                         <social.icon className="size-4" />
@@ -65,7 +66,7 @@ export default async function Page() {
                                 </div>
                             </BlurFade>
                         </div>
-                        <BlurFade delay={BLUR_FADE_DELAY}>
+                        <BlurFade delay={sectionDelay("hero")}>
                             <Avatar className="size-28 border select-none">
                                 <AvatarImage alt={DATA.name} src={DATA.avatarUrl} />
                                 <AvatarFallback>{DATA.initials}</AvatarFallback>
@@ -75,18 +76,18 @@ export default async function Page() {
                 </div>
             </section>
             <section id="about">
-                <BlurFade delay={BLUR_FADE_DELAY * 3}>
+                <BlurFade delay={sectionDelay("about")}>
                     <h2 className="text-xl font-bold">{t("about-title")}</h2>
-                    <BlurFadeText className="md:text-xl mt-2 text-justify" delay={BLUR_FADE_DELAY} text={DATA.summary[locale]} />
+                    <BlurFadeText className="md:text-xl mt-2 text-justify" delay={sectionDelay("about") + SECTION_STEP} text={DATA.summary[locale]} />
                 </BlurFade>
             </section>
             <section id="work">
                 <div className="flex min-h-0 flex-col gap-y-3">
-                    <BlurFade delay={BLUR_FADE_DELAY * 5}>
+                    <BlurFade delay={sectionDelay("work")}>
                         <h2 className="text-xl font-bold">{t("work-experience-title")}</h2>
                     </BlurFade>
                     {DATA.work.map((work, id) => (
-                        <BlurFade key={work.company} delay={BLUR_FADE_DELAY * 6 + id * 0.05}>
+                        <BlurFade key={work.company} delay={sectionDelay("work") + SECTION_STEP + id * ITEM_STEP}>
                             <ResumeCard
                                 key={work.company}
                                 logoUrl={work.logoUrl}
@@ -97,7 +98,9 @@ export default async function Page() {
                                 badges={work.badges}
                                 start={work.start}
                                 end={work.end}
-                                description={(work.description as Record<keyof typeof DATA.description, string>)[locale]}
+                                description={work.description[locale]}
+                                defaultExpanded
+                                timeline={id === 0 ? "first" : id === DATA.work.length - 1 ? "last" : "middle"}
                             />
                         </BlurFade>
                     ))}
@@ -105,11 +108,11 @@ export default async function Page() {
             </section>
             <section id="education">
                 <div className="flex min-h-0 flex-col gap-y-3">
-                    <BlurFade delay={BLUR_FADE_DELAY * 7}>
+                    <BlurFade delay={sectionDelay("education")}>
                         <h2 className="text-xl font-bold">{t("education-title")}</h2>
                     </BlurFade>
                     {DATA.education.map((education, id) => (
-                        <BlurFade key={education.school} delay={BLUR_FADE_DELAY * 8 + id * 0.05}>
+                        <BlurFade key={education.school} delay={sectionDelay("education") + SECTION_STEP + id * ITEM_STEP}>
                             <ResumeCard
                                 key={education.school}
                                 href={education.href}
@@ -123,18 +126,18 @@ export default async function Page() {
                         </BlurFade>
                     ))}
                 </div>
-                <BlurFade delay={BLUR_FADE_DELAY * 7}>
+                <BlurFade delay={sectionDelay("terminal")}>
                     <InteractiveTerminal locale={locale} />
                 </BlurFade>
             </section>
             <section id="skills">
                 <div className="flex min-h-0 flex-col gap-y-3">
-                    <BlurFade delay={BLUR_FADE_DELAY * 9}>
+                    <BlurFade delay={sectionDelay("skills")}>
                         <h2 className="text-xl font-bold">{t("skills-title")}</h2>
                     </BlurFade>
                     <div className="flex flex-wrap gap-1">
                         {DATA.skills.map((skill, id) => (
-                            <BlurFade key={skill} delay={BLUR_FADE_DELAY * 10 + id * 0.05}>
+                            <BlurFade key={skill} delay={sectionDelay("skills") + SECTION_STEP + id * ITEM_STEP}>
                                 <Badge className="select-none" key={skill}>
                                     {skill}
                                 </Badge>
@@ -145,12 +148,12 @@ export default async function Page() {
             </section>
             <section id="languages">
                 <div className="flex min-h-0 flex-col gap-y-3">
-                    <BlurFade delay={BLUR_FADE_DELAY * 10}>
+                    <BlurFade delay={sectionDelay("languages")}>
                         <h2 className="text-xl font-bold">{t("languages-title")}</h2>
                     </BlurFade>
                     <div className="flex flex-wrap gap-1">
                         {DATA.languages.map((language, id) => (
-                            <BlurFade key={language.name.en} delay={BLUR_FADE_DELAY * 11 + id * 0.05}>
+                            <BlurFade key={language.name.en} delay={sectionDelay("languages") + SECTION_STEP + id * ITEM_STEP}>
                                 <Badge className="select-none">{`${language.name[locale]} — ${language.level[locale]}`}</Badge>
                             </BlurFade>
                         ))}
@@ -159,11 +162,11 @@ export default async function Page() {
             </section>
             <section id="certifications">
                 <div className="flex min-h-0 flex-col gap-y-3">
-                    <BlurFade delay={BLUR_FADE_DELAY * 11}>
+                    <BlurFade delay={sectionDelay("certifications")}>
                         <h2 className="text-xl font-bold">{t("certifications-title")}</h2>
                     </BlurFade>
                     {DATA.certifications.map((certification, id) => (
-                        <BlurFade key={certification.name} delay={BLUR_FADE_DELAY * 12 + id * 0.05}>
+                        <BlurFade key={certification.name} delay={sectionDelay("certifications") + SECTION_STEP + id * ITEM_STEP}>
                             <ResumeCard
                                 href={certification.href}
                                 logoUrl={certification.logoUrl}
@@ -177,11 +180,11 @@ export default async function Page() {
                     ))}
                 </div>
             </section>
-            <GithubSection delay={BLUR_FADE_DELAY * 12} />
-            <CodepenSection delay={BLUR_FADE_DELAY * 12} />
+            <GithubSection delay={sectionDelay("github")} />
+            <CodepenSection delay={sectionDelay("codepen")} />
             <section id="projects">
                 <div className="space-y-12 w-full py-12">
-                    <BlurFade delay={BLUR_FADE_DELAY * 12}>
+                    <BlurFade delay={sectionDelay("projects")}>
                         <div className="flex flex-col items-center justify-center space-y-4 text-center">
                             <div className="space-y-2">
                                 <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">{t("projects-title")}</div>
@@ -194,7 +197,7 @@ export default async function Page() {
                     </BlurFade>
                     <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 max-w-[800px] mx-auto">
                         {DATA.projects.map((project, id) => (
-                            <BlurFade key={project.title} delay={BLUR_FADE_DELAY * 13 + id * 0.05}>
+                            <BlurFade key={project.title} delay={sectionDelay("projects") + SECTION_STEP + id * ITEM_STEP}>
                                 <ProjectCard
                                     href={project.href}
                                     key={project.title}
@@ -214,7 +217,7 @@ export default async function Page() {
             </section>
             <section id="contact">
                 <div className="grid items-center justify-center gap-4 px-4 text-center md:px-6 w-full py-12">
-                    <BlurFade delay={BLUR_FADE_DELAY * 16}>
+                    <BlurFade delay={sectionDelay("contact")}>
                         <div className="space-y-3">
                             <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">{t("contact-title")}</div>
                             <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">{t("contact-subtitle")}</h2>
@@ -223,13 +226,13 @@ export default async function Page() {
                             </p>
                             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
                                 <Button asChild>
-                                    <a href={DATA.contact.social.LinkedIn.url} target="_blank" rel="noopener noreferrer" data-umami-event="contact-linkedin">
+                                    <a href={DATA.contact.social.LinkedIn.url} target="_blank" rel="noopener noreferrer" {...eventAttrs("contact-linkedin")}>
                                         <Icons.linkedin className="mr-2 size-4" />
                                         {t("contact-linkedin")}
                                     </a>
                                 </Button>
                                 <Button asChild variant="outline">
-                                    <a href={DATA.contact.social.email.url} data-umami-event="contact-email">
+                                    <a href={DATA.contact.social.email.url} {...eventAttrs("contact-email")}>
                                         <Icons.email className="mr-2 size-4" />
                                         {t("contact-email")}
                                     </a>

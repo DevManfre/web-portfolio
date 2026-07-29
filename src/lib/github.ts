@@ -1,4 +1,5 @@
 import { DATA } from "@/data/resume";
+import { safeColor, topLanguage, totalStars } from "@/lib/github-stats";
 
 export type GithubData = {
     totalContributions: number;
@@ -11,9 +12,14 @@ export type GithubData = {
         description: string | null;
         url: string;
         stars: number;
-        language: { name: string; color: string | null } | null;
+        language: { name: string; color: string } | null;
     }[];
 };
+
+export type GithubResult =
+    | { status: "disabled" }
+    | { status: "error"; reason: string }
+    | { status: "ok"; data: GithubData };
 
 const QUERY = `
 query ($login: String!) {
@@ -83,9 +89,9 @@ type GraphQLResponse = {
     errors?: unknown[];
 };
 
-export async function getGithubData(): Promise<GithubData | null> {
+export async function getGithubData(): Promise<GithubResult> {
     const token = process.env.GITHUB_TOKEN;
-    if (!token) return null;
+    if (!token) return { status: "disabled" };
 
     try {
         const res = await fetch("https://api.github.com/graphql", {
@@ -99,54 +105,37 @@ export async function getGithubData(): Promise<GithubData | null> {
             next: { revalidate: 86400 },
         });
 
-        if (!res.ok) {
-            console.warn(`GitHub API responded ${res.status}; hiding GitHub section`);
-            return null;
-        }
+        if (!res.ok) return { status: "error", reason: `GitHub API responded ${res.status}` };
 
         const json = (await res.json()) as GraphQLResponse;
         const user = json.data?.user;
-        if (json.errors?.length || !user) {
-            console.warn("GitHub GraphQL returned errors; hiding GitHub section");
-            return null;
-        }
+        if (json.errors?.length || !user) return { status: "error", reason: "GitHub GraphQL returned errors" };
 
         // Stars/top-language aggregate the first 100 repos only; publicRepos uses totalCount.
         const repoNodes = user.repositories.nodes.filter((node) => node !== null);
-        const languageCounts = new Map<string, number>();
-        for (const repo of repoNodes) {
-            const name = repo.primaryLanguage?.name;
-            if (name) languageCounts.set(name, (languageCounts.get(name) ?? 0) + 1);
-        }
-        let topLanguage: string | null = null;
-        let bestCount = 0;
-        for (const [name, count] of languageCounts) {
-            if (count > bestCount) {
-                bestCount = count;
-                topLanguage = name;
-            }
-        }
 
         return {
-            totalContributions: user.contributionsCollection.contributionCalendar.totalContributions,
-            weeks: user.contributionsCollection.contributionCalendar.weeks.map((week) => ({
-                days: week.contributionDays.map((day) => ({ date: day.date, count: day.contributionCount })),
-            })),
-            publicRepos: user.repositories.totalCount,
-            totalStars: repoNodes.reduce((sum, repo) => sum + repo.stargazerCount, 0),
-            topLanguage,
-            pinned: user.pinnedItems.nodes
-                .filter((node) => node !== null)
-                .map((repo) => ({
-                    name: repo.name,
-                    description: repo.description,
-                    url: repo.url,
-                    stars: repo.stargazerCount,
-                    language: repo.primaryLanguage,
+            status: "ok",
+            data: {
+                totalContributions: user.contributionsCollection.contributionCalendar.totalContributions,
+                weeks: user.contributionsCollection.contributionCalendar.weeks.map((week) => ({
+                    days: week.contributionDays.map((day) => ({ date: day.date, count: day.contributionCount })),
                 })),
+                publicRepos: user.repositories.totalCount,
+                totalStars: totalStars(repoNodes),
+                topLanguage: topLanguage(repoNodes),
+                pinned: user.pinnedItems.nodes
+                    .filter((node) => node !== null)
+                    .map((repo) => ({
+                        name: repo.name,
+                        description: repo.description,
+                        url: repo.url,
+                        stars: repo.stargazerCount,
+                        language: repo.primaryLanguage ? { name: repo.primaryLanguage.name, color: safeColor(repo.primaryLanguage.color) } : null,
+                    })),
+            },
         };
     } catch (error) {
-        console.warn("GitHub fetch failed; hiding GitHub section", error);
-        return null;
+        return { status: "error", reason: error instanceof Error ? error.message : String(error) };
     }
 }

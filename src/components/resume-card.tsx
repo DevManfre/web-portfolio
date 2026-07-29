@@ -3,7 +3,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardHeader } from "@/components/ui/card";
-import { cn, formatDate } from "@/lib/utils";
+import { cn, formatPeriod } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { ChevronRightIcon } from "lucide-react";
 import Link from "next/link";
@@ -20,10 +20,12 @@ interface ResumeCardProps {
     start: string;
     end: string;
     description?: string;
+    defaultExpanded?: boolean;
+    timeline?: "first" | "middle" | "last";
 }
-export const ResumeCard = ({ logoUrl, altText, title, subtitle, href, badges, description, start, end }: ResumeCardProps) => {
+export const ResumeCard = ({ logoUrl, altText, title, subtitle, href, badges, description, start, end, defaultExpanded = false, timeline }: ResumeCardProps) => {
     const t = useTranslations("CardResume"),
-        [isExpanded, setIsExpanded] = React.useState(false),
+        [isExpanded, setIsExpanded] = React.useState(defaultExpanded),
         locale = useLocale();
 
     const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
@@ -36,8 +38,18 @@ export const ResumeCard = ({ logoUrl, altText, title, subtitle, href, badges, de
     return (
         <Link href={href || "#"} target="_blank" rel="noopener noreferrer" className="block cursor-pointer" onClick={handleClick}>
             <Card className="flex bg-transparent">
-                <div className="flex-none">
-                    <Avatar className="border size-12 m-auto bg-muted-background dark:bg-foreground">
+                <div className="relative flex flex-none">
+                    {timeline && (
+                        <div
+                            aria-hidden
+                            className={cn(
+                                "absolute left-1/2 w-px -translate-x-1/2 bg-border",
+                                timeline === "first" ? "top-6" : "top-0",
+                                timeline === "last" ? "h-6" : "-bottom-3"
+                            )}
+                        />
+                    )}
+                    <Avatar className="relative z-10 border size-12 bg-background dark:bg-foreground">
                         <AvatarImage src={logoUrl} alt={altText} className="object-contain" />
                         <AvatarFallback>{altText[0]}</AvatarFallback>
                     </Avatar>
@@ -55,8 +67,7 @@ export const ResumeCard = ({ logoUrl, altText, title, subtitle, href, badges, de
                                 />
                             </h3>
                             <div className="text-xs sm:text-sm tabular-nums text-muted-foreground text-right">
-                                {formatDate(start, locale)}
-                                {end != "" ? ` - ${end == "current" ? t(end) : formatDate(end, locale)}` : ""}
+                                {formatPeriod(start, end, locale, t("current"))}
                             </div>
                         </div>
 
@@ -64,7 +75,7 @@ export const ResumeCard = ({ logoUrl, altText, title, subtitle, href, badges, de
                     </CardHeader>
                     {description && (
                         <motion.div
-                            initial={{ opacity: 0, height: 0 }}
+                            initial={false}
                             animate={{
                                 opacity: isExpanded ? 1 : 0,
 

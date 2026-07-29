@@ -1,9 +1,9 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { cn, formatDate } from "@/lib/utils";
+import { cn, formatPeriod } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
-import { getLocale } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 
 interface Props {
     title: string;
@@ -25,6 +25,7 @@ interface Props {
 
 export async function ProjectCard({ title, href, description, start, end, tags, link, image, video, links, className }: Props) {
     const locale = await getLocale();
+    const t = await getTranslations("CardResume");
     return (
         <Card className={"flex flex-col overflow-hidden border hover:shadow-lg hover:scale-105 transition-all duration-300 ease-out h-full"}>
             <Link href={href || "#"} target="_blank" rel="noopener noreferrer" className={cn("block cursor-pointer", className)}>
@@ -43,7 +44,7 @@ export async function ProjectCard({ title, href, description, start, end, tags, 
             <CardHeader className="px-2">
                 <div className="space-y-1">
                     <CardTitle className="mt-1 text-base">{title}</CardTitle>
-                    <time className="font-sans text-xs block italic">{`${formatDate(start, locale)} - ${formatDate(end, locale)}`}</time>
+                    <time className="font-sans text-xs block italic">{formatPeriod(start, end, locale, t("current"))}</time>
                     <div className="hidden font-sans text-xs underline print:visible">{link?.replace("https://", "").replace("www.", "").replace("/", "")}</div>
                     {description}
                 </div>

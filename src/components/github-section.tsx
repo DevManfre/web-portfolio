@@ -5,11 +5,17 @@ import { GithubRepoCard } from "@/components/github-repo-card";
 import { Icons } from "@/components/icons";
 import { DATA } from "@/data/resume";
 import { getGithubData } from "@/lib/github";
+import { SECTION_STEP } from "@/lib/section-sequence";
 import { getTranslations } from "next-intl/server";
 
 export async function GithubSection({ delay }: { delay: number }) {
-    const data = await getGithubData();
-    if (!data) return null;
+    const result = await getGithubData();
+    if (result.status === "disabled") return null;
+    if (result.status === "error") {
+        console.warn(`GitHub section hidden: ${result.reason}`);
+        return null;
+    }
+    const data = result.data;
 
     const t = await getTranslations("HomePage");
     const stats = [
@@ -25,7 +31,7 @@ export async function GithubSection({ delay }: { delay: number }) {
                 <BlurFade delay={delay}>
                     <h2 className="text-xl font-bold">{t("github-title")}</h2>
                 </BlurFade>
-                <BlurFade delay={delay + 0.04}>
+                <BlurFade delay={delay + SECTION_STEP}>
                     <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
                         {stats.map((stat) => (
                             <div key={stat.label} className="rounded-lg border p-3 text-center">
@@ -35,11 +41,11 @@ export async function GithubSection({ delay }: { delay: number }) {
                         ))}
                     </div>
                 </BlurFade>
-                <BlurFade delay={delay + 0.04}>
+                <BlurFade delay={delay + SECTION_STEP}>
                     <ContributionGraph weeks={data.weeks} />
                 </BlurFade>
                 {data.pinned.length > 0 && (
-                    <BlurFade delay={delay + 0.04}>
+                    <BlurFade delay={delay + SECTION_STEP}>
                         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                             {data.pinned.map((repo) => (
                                 <GithubRepoCard key={repo.url} repo={repo} />
@@ -47,7 +53,7 @@ export async function GithubSection({ delay }: { delay: number }) {
                         </div>
                     </BlurFade>
                 )}
-                <BlurFade delay={delay + 0.04}>
+                <BlurFade delay={delay + SECTION_STEP}>
                     <Button asChild variant="link" className="w-fit p-0">
                         <a href={DATA.contact.social.GitHub.url} target="_blank" rel="noopener noreferrer">
                             <Icons.github className="mr-2 size-4" />

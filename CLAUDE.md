@@ -15,8 +15,11 @@ the Netlify dashboard (nothing committed).
 - `npm run build` — production build
 - `npm run lint` — ESLint (next/core-web-vitals + next/typescript)
 - `npm run typecheck` — `tsc --noEmit`
+- `npm test` — vitest (unit tests for the pure modules in `src/lib/` and the burst state machine)
 
-There are no tests and no test runner.
+Unit tests (vitest) cover the pure modules only (terminal commands, analytics
+catalog, burst state machine, GitHub stats, section sequence, date
+formatting). No component/E2E tests.
 
 ## Architecture
 
@@ -37,6 +40,12 @@ Next.js 15 App Router, React 19, TypeScript strict, Tailwind CSS 3.4.
 - `src/components/*.tsx` — custom components (navbar, project-card,
   resume-card, mode-toggle, …).
 - `src/lib/utils.ts` — `cn()` (clsx + tailwind-merge) and `formatDate()`.
+- `src/lib/` — pure modules with unit tests: `terminal/commands.ts` (command
+  registry; the terminal component is a thin adapter), `analytics.ts` (typed
+  Umami event catalog: `trackEvent` + `eventAttrs`), `matrix-burst.ts` (owns
+  the `matrix-burst` window event), `github.ts` (returns a
+  `disabled | error | ok` status union) + `github-stats.ts`,
+  `section-sequence.ts` (page order; animation delays derive from it).
 
 ## Conventions
 

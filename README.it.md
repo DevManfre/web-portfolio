@@ -138,7 +138,14 @@ src/
 ├── data/
 │   └── resume.tsx             # ⭐ unica fonte di verità per TUTTI i contenuti
 ├── i18n/                      # config routing / request di next-intl
-├── lib/                       # cn() + formatDate(), fetcher GitHub, helper Umami
+├── lib/                       # moduli puri, testati (vitest)
+│   ├── utils.ts               # cn() + formatDate()/formatPeriod()
+│   ├── terminal/commands.ts   # registro comandi (componente è un thin adapter)
+│   ├── analytics.ts           # catalogo eventi Umami tipizzato (trackEvent, eventAttrs)
+│   ├── matrix-burst.ts        # gestisce l'evento window matrix-burst
+│   ├── github.ts              # fetcher GitHub (stato disabled | error | ok)
+│   ├── github-stats.ts        # aggregazioni pure sulle statistiche GitHub
+│   └── section-sequence.ts    # ordine sezioni pagina (guida i ritardi delle animazioni)
 └── middleware.ts              # middleware di rilevamento locale
 public/
 ├── locales/en.json, it.json   # stringhe UI (i set di chiavi devono coincidere)
@@ -164,8 +171,9 @@ npm run dev          # dev server con Turbopack → http://localhost:3000
 | `npm run start` | Serve la build di produzione |
 | `npm run lint` | ESLint (`next/core-web-vitals` + `next/typescript`) |
 | `npm run typecheck` | `tsc --noEmit` |
+| `npm test` | Vitest — unit test per i moduli puri in `src/lib/` e per la macchina a stati del burst |
 
-Non ci sono test. Lint + typecheck + build in CI fanno da quality gate.
+I test unitari (Vitest) coprono solo i moduli puri (comandi del terminale, catalogo analytics, macchina a stati del burst, statistiche GitHub, sequenza sezioni, formattazione date). Nessun test di componente/E2E. Lint + typecheck + test + build in CI fanno da quality gate.
 
 ### Variabili d'ambiente
 
@@ -234,7 +242,7 @@ Gli elementi statici usano attributi `data-umami-event`; gli eventi programmatic
 ### Deploy e CI
 
 - **Branch:** si lavora su `development`; `production` è il branch di release, aggiornato solo mergiando `development` al suo interno. Netlify deploya il sito da `production`.
-- **CI (GitHub Actions):** a ogni push/PR su `development` o `production` — `npm ci` → `lint` → `typecheck` → `build` (Node 20).
+- **CI (GitHub Actions):** a ogni push/PR su `development` o `production` — `npm ci` → `lint` → `typecheck` → `test` → `build` (Node 20).
 - ⚠️ Gli errori ESLint sono **ignorati durante le build** (`ignoreDuringBuilds: true` in `next.config.ts`), quindi il lint in CI è il vero gate — tenerlo verde.
 
 ### Flusso Git

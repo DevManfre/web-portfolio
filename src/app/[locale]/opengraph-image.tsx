@@ -1,5 +1,7 @@
 import { ImageResponse } from "next/og";
+import { hasLocale } from "next-intl";
 import { DATA } from "@/data/resume";
+import { routing } from "@/i18n/routing";
 
 export const alt = `${DATA.name} — Full Stack Developer`;
 export const size = { width: 1200, height: 630 };
@@ -7,7 +9,7 @@ export const contentType = "image/png";
 
 export default async function Image({ params }: { params: Promise<{ locale: string }> }) {
     const { locale } = await params;
-    const description = DATA.description[(locale === "it" ? "it" : "en") as keyof typeof DATA.description];
+    const description = DATA.description[hasLocale(routing.locales, locale) ? locale : routing.defaultLocale];
 
     return new ImageResponse(
         (
