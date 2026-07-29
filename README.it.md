@@ -171,7 +171,7 @@ npm run dev          # dev server con Turbopack → http://localhost:3000
 | `npm run start` | Serve la build di produzione |
 | `npm run lint` | ESLint (`next/core-web-vitals` + `next/typescript`) |
 | `npm run typecheck` | `tsc --noEmit` |
-| `npm test` | Vitest — unit test per i moduli puri in `src/lib/` |
+| `npm test` | Vitest — unit test per i moduli puri in `src/lib/` e per la macchina a stati del burst |
 
 I test unitari (Vitest) coprono solo i moduli puri (comandi del terminale, catalogo analytics, macchina a stati del burst, statistiche GitHub, sequenza sezioni, formattazione date). Nessun test di componente/E2E. Lint + typecheck + test + build in CI fanno da quality gate.
 

@@ -15,7 +15,7 @@ the Netlify dashboard (nothing committed).
 - `npm run build` — production build
 - `npm run lint` — ESLint (next/core-web-vitals + next/typescript)
 - `npm run typecheck` — `tsc --noEmit`
-- `npm test` — vitest (unit tests for the pure modules in `src/lib/`)
+- `npm test` — vitest (unit tests for the pure modules in `src/lib/` and the burst state machine)
 
 Unit tests (vitest) cover the pure modules only (terminal commands, analytics
 catalog, burst state machine, GitHub stats, section sequence, date
