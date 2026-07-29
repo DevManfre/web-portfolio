@@ -9,9 +9,11 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip
 import { cn } from "@/lib/utils";
 import { Icons } from "@/components/icons";
 import { DATA } from "@/data/resume";
+import type { SocialKey } from "@/data/resume";
 import { ProjectCard } from "@/components/project-card";
 import { GithubSection } from "@/components/github-section";
 import { CodepenSection } from "@/components/codepen-section";
+import { eventAttrs, SOCIAL_EVENTS } from "@/lib/analytics";
 import { getLocale, getTranslations } from "next-intl/server";
 
 const BLUR_FADE_DELAY = 0.04;
@@ -36,7 +38,7 @@ export default async function Page() {
                             <BlurFade delay={BLUR_FADE_DELAY * 2}>
                                 <div className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1">
                                     <Button asChild size="sm">
-                                        <a href={`/resumes/resume-${locale}.pdf`} download target="_blank" rel="noopener noreferrer" data-umami-event="cv-download" data-umami-event-source="hero">
+                                        <a href={`/resumes/resume-${locale}.pdf`} download target="_blank" rel="noopener noreferrer" {...eventAttrs("cv-download", { source: "hero" })}>
                                             <Icons.cv className="mr-2 size-4" />
                                             {t("download-cv")}
                                         </a>
@@ -50,7 +52,7 @@ export default async function Page() {
                                                         aria-label={social.name}
                                                         target={social.url.startsWith("mailto:") ? undefined : "_blank"}
                                                         rel={social.url.startsWith("mailto:") ? undefined : "noopener noreferrer"}
-                                                        data-umami-event={`social-${name.toLowerCase()}`}
+                                                        {...eventAttrs(SOCIAL_EVENTS[name as SocialKey])}
                                                         className={cn(buttonVariants({ variant: "ghost", size: "icon" }))}
                                                     >
                                                         <social.icon className="size-4" />
@@ -225,13 +227,13 @@ export default async function Page() {
                             </p>
                             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
                                 <Button asChild>
-                                    <a href={DATA.contact.social.LinkedIn.url} target="_blank" rel="noopener noreferrer" data-umami-event="contact-linkedin">
+                                    <a href={DATA.contact.social.LinkedIn.url} target="_blank" rel="noopener noreferrer" {...eventAttrs("contact-linkedin")}>
                                         <Icons.linkedin className="mr-2 size-4" />
                                         {t("contact-linkedin")}
                                     </a>
                                 </Button>
                                 <Button asChild variant="outline">
-                                    <a href={DATA.contact.social.email.url} data-umami-event="contact-email">
+                                    <a href={DATA.contact.social.email.url} {...eventAttrs("contact-email")}>
                                         <Icons.email className="mr-2 size-4" />
                                         {t("contact-email")}
                                     </a>

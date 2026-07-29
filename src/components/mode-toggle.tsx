@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { eventAttrs } from "@/lib/analytics";
 import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
 import { useTheme } from "next-themes";
 
@@ -14,7 +15,7 @@ export function ModeToggle() {
       size="icon"
       className="rounded-full px-2"
       aria-label="Toggle theme"
-      data-umami-event="theme-toggle"
+      {...eventAttrs("theme-toggle")}
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
     >
       <SunIcon className="h-[1.2rem] w-[1.2rem] text-neutral-800 dark:hidden dark:text-neutral-200" />
