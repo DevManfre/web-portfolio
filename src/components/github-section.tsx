@@ -9,8 +9,13 @@ import { SECTION_STEP } from "@/lib/section-sequence";
 import { getTranslations } from "next-intl/server";
 
 export async function GithubSection({ delay }: { delay: number }) {
-    const data = await getGithubData();
-    if (!data) return null;
+    const result = await getGithubData();
+    if (result.status === "disabled") return null;
+    if (result.status === "error") {
+        console.warn(`GitHub section hidden: ${result.reason}`);
+        return null;
+    }
+    const data = result.data;
 
     const t = await getTranslations("HomePage");
     const stats = [

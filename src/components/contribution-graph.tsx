@@ -1,17 +1,11 @@
-import type { GithubData } from "@/lib/github";
+import { bucket } from "@/lib/github-stats";
 import { cn } from "@/lib/utils";
 
 const BUCKET_CLASSES = ["bg-muted", "bg-[#61dca3]/25", "bg-[#61dca3]/45", "bg-[#61dca3]/70", "bg-[#61dca3]"];
 
-function bucket(count: number): number {
-    if (count === 0) return 0;
-    if (count <= 2) return 1;
-    if (count <= 5) return 2;
-    if (count <= 9) return 3;
-    return 4;
-}
+type ContributionWeek = { days: { date: string; count: number }[] };
 
-export function ContributionGraph({ weeks }: { weeks: GithubData["weeks"] }) {
+export function ContributionGraph({ weeks }: { weeks: ContributionWeek[] }) {
     return (
         <div className="overflow-x-auto pb-2" aria-hidden="true">
             <div className="flex w-max gap-[3px]">
