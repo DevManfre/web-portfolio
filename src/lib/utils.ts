@@ -20,8 +20,19 @@ export function cn(...inputs: ClassValue[]) {
  * @returns A formatted date string with the first letter capitalized.
  */
 export function formatDate(date: string, locale: string): string {
-    const parts = date.split("/").reverse(),
-        dates = date.split(",");
+    if (date === "") return "";
+
+    const dates = date.split(",");
+    if (dates.length > 1) {
+        let returnString = "";
+        dates.forEach((d) => {
+            if (returnString.length > 0) returnString += ", ";
+            returnString += formatDate(d, locale);
+        });
+        return returnString;
+    }
+
+    const parts = date.split("/").reverse();
     let returnString: string = "";
 
     if (parts.length == 1)
@@ -31,11 +42,16 @@ export function formatDate(date: string, locale: string): string {
         /* "month yyyy", for example Apr 2017  */
         returnString = new Date(`${parts[1]}/01/${parts[0]}`).toLocaleDateString(locale, { year: "numeric", month: "short" }).toString();
 
-    if (dates.length > 1)
-        dates.forEach((date) => {
-            if (returnString.length > 0) returnString += ", ";
-            returnString += `${formatDate(date, locale)}`;
-        });
-
     return returnString.charAt(0).toUpperCase() + returnString.slice(1);
+}
+
+/**
+ * Formats a start/end period. Owns the data-module sentinels: `end === ""`
+ * means "no end date", `end === "current"` renders the localized label the
+ * caller resolved (i18n strings live in the locale files, not here).
+ */
+export function formatPeriod(start: string, end: string, locale: string, currentLabel: string): string {
+    const from = formatDate(start, locale);
+    const to = end === "current" ? currentLabel : formatDate(end, locale);
+    return to === "" ? from : `${from} - ${to}`;
 }
