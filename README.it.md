@@ -58,9 +58,9 @@ La sezione Formazione termina con un terminale (`src/components/interactive-term
 
 ```
 > get-graduation --spec IT
-✔ IT graduation getted.
+✔ IT diploma obtained.
 > get-degree --spec CS
-✔ CS degree getted.
+✔ CS degree obtained.
 > sudo work --mode hard ...
 ```
 

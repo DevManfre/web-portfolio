@@ -58,9 +58,9 @@ The Education section ends with a terminal (`src/components/interactive-terminal
 
 ```
 > get-graduation --spec IT
-✔ IT graduation getted.
+✔ IT diploma obtained.
 > get-degree --spec CS
-✔ CS degree getted.
+✔ CS degree obtained.
 > sudo work --mode hard ...
 ```
 
