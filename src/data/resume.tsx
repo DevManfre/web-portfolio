@@ -17,7 +17,7 @@ export const DATA = {
         Ho approfondito diverse tecnologie, sia back-end che front-end.
         Tra tutte, React è diventata la mia preferita.`,
     },
-    terminal: ["> get-graduation --spec IT", "✔ IT graduation getted.", "> get-degree --spec CS", "✔ CS degree getted.", "> sudo work --mode hard ..."],
+    terminal: ["> get-graduation --spec IT", "✔ IT diploma obtained.", "> get-degree --spec CS", "✔ CS degree obtained.", "> sudo work --mode hard ..."],
     avatarUrl: "/img/me.webp",
     skills: ["React", "Next.js", "Typescript", "Node.js", "Python", "Javascript", "MySQL", "PHP", "Tailwind", "SCSS", "Docker", "Git"].sort(),
     contact: {
