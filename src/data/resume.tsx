@@ -127,6 +127,33 @@ export const DATA = {
     ],
     projects: [
         {
+            title: "IsItDown",
+            href: "https://github.com/DevManfre/isitdown/pkgs/container/isitdown",
+            start: "08/2026",
+            end: "current",
+            description: {
+                en: `IsItDown is a self-hosted watcher for other companies' status pages: it polls GitHub, Anthropic, Cloudflare and 100+ Statuspage providers and alerts on Telegram, Discord, Slack or webhook only when a service actually changes state.
+                It ships as a Docker image in two editions: Light (polling and notifications, one YAML config file) and UI (same engine plus a React dashboard backed by SQLite).`,
+                it: `IsItDown è un watcher self-hosted per le status page altrui: interroga GitHub, Anthropic, Cloudflare e oltre 100 provider Statuspage e avvisa su Telegram, Discord, Slack o webhook solo quando un servizio cambia davvero stato.
+                Viene distribuito come immagine Docker in due edizioni: Light (polling e notifiche, un solo file di configurazione YAML) e UI (stesso motore più una dashboard React con SQLite).`
+            },
+            technologies: ["Typescript", "Node.js", "React", "Docker"],
+            links: [
+                {
+                    type: "Github",
+                    href: "https://github.com/DevManfre/isitdown",
+                    icon: <Icons.github className="size-4" />,
+                },
+                {
+                    type: "Docker image",
+                    href: "https://github.com/DevManfre/isitdown/pkgs/container/isitdown",
+                    icon: <Icons.globe className="size-4" />,
+                },
+            ],
+            image: "/img/projects/isitdown.png",
+            video: "",
+        },
+        {
             title: "web-portfolio",
             href: "https://devmanfre.netlify.app",
             start: "02/2023",
