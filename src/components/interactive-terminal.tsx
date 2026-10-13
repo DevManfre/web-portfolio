@@ -144,7 +144,7 @@ export function InteractiveTerminal({ locale }: { locale: Locale }) {
                 inputRef.current?.focus();
             }}
         >
-            <Terminal className="min-w-[300px] min-h-[192px] mt-4 cursor-text">
+            <Terminal className="min-h-[192px] mt-4 cursor-text">
                 <motion.div initial={false} animate={{ height: shellHeight }} transition={{ duration: 0.3, ease: "easeOut" }} style={{ overflow: "hidden" }}>
                     <div ref={scrollRef} className="grid gap-y-1 max-h-[320px] overflow-y-auto select-text text-sm font-normal tracking-tight">
                         {!introCleared && intro}
